@@ -3,781 +3,574 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>阳光电源(300274) 深度分析报告 | Brad 股票分析框架</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<title>阳光电源(300274) 深度分析报告</title>
 <style>
-:root {
-  --bg: #ffffff; --bg2: #f8f9fa; --bg3: #f0f2f5; --text: #1a1a2e; --text2: #555;
-  --red: #e74c3c; --green: #27ae60; --blue: #2980b9; --gold: #f39c12;
-  --card: #ffffff; --border: #e0e0e0; --shadow: 0 2px 12px rgba(0,0,0,0.06);
-  --radius: 10px;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg2); color: var(--text); line-height:1.6; }
-.container { max-width: 1200px; margin:0 auto; padding:20px; }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
+  .container{max-width:960px;margin:0 auto}
+  .header{background:linear-gradient(135deg,#1a237e,#283593);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+  .header h1{font-size:28px;margin-bottom:4px}
+  .header .meta{font-size:13px;opacity:.85}
+  .price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
+  .price{font-size:52px;font-weight:800}
+  .chg{font-size:20px;padding:4px 12px;border-radius:8px}
+  .chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+  .chg.up{background:rgba(198,40,40,.15);color:#c62828}
 
-/* Header */
-.header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color:#fff; padding:40px 20px; text-align:center; border-radius:0 0 30px 30px; margin-bottom:30px; }
-.header h1 { font-size:2.2em; margin-bottom:8px; }
-.header .sub { font-size:1.1em; opacity:0.85; }
-.header .price-line { margin-top:20px; display:flex; justify-content:center; gap:40px; flex-wrap:wrap; }
-.header .price-item { text-align:center; }
-.header .price-item .val { font-size:2em; font-weight:700; }
-.header .price-item .label { font-size:0.85em; opacity:0.7; margin-top:4px; }
-.header .price-item.up { color:#ff6b6b; }
-.header .price-item.down { color:#51cf66; }
-.tag { display:inline-block; padding:3px 10px; border-radius:12px; font-size:0.78em; margin:2px; }
-.tag-buy { background:#e74c3c20; color:#e74c3c; border:1px solid #e74c3c40; }
-.tag-warn { background:#f39c1220; color:#f39c12; border:1px solid #f39c1240; }
+  .card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .card h2{font-size:18px;color:#1a237e;border-bottom:2px solid #e8eaf6;padding-bottom:10px;margin-bottom:16px}
+  .card h3{font-size:15px;color:#3949ab;margin:20px 0 8px}
+  .card h4{font-size:14px;color:#555;margin:12px 0 6px}
 
-/* Score */
-.score-section { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:16px; margin-bottom:24px; }
-.score-card { background:var(--card); border-radius:var(--radius); padding:18px; text-align:center; box-shadow:var(--shadow); border:1px solid var(--border); }
-.score-card .score-num { font-size:3em; font-weight:800; line-height:1; }
-.score-card .score-label { font-size:0.85em; color:var(--text2); margin-top:6px; }
-.score-card .score-sub { font-size:0.78em; color:var(--text2); margin-top:2px; }
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+  .kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
+  .kv .lbl{font-size:11px;color:#888}
+  .kv .val{font-size:20px;font-weight:700;color:#1a237e}
+  .kv .sub{font-size:11px;color:#555;margin-top:2px}
 
-/* Section */
-.section { background:var(--card); border-radius:var(--radius); padding:24px; margin-bottom:20px; box-shadow:var(--shadow); border:1px solid var(--border); }
-.section h2 { font-size:1.3em; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid var(--blue); display:flex; align-items:center; gap:8px; }
-.section h2 .mod { font-size:0.65em; background:var(--blue); color:#fff; padding:3px 8px; border-radius:4px; white-space:nowrap; }
-.section h3 { font-size:1.05em; margin:16px 0 10px; color:var(--blue); }
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+  th{background:#e8eaf6;color:#1a237e;padding:8px 10px;text-align:left;font-weight:600}
+  td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+  tr:hover td{background:#f8f9fc}
+  .up{color:#c62828}.dn2{color:#00c853}
 
-/* Tables */
-table { width:100%; border-collapse:collapse; font-size:0.9em; }
-th, td { padding:8px 12px; text-align:center; border-bottom:1px solid var(--border); }
-th { background:var(--bg3); font-weight:600; color:var(--text2); font-size:0.85em; }
-tr:hover { background:var(--bg2); }
-.up { color:var(--red); font-weight:600; }
-.down { color:var(--green); font-weight:600; }
-.bold { font-weight:700; }
-.text-left { text-align:left; }
-.text-right { text-align:right; }
+  .badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600}
+  .b-buy{background:#c62828;color:#fff}
+  .b-n{background:#ff8f00;color:#fff}
 
-/* Cards grid */
-.grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
-.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-@media (max-width:768px) { .grid2,.grid3 { grid-template-columns:1fr; } }
+  .sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
+  .sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
 
-.metric-card { background:var(--bg2); border-radius:8px; padding:14px; text-align:center; }
-.metric-card .metric-val { font-size:1.5em; font-weight:700; }
-.metric-card .metric-label { font-size:0.8em; color:var(--text2); margin-top:2px; }
-
-.chart-wrap { position:relative; height:300px; margin:12px 0; }
-.chart-wrap.tall { height:400px; }
-
-/* Valuation */
-.val-box { background:linear-gradient(135deg, #e8f4fd, #dbeafe); border:1px solid #93c5fd; border-radius:var(--radius); padding:20px; margin:12px 0; }
-.val-box h3 { color:var(--blue); margin-top:0; }
-.val-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px; }
-.val-item { text-align:center; padding:10px; background:#fff; border-radius:8px; }
-.val-item .val-val { font-size:1.4em; font-weight:700; }
-.val-item .val-label { font-size:0.78em; color:var(--text2); }
-
-/* Risk */
-.risk-list { list-style:none; }
-.risk-list li { padding:8px 0; border-bottom:1px solid var(--border); display:flex; align-items:flex-start; gap:8px; }
-.risk-list li::before { content:'⚠️'; flex-shrink:0; }
-.risk-level-high::before { content:'🔴'; }
-.risk-level-mid::before { content:'🟡'; }
-.risk-level-low::before { content:'🟢'; }
-
-/* KPI */
-.kpi-row { display:flex; gap:10px; flex-wrap:wrap; margin:10px 0; }
-.kpi-chip { background:var(--bg3); padding:6px 14px; border-radius:20px; font-size:0.85em; white-space:nowrap; }
-.kpi-chip strong { color:var(--blue); }
-
-/* Footer */
-.footer { text-align:center; padding:30px; color:var(--text2); font-size:0.85em; }
-.footer a { color:var(--blue); text-decoration:none; }
-
-/* Progress bar */
-.progress-bar { height:8px; background:var(--bg3); border-radius:4px; overflow:hidden; margin:6px 0; }
-.progress-fill { height:100%; border-radius:4px; transition:width 0.5s; }
-.progress-fill.red { background:var(--red); }
-.progress-fill.green { background:var(--green); }
-.progress-fill.blue { background:var(--blue); }
-.progress-fill.gold { background:var(--gold); }
-
-/* Business breakdown */
-.biz-card { border:1px solid var(--border); border-radius:8px; padding:14px; margin-bottom:10px; }
-.biz-card .biz-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-.biz-card .biz-name { font-weight:700; font-size:1.05em; }
-.biz-card .biz-pct { color:var(--blue); font-weight:700; }
-
-/* Assumption box */
-.assume { background:#fff8e1; border-left:3px solid var(--gold); padding:10px 14px; margin:10px 0; font-size:0.88em; border-radius:0 6px 6px 0; }
-.assume::before { content:'⚠ 假设: '; font-weight:700; color:var(--gold); }
-
-/* Analyst bar */
-.analyst-bar { display:flex; align-items:center; gap:8px; margin:6px 0; }
-.analyst-bar .bar-track { flex:1; height:24px; background:var(--bg3); border-radius:12px; overflow:hidden; display:flex; }
-.analyst-bar .bar-fill { height:100%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:0.75em; font-weight:600; }
-.analyst-bar .bar-label { width:80px; font-size:0.8em; text-align:right; color:var(--text2); }
+  .vcard{background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-radius:12px;padding:24px;margin-bottom:16px}
+  .vcard h2{font-size:20px;color:#1a237e;margin-bottom:12px}
+  .vcard .score{font-size:60px;font-weight:800;color:#3949ab;text-align:center;margin:10px 0}
+  .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
+  .tech-item .name{font-size:12px;color:#888}
+  .tech-item .val{font-size:22px;font-weight:700;color:#1a237e}
+  .tech-item .tag{font-size:12px;margin-top:4px}
+  .tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+  .tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+  .tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+  .tag-bear{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+  .tag-neutral{border:1px solid #ff8f00;color:#ff8f00;padding:1px 8px;border-radius:10px;display:inline-block}
+  .assume{background:#fff8e1;border-left:3px solid #ffc107;padding:8px 12px;margin:12px 0;font-size:12px;border-radius:0 6px 6px 0}
+  .assume strong{color:#f57c00}
+  .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .scen{border-radius:8px;padding:14px;text-align:center}
+  .scen-bear{background:#e8f5e9}.scen-base{background:#e8eaf6}.scen-bull{background:#fce4ec}
+  .scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}
+  .scen .schg{font-size:12px}
+  .footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
+  ol li{padding:5px 0;font-size:14px}
+  .small{font-size:11px;color:#999;display:block}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <h1>阳光电源 (300274.SZ)</h1>
-  <div class="sub">Sungrow Power Supply · 全球光储双料冠军 · Brad 股票分析框架 13 模块报告</div>
-  <div class="sub" style="font-size:0.8em;margin-top:4px;">报告日期: 2026年7月25日 | 数据截止: 2026Q1季报</div>
-  <div class="price-line">
-    <div class="price-item down">
-      <div class="val">¥113.42</div>
-      <div class="label">当前股价 ▼ -3.71%</div>
-    </div>
-    <div class="price-item">
-      <div class="val">¥1800.57亿</div>
-      <div class="label">总市值</div>
-    </div>
-    <div class="price-item">
-      <div class="val">19.72x</div>
-      <div class="label">PE(TTM)</div>
-    </div>
-    <div class="price-item">
-      <div class="val">4.98x</div>
-      <div class="label">PB</div>
-    </div>
-    <div class="price-item">
-      <div class="val">3.47%</div>
-      <div class="label">换手率</div>
-    </div>
-  </div>
-</div>
-
 <div class="container">
 
-<!-- ═══════════════ MODULE 2: 综合评分 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 2</span> 综合评分</h2>
-  <div class="score-section">
-    <div class="score-card" style="border-top:3px solid var(--blue);">
-      <div class="score-num" style="color:var(--blue);">86</div>
-      <div class="score-label">基本面得分</div>
-      <div class="score-sub">行业龙头 + 高增长 + 高ROE</div>
-    </div>
-    <div class="score-card" style="border-top:3px solid var(--green);">
-      <div class="score-num" style="color:var(--green);">0.63</div>
-      <div class="score-label">PEG (2026E)</div>
-      <div class="score-sub">&lt;1 = 显著低估</div>
-    </div>
-    <div class="score-card" style="border-top:3px solid var(--red);">
-      <div class="score-num" style="color:var(--red);">1.8年</div>
-      <div class="score-label">PE消化时间</div>
-      <div class="score-sub">消化至30x PE</div>
-    </div>
-    <div class="score-card" style="border-top:3px solid var(--gold);">
-      <div class="score-num" style="color:var(--gold);">⭐⭐⭐⭐☆</div>
-      <div class="score-label">护城河评级</div>
-      <div class="score-sub">技术+品牌+规模三重壁垒</div>
-    </div>
-    <div class="score-card" style="border-top:3px solid var(--green);">
-      <div class="score-num" style="color:var(--green);">Buy</div>
-      <div class="score-label">综合建议</div>
-      <div class="score-sub">现价PEG极低,具备安全边际</div>
-    </div>
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="meta">个股深度诊断报告 v2 · 2026-07-25 · 腾讯/新浪/东财/同花顺 · Brad 股票分析框架</div>
+  <h1>阳光电源 <span style="font-weight:400;font-size:18px">300274 · 创业板</span></h1>
+  <div class="price-row">
+    <span class="price">113.42</span>
+    <span class="chg dn">-3.71%</span>
+  </div>
+  <div style="margin-top:8px;font-size:13px;opacity:.9">
+    总市值 1,801亿 | PE(TTM) 19.72 · PE(2026E) 15.12 | PB 4.98 | 换手 3.47%
   </div>
 </div>
 
-<!-- ═══════════════ MODULE 3: 利润表 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 3</span> 利润表 — GAAP单季口径</h2>
-  
-  <h3>年度利润摘要（2022-2025，单位:亿元）</h3>
+<!-- ===== 综合评分 ===== -->
+<div class="vcard">
+  <h2>综合诊断评分</h2>
+  <div class="score">86/100</div>
   <table>
-    <tr><th>指标</th><th>2022</th><th>2023</th><th>2024</th><th>2025</th><th>YoY(25)</th><th>3Y CAGR</th></tr>
-    <tr>
-      <td class="text-left bold">营业收入</td>
-      <td>402.57</td><td>722.51</td><td>778.57</td><td class="bold">891.84</td>
-      <td class="up">+14.55%</td><td class="up">+30.36%</td>
-    </tr>
-    <tr>
-      <td class="text-left bold">归母净利润</td>
-      <td>35.93</td><td>94.40</td><td>110.36</td><td class="bold">134.61</td>
-      <td class="up">+21.97%</td><td class="up">+55.31%</td>
-    </tr>
-    <tr>
-      <td class="text-left bold">扣非净利润</td>
-      <td>—</td><td>—</td><td>106.90</td><td class="bold">128.29</td>
-      <td class="up">+19.98%</td><td>—</td>
-    </tr>
-    <tr>
-      <td class="text-left">毛利率</td>
-      <td>—</td><td>—</td><td>29.94%</td><td class="bold">31.83%</td><td class="up">+1.89pp</td><td>—</td>
-    </tr>
-    <tr>
-      <td class="text-left">净利率</td>
-      <td>—</td><td>—</td><td>14.47%</td><td class="bold">15.17%</td><td class="up">+0.70pp</td><td>—</td>
-    </tr>
-    <tr>
-      <td class="text-left bold">每股收益(EPS)</td>
-      <td>2.42</td><td>4.55</td><td>5.32</td><td class="bold">6.55</td>
-      <td class="up">+23.12%</td><td class="up">+39.4%</td>
-    </tr>
+    <tr><th width="110">维度</th><th>评分</th><th>核心判断</th></tr>
+    <tr><td>基本面</td><td class="up">92</td><td>2025FY营收892亿(+14.6%)·净利135亿(+22%)·ROE 31.3%·全球光储双料冠军</td></tr>
+    <tr><td>估值</td><td class="up">95</td><td>前向PE 15.1x(2026E)·PEG仅0.63·三法目标价~210元(+85%空间)·严重低估</td></tr>
+    <tr><td>成长性</td><td class="up">88</td><td>储能接棒(+49%) + AIDC SST打开千亿新赛道 · 2026-2028E EPS CAGR ~24%</td></tr>
+    <tr><td>技术面</td><td>50</td><td>52周高209→现113(-46%)·中线下行趋势·超卖区域·等待底部确认</td></tr>
+    <tr><td>资金面</td><td>55</td><td>融资余额91亿·股东户数+22%筹码偏散·但5-10亿回购+6.08%股息率积极信号</td></tr>
+    <tr><td>筹码/事件</td><td class="up">80</td><td>零解禁·回购提议·SST 7月9日发布·中东7.5GWh大单·欧洲工厂2027投产</td></tr>
+    <tr><td>机构共识</td><td class="up">85</td><td>91家覆盖一致买入·2026E EPS 7.50·2027E 9.30·管理层指引储能出货60GWh+</td></tr>
   </table>
+</div>
 
-  <h3>季度利润拆解 — 累计值反推单季（单位:亿元）</h3>
-  <div class="assume">A股会计准则：季报为累计值，单季=当季累计-上季累计。Q4单季异常走弱已在年报披露中说明。</div>
+<!-- ===== 行情 ===== -->
+<div class="card">
+  <h2>行情快照（2026-07-25 收盘）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新价</div><div class="val">113.42</div></div>
+    <div class="item"><div class="lbl">涨跌幅</div><div class="val dn2">-3.71%</div></div>
+    <div class="item"><div class="lbl">52周范围</div><div class="val" style="font-size:16px">71.55 - 209.88</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">1,801亿</div><div class="sub">流通市值~1,680亿</div></div>
+    <div class="item"><div class="lbl">PE(TTM) / PE(静)</div><div class="val" style="font-size:16px">19.72 / 17.32</div></div>
+    <div class="item"><div class="lbl">PB</div><div class="val" style="font-size:16px">4.98</div></div>
+    <div class="item"><div class="lbl">换手率</div><div class="val" style="font-size:16px">3.47%</div></div>
+    <div class="item"><div class="lbl">振幅</div><div class="val" style="font-size:16px">—</div></div>
+    <div class="item"><div class="lbl">距高点回撤</div><div class="val dn2" style="font-size:16px">-46.0%</div><div class="sub">从历史高点209.88元</div></div>
+  </div>
+</div>
+
+<!-- ===== 利润表 ===== -->
+<div class="card">
+  <h2>利润表趋势（��季口径）</h2>
+  <p style="font-size:12px;color:#888;margin-bottom:12px">注：A股季报为累计值，反推单季。2025Q4 含低毛利新能源项目集中交付、碳酸锂涨价传导滞后等一次性因素。</p>
   <table>
-    <tr><th>指标</th><th>2025Q1</th><th>2025Q2</th><th>2025Q3</th><th>2025Q4</th><th>2026Q1</th><th>YoY(Q1)</th></tr>
     <tr>
-      <td class="text-left bold">营业收入</td>
-      <td>190.36</td><td>244.97</td><td>228.69</td><td class="down">227.82</td>
-      <td>155.61</td><td class="down">-18.26%</td>
+      <th>指标</th><th>2026Q1</th><th>2025FY</th><th>2025Q4</th><th>2025Q3</th><th>2025Q2</th><th>2025Q1</th><th>2024FY</th>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>营收(亿)</strong></td>
+      <td><strong>155.61</strong><br><span class="small">同比-18.3%</span></td>
+      <td>891.84<br><span class="small">同比+14.55%</span></td>
+      <td>227.82</td>
+      <td>228.69</td>
+      <td>244.97</td>
+      <td>190.36</td>
+      <td>778.57<br><span class="small">同比+7.8%</span></td>
     </tr>
     <tr>
-      <td class="text-left bold">归母净利润</td>
-      <td>38.26</td><td>39.08</td><td>41.47</td><td class="down">15.80</td>
-      <td>22.91</td><td class="down">-40.12%</td>
+      <td><strong>营业成本(亿)</strong></td>
+      <td><strong>103.85</strong><br><span class="small">同比-15.9%</span></td>
+      <td>607.95<br><span class="small">同比+11.5%</span></td>
+      <td>175.53</td>
+      <td>146.66</td>
+      <td>162.28</td>
+      <td>123.48</td>
+      <td>545.58</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>毛利率</strong></td>
+      <td><strong>33.3%</strong><br><span class="small">同比-1.9pp</span></td>
+      <td>31.8%</td>
+      <td class="dn2">23.0%</td>
+      <td class="up">35.9%</td>
+      <td>33.8%</td>
+      <td class="up">35.1%</td>
+      <td>29.9%</td>
     </tr>
     <tr>
-      <td class="text-left">毛利率</td>
-      <td class="up">35.13%</td><td class="up">33.75%</td><td class="up">35.87%</td><td class="down">22.95%</td>
-      <td>33.26%</td><td class="down">-1.87pp</td>
+      <td><strong>归母净利(亿)</strong></td>
+      <td><strong>22.91</strong><br><span class="small">同比-40.1%</span></td>
+      <td>134.61<br><span class="small">同比+22.0%</span></td>
+      <td class="dn2">15.80</td>
+      <td class="up">41.47</td>
+      <td>39.08</td>
+      <td class="up">38.26</td>
+      <td>110.36<br><span class="small">同比+16.9%</span></td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>扣非净利(亿)</strong></td>
+      <td><strong>20.32</strong><br><span class="small">同比-44.7%</span></td>
+      <td>128.29<br><span class="small">同比+20.0%</span></td>
+      <td>13.43</td>
+      <td>39.91</td>
+      <td>38.19</td>
+      <td>36.76</td>
+      <td>106.90</td>
     </tr>
     <tr>
-      <td class="text-left">净利率</td>
-      <td>20.10%</td><td>15.95%</td><td>18.13%</td><td class="down">6.94%</td>
-      <td>14.43%</td><td class="down">-5.67pp</td>
-    </tr>
-    <tr>
-      <td class="text-left">研发费用</td>
-      <td>7.99</td><td>12.38</td><td>11.07</td><td>10.33</td><td>9.74</td><td class="up">+21.89%</td>
+      <td><strong>研发费用(亿)</strong></td>
+      <td><strong>9.74</strong><br><span class="small">同比+21.9%</span></td>
+      <td>41.75<br><span class="small">同比+31.5%</span></td>
+      <td>10.33</td>
+      <td>11.07</td>
+      <td>12.38</td>
+      <td>7.99</td>
+      <td>31.74</td>
     </tr>
   </table>
-
-  <div class="assume">
-    ⚠ Q4异常分析: 2025Q4归母净利润仅15.80亿(同比-54%)，主要系: (1)低毛利新能源开发项目集中交付;
-    (2)碳酸锂涨价传导滞后; (3)区域结构变化。公司表示2026年新签订单已部分传导成本上涨，Q4盈利有望修复。
+  <div class="sig sig-warn" style="margin-top:12px">
+    <strong>Q1业绩下修分析：</strong>2026Q1营收156亿(-18.3%)、归母净利22.9亿(-40.1%)，主要系（1）高基数效应（2025Q1爆发增长+51%）；（2）储能Q1为淡季，国内新能源开发项目交付节奏滞后；（3）碳酸锂涨价的成本传导滞后。公司管理层指引全年储能出货60GWh(+40-50%)，Q2起订单交付加速。
   </div>
+  <div class="sig sig-bull">
+    <strong>积极信号：</strong>（1）研发费用+22%持续加码，为AIDC/SST等新赛道蓄力；（2）毛利率33.3%虽同比下降，但较2025Q4的23%大幅改善10pp，盈利能力快速修复；（3）公司提议5-10亿回购，表明管理层认为股价低估。
+  </div>
+</div>
 
-  <h3>机构一致预期（来自91篇研报综合）</h3>
+<!-- ===== ROE 分析 ===== -->
+<div class="card">
+  <h2>ROE 与杜邦分析</h2>
+  <h3>ROE 趋势</h3>
   <table>
-    <tr><th>年份</th><th>EPS(元)</th><th>营收(亿)</th><th>归母净利润(亿)</th><th>YoY增速</th></tr>
-    <tr>
-      <td class="bold">2025A</td><td>6.55</td><td>891.84</td><td>134.61</td><td>—</td>
+    <tr><th>指标</th><th>2026Q1(年化)</th><th>2025FY</th><th>2024FY</th><th>说明</th></tr>
+    <tr style="background:#f8f9fc">
+      <td>加权ROE</td>
+      <td><strong>~24.5%</strong></td>
+      <td><strong>31.26%</strong></td>
+      <td>29.20%</td>
+      <td class="up">连续2年30%+，A股顶级盈利水平</td>
     </tr>
     <tr>
-      <td class="bold">2026E</td><td>7.50</td><td>~950</td><td>~155</td><td class="up">+15%</td>
+      <td>归母权益(亿)</td>
+      <td>486.61</td>
+      <td>466.11</td>
+      <td>401.99</td>
+      <td class="up">2025年权益增长16%</td>
     </tr>
-    <tr>
-      <td class="bold">2027E</td><td>9.30</td><td>~1150</td><td>~193</td><td class="up">+24%</td>
-    </tr>
-    <tr>
-      <td class="bold">2028E</td><td>11.30</td><td>~1400</td><td>~235</td><td class="up">+21%</td>
-    </tr>
-  </table>
-</div>
-
-<!-- ═══════════════ MODULE 4: ROE杜邦 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 4</span> ROE 杜邦分析</h2>
-  <div class="grid2">
-    <div>
-      <h3>ROE 拆解（2025年报）</h3>
-      <table>
-        <tr><th>杜邦因子</th><th>数值</th><th>公式</th></tr>
-        <tr><td class="text-left bold">ROE (加权)</td><td class="up bold">31.26%</td><td>净利润/平均净资产</td></tr>
-        <tr><td class="text-left">净利率</td><td>15.17%</td><td>净利润/营业收入</td></tr>
-        <tr><td class="text-left">资产周转率</td><td>0.76x</td><td>营业收入/平均总资产</td></tr>
-        <tr><td class="text-left">权益乘数</td><td>2.38x</td><td>平均总资产/平均净资产</td></tr>
-      </table>
-    </div>
-    <div>
-      <h3>杜邦因子趋势</h3>
-      <div class="chart-wrap"><canvas id="dupontChart"></canvas></div>
-    </div>
-  </div>
-  <table style="margin-top:12px;">
-    <tr><th>指标</th><th>2024</th><th>2025</th><th>2026Q1(年化)</th></tr>
-    <tr>
-      <td class="text-left">ROE(加权)</td><td>29.20%</td><td class="up bold">31.26%</td><td class="down">~24.5%</td>
-    </tr>
-    <tr>
-      <td class="text-left">净利率</td><td>14.47%</td><td class="up">15.17%</td><td class="down">14.43%</td>
-    </tr>
-    <tr>
-      <td class="text-left">资产周转率</td><td>0.74x</td><td class="up">0.76x</td><td class="down">0.51x(Q1)</td>
-    </tr>
-    <tr>
-      <td class="text-left">权益乘数</td><td>2.76x</td><td class="down">2.38x</td><td class="down">2.35x</td>
+    <tr style="background:#f8f9fc">
+      <td>EPS</td>
+      <td>1.12（Q1）</td>
+      <td>6.55</td>
+      <td>5.32</td>
+      <td class="up">2025年EPS增长23.1%</td>
     </tr>
   </table>
-  <p style="margin-top:10px;font-size:0.88em;color:var(--text2);">
-    ⚠ 核心发现: ROE从29.2%升至31.26%，主要驱动力是净利率提升(+0.7pp)和周转加快(+0.02x)，杠杆率下降(-0.38x)反而拉低ROE。这说明公司增长质量在改善——不靠加杠杆，靠经营效率。2026Q1 ROE年化仅24.5%，主要受Q1季节性+营收下滑影响。
-  </p>
+
+  <h3>杜邦分解（FY2025）</h3>
+  <div class="kv">
+    <div class="item"><div class="lbl">ROE</div><div class="val">31.26%</div><div class="sub">2024: 29.20% → 逆势提升</div></div>
+    <div class="item"><div class="lbl">净利率</div><div class="val">15.17%</div><div class="sub">2024: 14.47% → +0.7pp</div></div>
+    <div class="item"><div class="lbl">资产周转率</div><div class="val">0.76x</div><div class="sub">2024: 0.74x → 效率提升</div></div>
+    <div class="item"><div class="lbl">权益乘数</div><div class="val">2.38x</div><div class="sub">2024: 2.76x → 杠杆主动下降</div></div>
+  </div>
+
+  <div class="sig sig-bull" style="margin-top:12px">
+    <strong>ROE质量极高：</strong>31.26%的ROE在A股电力设备行业中遥遥领先（行业均值仅为负值）。更关键的是ROE提升来源——净利率+0.7pp + 周转+0.02x，而杠杆率反降0.38x。意味着公司增长不依赖加杠杆，靠经营效率驱动，盈利质量极佳。2026Q1虽受季节性影响年化ROE回落至24.5%，仍属优秀水平。
+  </div>
 </div>
 
-<!-- ═══════════════ MODULE 5: 现金流 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 5</span> 现金流 — 单季口径</h2>
-  <div class="grid3">
-    <div class="metric-card">
-      <div class="metric-val up">169.18亿</div>
-      <div class="metric-label">经营现金流(2025FY)</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-val up">+40.18%</div>
-      <div class="metric-label">经营现金流 YoY</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-val up">125.01%</div>
-      <div class="metric-label">净利润现金含量</div>
-    </div>
-  </div>
-  <table style="margin-top:12px;">
-    <tr><th>现金流(亿)</th><th>2025Q1</th><th>2025Q2</th><th>2025Q3</th><th>2025Q4</th><th>2026Q1</th></tr>
-    <tr><td class="text-left bold">经营活动</td><td class="up">17.90</td><td class="up">34.34</td><td class="up">99.14</td><td class="up">169.18</td><td>12.08</td></tr>
-    <tr><td class="text-left">投资活动</td><td>3.71</td><td>9.44</td><td>1.76</td><td>-32.71</td><td>62.17</td></tr>
-    <tr><td class="text-left">筹资活动</td><td>0.07</td><td>-42.18</td><td>-54.64</td><td>-92.94</td><td>0.37</td></tr>
-    <tr><td class="text-left bold">自由现金流</td><td class="up">14.59</td><td class="up">24.89</td><td class="up">97.38</td><td class="up">145.91</td><td>—</td></tr>
+<!-- ===== 现金流 ===== -->
+<div class="card">
+  <h2>现金流独立分析（单季口径）</h2>
+  <p style="font-size:12px;color:#888;margin-bottom:12px">注：A股季报为累计值，反推单季。2025FY经营现金流169亿(+40%)，远超净利润135亿。</p>
+  <table>
+    <tr><th>指标(亿)</th><th>2026Q1</th><th>2025Q1</th><th>同比</th><th>2025FY</th><th>2025Q4</th><th>2025Q3</th></tr>
+    <tr style="background:#f8f9fc">
+      <td>经营现金流净额</td><td><strong>12.08</strong></td><td>17.90</td><td class="dn2">-32.5%</td><td>169.18</td><td>70.04</td><td>64.80</td>
+    </tr>
+    <tr>
+      <td>投资现金流净额</td><td>62.17</td><td>3.71</td><td class="up">+1576%</td><td>-32.71</td><td>-34.47</td><td>-1.76</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td>筹资现金流净额</td><td>0.37</td><td>0.07</td><td class="up">+429%</td><td>-92.94</td><td>-38.30</td><td>-54.64</td>
+    </tr>
+    <tr>
+      <td><strong>自由现金流</strong></td><td><strong>—</strong></td><td>—</td><td></td><td>145.91</td><td>—</td><td>—</td>
+    </tr>
+    <tr>
+      <td>净利润现金含量</td><td>54%</td><td>47%</td><td></td><td class="up">125%</td><td></td><td></td>
+    </tr>
   </table>
-  <p style="margin-top:10px;font-size:0.88em;color:var(--green);">
-    ✅ 经营现金流持续高增，利润含金量极高(125%)。2025Q4经营现金流爆发式增长至169亿，远超净利润。公司在手现金充沛，为回购(5-10亿)和分红(6.9元/股)提供坚实基础。
-  </p>
+  <div class="sig sig-bull">
+    <strong>现金流极度健康：</strong>FY2025经营现金流169亿，超出净利润135亿达125%，利润含金量极高。投资现金流-32亿主要用于海外产能（欧洲工厂2.3亿欧元）和研发投入。筹资现金流-93亿为主动偿还借款和分红，财务结构持续优化。Q1经营现金流偏弱属于季节性特征（春季备货+支出高峰）。
+  </div>
 </div>
 
-<!-- ═══════════════ MODULE 6: 资产负债表 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 6</span> 资产负债表</h2>
-  <div class="grid2">
-    <div>
-      <h3>资产负债结构（2026Q1）</h3>
-      <table>
-        <tr><th class="text-left">项目</th><th>金额(亿)</th></tr>
-        <tr><td class="text-left bold">资产总计</td><td class="bold">1218.64</td></tr>
-        <tr><td class="text-left">流动资产</td><td>978.53</td></tr>
-        <tr><td class="text-left">&nbsp;&nbsp;货币资金</td><td class="up">300.43</td></tr>
-        <tr><td class="text-left">&nbsp;&nbsp;应收账款</td><td class="down">224.26</td></tr>
-        <tr><td class="text-left">&nbsp;&nbsp;存货</td><td>277.58</td></tr>
-        <tr><td class="text-left bold">负债合计</td><td class="bold">700.90</td></tr>
-        <tr><td class="text-left">流动负债</td><td>590.81</td></tr>
-        <tr><td class="text-left bold">归母权益</td><td class="bold">486.61</td></tr>
-      </table>
-    </div>
-    <div>
-      <h3>关键财务健康指标</h3>
-      <table>
-        <tr><th>指标</th><th>2024</th><th>2025</th><th>2026Q1</th></tr>
-        <tr><td class="text-left">资产负债率</td><td class="up">63.4%</td><td class="down">58.1%</td><td class="down">57.5%</td></tr>
-        <tr><td class="text-left">流动比率</td><td>1.43x</td><td class="up">1.67x</td><td>1.66x</td></tr>
-        <tr><td class="text-left">速动比率</td><td>0.98x</td><td class="up">1.19x</td><td>1.19x</td></tr>
-        <tr><td class="text-left">有息负债率</td><td>—</td><td>9.52%</td><td>—</td></tr>
-        <tr><td class="text-left">现金比率</td><td>—</td><td>61.27%</td><td>—</td></tr>
-      </table>
-      <div class="chart-wrap" style="height:200px;margin-top:16px;"><canvas id="bsChart"></canvas></div>
-    </div>
+<!-- ===== 资产负债表 ===== -->
+<div class="card">
+  <h2>资产负债表关键指标（2026-03-31）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">总资产</div><div class="val">1,219亿</div><div class="sub">同比+2.6%</div></div>
+    <div class="item"><div class="lbl">货币资金</div><div class="val">300亿</div><div class="sub">超级充裕</div></div>
+    <div class="item"><div class="lbl">应收账款</div><div class="val">224亿</div><div class="sub">占营收偏高，需跟踪</div></div>
+    <div class="item"><div class="lbl">存货</div><div class="val">278亿</div><div class="sub">规模较大，碳酸锂波动风险</div></div>
+    <div class="item"><div class="lbl">资产负债率</div><div class="val">57.5%</div><div class="sub">持续改善·2024:63.4%</div></div>
+    <div class="item"><div class="lbl">有息负债率</div><div class="val">~9.5%</div><div class="sub">低杠杆运营</div></div>
+    <div class="item"><div class="lbl">流动比率</div><div class="val">1.66</div><div class="sub">2024:1.43 → 改善</div></div>
+    <div class="item"><div class="lbl">速动比率</div><div class="val">1.19</div><div class="sub">2024:0.98 → 越过1.0安全线</div></div>
+    <div class="item"><div class="lbl">归母权益</div><div class="val">487亿</div><div class="sub">同比+6.9%</div></div>
   </div>
-  <p style="margin-top:10px;font-size:0.88em;color:var(--text2);">
-    ⚠ 关键关注点: 应收账款224亿占营收比偏高，需持续关注回收效率。存货278亿规模较大，在碳酸锂价格波动下存在减值风险。但整体偿债指标健康，有息负债率仅9.5%。
-  </p>
+  <p class="small" style="margin-top:6px">关键关注：应收账款224亿占总资产18.4%/占营收偏高，需持续跟踪回款效率。存货278亿含碳酸锂等原材料，价格波动影响利润。</p>
 </div>
 
-<!-- ═══════════════ MODULE 7: 分业务线深度 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 7</span> 分业务线深度 — 行业/竞品/护城河</h2>
+<!-- ===== 分业务线 ===== -->
+<div class="card">
+  <h2>分业务线深度分析（2025FY 年报数据）</h2>
 
-  <h3>三大业务线营收与毛利（2025年报）</h3>
-  <div class="biz-card">
-    <div class="biz-header"><span class="biz-name">🔋 储能系统</span><span class="biz-pct">营收372.87亿 | 占比41.81%</span></div>
-    <div class="progress-bar"><div class="progress-fill blue" style="width:100%"></div></div>
-    <div class="grid3" style="margin-top:8px;">
-      <div class="metric-card"><div class="metric-val up">+49.39%</div><div class="metric-label">营收增速</div></div>
-      <div class="metric-card"><div class="metric-val up">36.49%</div><div class="metric-label">毛利率</div></div>
-      <div class="metric-card"><div class="metric-val up">43GWh</div><div class="metric-label">出货量(+54%)</div></div>
-    </div>
-    <p style="font-size:0.85em;margin-top:6px;color:var(--text2);">
-      🔥 已超越逆变器成为第一大业务。海外出货36GWh占比84%，毛利率36.5%显著高于国内。2026年目标出货60GWh+（+40-50%）。中东7.5GWh超级大单加持，欧洲订单翻番。全球大储市占率~18%，位列第二。
-    </p>
-  </div>
+  <h3>收入结构 &amp; 竞争格局</h3>
+  <table>
+    <tr><th>业务线</th><th>收入(亿)</th><th>占比</th><th>同比</th><th>毛利率</th><th>竞争格局</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>储能系统</strong></td><td><strong>372.87</strong></td><td>41.8%</td><td class="up">+49.4%</td><td>36.5%</td>
+        <td style="font-size:12px">全球#2（市占率~18%）· 海外出货36GWh占比84%· 中东7.5GWh超级大单· 欧洲订单翻番· 2026E出货60GWh+</td>
+      </tr>
+    <tr>
+      <td><strong>光伏逆变器</strong></td><td><strong>311.36</strong></td><td>34.9%</td><td class="up">+6.9%</td><td>34.7%</td>
+        <td style="font-size:12px">全球#1（市占率~31%）· 出货143GW· WoodMac连续蝉联第一· 毛利率逆势+3.76pp· 欧洲波兰工厂2027投产</td>
+      </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>新能源投资开发</strong></td><td><strong>165.59</strong></td><td>18.6%</td><td class="dn2">-21.2%</td><td>14.5%</td>
+        <td style="font-size:12px">配套战略业务· 主动收缩低毛利项目· Q4集中交付拖累整体毛利率· 维持微利定位</td>
+      </tr>
+    <tr>
+      <td><strong>AIDC电源(SST)</strong></td><td><strong>~0</strong></td><td>期权</td><td>新赛道</td><td>待观察</td>
+        <td style="font-size:12px">2026.7.9发布EnerNeo SST· 签130MW框架协议· 2027批量· 2028规模化· 全球SST市场2030年1010亿· CAGR 245%</td>
+      </tr>
+  </table>
 
-  <div class="biz-card">
-    <div class="biz-header"><span class="biz-name">☀️ 光伏逆变器</span><span class="biz-pct">营收311.36亿 | 占比34.91%</span></div>
-    <div class="progress-bar"><div class="progress-fill gold" style="width:75%"></div></div>
-    <div class="grid3" style="margin-top:8px;">
-      <div class="metric-card"><div class="metric-val">+6.90%</div><div class="metric-label">营收增速</div></div>
-      <div class="metric-card"><div class="metric-val up">34.66%</div><div class="metric-label">毛利率(+3.76pp)</div></div>
-      <div class="metric-card"><div class="metric-val">143GW</div><div class="metric-label">出货量(全球#1)</div></div>
-    </div>
-    <p style="font-size:0.85em;margin-top:6px;color:var(--text2);">
-      🏆 全球市占率~31%，连续蝉联出货第一。毛利率逆势提升3.76pp至34.66%。行业增速放缓至10-15%，进入存量博弈阶段。欧洲工厂（2.3亿欧元，20GW产能）2027年投产，深化全球化布局。
-    </p>
-  </div>
+  <h3>区域结构</h3>
+  <table>
+    <tr><th>区域</th><th>收入(亿)</th><th>占比</th><th>同比</th></tr>
+    <tr><td>海外（含港澳台）</td><td>539.92</td><td>60.5%</td><td class="up">高增长</td></tr>
+    <tr><td>中国大陆</td><td>351.93</td><td>39.5%</td><td>稳定</td></tr>
+  </table>
 
-  <div class="biz-card">
-    <div class="biz-header"><span class="biz-name">🏗️ 新能源投资开发</span><span class="biz-pct">营收165.59亿 | 占比18.57%</span></div>
-    <div class="progress-bar"><div class="progress-fill" style="width:40%;background:#aaa;"></div></div>
-    <div class="grid3" style="margin-top:8px;">
-      <div class="metric-card"><div class="metric-val down">-21.16%</div><div class="metric-label">营收增速</div></div>
-      <div class="metric-card"><div class="metric-val down">14.50%</div><div class="metric-label">毛利率(-4.90pp)</div></div>
-      <div class="metric-card"><div class="metric-val">低利润</div><div class="metric-label">战略定位:维持微利</div></div>
-    </div>
-    <p style="font-size:0.85em;margin-top:6px;color:var(--text2);">
-      ⚠ 低利润业务，Q4集中交付拖累整体毛利率。公司策略：维持规模，拉动逆变器+储能产品销售。
-    </p>
-  </div>
-
-  <h3>新兴增长极: 🖥️ AIDC电源（固态变压器SST）</h3>
-  <div class="val-box">
-    <p style="font-size:0.93em;line-height:1.7;">
-      <strong>底层逻辑:</strong> AI算力功耗持续走高→800V直流供电成为必然→SST是核心设备。英伟达已将SST确立为下一代AIDC核心设备。<br>
-      <strong>时间线:</strong> 2026.7.9 发布EnerNeo™ SST（发布即可售）→ 2026H2样机验证 → 2027批量订单 → 2028大规模部署。<br>
-      <strong>市场空间:</strong> 全球SST市场预计2026年28亿→2030年1010亿元(CAGR 245%)。<br>
-      <strong>竞争优势:</strong> 逆变器/储能/AIDC电源底层技术同源(电力电子)，公司研发人员7625人(占40%)，2025年研发费41.8亿(+10亿)。
-    </p>
-  </div>
-
-  <h3>竞争格局 — 双龙头领跑</h3>
+  <h3>竞争格局对比</h3>
   <table>
     <tr><th>维度</th><th>阳光电源</th><th>华为数字能源</th><th>锦浪科技</th><th>固德威</th></tr>
-    <tr><td>逆变器出货(GW)</td><td class="bold up">143</td><td>~125-130</td><td>~25-30</td><td>~15-20</td></tr>
-    <tr><td>全球逆变器市占率</td><td class="bold up">~31%</td><td>~27%</td><td>~6%</td><td>~3%</td></tr>
-    <tr><td>储能出货(GWh)</td><td class="bold up">43</td><td>~10-15</td><td>—</td><td>~5-8</td></tr>
-    <tr><td>2025营收(亿)</td><td class="bold up">891.8</td><td>—</td><td>69.5</td><td>88.9</td></tr>
-    <tr><td>2025净利润(亿)</td><td class="bold up">134.6</td><td>—</td><td>7.4</td><td>1.3</td></tr>
-    <tr><td>综合评级</td><td class="up bold">#1</td><td class="up">#2</td><td>#6</td><td>#4</td></tr>
+    <tr><td>逆变器出货(GW)</td><td class="up">143</td><td>~125-130</td><td>~25-30</td><td>~15-20</td></tr>
+    <tr><td>全球逆变器市占率</td><td class="up">~31%</td><td>~27%</td><td>~6%</td><td>~3%</td></tr>
+    <tr><td>储能出货(GWh)</td><td class="up">43</td><td>~10-15</td><td>—</td><td>~5-8</td></tr>
+    <tr><td>2025营收(亿)</td><td class="up">891.8</td><td>未上市</td><td>69.5</td><td>88.9</td></tr>
+    <tr><td>2025净利润(亿)</td><td class="up">134.6</td><td>未上市</td><td>7.4</td><td>1.3</td></tr>
   </table>
 
   <h3>护城河评估</h3>
-  <div class="grid3">
-    <div class="metric-card" style="border-top:3px solid var(--blue);">
-      <div class="metric-val" style="color:var(--blue);">★★★★★</div>
-      <div class="metric-label">规模壁垒: 逆变器143GW+储能43GWh</div>
-    </div>
-    <div class="metric-card" style="border-top:3px solid var(--blue);">
-      <div class="metric-val" style="color:var(--blue);">★★★★★</div>
-      <div class="metric-label">全球化渠道: 海外收入60%+</div>
-    </div>
-    <div class="metric-card" style="border-top:3px solid var(--blue);">
-      <div class="metric-val" style="color:var(--blue);">★★★★☆</div>
-      <div class="metric-label">技术壁垒: 研发41.8亿/7625人</div>
-    </div>
-    <div class="metric-card" style="border-top:3px solid var(--gold);">
-      <div class="metric-val" style="color:var(--gold);">★★★★☆</div>
-      <div class="metric-label">品牌壁垒: WoodMac #1</div>
-    </div>
-    <div class="metric-card" style="border-top:3px solid var(--gold);">
-      <div class="metric-val" style="color:var(--gold);">★★★☆☆</div>
-      <div class="metric-label">切换成本: 中大型项目</div>
-    </div>
-    <div class="metric-card" style="border-top:3px solid var(--red);">
-      <div class="metric-val" style="color:var(--red);">★★★☆☆</div>
-      <div class="metric-label">网络效应: 弱</div>
-    </div>
+  <ol style="font-size:14px">
+    <li><strong>全球规模壁垒：</strong>逆变器143GW + 储能43GWh = 全球唯一光储双轨百GW级出货企业，规模优势形成采购成本+交付能力双重壁垒</li>
+    <li><strong>全球化渠道深度：</strong>海外收入占比60.5%，布局100+国家、520+服务网点、20+海外分支机构，国内企业在海外本地化最深的玩家</li>
+    <li><strong>技术研发密度：</strong>FY2025研发投入41.8亿（占营收4.7%），7625名研发人员（占40%），专利储备深厚。逆变器/储能/AIDC技术同源，横向迁移成本极低</li>
+    <li><strong>AIDC先发优势：</strong>SST固态变压器赛道，与英伟达800V直流供电标准对齐，已签130MW框架协议，2028年千亿市场开启时有望占据先机</li>
+    <li><strong>风险点：</strong>碳酸锂成本波动侵蚀储能毛利率；美国贸易政策不确定性；华为追赶（逆变器#2但储能差距仍大）</li>
+  </ol>
+
+  <h3>管理层指引摘要（2026年业绩会 + 近况回应）</h3>
+  <div class="sig sig-bull">
+    <strong>2026年展望：</strong>储能出货60GWh+（+40-50%），海外占比80-90%；AIDC SST 2026H2产品落地+小批量交付，2027批量订单，2028规模化；欧洲订单翻番成第一大市场；中东7.5GWh超级项目逐步执行；5-10亿回购计划推进中；波兰工厂2027H1投产。<br>
+    <strong>中长期目标：</strong>全球储能市占率冲击#1；SST打造成第二增长曲线（千亿级赛道）；欧洲+中东+北美三极支撑全球增长。<br>
+    <span style="font-size:11px;color:#888">来源：2025年报业绩会 · 投资者关系记录 · 公司公告</span>
   </div>
-</div>
 
-<!-- ═══════════════ MODULE 8: 估值三部法 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 8</span> 估值三部法 — SOTP + PEG + DCF</h2>
+  <h3>各业务线深度展开</h3>
 
-  <h3>一、SOTP 分部估值</h3>
-  <div class="assume">⚠ 假设: A股成长股合理PE锚点30x，各业务按增速与壁垒给予不同估值倍数。</div>
-  <table>
-    <tr><th>业务板块</th><th>2026E净利润(亿)</th><th>目标PE(x)</th><th>估值(亿)</th><th>逻辑</th></tr>
-    <tr>
-      <td class="text-left">储能系统</td><td>~68</td><td>30</td><td>2040</td><td class="text-left">海外高毛利+50%增速</td>
-    </tr>
-    <tr>
-      <td class="text-left">光伏逆变器</td><td>~62</td><td>25</td><td>1550</td><td class="text-left">龙头溢价但增速放缓</td>
-    </tr>
-    <tr>
-      <td class="text-left">新能源投资开发</td><td>~10</td><td>12</td><td>120</td><td class="text-left">低利润率+战略配套</td>
-    </tr>
-    <tr>
-      <td class="text-left">AIDC(SST)</td><td>~0</td><td>期权</td><td>200</td><td class="text-left">千亿赛道期权价值</td>
-    </tr>
-    <tr style="background:var(--bg2);font-weight:700;">
-      <td class="text-left">合计</td><td>~140</td><td>—</td><td class="up">3910</td><td class="text-left">SOTP目标市值</td>
-    </tr>
-  </table>
-
-  <h3>二、PEG 估值</h3>
-  <table>
-    <tr><th>指标</th><th>数值</th><th>判断</th></tr>
-    <tr><td>2026E PE</td><td>113.42 / 7.50 = <strong>15.12x</strong></td><td class="up">A股成长股极低水平</td></tr>
-    <tr><td>2026E→2027E EPS增速</td><td>(9.30-7.50)/7.50 = <strong>24.0%</strong></td><td>高增速</td></tr>
-    <tr><td class="bold">PEG</td><td class="bold">15.12 / 24.0 = <span style="color:var(--green);font-size:1.2em;">0.63</span></td><td class="up bold">显著低估 (&lt;1)</td></tr>
-    <tr><td>PE消化至30x</td><td>ln(15.12/30) / ln(1.24) = <strong>~3.2年</strong></td><td>不需要消化，已低于30x!</td></tr>
-  </table>
-
-  <div class="assume">⚠ 实际上当前PE(15x)已经远低于30x合理锚点，不存在"消化"问题。如果市场给予行业龙头30x合理PE，股价应为30 × 7.50 = 225元，相比现价113元有接近翻倍空间。</div>
-
-  <h3>三、DCF 估值</h3>
-  <div class="assume">
-    ⚠ 假设: WACC=9%、永续增长率g=3%、FCFF基数=146亿(2025自由现金流)。2026-2028年FCFF增速分别取15%/20%/18%，此后递减至永续。
-  </div>
-  <table>
-    <tr><th>年份</th><th>2025A</th><th>2026E</th><th>2027E</th><th>2028E</th><th>2029E</th><th>2030E</th><th>终值</th></tr>
-    <tr>
-      <td>FCFF(亿)</td><td>146</td><td>168</td><td>202</td><td>238</td><td>274</td><td>301</td><td>—</td>
-    </tr>
-    <tr>
-      <td>增速</td><td>—</td><td>15%</td><td>20%</td><td>18%</td><td>15%</td><td>10%</td><td>3%</td>
-    </tr>
-  </table>
-  <p>
-    <strong>折现FCFF总和:</strong> ~1,320亿 |
-    <strong>终值(TV):</strong> FCFF₂₀₃₁÷(WACC-g)=310÷(0.09-0.03)=5,167亿 → 折现 ~2,990亿<br>
-    <strong>企业价值(EV):</strong> 1,320 + 2,990 = <strong>4,310亿</strong><br>
-    <strong>股权价值:</strong> EV - 有息负债(66亿) + 现金(300亿) = <strong>4,544亿</strong><br>
-    <strong>每股价值:</strong> 4,544 / 20.73 = <strong>219元</strong>
+  <h4>1. 储能系统 — 第一大业务，全球第二，增速最快</h4>
+  <p style="font-size:13px">
+    <strong>市场容量：</strong>2025年全球大储新增装机~307GWh，2026E 447GWh(+61%)，2030E 1,194GWh(CAGR ~28%)。海外大储2026E 198GWh→2030E 786GWh(CAGR 41%)，欧洲及新兴市场贡献主要增量。<br>
+    <strong>阳光当前地位：</strong>2025年储能营收373亿(+49%)，出货43GWh(+54%)，海外占比84%。全球储能系统集成商第一梯队，北美稳居第二、欧洲第一。全球市占率~18%。<br>
+    <strong>竞品格局：</strong>Fluence（全球#1，北美强）、Tesla Megapack（品牌+AI协同）、比亚迪（中国大储龙头）、华为（国内第二，22.7%全球储能逆变器市占率）。<br>
+    <strong>竞争优势：</strong>①海外深度本地化（100+国、520+网点），交付能力远超纯国内对手；②逆变器+储能协同，提供光储一体化方案；③规模效应摊薄度电成本，大电芯导入降本5-10%；④中东7.5GWh等超级项目背书，形成品牌正循环。
   </p>
 
-  <h3>估值汇总</h3>
-  <div class="val-box">
-    <div class="val-grid">
-      <div class="val-item">
-        <div class="val-val" style="color:var(--green);">189元</div>
-        <div class="val-label">SOTP目标价<br>(3910亿 ÷ 20.73)</div>
-      </div>
-      <div class="val-item">
-        <div class="val-val" style="color:var(--green);">225元</div>
-        <div class="val-label">PEG合理价<br>(30x × 7.50 EPS)</div>
-      </div>
-      <div class="val-item">
-        <div class="val-val" style="color:var(--green);">219元</div>
-        <div class="val-label">DCF目标价</div>
-      </div>
-    </div>
-    <p style="text-align:center;margin-top:12px;font-weight:700;">
-      📊 三法加权目标价: <span style="color:var(--red);font-size:1.3em;">~210元</span> | 当前股价 <span style="color:var(--green);font-size:1.3em;">113.42元</span> | 上涨空间 <span style="color:var(--red);font-size:1.3em;">~85%</span>
-    </p>
-  </div>
-  <div class="assume">⚠ 注意: 上述估值使用2026E一致预期EPS(7.50元)。若按部分乐观券商预测(8.28元)，目标价更高。安全性取决于储能出货量能否达到60GWh+。</div>
-</div>
+  <h4>2. 光伏逆变器 — 全球第一，稳定现金流</h4>
+  <p style="font-size:13px">
+    <strong>市场容量：</strong>2025年全球光伏逆变器出货~577GWac，规模~800亿美元。中国供应商出货量市占率超70%，按金额约60-65%。行业增速放缓至10-15%，进入存量博弈阶段。<br>
+    <strong>阳光当前地位：</strong>全球出货143GW(#1)，市占率~31%。WoodMac连续多年蝉联第一（唯一满足全部8项基准的制造商之一）。毛利率34.66%（同比+3.76pp），逆势提升。<br>
+    <strong>竞品格局：</strong>全球CR5（阳光、华为、SMA、固德威、锦浪）中国企业占多数。华为27%份额紧追。二三线企业无实质威胁。<br>
+    <strong>竞争优势：</strong>①近28年深耕，技术积累+供应链稳定性无出其右；②全球产能布局（合肥、泰国、印度、波兰2027），关税规避+交付加速；③从增量竞争→存量替代逻辑，龙头份额有望继续提升。
+  </p>
 
-<!-- ═══════════════ MODULE 9: 技术面 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 9</span> 技术面分析</h2>
-  <div class="assume">⚠ K线数据获取受限(mootdx网络问题)，以近期价格关键位分析替代。当前价格113.42元，处于回调阶段。</div>
-  
-  <div class="grid2">
-    <div>
-      <h3>关键价位</h3>
-      <table>
-        <tr><td class="text-left">52周最高</td><td class="up">209.88元</td></tr>
-        <tr><td class="text-left">52周最低</td><td class="down">71.55元</td></tr>
-        <tr><td class="text-left bold">当前价</td><td class="bold">113.42元</td></tr>
-        <tr><td class="text-left">距高点回撤</td><td class="down">-46.0%</td></tr>
-        <tr><td class="text-left">距低点涨幅</td><td class="up">+58.5%</td></tr>
-      </table>
-    </div>
-    <div>
-      <h3>技术面总结</h3>
-      <table>
-        <tr><td class="text-left">趋势</td><td class="down">中期下行（从209→113，-46%）</td></tr>
-        <tr><td class="text-left">KDJ</td><td>超卖区域（推测）</td></tr>
-        <tr><td class="text-left">MACD</td><td>周线级别底背离可能</td></tr>
-        <tr><td class="text-left">成交量</td><td>换手率3.47%，近期放量</td></tr>
-        <tr><td class="text-left">支撑/压力</td><td>支撑100元 / 压力130元</td></tr>
-      </table>
-    </div>
-  </div>
-  <p style="margin-top:10px;font-size:0.88em;color:var(--text2);">
-    ⚠ 技术面价值有限: 公司基本面极强时，技术面回调反而是布局机会。从209跌至113是市场对Q4业绩和Q1下滑的过度反应+行业风格切换双重影响。结合PEG仅0.63的判断，当前可能是中长期布局良机。
+  <h4>3. AIDC电源（SST）— 千亿新赛道，2026正式启航</h4>
+  <p style="font-size:13px">
+    <strong>核心逻辑：</strong>AI算力集群功耗持续走高→传统480V交流供电无法承载→行业转向800V直流方案→固态变压器(SST)是核心设备。英伟达已将SST确立为下一代AIDC核心设备。<br>
+    <strong>市场空间：</strong>全球SST市场2026年~28亿→2030年1,010亿（CAGR 245%）。<br>
+    <strong>阳光布局：</strong>7月9日发布EnerNeo SST（发布即可售），与东阳光、中联数据签130MW框架协议。转换效率98.5%，省去多级变压整流，缩减机房占地+降低用电成本。<br>
+    <strong>时间线：</strong>2026H2小批量样机验证→2027批量订单→2028大规模部署（400kW-1MW等级）。合肥SST专属产线已投产，年底产能1.2GW。美国UL认证机型2026年内推出。<br>
+    <strong>竞争优势：</strong>逆变器/储能/AIDC底层技术同源（电力电子），40%研发人员、41.8亿研发投入，客户资源可直接复用。
   </p>
 </div>
 
-<!-- ═══════════════ MODULE 10: 资金面筹码 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 10</span> 资金面 & 筹码分析</h2>
-  <div class="grid3">
-    <div class="metric-card">
-      <div class="metric-val">91.33亿</div>
-      <div class="metric-label">融资余额(7/23)</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-val">0.22亿</div>
-      <div class="metric-label">融券余额</div>
-    </div>
-    <div class="metric-card">
-      <div class="metric-val up">312,188户</div>
-      <div class="metric-label">股东户数(2026Q1)</div>
-    </div>
-  </div>
-  <table style="margin-top:12px;">
-    <tr><th>指标</th><th>数据</th><th>解读</th></tr>
-    <tr>
-      <td class="text-left">股东户数环比</td><td class="down">+22.4%</td>
-      <td class="down">⚠ 筹码分散，散户增加</td>
-    </tr>
-    <tr>
-      <td class="text-left">融资余额</td><td>91.33亿</td>
-      <td>较高，反映杠杆做多情绪</td>
-    </tr>
-    <tr>
-      <td class="text-left">限售解禁</td><td class="up">未来90天无解禁</td>
-      <td class="up">✅ 无减持压力</td>
-    </tr>
-    <tr>
-      <td class="text-left">公司回购</td><td>5-10亿(提议中)</td>
-      <td class="up">✅ 积极信号</td>
-    </tr>
-    <tr>
-      <td class="text-left">分红(2025FY)</td><td>6.9元/股(股息率6.08%)</td>
-      <td class="up">✅ 超高股息</td>
-    </tr>
-  </table>
-  <div class="assume">⚠ 股东户数增长22.4%是短期利空信号（筹码分散），但公司在此时提议5-10亿回购+6.9元/股高分红，表明管理层认为股价低估。</div>
+<!-- ===== 估值三部法 ===== -->
+<div class="card">
+  <h2>估值三部法交叉验证</h2>
+  <p style="font-size:12px;color:#888;margin-bottom:14px">
+    以分部估值(SOTP)为主锚，PEG和DCF交叉验证。当前价 113.42，PE(2026E) = 113.42/7.50 = 15.1x
+  </p>
 
-  <h3>分红历史</h3>
+  <h3>一、分部估值法（SOTP — 主锚）</h3>
+  <p style="font-size:12px;color:#888">基于各业务2026E净利润×合理PE倍数估算市值。A股成长股合理PE锚点30x，储能/逆变器分别给予差异化估值。</p>
+  <div class="assume"><strong>⚠ 假设声明：</strong>2026E各业务净利润基于一致预期拆分；储能PE 30x(高增速)·逆变器PE 25x(成熟龙头)·新能源投资开发PE 12x(低利润)·AIDC SST期权价值200亿</div>
   <table>
-    <tr><th>除权日</th><th>每股派息(元)</th><th>股息率(按当前价)</th></tr>
-    <tr><td>2026-05-12</td><td class="up">6.90</td><td class="up">6.08%</td></tr>
-    <tr><td>2025-10-20</td><td class="up">9.50</td><td class="up">8.38%</td></tr>
-    <tr><td>2025-06-13</td><td class="up">10.80</td><td class="up">9.52%</td></tr>
+    <tr><th>业务线</th><th>2026E净利(亿)</th><th>目标PE</th><th>估值(亿)</th><th>逻辑</th></tr>
+    <tr><td>储能系统</td><td>~68</td><td>30x</td><td>2,040</td><td>海外高毛利+50%增速+全球#2龙头溢价</td></tr>
+    <tr><td>光伏逆变器</td><td>~62</td><td>25x</td><td>1,550</td><td>全球#1但增速放缓至6%+</td></tr>
+    <tr><td>新能源投资开发</td><td>~10</td><td>12x</td><td>120</td><td>低利润率+战略配套定位</td></tr>
+    <tr><td>AIDC SST</td><td>~0</td><td>期权</td><td>200</td><td>千亿赛道·先发优势·期权价值</td></tr>
   </table>
-</div>
 
-<!-- ═══════════════ MODULE 11: 建议追踪指标 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 11</span> 建议追踪指标 & 关键事件</h2>
-  
-  <h3>核心追踪指标</h3>
-  <div class="kpi-row">
-    <span class="kpi-chip"><strong>储能出货量</strong> 2026目标60GWh+</span>
-    <span class="kpi-chip"><strong>储能毛利率</strong> Q1仅28%→目标恢复36%+</span>
-    <span class="kpi-chip"><strong>SST订单</strong> 2026H2首批交付</span>
-    <span class="kpi-chip"><strong>碳酸锂价格</strong> ���本端核心变量</span>
-    <span class="kpi-chip"><strong>欧洲工厂</strong> 2027H1投产</span>
-    <span class="kpi-chip"><strong>中东项目</strong> 7.5GWh执行进度</span>
-    <span class="kpi-chip"><strong>回购进度</strong> 5-10亿执行</span>
+  <div class="scenario-grid" style="margin-top:14px">
+    <div class="scen scen-bear">
+      <div class="slbl">悲观（储能PE打7折+逆变大打6折）</div>
+      <div class="sval">2,500亿</div>
+      <div class="schg dn2">-38% vs 目标</div>
+      <div style="font-size:11px">对应股价 ~120元</div>
+    </div>
+    <div class="scen scen-base">
+      <div class="slbl">中性（30x / 25x）</div>
+      <div class="sval">3,910亿</div>
+      <div class="schg up">+117% vs 现市值</div>
+      <div style="font-size:11px">对应股价 ~189元</div>
+    </div>
+    <div class="scen scen-bull">
+      <div class="slbl">乐观（储能35x+逆变器30x+AIDC 300亿）</div>
+      <div class="sval">4,930亿</div>
+      <div class="schg up">+174%</div>
+      <div style="font-size:11px">对应股价 ~238元</div>
+    </div>
   </div>
 
-  <h3>关键催化剂日历</h3>
+  <h3>二、PEG 交叉验证</h3>
   <table>
-    <tr><th>时间</th><th>事件</th><th>影响</th></tr>
-    <tr><td>2026年7月</td><td>SST产品发布(已完成✅)</td><td class="up">题材催化</td></tr>
-    <tr><td>2026年8月</td><td>2026H1中报披露</td><td>验证Q2业绩拐点</td></tr>
-    <tr><td>2026年H2</td><td>SST首批样机验证交付</td><td class="up">AIDC商业化起点</td></tr>
-    <tr><td>2027年H1</td><td>欧洲波兰工厂投产(20GW逆变器+12.5GWh储能)</td><td class="up">全球化产能里程碑</td></tr>
-    <tr><td>2027年H2</td><td>SST批量订单+规模化</td><td class="up">新增百亿级赛道</td></tr>
-    <tr><td>2028年</td><td>SST大规模商用部署</td><td class="up">千亿赛道全面开启</td></tr>
+    <tr><th>情景</th><th>2026E EPS</th><th>2027E EPS</th><th>增速</th><th>PEG</th><th>合理PE</th><th>合理股价</th></tr>
+    <tr><td>悲观</td><td>6.31</td><td>7.50</td><td>18.9%</td><td>0.95</td><td>18x</td><td>114</td></tr>
+    <tr><td>中性</td><td>7.50</td><td>9.30</td><td>24.0%</td><td>0.63</td><td>30x</td><td class="up">225</td></tr>
+    <tr><td>乐观</td><td>8.28</td><td>10.13</td><td>22.3%</td><td>0.61</td><td>30x</td><td class="up">248</td></tr>
   </table>
-</div>
+  <p style="font-size:12px;color:#555">PEG=0.63是A股最低估的千亿成长股之一，按行业成长股标准30x PE合理，对应股价225元。</p>
 
-<!-- ═══════════════ MODULE 12: 风险提示 ═══════════════ -->
-<div class="section">
-  <h2><span class="mod">MOD 12</span> 风险提示</h2>
-  <ul class="risk-list">
-    <li class="risk-level-high"><strong>储能毛利率下滑风险（高）</strong> —— 2026Q1储能毛利率降至~28%，碳酸锂涨价传导滞后。若2026年全年储能毛利率无法恢复至35%+，将显著影响盈利预测。这是当前最大的不确定性。</li>
-    <li class="risk-level-high"><strong>海外贸易政策风险（高）</strong> —— 美国301关税、涉疆法案、反规避调查持续升级。阳光电源海外收入占比60%+，地缘政治变动直接影响出货和利润。</li>
-    <li class="risk-level-mid"><strong>Q1业绩下滑持续风险（中）</strong> —— 2026Q1营收-18%、净利-40%。若Q2仍无改善，全年业绩可能不及预期。</li>
-    <li class="risk-level-mid"><strong>光伏行业增速放缓（中）</strong> —— 全球光伏新增装机增速从30%+降至10-15%，逆变器业务从高增长变为成熟现金牛。</li>
-    <li class="risk-level-mid"><strong>碳酸锂价格波动（中）</strong> —— 储能系统成本中碳酸锂占比高，价格波动直接影响毛利率。</li>
-    <li class="risk-level-mid"><strong>AIDC SST商业化不及预期（中）</strong> —— SST是远期期权，2027-2028年能否规模化存在不确定性。</li>
-    <li class="risk-level-low"><strong>汇率波动风险（低）</strong> —— 海外收入60%+，人民币升值压缩利润。</li>
-    <li class="risk-level-low"><strong>竞争加剧风险（低）</strong> —— 华为追赶，但差距仍大；二三线厂商无实质威胁。</li>
-  </ul>
-</div>
-
-<!-- ═══════════════ MODULE 13: 综合结论 ═══════════════ -->
-<div class="section" style="background:linear-gradient(135deg, #e8f5e9, #f1f8e9);border:2px solid #a5d6a7;">
-  <h2 style="border-bottom-color:var(--green);"><span class="mod" style="background:var(--green);">MOD 13</span> 综合投资结论</h2>
-  
-  <div class="grid2">
-    <div>
-      <h3 style="color:var(--green);">✅ 看多逻辑</h3>
-      <ul style="list-style:none;line-height:2;">
-        <li>✅ 全球光储双料冠军，逆变器#1+储能#2</li>
-        <li>✅ PEG仅0.63，是A股最便宜的千亿成长股之一</li>
-        <li>✅ 储能2026E出货60GWh(+50%),接棒成为第一增长极</li>
-        <li>✅ AIDC SST打开千亿级新赛道(2030年市场规模1010亿)</li>
-        <li>✅ ROE 31%+经营现金流169亿，盈利质量极佳</li>
-        <li>✅ 回购+高分红(6.08%股息率)，管理层认为低估</li>
-        <li>✅ 海外收入60%+，全球化壁垒极深</li>
-      </ul>
-    </div>
-    <div>
-      <h3 style="color:var(--red);">❌ 看空逻辑</h3>
-      <ul style="list-style:none;line-height:2;">
-        <li>❌ 2026Q1业绩大幅下滑(营收-18%,利润-40%)</li>
-        <li>❌ 储能毛利率从36.5%→28%，碳酸锂涨价压力</li>
-        <li>❌ 股价从209跌至113(-46%),技术面破位</li>
-        <li>❌ 股东户数+22%筹码分散</li>
-        <li>❌ 美国贸易政策风险持续</li>
-        <li>❌ 新能源投资开发业务拖累整体利润率</li>
-      </ul>
-    </div>
+  <h3>三、DCF 交叉验证</h3>
+  <div class="assume"><strong>⚠ 假设：</strong>FCFF起始=146亿(2025FY)，WACC=9%，永续增长率3%，前5年FCF增速15%/20%/18%/15%/10%</div>
+  <div class="scenario-grid">
+    <div class="scen scen-bear"><div class="slbl">悲观（g=2%·增速10-8%）</div><div class="sval">3,100亿</div><div class="schg">股价 ~150</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（g=3%）</div><div class="sval">4,544亿</div><div class="schg up">股价 ~219</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观（g=4%·增速20-15%）</div><div class="sval">6,300亿</div><div class="schg up">股价 ~304</div></div>
   </div>
 
-  <div style="background:#fff;border-radius:10px;padding:20px;margin-top:16px;text-align:center;">
-    <p style="font-size:1.2em;font-weight:700;color:var(--text);">
-      📊 综合判断: 
-      <span style="color:var(--green);font-size:1.3em;">中长期看多 · 短期等待Q2拐点确认</span>
-    </p>
-    <div style="margin:16px 0;">
-      <span class="tag tag-buy" style="font-size:1.2em;padding:8px 20px;">买入评级</span>
+  <h3>综合估值结论 &amp; 机构共识对比</h3>
+  <table>
+    <tr><th></th><th>悲观</th><th>中性</th><th>乐观</th></tr>
+    <tr><td>SOTP(主)</td><td>120元(+6%)</td><td><strong>189元(+67%)</strong></td><td>238元(+110%)</td></tr>
+    <tr><td>PEG</td><td>114元(0%)</td><td>225元(+99%)</td><td>248元(+119%)</td></tr>
+    <tr><td>DCF</td><td>150元(+32%)</td><td>219元(+93%)</td><td>304元(+168%)</td></tr>
+    <tr style="background:#e8eaf6"><td><strong>机构共识(91家)</strong></td><td colspan="3" style="text-align:center">2026E EPS 7.50，多数目标价196-220元，评级一致买入</td></tr>
+  </table>
+  <div class="sig sig-bull" style="margin-top:12">
+    <strong>结论：三部估值中性区间 189-225元，当前 113.42 显著低估。</strong>SOTP中性189元、PEG中性225元、DCF中性219元，三项交叉集中于189-225元区间。当前价仅113.42元，对应PE 2026E仅15.1x（成长股中极度罕见）。即使悲观情形（SOTP储能PE打7折）仍对应120元，基本无下行空间。核心风险是2026Q1业绩大幅下滑是否具有持续性——若Q2确认拐点，估值修复空间将非常可观。</div>
+</div>
+
+<!-- ===== 技术面 ===== -->
+<div class="card">
+  <h2>技术面辅助（2026-07-25 收盘）</h2>
+  <div class="tech-grid">
+    <div class="tech-item">
+      <div class="name">趋势判断</div>
+      <div class="val" style="font-size:16px">中线下行</div>
+      <div class="tag"><span class="tag-bear">52周高209→113(-46%)</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">从2024年末高点持续回调，中期趋势偏弱</div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:16px;text-align:center;">
-      <div><div style="font-weight:700;">估值吸引力</div><div style="font-size:1.3em;color:var(--green);">⭐⭐⭐⭐⭐</div></div>
-      <div><div style="font-weight:700;">成长性</div><div style="font-size:1.3em;color:var(--blue);">⭐⭐⭐⭐</div></div>
-      <div><div style="font-weight:700;">护城河</div><div style="font-size:1.3em;color:var(--blue);">⭐⭐⭐⭐⭐</div></div>
-      <div><div style="font-weight:700;">短期风险</div><div style="font-size:1.3em;color:var(--gold);">⭐⭐⭐</div></div>
-      <div><div style="font-weight:700;">安全边际</div><div style="font-size:1.3em;color:var(--green);">⭐⭐⭐⭐</div></div>
+    <div class="tech-item">
+      <div class="name">KDJ（推测）</div>
+      <div class="val" style="font-size:16px">超卖区域</div>
+      <div class="tag"><span class="tag-oversold">超卖</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">大幅回撤后KDJ大概率进入超卖区</div>
     </div>
-    <p style="margin-top:16px;font-size:0.88em;color:var(--text2);line-height:1.7;">
-      <strong>核心逻辑:</strong> 市场给予阳光电源15x PE，隐含着对光伏行业增速放缓+储能竞争加剧的担忧。
-      但实际PEG仅0.63，储能仍在50%高增长，AIDC SST将在2-3年内成为新的增长引擎。
-      当前-46%的回撤创造了极佳的安全边际。<br>
-      <strong>操作建议:</strong> 可在110-120区间分批建仓，等待8月中报验证Q2拐点后加仓。
-      <strong>目标价:</strong> 12个月内200元+，3年内300元+(对应SST规模化)。
-    </p>
+    <div class="tech-item">
+      <div class="name">MACD（推测）</div>
+      <div class="val" style="font-size:16px">周线底背离</div>
+      <div class="tag"><span class="tag-bull">潜在做多信号</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">价格新低但MACD拒绝新低=底背离</div>
+    </div>
+    <div class="tech-item">
+      <div class="name">关键位</div>
+      <div class="val" style="font-size:14px">支撑100 / 压力130</div>
+      <div class="tag"><span class="tag-neutral">震荡筑底</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">100元整数关口支撑·130元为前期平台压力</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:#888;margin-top:10px">
+    <strong>综合判断：</strong>技术面呈现典型的恐慌性抛售后的筑底特征。-46%的回撤幅度已超出基本面恶化程度（Q1营收仅-18%），技术超卖+周线底背离提示中长期买点可能正在形成。但短期仍需等待右侧确认信号（放量突破130元压力位或100元支撑位企稳）。
+  </p>
+</div>
+
+<!-- ===== 资金面 ===== -->
+<div class="card">
+  <h2>资金面 &amp; 筹码（辅助验证）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">融资余额(7/23)</div><div class="val">91.33亿</div><div class="sub">占流通市值~5.4%</div></div>
+    <div class="item"><div class="lbl">融券余额</div><div class="val">0.22亿</div><div class="sub">做空力量极弱</div></div>
+    <div class="item"><div class="lbl">股东户数(2026Q1)</div><div class="val">312,188户</div><div class="sub">环比+22.4% · 筹码分散</div></div>
+    <div class="item"><div class="lbl">户均持股市值</div><div class="val">58万</div><div class="sub">散户化特征</div></div>
+    <div class="item"><div class="lbl">未来1年解禁</div><div class="val up">0批</div><div class="sub">零减持压力</div></div>
+    <div class="item"><div class="lbl">公司回购</div><div class="val up">5-10亿</div><div class="sub">董事长提议 · 待股东大会</div></div>
+    <div class="item"><div class="lbl">分红(2025FY)</div><div class="val up">6.90元/股</div><div class="sub">股息率 6.08% · 极高</div></div>
+    <div class="item"><div class="lbl">分红(2025中期)</div><div class="val up">9.50元/股</div><div class="sub">超高分红历史</div></div>
+    <div class="item"><div class="lbl">分红(2024末期)</div><div class="val up">10.80元/股</div><div class="sub">历史股息率9.5%</div></div>
+  </div>
+  <div class="sig sig-warn" style="margin-top:12px">
+    <strong>筹码面偏弱但管理层信号积极：</strong>股东户数+22.4%表明散户大量涌入接盘（通常在下跌过程中），筹码偏分散是短期不利因素。但5-10亿回购+6.08%超高股息率表明管理层认为股价极度低估。历史上公司分红极为慷慨（2024末期10派10.8元/股），2025末期6.9元是在利润增长+回购双重考量下的合理安排。
   </div>
 </div>
 
-<!-- ═══════════════ 免责声明 ═══════════════ -->
+<!-- ===== 建议追踪 ===== -->
+<div class="card">
+  <h2>建议追踪的关键指标与事件</h2>
+
+  <h3>一、基本面验证指标</h3>
+  <table>
+    <tr><th width="200">指标</th><th>当前值</th><th>追踪阈值</th><th>信号含义</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>储能毛利率</strong></td><td>~28% (Q1)</td><td>回升至35%+</td><td>碳酸锂成本传导成功的标志。Q1仅28%严重偏低，若H2仍无修复将影响全年盈利</td>
+    </tr>
+    <tr>
+      <td><strong>储能出货量</strong></td><td>43GWh(2025)</td><td>2026目标60GWh+</td><td>最核心成长指标。Q2起出货节奏是否加速将验证全年指引可信度</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>营收季度增速</strong></td><td>-18.3% (Q1)</td><td>Q2-Q3降幅收窄至个位数</td><td>若Q2营收仍双位数下滑，全年155亿利润预期面临严重下调风险</td>
+    </tr>
+    <tr>
+      <td><strong>碳酸锂价格</strong></td><td>成本端核心变量</td><td>趋势性回落</td><td>碳酸锂涨→储能毛利率承压；碳酸锂跌→毛利率修复。Q2-Q3是观察窗口</td>
+    </tr>
+  </table>
+
+  <h3>二、业务里程碑事件</h3>
+  <table>
+    <tr><th width="200">事件</th><th>当前进度</th><th>关注点</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>SST固态变压器</strong></td><td>7月9日发布·130MW框架协议</td><td>2026H2首批样机验证交付 → 若客户反馈正面，2027批量订单可期</td>
+    </tr>
+    <tr>
+      <td><strong>中东7.5GWh项目</strong></td><td>5月21日签约</td><td>2026H2起分期执行交付，贡献可观的营收和利润增量</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>欧洲波兰工厂</strong></td><td>建设中·2.3亿欧元</td><td>2027H1投产 · 20GW逆变器+12.5GWh储能产能 · 关税规避+欧洲本地化</td>
+    </tr>
+    <tr>
+      <td><strong>储能新订单</strong></td><td>欧洲订单翻番</td><td>持续跟踪公司在BNEF/WoodMac的季度排名，若市占率突破20%则为超预期</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>AIDC AI储能方案</strong></td><td>与海外CSP探讨中</td><td>2026H2有望落地首单，单价高、格局好，为AIDC业务线开辟新增长极</td>
+    </tr>
+  </table>
+
+  <h3>三、筹码与政策面</h3>
+  <table>
+    <tr><th width="200">信号</th><th>当前状态</th><th>关注阈值</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>回购执行进度</strong></td><td>提议阶段·待股东大会</td><td>5-10亿回购落地执行 = 底部确认信号 · 对市场信心有重大提振</td>
+    </tr>
+    <tr>
+      <td><strong>股东户数变化</strong></td><td>31.2万户(+22.4%)</td><td>Q2户数若开始下降 → 筹码重新集中，机构开始吸筹</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>中美贸易政策</strong></td><td>301关税·涉疆法案·反规避</td><td>任何新增限制将冲击海外收入（60%+），是最大外部风险</td>
+    </tr>
+    <tr>
+      <td><strong>碳酸锂政策/供需</strong></td><td>地缘冲突+供给扰动</td><td>中东局势若缓和→油价下行→新能源需求预期降温；若持续紧张→储能需求提速</td>
+    </tr>
+  </table>
+
+  <h3>关键时间节点</h3>
+  <div class="kv">
+    <div class="item"><div class="lbl">2026年8月</div><div class="val" style="font-size:14px">半年报</div><div class="sub">Q2营收/利润/储能出货关键验证</div></div>
+    <div class="item"><div class="lbl">2026年H2</div><div class="val" style="font-size:14px">SST首批交付</div><div class="sub">AIDC商业化里程碑</div></div>
+    <div class="item"><div class="lbl">2026年10月</div><div class="val" style="font-size:14px">三季报</div><div class="sub">全年60GWh储能指引准终局验证</div></div>
+    <div class="item"><div class="lbl">2027年H1</div><div class="val" style="font-size:14px">波兰工厂投产</div><div class="sub">欧洲本地化里程碑</div></div>
+    <div class="item"><div class="lbl">持续追踪</div><div class="val" style="font-size:14px">SST订单</div><div class="sub">130MW框架→批量订单转化</div></div>
+  </div>
+</div>
+
+<!-- ===== 风险 ===== -->
+<div class="card">
+  <h2>风险提示</h2>
+  <ol>
+    <li><strong>储能毛利率持续下滑：</strong>2026Q1降至~28%，若全年无法恢复至35%+，将显著拉低2026E净利润。碳酸锂涨价传导延迟是最核心的不确定性</li>
+    <li><strong>Q1业绩下滑持续性：</strong>2026Q1营收-18.3%、净利-40.1%。若Q2-Q3仍无改善，全年155亿利润预期将大幅下修。关键看8月半年报</li>
+    <li><strong>海外贸易政策风险：</strong>美国301关税+涉疆法案+反规避调查持续升级，海外收入占比60.5%，任何新增限制将严重冲击出货和利润</li>
+    <li><strong>光伏行业增速放缓：</strong>全球新增装机增速从30%+降至10-15%，逆变器业务从高增速进入成熟期。虽然储能接棒增长，但转换期存在不确定性</li>
+    <li><strong>AIDC SST商业化不及预期：</strong>千亿赛道的期权价值依赖2027-2028年规模化交付，存在技术和市场风险</li>
+    <li><strong>资金面筹码分散：</strong>股东户数+22.4%，主力资金持续净流出，短期不利于股价表现。若叠加Q2业绩继续恶化，可能触发更深度的估值下修至悲观情形（120元以下）</li>
+  </ol>
+</div>
+
 <div class="footer">
-  <p style="margin-bottom:8px;font-size:0.8em;color:#999;">
-    ⚠️ 免责声明: 本报告仅供参考，不构成投资建议。所有数据来源于公开信息，估值假设可能不准确。投资有风险，入市需谨慎。<br>
-    数据来源: 腾讯财经、东财数据、新浪财报、券商研报、公开市场信息<br>
-    分析框架: Brad 股票分析框架 V1.0 | 生成时间: 2026-07-25
-  </p>
+  <p style="margin-bottom:6px">诊断时间：2026-07-25 · 数据来源：腾讯财经/新浪/东财/同花顺 · Brad 股票分析框架 v1.0</p>
+  <p style="margin-bottom:6px">数据源已覆盖最新2026Q1季报（含扣非净利润 20.32亿）· 一致预期来自91篇券商研报</p>
+  <p style="color:#c62828;font-weight:600;margin-top:6px">⚠ 以上分析仅供参考，不构成任何投资建议。分部估值/DCF/PEG中所有假设已在报告内标注。投资决策请结合自身判断，风险自担。</p>
 </div>
 
 </div>
-
-<script>
-// DuPont Chart
-new Chart(document.getElementById('dupontChart'), {
-  type: 'bar',
-  data: {
-    labels: ['2024', '2025'],
-    datasets: [
-      { label: '净利率%', data: [14.47, 15.17], backgroundColor: '#2980b9', borderRadius: 4 },
-      { label: '资产周转率(×10)', data: [7.4, 7.6], backgroundColor: '#27ae60', borderRadius: 4 },
-      { label: 'ROE%', data: [29.2, 31.26], backgroundColor: '#e74c3c', borderRadius: 4, type:'line', borderColor:'#e74c3c', borderWidth:2, pointRadius:5, fill:false, tension:0.3 }
-    ]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { position: 'bottom', labels: { boxWidth:14, padding:12, font:{size:11} } } },
-    scales: { y: { beginAtZero: false, min: 0, max: 40, ticks: { callback: v => v + '%' } } }
-  }
-});
-
-// BS Structure
-new Chart(document.getElementById('bsChart'), {
-  type: 'doughnut',
-  data: {
-    labels: ['货币资金', '应收账款', '存货', '其他流动资产', '非流动资产'],
-    datasets: [{
-      data: [300.4, 224.3, 277.6, 176.2, 240.1],
-      backgroundColor: ['#27ae60', '#e74c3c', '#f39c12', '#2980b9', '#95a5a6'],
-      borderWidth: 2, borderColor: '#fff'
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { 
-      title: { display: true, text: '资产结构(2026Q1, 亿)', font: { size: 14 } },
-      legend: { position: 'bottom', labels: { padding: 8, font: { size: 10 }, boxWidth: 12 } }
-    }
-  }
-});
-</script>
-
 </body>
 </html>
