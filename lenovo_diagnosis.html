@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>联想集团 (00992.HK) 个股深度诊断报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
+.container{max-width:960px;margin:0 auto}
+.header{background:linear-gradient(135deg,#004d40,#00695c);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.85}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
+.price{font-size:52px;font-weight:800}
+.chg{font-size:20px;padding:4px 12px;border-radius:8px}
+.chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+.chg.up{background:rgba(198,40,40,.15);color:#c62828}
+.card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h2{font-size:18px;color:#004d40;border-bottom:2px solid #e0f2f1;padding-bottom:10px;margin-bottom:16px}
+.card h3{font-size:15px;color:#00695c;margin:20px 0 8px}
+.card h4{font-size:14px;color:#555;margin:12px 0 6px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
+.kv .lbl{font-size:11px;color:#888}
+.kv .val{font-size:20px;font-weight:700;color:#004d40}
+.kv .sub{font-size:11px;color:#555;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#e0f2f1;color:#004d40;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+tr:hover td{background:#f8f9fc}
+.up{color:#c62828}.dn2{color:#00c853}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600}
+.b-buy{background:#c62828;color:#fff}
+.b-n{background:#ff8f00;color:#fff}
+.sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
+.sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
+.vcard{background:linear-gradient(135deg,#e0f2f1,#b2dfdb);border-radius:12px;padding:24px;margin-bottom:16px}
+.vcard h2{font-size:20px;color:#004d40;margin-bottom:12px}
+.vcard .score{font-size:60px;font-weight:800;color:#00695c;text-align:center;margin:10px 0}
+.tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
+.tech-item .name{font-size:12px;color:#888}
+.tech-item .val{font-size:18px;font-weight:700;color:#004d40}
+.tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bear{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-neutral{border:1px solid #ff8f00;color:#ff8f00;padding:1px 8px;border-radius:10px;display:inline-block}
+.assume{background:#fff8e1;border-left:3px solid #ffc107;padding:8px 12px;margin:12px 0;font-size:12px;border-radius:0 6px 6px 0}
+.assume strong{color:#f57c00}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.scen{border-radius:8px;padding:14px;text-align:center}
+.scen-bear{background:#e8f5e9}.scen-base{background:#e0f2f1}.scen-bull{background:#fce4ec}
+.scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}
+.scen .schg{font-size:12px}
+.footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
+ol li{padding:5px 0;font-size:14px}
+.small{font-size:11px;color:#999;display:block}
+</style>
+</head>
+<body><div class="container">
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="meta">个股深度诊断报告 v1 · 2026-08-06 · 腾讯自选股/westock-data + 国盛/中信里昂/大摩/瑞银研报 · Brad 股票分析框架</div>
+  <h1>联想集团 <span style="font-weight:400;font-size:18px">00992.HK · 港股</span></h1>
+  <div class="price-row">
+    <span class="price">HK$25.94</span>
+    <span class="chg dn">-1.29%</span>
+  </div>
+  <div style="margin-top:8px;font-size:13px;opacity:.9">
+    总市值 3,218亿港元 | PE(TTM) 21.48 · PB 5.38 | 股息率1.63% | 52周 HK$8.18-27.08 | YTD +190.7%
+  </div>
+</div>
+
+<!-- ===== 综合评分 ===== -->
+<div class="vcard">
+  <h2>综合诊断评分</h2>
+  <div class="score">75/100</div>
+  <table>
+    <tr><th width="110">维度</th><th>评分</th><th>核心判断</th></tr>
+    <tr><td>基本面</td><td class="up">85</td><td>FY2026营收6,510亿港元(+21.2%)·归母净利149.8亿(+39%)·ISG扭亏为盈·AI订单储备210亿美元</td></tr>
+    <tr><td>估值</td><td>70</td><td>PE(TTM) 21.5x / FY27E 15x(国盛)，机构目标均价~31港元(+19%)——合理偏上，估值修复已走大半</td></tr>
+    <tr><td>成长性</td><td class="up">85</td><td>AI服务器驱动：ISG FY27E收入+45%，AI收入占集团1/3，两年营收目标1000亿美元+</td></tr>
+    <tr><td>技术面</td><td>60</td><td>多头排列+8/4 MACD金叉，但RSI6 75.5超买+J值96.6——短期过热，5日已+21%</td></tr>
+    <tr><td>资金面</td><td>70</td><td>多家投行上调至30港元+；中信里昂列中国科技首选；南向资金关注</td></tr>
+    <tr><td>风险</td><td class="dn2">58</td><td>资产负债率85%高企；PC出货FY27或降10%；认股权证17亿美元非现金损失；竞争(戴尔/超微)</td></tr>
+  </table>
+  <p style="margin-top:14px;font-size:14px"><strong>定位：PC龙头向"AI基础设施"转型的兑现期标的。</strong>股价从5/12低点12.6涨至26附近（+106%），核心驱动是AI服务器订单爆发+ISG扭亏。当前估值已从"PC周期股"重估为"AI基础设施成长股"，机构目标价30-36港元共识——修复行情未完但已过最甜蜜阶段，追高需谨慎。</p>
+</div>
+
+<!-- ===== 行情快照 ===== -->
+<div class="card">
+  <h2>行情快照（2026-08-06 收盘）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新价</div><div class="val">HK$25.94</div><div class="sub">8/6小幅回调-1.29%</div></div>
+    <div class="item"><div class="lbl">涨跌幅</div><div class="val dn2">-1.29%</div></div>
+    <div class="item"><div class="lbl">今开/最高/最低</div><div class="val" style="font-size:13px">25.62/26.34/25.18</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">3,218亿</div><div class="sub">总股本 124亿股</div></div>
+    <div class="item"><div class="lbl">PE(TTM)/PB</div><div class="val" style="font-size:16px">21.48 / 5.38</div></div>
+    <div class="item"><div class="lbl">52周高低</div><div class="val" style="font-size:16px">8.18 - 27.08</div></div>
+    <div class="item"><div class="lbl">YTD/5日/20日/60日</div><div class="val" style="font-size:16px">+190.7%/+21.2%/+9.4%/+98.4%</div></div>
+    <div class="item"><div class="lbl">股息率(TTM)</div><div class="val" style="font-size:16px">1.63%</div><div class="sub">HK$0.422/股</div></div>
+    <div class="item"><div class="lbl">下次财报</div><div class="val" style="font-size:14px;color:#c62828">2026年8月中旬</div><div class="sub">FY27 Q1(4-6月)·ISG增速关键验证</div></div>
+  </div>
+
+  <h3>近期关键催化</h3>
+  <div class="kv">
+    <div class="item"><div class="lbl"><strong>2026年8月</strong></div><div class="val" style="font-size:14px;color:#c62828">FY27 Q1财报</div><div class="sub">中信里昂预计ISG收入+45%、经营利润率5.2%</div></div>
+    <div class="item"><div class="lbl"><strong>2026 H2</strong></div><div class="val" style="font-size:14px">Rubin平台出货</div><div class="sub">英伟达下一代AI服务器平台</div></div>
+    <div class="item"><div class="lbl"><strong>持续</strong></div><div class="val" style="font-size:14px">AI订单转化</div><div class="sub">210亿美元储备订单逐步交付</div></div>
+  </div>
+</div>
+
+<!-- ===== 利润表 ===== -->
+<div class="card">
+  <h2>利润表（FY2026年报 | 截至2026年3月31日）</h2>
+  <p style="font-size:12px;color:#888;margin-bottom:12px">联想财年截至3月底（FY2026 = 2025年4月-2026年3月）。数据源：westock-data（港币口径）。</p>
+  <table>
+    <tr><th>指标</th><th>FY2026</th><th>同比</th><th>说明</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>营收(亿港元)</strong></td>
+      <td><strong>6,510</strong></td>
+      <td class="up">+21.2%</td>
+      <td>约830亿美元，创历史新高</td>
+    </tr>
+    <tr>
+      <td><strong>归母净利(亿港元)</strong></td>
+      <td><strong>149.83</strong></td>
+      <td class="up">+39.1%</td>
+      <td>净利率2.6%——硬件贸易属性拖累利润率</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>EPS(港元)</strong></td>
+      <td><strong>1.2249</strong></td>
+      <td class="up">+39.4%</td>
+      <td>PE(TTM) = 25.94/1.2249 ≈ 21.2x</td>
+    </tr>
+    <tr>
+      <td><strong>毛利率</strong></td>
+      <td><strong>15.42%</strong></td>
+      <td class="up">+0.5pp</td>
+      <td>低毛利是PC/服务器代工模式特征</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>经营利润率</strong></td>
+      <td><strong>3.93%</strong></td>
+      <td class="up">+0.8pp</td>
+      <td>经营利润255.6亿港元(+51.8%)</td>
+    </tr>
+    <tr>
+      <td><strong>ROE(加权)</strong></td>
+      <td><strong>28.0%</strong></td>
+      <td>-</td>
+      <td>高ROE源于高杠杆(权益乘数7.5x)</td>
+    </tr>
+  </table>
+
+  <h3>资产负债表（关注点）</h3>
+  <div class="kv">
+    <div class="item"><div class="lbl">资产负债率</div><div class="val" style="color:#c62828">85.22%</div><div class="sub">⚠ 显著偏高</div></div>
+    <div class="item"><div class="lbl">流动比率</div><div class="val" style="color:#c62828">0.95</div><div class="sub">⚠ 低于1</div></div>
+    <div class="item"><div class="lbl">每股净资产</div><div class="val">4.82</div><div class="sub">PB 5.38</div></div>
+    <div class="item"><div class="lbl">经营现金流/股</div><div class="val">2.54</div><div class="sub">现金流健康</div></div>
+  </div>
+  <div class="sig sig-warn"><strong>⚠ 高杠杆是联想最大财务特征：</strong>资产负债率85.2%、流动比率0.95<1——这是PC/服务器整机制造行业的通病（应付账款高），但也意味着对利率和库存管理极其敏感。ROE 28%的高企主要靠7.5x权益乘数放大，剔除杠杆后ROA仅3.8%。</div>
+</div>
+
+<!-- ===== 分业务 ===== -->
+<div class="card">
+  <h2>分业务深度分析（FY2026）</h2>
+
+  <h3>三大业务集团结构</h3>
+  <table>
+    <tr><th>业务集团</th><th>收入(亿港元)</th><th>占比</th><th>FY26增速</th><th>经营利润率</th><th>定位</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>IDG智能设备(PC/手机)</strong></td>
+      <td><strong>4,619</strong></td>
+      <td>70.9%</td>
+      <td class="up">+17%</td>
+      <td>7.2%</td>
+      <td>现金牛·全球PC市占率24.4%(#1)</td>
+    </tr>
+    <tr>
+      <td><strong>ISG基础设施(服务器/AI)</strong></td>
+      <td><strong>1,504</strong></td>
+      <td>23.1%</td>
+      <td class="up">+32%</td>
+      <td class="up">扭亏为盈</td>
+      <td>增长引擎·AI服务器·192亿美元收入</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>SSG方案服务</strong></td>
+      <td><strong>786</strong></td>
+      <td>12.1%</td>
+      <td class="up">+20%</td>
+      <td>高</td>
+      <td>高毛利·粘性收入</td>
+    </tr>
+  </table>
+
+  <h3>ISG（AI服务器）—— 核心增长引擎</h3>
+  <div class="sig sig-bull">
+    <strong>FY26 ISG扭亏为盈是关键拐点：</strong>收入192亿美元(+32%)，实现经营利润7,300万美元（此前亏损）。Q4单季收入56亿美元(+37%)，经营利润2亿美元（利润率3.6%）——盈利改善趋势确立。<br>
+    <strong>订单储备：</strong>截至财年末AI服务器订单储备210亿美元，客户覆盖美国新兴云厂商+中国云商+企业客户。<br>
+    <strong>产品节奏：</strong>GB300 NVL72平台已全面出货；英伟达Rubin架构平台2026H2出货——与英伟达深度绑定。<br>
+    <strong>收购Infinidat：</strong>补强企业级存储（金融/医疗/电信），完善AI基础设施版图。<br>
+    <strong>管理层目标：</strong>两年内营收冲1000亿美元（AI收入已占集团约1/3）。
+  </div>
+
+  <h3>IDG（PC）—— 基本盘稳健但增速放缓</h3>
+  <div class="sig">
+    <strong>FY26：</strong>收入589亿美元(+17%)，经营利润率7.2%；Q4 PC出货市占率24.4%(+1.3pp)，高端PC占50%，手机出货+6%（市场下滑背景下）。<br>
+    <strong>FY27展望（瑞银保守）：</strong>PC出货量或同比-10%，因存储涨价+前置备货效应消退+消费预算承压——但产品涨价+低价库存可保经营利润率~7%。<br>
+    <strong>定位：</strong>现金牛，为ISG/SSG扩张提供现金流，但不再是增长叙事主角。
+  </div>
+
+  <h3>区域结构（FY2026）</h3>
+  <table>
+    <tr><th>区域</th><th>占比</th></tr>
+    <tr><td>美洲</td><td>33.9%</td></tr>
+    <tr><td>欧洲/中东/非洲</td><td>24.7%</td></tr>
+    <tr><td>中国</td><td>22.2%</td></tr>
+    <tr><td>亚太</td><td>19.1%</td></tr>
+  </table>
+  <p class="small">高度全球化——中国占比仅22%，地缘风险相对分散，但也面临关税/贸易摩擦风险。</p>
+</div>
+
+<!-- ===== 估值 ===== -->
+<div class="card">
+  <h2>估值分析</h2>
+  <p style="font-size:12px;color:#888;margin-bottom:14px">当前HK$25.94，市值3,218亿港元。核心问题：市场是否已充分定价AI服务器兑现？</p>
+
+  <h3>机构目标价与评级（2026年7-8月）</h3>
+  <table>
+    <tr><th>机构</th><th>评级</th><th>目标价(HK$)</th><th>核心观点</th></tr>
+    <tr style="background:#fce4ec"><td>中信里昂</td><td class="up">跑赢大盘</td><td class="up">36</td><td>中国科技首选·1QFY27 ISG收入+45%/利润率5.2%</td></tr>
+    <tr><td>野村</td><td class="up">买入</td><td class="up">35</td><td>2027财年20x PE</td></tr>
+    <tr style="background:#fce4ec"><td>花旗</td><td class="up">买入</td><td class="up">31</td><td>SOTP：IDG/SSG 10x PE + ISG 16.7x PE</td></tr>
+    <tr><td>国盛证券</td><td class="up">买入</td><td class="up">30.1</td><td>15x FY27/28 PE·港股8月金股</td></tr>
+    <tr style="background:#fce4ec"><td>摩根士丹利</td><td class="up">增持</td><td class="up">30</td><td>FY27-29 EPS超一致预期20%</td></tr>
+    <tr><td>中金</td><td class="up">跑赢行业</td><td class="up">30</td><td>18x 2027 PE·ISG盈利能力改善</td></tr>
+    <tr style="background:#fce4ec"><td>摩根大通</td><td class="up">增持</td><td class="up">30</td><td>ISG利润率未来数季扩张</td></tr>
+    <tr><td>瑞银</td><td class="up">买入</td><td>26</td><td>FY27 ISG收入+43%·最保守但仍有+13%</td></tr>
+  </table>
+  <div class="assume"><strong>机构共识：</strong>目标价区间26-36港元，均值约31港元（+19%空间）。8家投行全部买入/增持——在估值修复行情的后段，机构仍在追认但幅度收敛。</div>
+
+  <h3>盈利预测（非IFRS）</h3>
+  <table>
+    <tr><th>来源</th><th>FY27E</th><th>FY28E</th><th>FY29E</th></tr>
+    <tr><td>国盛证券(亿美元)</td><td>25.46</td><td>31.76</td><td>36.93</td></tr>
+    <tr><td>中信里昂(亿美元)</td><td>31</td><td>36</td><td>-</td></tr>
+    <tr><td>摩根士丹利(亿美元)</td><td>29.7</td><td>-</td><td>-</td></tr>
+  </table>
+
+  <h3>三情景估值</h3>
+  <div class="scenario-grid">
+    <div class="scen scen-bear">
+      <div class="slbl">悲观（AI订单转化不及预期·PC下滑超预期）</div>
+      <div class="sval">HK$20</div>
+      <div class="schg dn2">-23%</div>
+      <div style="font-size:11px">PE回落至13x(旧PC估值)</div>
+    </div>
+    <div class="scen scen-base">
+      <div class="slbl">中性（机构目标均价）</div>
+      <div class="sval">HK$31</div>
+      <div class="schg up">+20%</div>
+      <div style="font-size:11px">FY27E 15x PE兑现</div>
+    </div>
+    <div class="scen scen-bull">
+      <div class="slbl">乐观（中信里昂36港元）</div>
+      <div class="sval">HK$36</div>
+      <div class="schg up">+39%</div>
+      <div style="font-size:11px">ISG利润率持续超预期</div>
+    </div>
+  </div>
+
+  <h3>SOTP分部估值参考（花旗口径）</h3>
+  <table>
+    <tr><th>业务</th><th>利润贡献</th><th>PE</th><th>估值(亿港元)</th></tr>
+    <tr><td>IDG+SSG（稳定现金流）</td><td>~20亿美元</td><td>10x</td><td>~1,560</td></tr>
+    <tr><td>ISG（AI成长）</td><td>~5亿美元</td><td>16.7x</td><td>~650</td></tr>
+    <tr style="background:#e0f2f1"><td><strong>合计</strong></td><td>-</td><td>-</td><td><strong>~2,210亿港元 → 17.8港元/股</strong></td></tr>
+  </table>
+  <p class="small">注：花旗SOTP基于2026年5月数据，当时股价~20港元；当前股价已超越该SOTP，需ISG利润更快增长才能支撑现价。</p>
+
+  <div class="sig sig-bull"><strong>估值结论：</strong>从"PC股"的10-13x PE重估为"AI股"的15-20x PE，是今年+190%涨幅的核心逻辑。当前21.5x PE(TTM)已计入大量ISG乐观预期，但若FY27 AI服务器利润如期兑现（中信里昂预计ISG经营利润3.2亿美元/季），Forward PE将回落至15x以下——"盈利增长追估值"仍是主旋律。中性目标31港元(+20%)，上行取决于ISG利润率弹性。</div>
+</div>
+
+<!-- ===== 技术面 ===== -->
+<div class="card">
+  <h2>技术面辅助（2026-08-06 收盘）</h2>
+  <div class="tech-grid">
+    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val" style="font-size:16px">K74.4·D63.3·J96.6</div><div><span class="tag-overbought">高位·J值超买</span></div><div style="font-size:11px;color:#555;margin-top:4px">J&gt;90短线过热</div></div>
+    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val" style="font-size:16px">DIF+0.84·MACD+0.52</div><div><span class="tag-bull">8/4金叉</span></div><div style="font-size:11px;color:#555;margin-top:4px">红柱，中期多头</div></div>
+    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val" style="font-size:16px">上26.2·中23.4·下20.7</div><div><span class="tag-bull">贴近上轨</span></div><div style="font-size:11px;color:#555;margin-top:4px">现价25.94接近上轨</div></div>
+    <div class="tech-item"><div class="name">RSI</div><div class="val" style="font-size:16px">RSI6=75.5·RSI12=66</div><div><span class="tag-overbought">超买</span></div><div style="font-size:11px;color:#555;margin-top:4px">RSI6&gt;70进入超买</div></div>
+    <div class="tech-item"><div class="name">CCI(20)</div><div class="val" style="font-size:16px">+148.9</div><div><span class="tag-bull">强势</span></div><div style="font-size:11px;color:#555;margin-top:4px">&gt;100强势区，但接近极端</div></div>
+  </div>
+  <p style="font-size:12px;color:#888;margin-top:10px">
+    <strong>综合判断：</strong>均线完美多头排列（MA5 24.99 &gt; MA10 24.01 &gt; MA20 23.43 &gt; MA60 21.51）+MACD 8/4金叉——中期趋势健康。但RSI6 75.5超买+KDJ J值96.6+CCI 149+5日涨21%——短线严重过热，随时可能回调5-10%。关键位：支撑23.4(BOLL中轨/MA20)，压力26.2(BOLL上轨)/27.08(52周高)。策略：不追高，回调至MA20附近再评估，或等FY27 Q1财报(8月中旬)验证ISG后再定。
+  </p>
+</div>
+
+<!-- ===== 风险 ===== -->
+<div class="card">
+  <h2>风险提示</h2>
+  <ol>
+    <li><strong>估值透支风险：</strong>YTD +190%、PE(TTM) 21.5x，已大幅超前于基本面兑现速度。若FY27 Q1 ISG收入/利润率不及中信里昂预期(+45%/5.2%)，估值将快速收缩</li>
+    <li><strong>认股权证17亿美元损失：</strong>2025年发行的股份认股权证产生约17亿美元按市值计量损失（非现金），导致1QFY27账面每股亏损0.75港元——市场可能短期反应过度</li>
+    <li><strong>高杠杆财务结构：</strong>资产负债率85.2%、流动比率0.95<1，对利率/库存/汇率敏感，AI服务器扩张需持续投入营运资金</li>
+    <li><strong>PC周期下行：</strong>瑞银预计FY27 PC出货-10%，存储涨价+前置备货效应消退+消费承压——IDG利润(占大头)面临压力</li>
+    <li><strong>AI服务器竞争白热化：</strong>ISG直面戴尔、超微电脑（SMCI）的价格竞争，服务器毛利率天然偏低，利润率提升幅度存疑</li>
+    <li><strong>订单转化不确定性：</strong>210亿美元订单储备≠已确认收入，客户可能推迟或缩减订单</li>
+    <li><strong>英伟达依赖：</strong>AI服务器高度绑定英伟达平台（GB300/Rubin），若NVIDIA供给/路线变化，联想ISG增长逻辑受损</li>
+    <li><strong>关税/地缘：</strong>美洲占收入34%，中美关税政策反复将冲击PC和服务器成本</li>
+  </ol>
+</div>
+
+<div class="footer">
+  <p style="margin-bottom:6px">诊断时间：2026-08-06 · 数据来源：腾讯自选股/westock-data + 国盛/中信里昂/摩根士丹利/花旗/瑞银/中金研报 · Brad 股票分析框架</p>
+  <p style="color:#c62828;font-weight:600;margin-top:6px">⚠ 以上分析仅供参考，不构成任何投资建议。联想集团FY27 Q1财报（2026年8月中旬）为近期最关键验证点，短期技术面超买回调风险较大。投资决策请结合自身判断，风险自担。</p>
+</div>
+</div></body></html>
