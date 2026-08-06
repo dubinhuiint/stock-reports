@@ -2,45 +2,42 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>中芯国际 (00981.HK) 个股深度诊断报告</title>
+<title>中芯国际 (00981.HK) 深度诊断报告</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
-.container{max-width:960px;margin:0 auto}
-.header{background:linear-gradient(135deg,#1a237e,#283593);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+.container{max-width:1000px;margin:0 auto}
+.header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
 .header h1{font-size:28px;margin-bottom:4px}
 .header .meta{font-size:13px;opacity:.85}
 .price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
 .price{font-size:52px;font-weight:800}
 .chg{font-size:20px;padding:4px 12px;border-radius:8px}
 .chg.dn{background:rgba(0,200,83,.2);color:#00c853}
-.chg.up{background:rgba(198,40,40,.15);color:#c62828}
+.chg.up{background:rgba(198,40,40,.2);color:#c62828}
 .card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.card h2{font-size:18px;color:#1a237e;border-bottom:2px solid #e8eaf6;padding-bottom:10px;margin-bottom:16px}
-.card h3{font-size:15px;color:#3949ab;margin:20px 0 8px}
+.card h2{font-size:18px;color:#0d47a1;border-bottom:2px solid #e3f2fd;padding-bottom:10px;margin-bottom:16px}
+.card h3{font-size:15px;color:#1565c0;margin:20px 0 8px}
 .card h4{font-size:14px;color:#555;margin:12px 0 6px}
 .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
 .kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
 .kv .lbl{font-size:11px;color:#888}
-.kv .val{font-size:20px;font-weight:700;color:#1a237e}
+.kv .val{font-size:20px;font-weight:700;color:#0d47a1}
 .kv .sub{font-size:11px;color:#555;margin-top:2px}
 table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
-th{background:#e8eaf6;color:#1a237e;padding:8px 10px;text-align:left;font-weight:600}
+th{background:#e3f2fd;color:#0d47a1;padding:8px 10px;text-align:left;font-weight:600}
 td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
 tr:hover td{background:#f8f9fc}
 .up{color:#c62828}.dn2{color:#00c853}
-.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600}
-.b-buy{background:#c62828;color:#fff}
-.b-n{background:#ff8f00;color:#fff}
 .sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
 .sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
-.vcard{background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-radius:12px;padding:24px;margin-bottom:16px}
-.vcard h2{font-size:20px;color:#1a237e;margin-bottom:12px}
-.vcard .score{font-size:60px;font-weight:800;color:#3949ab;text-align:center;margin:10px 0}
+.vcard{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:12px;padding:24px;margin-bottom:16px}
+.vcard h2{font-size:20px;color:#0d47a1;margin-bottom:12px}
+.vcard .score{font-size:60px;font-weight:800;color:#1565c0;text-align:center;margin:10px 0}
 .tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
 .tech-item .name{font-size:12px;color:#888}
-.tech-item .val{font-size:18px;font-weight:700;color:#1a237e}
+.tech-item .val{font-size:20px;font-weight:700;color:#0d47a1}
 .tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
 .tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
 .tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
@@ -50,232 +47,303 @@ tr:hover td{background:#f8f9fc}
 .assume strong{color:#f57c00}
 .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .scen{border-radius:8px;padding:14px;text-align:center}
-.scen-bear{background:#e8f5e9}.scen-base{background:#e8eaf6}.scen-bull{background:#fce4ec}
-.scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}
-.scen .schg{font-size:12px}
+.scen-bear{background:#e8f5e9}.scen-base{background:#e3f2fd}.scen-bull{background:#fce4ec}
+.scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}.scen .schg{font-size:12px}
 .footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
 ol li{padding:5px 0;font-size:14px}
 .small{font-size:11px;color:#999;display:block}
+.dupont-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.dupont-box{background:#f8f9fc;border-radius:10px;padding:16px;text-align:center}
+.dupont-box .title{font-size:12px;color:#888}
+.dupont-box .num{font-size:24px;font-weight:800;color:#0d47a1;margin:6px 0}
+.dupont-box .detail{font-size:11px;color:#555}
+.arrow{font-size:20px;color:#1565c0;font-weight:bold}
+.new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
 </style>
 </head>
-<body><div class="container">
+<body>
+<div class="container">
 
-<!-- ===== HEADER ===== -->
 <div class="header">
-  <div class="meta">个股深度诊断报告 v1 · 2026-08-04 · 腾讯自选股/westock-data + 富途/AASTOCKS一致预期 · Brad 股票分析框架</div>
-  <h1>中芯国际 <span style="font-weight:400;font-size:18px">00981.HK · 港股</span></h1>
+  <h1>中芯国际 <span style="font-weight:300">00981.HK</span></h1>
+  <div class="meta">港股深度诊断报告 | 2026-07-31 | 腾讯财经 + 同花顺 + 东财 + 新浪 + mootdx</div>
   <div class="price-row">
-    <span class="price">HK$65.30</span>
-    <span class="chg up">+4.98%</span>
+    <span class="price">HKD 63.25</span>
+    <span class="chg up">+2.02%</span>
   </div>
-  <div style="margin-top:8px;font-size:13px;opacity:.9">
-    总市值 5,590亿港元 | PE(TTM) 102.7 · PB 3.30 | 52周 HK$47.14-93.50 | YTD -8.6%
-  </div>
-</div>
-
-<!-- ===== 综合评分 ===== -->
-<div class="vcard">
-  <h2>综合诊断评分</h2>
-  <div class="score">62/100</div>
-  <table>
-    <tr><th width="110">维度</th><th>评分</th><th>核心判断</th></tr>
-    <tr><td>基本面</td><td>68</td><td>2026Q1营收$2.51B(+11.5%)·毛利率20.1%·产能利用率93.1%；Q2指引收入+14-16%大幅超预期</td></tr>
-    <tr><td>估值</td><td class="dn2">45</td><td>PE(TTM) 102.7x 极高，但折旧吞噬利润；PB 3.3x处历史中位，A股/H股溢价巨大</td></tr>
-    <tr><td>成长性</td><td class="up">80</td><td>AI带动电源IC/存储/BCD平台需求+成熟制程上升周期，2026收入指引高于同业平均</td></tr>
-    <tr><td>技术面</td><td>45</td><td>从93.5高点回撤30%至61.3，KDJ低位+CCI超卖+8/4放量反弹4.98%，MACD仍死叉</td></tr>
-    <tr><td>资金面</td><td>55</td><td>北向/南向持续关注；8/4放量1亿股反弹，但前期7/31-8/3连续放量下跌</td></tr>
-    <tr><td>风险</td><td class="dn2">40</td><td>2026折旧+30%侵蚀利润；地缘制裁风险；先进制程(N3)良率不确定；资本开支80亿美元高企</td></tr>
-  </table>
-  <p style="margin-top:14px;font-size:14px"><strong>定位：国产晶圆代工龙头，成长逻辑清晰但短期估值不便宜。</strong>核心矛盾在于——高资本开支(80亿美元/年)带来的折旧压力 vs AI需求驱动的收入高增长。市场用PB而非PE定价（折旧扭曲利润），当前PB 3.3x对应交银3.8x 2027 PB目标价HK$95，仍有上行空间但需业绩持续验证。</p>
-</div>
-
-<!-- ===== 行情快照 ===== -->
-<div class="card">
-  <h2>行情快照（2026-08-04 收盘）</h2>
-  <div class="kv">
-    <div class="item"><div class="lbl">最新价</div><div class="val">HK$65.30</div><div class="sub">8/4放量反弹+4.98%</div></div>
-    <div class="item"><div class="lbl">涨跌幅</div><div class="val up">+4.98%</div></div>
-    <div class="item"><div class="lbl">今开/最高/最低</div><div class="val" style="font-size:13px">62.80/65.90/62.45</div></div>
-    <div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">5,590亿</div><div class="sub">总股本 85.6亿股</div></div>
-    <div class="item"><div class="lbl">PE(TTM)/PB</div><div class="val" style="font-size:16px">102.7 / 3.30</div></div>
-    <div class="item"><div class="lbl">52周高低</div><div class="val" style="font-size:16px">47.14 - 93.50</div></div>
-    <div class="item"><div class="lbl">YTD/5日/20日</div><div class="val" style="font-size:16px">-8.6%/-5.5%/-11.1%</div></div>
-    <div class="item"><div class="lbl">股息率</div><div class="val" style="font-size:16px">0%</div><div class="sub">利润留存扩产</div></div>
-    <div class="item"><div class="lbl">A股(688981)对照</div><div class="val up" style="font-size:14px">溢价~150%+</div><div class="sub">H股相对A股大幅折价</div></div>
-  </div>
-
-  <h3>关键时间节点</h3>
-  <div class="kv">
-    <div class="item"><div class="lbl"><strong>2026年8月</strong></div><div class="val" style="font-size:14px;color:#c62828">Q2财报</div><div class="sub">验证+14-16%收入指引·毛利率20-22%</div></div>
-    <div class="item"><div class="lbl"><strong>2026年底</strong></div><div class="val" style="font-size:14px">月产能+4万片12英寸</div><div class="sub">深圳/临港/上海扩产兑现</div></div>
-    <div class="item"><div class="lbl"><strong>持续</strong></div><div class="val" style="font-size:14px">N3先进制程</div><div class="sub">良率进展决定长期估值</div></div>
+  <div class="meta" style="margin-top:8px">
+    H股市值 3,804亿HKD | PE(TTM) 101.56x | PB 3.14x | Forward PE 73.6x | 52周 47.14-93.5
   </div>
 </div>
 
-<!-- ===== 利润表 ===== -->
-<div class="card">
-  <h2>利润表趋势（2026Q1 + 指引）</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:12px">数据源：中芯国际公告（美元口径）+ westock-data（港币口径）。中芯按自然年（Q1=1-3月）。</p>
-  <table>
-    <tr><th>指标</th><th>2026Q2指引</th><th>2026Q1实绩</th><th>2025Q4</th><th>2025Q3</th><th>2025FY</th></tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>营收($M)</strong></td>
-      <td><strong>~2,850-2,910</strong><br><span class="small">环比+14~16% · 大超预期</span></td>
-      <td><strong>2,505</strong><br><span class="small">环比+0.7% · 同比+11.5%</span></td>
-      <td>2,489<br><span class="small">+4.5%</span></td>
-      <td>2,382</td>
-      <td>9,300+<br><span class="small">人民币673亿(+16.5%)</span></td>
-    </tr>
-    <tr>
-      <td><strong>毛利率</strong></td>
-      <td><strong>20-22%</strong><br><span class="small">较Q1指引+2pp</span></td>
-      <td><strong>20.1%</strong><br><span class="small">+0.9pp QoQ</span></td>
-      <td>19.2%</td>
-      <td>19.2%</td>
-      <td>~19%</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>产能利用率</strong></td>
-      <td>-</td>
-      <td><strong>93.1%</strong></td>
-      <td>95.7%</td>
-      <td>92.3%</td>
-      <td>93.5%</td>
-    </tr>
-    <tr>
-      <td><strong>归母净利(港币亿)</strong></td>
-      <td>~21.9(预测)</td>
-      <td><strong>15.47</strong><br><span class="small">同比+5.8%</span></td>
-      <td>13.45</td>
-      <td>24.55</td>
-      <td>~50亿人民币</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>EPS(港币)</strong></td>
-      <td>0.298(预测)</td>
-      <td><strong>0.1567</strong></td>
-      <td>0.156</td>
-      <td>0.286</td>
-      <td>-</td>
-    </tr>
-  </table>
-
-  <div class="sig sig-warn"><strong>⚠ 利润失真警示：</strong>2026年折旧将同比增加30%（新厂走出开办期开始计提），直接侵蚀毛利率和净利润。看中芯的利润表不如看EBITDA和产能利用率——2025年资本开支81亿美元（占营收80%+），今天的折旧就是明天的产能。市场主流用PB估值（交银3.8x 2027 PB → HK$95）。</div>
-
-  <h3>Q2指引为何是"超预期"信号？</h3>
-  <div class="sig sig-bull">
-    <strong>收入环比+14-16% + 毛利率20-22%：</strong>远超市场预期的环比持平/小幅增长。核心驱动力——① AI电源管理IC（PMIC）需求爆发，全球AI电源IC TAM 2026年150亿美元（CAGR 50%）；② 存储缺货挤压手机订单→产能转向数据中心/电源/工业汽车；③ BCD平台加价+产品组合改善；④ 部分海外竞对退出成熟制程→溢出需求回流。管理层对全年展望"比年初更乐观"。
-  </div>
+<div class="card" style="background:linear-gradient(90deg,#e3f2fd,#f3e5f5);border-left:4px solid #7b1fa2;">
+<strong>AH溢价51%：</strong>同一公司，A股210x vs H股102x。港股由机构定价，A股含概念/散户溢价。本报告聚焦H股。
 </div>
 
-<!-- ===== 分业务/产能 ===== -->
+<!-- ═══ 综合评分 ═══ -->
 <div class="card">
-  <h2>产能布局与业务结构</h2>
-
-  <h3>产能扩张路径（2026）</h3>
-  <table>
-    <tr><th>指标</th><th>数值</th><th>说明</th></tr>
-    <tr><td>2025年底月产能(8寸等效)</td><td>105.9万片</td><td>同比+11.1万片</td></tr>
-    <tr><td>2026年新增产能</td><td>+4万片12英寸</td><td>深圳+临港/上海，设备"时差"致产能落地慢</td></tr>
-    <tr><td>2026资本开支</td><td>80亿美元+</td><td>与2025年(81亿)基本持平，维持高强度</td></tr>
-    <tr><td>2026折旧</td><td>同比+30%</td><td>新厂开始计提折旧</td></tr>
-  </table>
-
-  <h3>收入结构（2026Q1）</h3>
-  <table>
-    <tr><th>维度</th><th>占比</th><th>趋势</th></tr>
-    <tr><td><strong>晶圆代工</strong></td><td>93.9%</td><td>光罩等配套业务占6.1%</td></tr>
-    <tr><td><strong>中国区</strong></td><td>88.9%</td><td class="up">同比扩大（84.3%→88.9%）</td></tr>
-    <tr><td>美国区</td><td>9.3%</td><td class="dn2">收窄（12.6%→9.3%）</td></tr>
-    <tr><td>欧亚区</td><td>1.8%</td><td>持平</td></tr>
-  </table>
-
-  <h3>应用结构变化</h3>
-  <div class="sig sig-bull"><strong>消费电子(46.2%)仍是第一大应用，但工业与汽车占比从9.6%跃升至14.0%</strong>——这是最值得关注的信号。BCD(电源管理)、MCU、SLC NAND/NOR、ToF传感器、汽车电子订单快速增长，产品结构从"手机代工"向"AI+汽车+工业"迁移，ASP持续上行（Q1晶圆ASP环比+2.5%）。</div>
-
-  <h3>先进制程（N3）——决定长期估值的变量</h3>
-  <p style="font-size:13px">
-    中芯的N3（相当于台积电N5/6）量产进展是市场关注的焦点。中银国际认为"利润率扩张将较审慎，因需兼顾先进节点(N3)的良率进展"——这既是最主要的想象空间，也是最大的不确定性。<strong>国产AI芯片（华为昇腾等）的先进制程需求+美国限制的倒逼，使N3具备战略意义；但良率和成本若不及预期，将拖累整体盈利能力。</strong>
-  </p>
+<h2>综合诊断评分</h2>
+<div style="text-align:center;margin:8px 0;font-size:60px;font-weight:800;color:#1565c0;">62<span style="font-size:24px;color:#888;">/100</span></div>
+<table>
+<tr><th>维度</th><th style="width:55px">评分</th><th>核心判断</th></tr>
+<tr><td>基本面</td><td style="color:#ff8f00;font-weight:700;">55</td><td>ROE 3.4%拖累，但营收+16.5%趋势向上、经营CF 201亿净利含金量4x</td></tr>
+<tr><td>估值</td><td style="color:#c62828;font-weight:700;">48</td><td>PE 102x / Fwd 74x，远高于全球晶圆代工均值15-20x，港股优于A仍偏高</td></tr>
+<tr><td>成长性</td><td style="color:#1565c0;font-weight:700;">72</td><td>营收CAGR 17%、EPS CAGR 21%，国产替代+AI配套芯片双轮驱动</td></tr>
+<tr><td>技术面</td><td style="color:#00c853;font-weight:700;">78</td><td>KDJ J=-4.3(极端超卖)+RSI6=23.6+BOLL下轨+CCI=-137，四指标共振超卖</td></tr>
+<tr><td>资金情绪</td><td style="color:#ff8f00;font-weight:700;">48</td><td>A股融资余额2周-10%，主力近20日净流出32亿</td></tr>
+<tr><td>风险</td><td style="color:#ff8f00;font-weight:700;">50</td><td>中美制裁、折旧+30%、Capex年81亿美元压FCF</td></tr>
+<tr><td>筹码/事件</td><td style="color:#1565c0;">60</td><td>H股机构定价，无解禁压力。406亿定增完成</td></tr>
+<tr><td>机构共识</td><td style="color:#1565c0;">72</td><td>覆盖11家，一致看多，目标价均值~80 HKD</td></tr>
+</table>
+<div style="background:#e0e0e0;height:20px;border-radius:10px;overflow:hidden;margin:8px 0;">
+  <div style="height:100%;width:62%;background:linear-gradient(90deg,#c62828,#ff8f00,#1565c0,#00c853);border-radius:10px;"></div>
+</div>
+<div class="sig sig-warn">
+<strong>定位：国产晶圆代工龙头，战略价值无可替代。</strong>PE 102x vs 全球同业15-20x——市场在买"稀缺性"而非"盈利质量"。技术面四指标共振超卖提供博弈窗口，但安全边际不足。等<span style="color:#ff8f00;">8月28日中报</span>验证Q2涨价。
+</div>
 </div>
 
-<!-- ===== 估值 ===== -->
+<!-- ═══ 行情快照 ═══ -->
 <div class="card">
-  <h2>估值分析（PB为主锚，PE辅助）</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:14px">当前HK$65.30，市值5,590亿港元。折旧高企致PE失真，主流用PB估值；A/H溢价亦需关注。</p>
-
-  <h3>机构目标价与评级（8家主流投行）</h3>
-  <table>
-    <tr><th>机构</th><th>评级</th><th>目标价(HK$)</th><th>核心观点</th></tr>
-    <tr style="background:#fce4ec"><td>高盛</td><td class="up">买入</td><td class="up">135</td><td>Q2产能利用率高+产品组合改善支撑毛利率</td></tr>
-    <tr><td>交银国际</td><td class="up">买入</td><td class="up">95</td><td>3.8x 2027 PB；2026-28收入$11.5/13.7/15.5B</td></tr>
-    <tr style="background:#fce4ec"><td>里昂</td><td>跑赢大市</td><td>94.1</td><td>Q1稳健+Q2指引强劲，AI带动涨价</td></tr>
-    <tr><td>花旗</td><td class="up">买入(上调)</td><td>90</td><td>国产化+AI需求+先进节点领导地位</td></tr>
-    <tr style="background:#f8f9fc"><td>汇丰</td><td class="up">买入</td><td>89</td><td>Q1毛利率超预期</td></tr>
-    <tr><td>摩根士丹利</td><td class="up">增持</td><td>85</td><td>成熟制程上升周期临近，上调盈测11-14%</td></tr>
-    <tr style="background:#f8f9fc"><td>中银国际</td><td>持有(下调)</td><td>80</td><td>扩产/提价温和，N3良率+资产负债表压力</td></tr>
-    <tr><td>野村</td><td>中性</td><td>75</td><td>Q1超指引，但估值已反映预期</td></tr>
-    <tr style="background:#f8f9fc"><td>摩根大通</td><td>中性(上调)</td><td>67</td><td>H2需留意消费端回落风险</td></tr>
-  </table>
-  <div class="assume"><strong>机构共识：</strong>19家目标均价 HK$94.57（较现价+45%），最高137.1/最低25.0。买入/增持占比73%，持有14%，减持/卖出13%——整体偏多但分歧大（高盛135 vs 摩根大通67，相差2倍）。</div>
-
-  <h3>PB估值法（主锚）</h3>
-  <table>
-    <tr><th>情景</th><th>PB倍数</th><th>每股净资产</th><th>目标价</th><th>空间</th></tr>
-    <tr><td>悲观（周期下行）</td><td>2.0x</td><td>HK$21.20</td><td>42.4</td><td class="dn2">-35%</td></tr>
-    <tr><td>中性（交银2027基准）</td><td>3.8x</td><td>~HK$25(2027E)</td><td>95</td><td class="up">+45%</td></tr>
-    <tr><td>乐观（高盛AI重估）</td><td>5.0x</td><td>~HK$27(2027E)</td><td>135</td><td class="up">+107%</td></tr>
-  </table>
-
-  <h3>PE估值辅助（注意失真）</h3>
-  <div class="sig sig-warn"><strong>PE在此处意义有限：</strong>PE(TTM) 102.7x看似极贵，但2026Q1归母净利仅15.47亿港元（同比仅+5.8%），主要是折旧和投资收益减少所致。若Q2净利如期达21.9亿港元（+78%），Forward PE将快速回落至~45x。真正决定估值的不是当期利润，而是产能利用率能维持多久 + 折旧何时见顶。</div>
-
-  <div class="sig sig-bull"><strong>估值结论：</strong>PB 3.3x处历史中位，机构目标均价HK$94.57隐含+45%空间。核心看多逻辑=成熟制程上升周期（台积电/三星退出成熟产能）+AI电源IC需求+国产替代；核心看空逻辑=折旧+30%侵蚀利润+N3良率不确定+估值已不便宜。当前65.3附近是"基本面向上、短期情绪向下"的博弈位。</div>
+<h2>行情快照（2026-07-31 收盘）</h2>
+<div class="kv">
+  <div class="item"><div class="lbl">最新价</div><div class="val" style="color:#c62828;">HKD 63.25</div><div class="sub">+2.02%</div></div>
+  <div class="item"><div class="lbl">今开 / 最低</div><div class="val" style="font-size:16px;">67.0 / 62.75</div></div>
+  <div class="item"><div class="lbl">成交额</div><div class="val" style="font-size:16px;">95.7亿 HKD</div></div>
+  <div class="item"><div class="lbl">H股市值</div><div class="val" style="font-size:16px;">3,804亿HKD</div><div class="sub">总A+H 5,415亿</div></div>
+  <div class="item"><div class="lbl">PE(TTM) / PB</div><div class="val" style="font-size:16px;">101.56x / 3.14x</div></div>
+  <div class="item"><div class="lbl">52周范围</div><div class="val" style="font-size:16px;">47.14 - 93.5</div><div class="sub">回撤 <span class="dn2">-32.4%</span></div></div>
+  <div class="item"><div class="lbl">股息率</div><div class="val" style="font-size:16px;">0%</div><div class="sub">资本积累期不分红</div></div>
+  <div class="item"><div class="lbl">中报预约</div><div class="val" style="font-size:16px;color:#00c853;">2026.08.28</div><div class="sub">⭐ Q2指引+14-16%</div></div>
+</div>
 </div>
 
-<!-- ===== 技术面 ===== -->
+<!-- ═══ 利润表 ═══ -->
 <div class="card">
-  <h2>技术面辅助（2026-08-04 收盘）</h2>
-  <div class="tech-grid">
-    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val" style="font-size:16px">K18.2·D18.2·J18.1</div><div><span class="tag-oversold">低位粘合</span></div><div style="font-size:11px;color:#555;margin-top:4px">三线低位纠缠，超卖区</div></div>
-    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val" style="font-size:16px">DIF-3.65·DEA-2.72</div><div><span class="tag-bear">死叉</span></div><div style="font-size:11px;color:#555;margin-top:4px">绿柱，未转多</div></div>
-    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val" style="font-size:16px">上83.6·中71.7·下59.9</div><div><span class="tag-neutral">中下轨</span></div><div style="font-size:11px;color:#555;margin-top:4px">现价65.3略高于下轨</div></div>
-    <div class="tech-item"><div class="name">RSI</div><div class="val" style="font-size:16px">RSI6=31·RSI12=45.7</div><div><span class="tag-oversold">偏弱</span></div><div style="font-size:11px;color:#555;margin-top:4px">接近超卖</div></div>
-    <div class="tech-item"><div class="name">CCI(20)</div><div class="val" style="font-size:16px">-104.7</div><div><span class="tag-oversold">超卖</span></div><div style="font-size:11px;color:#555;margin-top:4px">破-100进入超卖区</div></div>
-  </div>
-  <p style="font-size:12px;color:#888;margin-top:10px">
-    <strong>综合判断：</strong>从6/30高点89.4跌至8/3低点61.3，回撤31%——7/31-8/3连续三日放量下跌（单日1.5亿股）后，8/4放量1亿股反弹+4.98%。KDJ低位粘合+CCI超卖+BOLL下轨附近=短期超跌；但MACD死叉+均线空头排列（MA5 63.99 < MA20 71.74 < MA60 75.7）说明中期趋势仍弱。关键位：支撑61-62（前低），压力71.7（BOLL中轨/MA20）。放量站上MA20才确认反转，否则视为超跌反弹。
-  </p>
+<h2>利润表趋势 <span class="new-badge">NEW</span></h2>
+<span class="small">单季度 | RMB亿 | 环比+同比双维度。2026Q1为最新实绩。</span>
+<table>
+<tr><th>指标</th><th>2026Q1<span class="new-badge" style="font-size:9px;">新!</span></th><th>2025Q4</th><th>2025Q3</th><th>2025Q2</th></tr>
+<tr>
+<td style="font-weight:600;">营业收入</td>
+<td><strong>176.2</strong><br><span class="small">环比<span class="dn2">-1.1%</span> · 同比<span class="up">+8.1%</span></span></td>
+<td>178.1<br><span class="small">环比<span class="up">+3.8%</span></span></td>
+<td>171.6<br><span class="small">环比<span class="up">+6.9%</span></span></td>
+<td>160.5<br><span class="small">环比<span class="dn2">-1.5%</span></span></td>
+</tr>
+<tr>
+<td style="font-weight:600;">毛利率</td>
+<td><strong>21.5%</strong></td>
+<td>17.4%</td>
+<td>25.5%</td>
+<td>20.8%</td>
+</tr>
+<tr>
+<td style="font-weight:600;">归母净利</td>
+<td><strong>13.6</strong><br><span class="small">净利率7.7%</span></td>
+<td>12.2<br><span class="small">净利率6.9%</span></td>
+<td>15.2</td>
+<td>9.5</td>
+</tr>
+<tr>
+<td style="font-weight:600;">折旧摊销(估)</td>
+<td><strong style="color:#ff8f00;">~47</strong><br><span class="small">同比+30%</span></td>
+<td>~40</td>
+<td>~35</td>
+<td>~33</td>
+</tr>
+</table>
+<div class="sig sig-warn">
+<strong>核心趋势：</strong>营收逐季攀升，Q2指引环比+14~16%创纪录。毛利率U型回升（Q4 17.4%→Q1 21.5%）。<br>
+<span style="color:#ff8f00;"><strong>折旧是最大利润杀手：</strong></span>单季折旧从32亿→47亿(+47%)。但经营CF远超净利（3.8x），折旧只是会计处理不涉及现金流出。
+</div>
 </div>
 
-<!-- ===== 资金面 ===== -->
+<!-- ═══ ROE ═══ -->
 <div class="card">
-  <h2>资金面 &amp; 筹码</h2>
-  <div class="kv">
-    <div class="item"><div class="lbl">港股通持仓</div><div class="val" style="font-size:16px">~14%</div><div class="sub">南向资金重仓</div></div>
-    <div class="item"><div class="lbl">A/H溢价率</div><div class="val up" style="font-size:16px">~150%+</div><div class="sub">A股(688981)远高于H股</div></div>
-    <div class="item"><div class="lbl">换手率(8/4)</div><div class="val" style="font-size:16px">1.68%</div><div class="sub">放量反弹</div></div>
-    <div class="item"><div class="lbl">总股本</div><div class="val" style="font-size:16px">85.6亿股</div><div class="sub">A+H两地上市</div></div>
-  </div>
-  <div class="sig sig-warn"><strong>A/H折价是核心矛盾：</strong>中芯A股长期较H股溢价150%+（南向资金无法自由双向套利），H股是"便宜"的那一边。但港股定价更理性——PE 102x在港股几乎无法被机构接受，这也是H股跑输A股的原因。长期看，H股相对A股的折价收敛（AH溢价收窄）是潜在催化剂，但短期难有单边催化。</div>
+<h2>ROE杜邦拆解 & 同业对比</h2>
+<div class="assume">TTM收入673亿。总资产3,805亿/净资产2,478亿（2026Q1）。</div>
+<table>
+<tr><th>指标</th><th>中芯<span style="color:#c62828;">(H)</span></th><th>台积电</th><th>联电</th><th>格芯</th></tr>
+<tr><td style="font-weight:600;">ROE</td><td style="color:#c62828;font-weight:700;">3.4%</td><td>26.6%</td><td>14.2%</td><td>7.8%</td></tr>
+<tr><td style="font-weight:600;">净利率</td><td>7.5%</td><td>38.8%</td><td>22.1%</td><td>10.5%</td></tr>
+<tr><td style="font-weight:600;">资产周转率</td><td>0.19x</td><td>0.50x</td><td>0.35x</td><td>0.33x</td></tr>
+<tr><td style="font-weight:600;">权益乘数</td><td>1.47x</td><td>1.37x</td><td>1.83x</td><td>1.60x</td></tr>
+<tr><td style="font-weight:600;">PE(TTM)</td><td style="color:#c62828;font-weight:700;">102x</td><td>18x</td><td>11x</td><td>15x</td></tr>
+<tr><td style="font-weight:600;">PB</td><td>3.1x</td><td>6.8x</td><td>1.5x</td><td>1.2x</td></tr>
+</table>
+<div class="sig sig-bear">
+<strong>ROE核心发现：</strong>PE 102x是台积电的5.7倍，但ROE仅1/8。根源——净利率极薄(7.5% vs 38.8%)+资产周转率极低(0.19x vs 0.50x)。市场在买"战略稀缺性"而非"盈利质量"。
+</div>
 </div>
 
-<!-- ===== 风险 ===== -->
+<!-- ═══ 现金流 ═══ -->
 <div class="card">
-  <h2>风险提示</h2>
-  <ol>
-    <li><strong>折旧压力（最确定的利空）：</strong>2026年折旧同比+30%，将直接侵蚀毛利率。管理层靠高利用率+提价对冲，但若AI需求不及预期，毛利率可能跌破20%</li>
-    <li><strong>地缘政治/设备管制：</strong>美国对先进制程设备出口管制持续升级，N3量产依赖的EUV光刻机无法获得——N3良率/成本存在根本性瓶颈</li>
-    <li><strong>先进制程(N3)不确定：</strong>中银国际明确警示"N3良率进展将制约利润率扩张"。若N3迟迟无法商业化，估值锚(国产替代叙事)将松动</li>
-    <li><strong>高资本开支低回报：</strong>80亿美元/年资本开支占营收80%+，若产能利用率和ASP无法持续上行，ROIC将持续低迷（当前ROE仅个位数）</li>
-    <li><strong>估值不便宜：</strong>PE(TTM) 102.7x，PB 3.3x处历史中位；机构分歧巨大（高盛135 vs 摩根大通67）。股价已回撤31%，但尚未到"深度低估"</li>
-    <li><strong>消费电子依赖：</strong>消费电子仍占收入46%，存储缺货挤压中低端订单，若终端需求回落（摩根大通担忧），增长承压</li>
-    <li><strong>技术面弱势：</strong>MACD死叉+均线空头排列，短期趋势未反转</li>
-  </ol>
+<h2>现金流独立分析</h2>
+<span class="small">单季度 | RMB亿</span>
+<table>
+<tr><th>指标</th><th>2026Q1</th><th>2025Q4</th><th>2025Q3</th><th>2025Q2</th></tr>
+<tr><td>经营CF</td><td><strong>51.3</strong></td><td>77.9</td><td>63.9</td><td>29.5</td></tr>
+<tr><td>Capex</td><td style="color:#00c853;"><strong>-117.5</strong></td><td style="color:#00c853;">-87.9</td><td style="color:#00c853;">-140.2</td><td style="color:#00c853;">-101.8</td></tr>
+<tr><td>自由现金流</td><td style="color:#00c853;"><strong>-66.2</strong></td><td style="color:#00c853;">-10.0</td><td style="color:#00c853;">-76.3</td><td style="color:#00c853;">-72.3</td></tr>
+<tr><td>FCF/营收</td><td style="color:#00c853;">-37.6%</td><td style="color:#00c853;">-5.6%</td><td style="color:#00c853;">-44.5%</td><td style="color:#00c853;">-45.0%</td></tr>
+<tr><td>净利含金量</td><td>3.8x</td><td>6.4x</td><td>4.2x</td><td>3.1x</td></tr>
+</table>
+<div class="sig sig-bear">
+<strong>双重面孔：</strong>✅ 经营CF健康（Q1 51亿=3.8×净利）。❌ FCF-221亿/年，Capex是经营CF的2.1倍。<br>
+<span style="color:#ff8f00;">转折点预测：</span>2027年Capex若回落+折旧增速放缓→FCF有望首次转正，这是估值修复的核心叙事。
+</div>
+</div>
+
+<!-- ═══ 资产负债表 ═══ -->
+<div class="card">
+<h2>资产负债表</h2>
+<span class="small">RMB亿 | 2026Q1最新</span>
+<table>
+<tr><th>指标</th><th>2026Q1</th><th>2025Q4</th><th>环比</th><th>评判</th></tr>
+<tr><td>总资产</td><td>3,805</td><td>3,677</td><td class="up">+3.5%</td><td>—</td></tr>
+<tr><td>货币资金</td><td>556</td><td>436</td><td class="up">+27.4%</td><td>✅ 定增到账</td></tr>
+<tr><td>应收账款</td><td>61</td><td>62</td><td class="dn2">-0.5%</td><td>✅ 回款优秀</td></tr>
+<tr><td>总负债</td><td>1,328</td><td>1,214</td><td class="up">+9.4%</td><td>⚠ 扩张期正常</td></tr>
+<tr><td>净资产</td><td>2,478</td><td>2,464</td><td class="up">+0.6%</td><td>✅</td></tr>
+<tr><td>资产负债率</td><td>34.9%</td><td>33.0%</td><td class="up">+1.9pct</td><td>✅ 安全区间</td></tr>
+</table>
+</div>
+
+<!-- ═══ 分业务线 ═══ -->
+<div class="card">
+<h2>分业务线与护城河</h2>
+<span class="small">单一业务——晶圆代工。按应用/尺寸/地区维度分析。</span>
+<div class="assume">月产能108万片(折8")，Q1利用率93.1%。晶圆ASP环比+2.5%。12寸占比76%/8寸24%。</div>
+<table>
+<tr><th>维度</th><th>分类</th><th>Q1占比</th><th>趋势</th></tr>
+<tr><td rowspan="5">下游应用</td><td>消费电子</td><td>46%</td><td>IoT备货拉动</td></tr>
+<tr><td>智能手机</td><td>19%</td><td class="dn2">环比-10%(AI挤占产能)</td></tr>
+<tr><td>工业与汽车</td><td>14%</td><td class="up">环比+18%</td></tr>
+<tr><td>电脑与平板</td><td>14%</td><td class="up">环比+18%</td></tr>
+<tr><td>互联可穿戴</td><td>7%</td><td>稳定</td></tr>
+<tr><td rowspan="3">地区</td><td>中国</td><td>89%</td><td>国产替代主战场</td></tr>
+<tr><td>美国</td><td>9%</td><td class="dn2">持续下降</td></tr>
+<tr><td>欧亚</td><td>2%</td><td>规模有限</td></tr>
+</table>
+<table style="margin-top:14px;">
+<tr><th>护城河</th><th>评级</th><th>验证</th></tr>
+<tr><td>技术壁垒</td><td>★★★★☆</td><td>大陆唯一14nm量产+N+2(等效7nm)，EUV受限是天花板</td></tr>
+<tr><td>规模壁垒</td><td>★★★★★</td><td>月产能108万片，3座8"+7座12"，国内无可匹敌</td></tr>
+<tr><td>客户壁垒</td><td>★★★★☆</td><td>国产替代首选代工厂，长单至2027年，涨价已启动</td></tr>
+<tr><td>AI红利</td><td>★★★★☆</td><td>电源管理/存储/模拟BCD供不应求，ASP连续两季上涨</td></tr>
+</table>
+</div>
+
+<!-- ═══ 估值 ═══ -->
+<div class="card">
+<h2>估值分析</h2>
+<div class="assume"><strong>⚠ 单一业务公司，不适用SOTP。</strong>采用 PE主锚 + PB辅助 + DCF交叉验证。当前HKD 63.25。</div>
+
+<h3>一、PE — 历史 & 同业</h3>
+<table>
+<tr><th>PE视角</th><th>数值</th><th>解读</th></tr>
+<tr><td>PE(TTM) 中芯H</td><td style="color:#c62828;font-weight:700;">102x</td><td>历史偏高区间</td></tr>
+<tr><td>Forward PE 2026E</td><td style="color:#c62828;">74x</td><td>EPS 0.86 HKD</td></tr>
+<tr><td>Forward PE 2027E</td><td style="color:#c62828;">61x</td><td>EPS 1.04 HKD</td></tr>
+<tr><td>Forward PE 2028E</td><td style="color:#c62828;">51x</td><td>EPS 1.25 HKD</td></tr>
+<tr><td>台积电PE</td><td>18x</td><td>全球龙头参考锚</td></tr>
+<tr><td>联电PE</td><td>11x</td><td>成熟制程参考</td></tr>
+</table>
+
+<h3>二、PB — 重资产核心参考</h3>
+<table>
+<tr><th>公司</th><th>PB</th><th>ROE</th><th>ROE/PB</th></tr>
+<tr><td>台积电</td><td>6.8x</td><td>26.6%</td><td>3.9%</td></tr>
+<tr><td>联电</td><td>1.5x</td><td>14.2%</td><td>9.5%</td></tr>
+<tr style="font-weight:600;"><td>中芯(H)</td><td style="color:#c62828;">3.1x</td><td style="color:#c62828;">3.4%</td><td style="color:#c62828;">1.1%</td></tr>
+</table>
+<p class="small">PB 3.1x高于联电(1.5x)，但ROE仅3.4%。ROE/PB=1.1%意义：每1元净资产仅产1.1%回报。<br>若PB回归联电水平(1.5x)，对应股价仅31 HKD。</p>
+
+<h3>三、PEG & DCF</h3>
+<table>
+<tr><th>方法</th><th>数值</th><th>判断</th></tr>
+<tr><td>EPS CAGR (26→28E)</td><td>21%</td><td>高成长</td></tr>
+<tr><td><strong>PEG</strong></td><td style="color:#c62828;font-weight:700;"><strong>3.52</strong></td><td>≫ 1.3 警戒线</td></tr>
+</table>
+<table>
+<tr><th>DCF</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
+<tr><td>WACC/终端g</td><td>12%/2%</td><td>10%/3%</td><td>9%/3.5%</td></tr>
+<tr><td>每股HKD</td><td style="color:#00c853;">33</td><td>58</td><td style="color:#c62828;">88</td></tr>
+</table>
+
+<h3>估值综合</h3>
+<div class="scenario-grid">
+  <div class="scen scen-bear"><div class="slbl">悲观</div><div class="sval">33-37 HKD</div><div class="schg dn2">-42%</div></div>
+  <div class="scen scen-base"><div class="slbl">中性</div><div class="sval">45-58 HKD</div><div class="schg" style="color:#ff8f00;">-10%</div></div>
+  <div class="scen scen-bull"><div class="slbl">乐观</div><div class="sval">65-88 HKD</div><div class="schg up">+12%</div></div>
+</div>
+<div class="sig sig-warn" style="margin-top:14px;">
+<strong>估值结论：</strong>三部法加权中枢约45-58 HKD。当前63.25处于上沿偏贵区间。<br>
+核心矛盾：<strong>战略价值无可替代，但当前估值已充分price in 3年成长预期，安全边际不足。</strong>
+</div>
+</div>
+
+<!-- ═══ 技术面 ═══ -->
+<div class="card">
+<h2>技术面 <span class="new-badge">NEW</span></h2>
+<span class="small">基于A股K线近似分析。AH股同权，技术趋势高度相关。</span>
+<div class="tech-grid" style="margin-top:12px;">
+  <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">K10.2·D17.4·J-4.3</div><span class="tag-oversold">极端超卖</span></div>
+  <div class="tech-item"><div class="name">MACD</div><div class="val">DIF -3.91·DEA 0.12</div><span style="color:#ff8f00;">空头收窄</span></div>
+  <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">上174·中148·下121</div><span class="tag-oversold">下轨5%</span></div>
+  <div class="tech-item"><div class="name">RSI</div><div class="val">RSI(6)23.6·(12)35.3</div><span class="tag-oversold">RSI6&lt;30</span></div>
+  <div class="tech-item"><div class="name">CCI(14)</div><div class="val">CCI(14) -137</div><span class="tag-oversold">超卖</span></div>
+</div>
+<div class="sig sig-bear" style="margin-top:12px;">
+<strong>四指标共振超卖：</strong>从52周高93.5回撤32%。KDJ J=-4.3极端超卖 + RSI6=23.6 + BOLL下轨 + CCI=-137。<br>
+等待MACD金叉+放量阳线确认。港股定价更理性，超卖后反弹概率高于A股。
+</div>
+</div>
+
+<!-- ═══ 资金面 ═══ -->
+<div class="card">
+<h2>资金面与筹码</h2>
+<table>
+<tr><th>指标</th><th>数值</th><th>判断</th></tr>
+<tr><td>分析师覆盖</td><td>11家（华安/光大/中邮/银河/西部/华泰）</td><td>一致看多</td></tr>
+<tr><td>券商目标价</td><td>均值约80 HKD</td><td class="up">较现价+26%</td></tr>
+<tr><td>A股融资余额</td><td>108.5亿，近2周-9.8%</td><td class="dn2">杠杆撤离</td></tr>
+<tr><td>A股主力资金</td><td>近20日净流出31.7亿</td><td class="dn2">短期偏空</td></tr>
+<tr><td>最新重大事件</td><td>406亿定增完成，收中芯北方49%</td><td>增强控制权</td></tr>
+</table>
+</div>
+
+<!-- ═══ 跟踪指标 ═══ -->
+<div class="card">
+<h2>关键跟踪指标</h2>
+<table>
+<tr><th>指标</th><th>当前</th><th>信号</th></tr>
+<tr><td>产能利用率</td><td>93.1%</td><td>&gt;90%=景气</td></tr>
+<tr><td>季度毛利率</td><td>20.1%→Q2指引20-22%</td><td>触及上限=涨价</td></tr>
+<tr><td>晶圆ASP</td><td>环比+2.5%</td><td>Q2/Q3连涨=强周期</td></tr>
+<tr><td>折旧/营收</td><td>~27%</td><td>2027放缓=弹性</td></tr>
+<tr><td style="color:#ff8f00;">2026中报</td><td style="color:#ff8f00;">8月28日</td><td>⭐ 核心催化剂</td></tr>
+</table>
+</div>
+
+<!-- ═══ 风险 ═══ -->
+<div class="card">
+<h2>风险提示</h2>
+<ol>
+<li><strong>中美制裁升级</strong>——设备限制延伸至成熟制程。触发：美商务部新规。<span class="up">高</span></li>
+<li><strong>估值回归</strong>——PE从102x→40-60x。触发：国产替代叙事弱化。<span class="up">高</span></li>
+<li><strong>折旧潮压制利润</strong>——2026年+30%。触发：Q2毛利率&lt;20%。<span style="color:#ff8f00;">中</span></li>
+<li><strong>产能过剩</strong>——AI高峰后成熟制程供过于求。触发：利用率&lt;85%。<span style="color:#ff8f00;">中</span></li>
+<li><strong>AH联动下跌</strong>——A股退潮拖累H股。<span style="color:#ff8f00;">中</span></li>
+<li><strong>FCF黑洞</strong>——持续依赖定增融资。<span style="color:#ff8f00;">中</span></li>
+</ol>
 </div>
 
 <div class="footer">
-  <p style="margin-bottom:6px">诊断时间：2026-08-04 · 数据来源：腾讯自选股/westock-data + 富途/AASTOCKS/证券时报/券商研报 · Brad 股票分析框架</p>
-  <p style="color:#c62828;font-weight:600;margin-top:6px">⚠ 以上分析仅供参考，不构成任何投资建议。中芯国际为高波动+高折旧+地缘敏感标的，估值方法(PE/PB)均有失真风险。投资决策请结合自身判断，风险自担。</p>
+诊断时间：2026-07-31 18:09 | Brad 12-Step V2.0<br>
+数据源：腾讯财经(HK行情)、同花顺一致预期、东财研报/融资融券、新浪财报、mootdx F10+K线<br>
+<strong style="color:#c62828;">⚠ 以上分析仅供参考，不构成个人投资建议。</strong>港股投资涉及汇率、流动性、地缘政治等多重风险。
 </div>
+
 </div></body></html>
