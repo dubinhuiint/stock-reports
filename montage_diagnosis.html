@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>澜起科技 (6809.HK) 深度诊断报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+.header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.85}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
+.price{font-size:52px;font-weight:800}
+.chg{font-size:20px;padding:4px 12px;border-radius:8px}
+.chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+.chg.up{background:rgba(198,40,40,.2);color:#c62828}
+.card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h2{font-size:18px;color:#0d47a1;border-bottom:2px solid #e3f2fd;padding-bottom:10px;margin-bottom:16px}
+.card h3{font-size:15px;color:#1565c0;margin:20px 0 8px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
+.kv .lbl{font-size:11px;color:#888}
+.kv .val{font-size:20px;font-weight:700;color:#0d47a1}
+.kv .sub{font-size:11px;color:#555;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#e3f2fd;color:#0d47a1;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+tr:hover td{background:#f8f9fc}
+.up{color:#c62828}.dn2{color:#00c853}
+.sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
+.sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
+.tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
+.tech-item .name{font-size:12px;color:#888}
+.tech-item .val{font-size:16px;font-weight:700;color:#0d47a1}
+.tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-neutral{border:1px solid #ff8f00;color:#ff8f00;padding:1px 8px;border-radius:10px;display:inline-block}
+.assume{background:#fff8e1;border-left:3px solid #ffc107;padding:8px 12px;margin:12px 0;font-size:12px;border-radius:0 6px 6px 0}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.scen{border-radius:8px;padding:14px;text-align:center}
+.scen-bear{background:#e8f5e9}.scen-base{background:#e3f2fd}.scen-bull{background:#fce4ec}
+.scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}.scen .schg{font-size:12px}
+.footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
+ol li{padding:5px 0;font-size:14px}
+.small{font-size:11px;color:#999;display:block}
+.new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>澜起科技 <span style="font-weight:300">6809.HK</span></h1>
+  <div class="meta">港股深度诊断报告 | 2026-08-07 | 腾讯财经 + 东财 + ETNet一致预期 + 公司季报</div>
+  <div class="price-row"><span class="price">HKD 269.6</span><span class="chg up">+3.3%</span></div>
+  <div class="meta" style="margin-top:8px">
+    总市值 3295亿HKD | PE(TTM) 131.66x | PB 14.7x | IPO价 106.89 | IPO至今 <span style="color:#ffb74d;">+152.2%</span>
+  </div>
+</div>
+
+<div class="card" style="background:linear-gradient(90deg,#e3f2fd,#f3e5f5);border-left:4px solid #7b1fa2;">
+<strong>定位：全球内存接口芯片龙头（DDR5 RCD全球份额第一梯队），AI存储超级周期核心受益者。</strong>2026年2月A+H两地上市，H股流通盘极小（仅6.2%），波动剧烈——上市6个月从543高点回撤46%，当前处于估值消化期。
+</div>
+
+<!-- ═══ 综合评分 ═══ -->
+<div class="card">
+<h2>综合诊断评分</h2>
+<div style="text-align:center;margin:8px 0;font-size:60px;font-weight:800;color:#1565c0;">62<span style="font-size:24px;color:#888;">/100</span></div>
+<table>
+<tr><th>维度</th><th style="width:55px">评分</th><th>核心判断</th></tr>
+<tr><td>基本面</td><td style="color:#1565c0;font-weight:700;">72</td><td>毛利率69.8%(+9.3pct)、净利率57%、经营CF/净利74%——盈利质量极高；但扣非增速仅20%，依赖投资收益</td></tr>
+<tr><td>估值</td><td style="color:#c62828;font-weight:700;">45</td><td>PE(TTM) 132x，Fwd PE 2026 80x / 2027 48x，PEG 1.45，PB 14.7x——均处高位</td></tr>
+<tr><td>成长性</td><td style="color:#00c853;font-weight:700;">88</td><td>2025-2028净利CAGR 54.7%，DDR5超级周期+新品四件套(+94%)放量</td></tr>
+<tr><td>技术面</td><td style="color:#ff8f00;font-weight:700;">55</td><td>MACD绿柱归零接近金叉、KDJ低位上翘，但MA20/MA60仍空头排列，中期趋势未反转</td></tr>
+<tr><td>资金情绪</td><td style="color:#1565c0;">65</td><td>6家券商一致买入（平均评级1.83），南向持仓18%；但H股流动性弱、波动极大</td></tr>
+<tr><td>风险</td><td style="color:#ff8f00;font-weight:700;">55</td><td>DDR5 RCD集中度高、Rambus竞争、汇兑损失、8月可能面临基石解禁</td></tr>
+<tr><td>筹码/事件</td><td style="color:#ff8f00;font-weight:700;">50</td><td>H股2026年2月上市，8月进入解禁窗口期；股东户数12.4万</td></tr>
+<tr><td>机构共识</td><td style="color:#00c853;font-weight:700;">80</td><td>高盛583/大摩432/瑞银380/花旗305，目标价均值~445 HKD（+65%空间）</td></tr>
+</table>
+<div style="background:#e0e0e0;height:20px;border-radius:10px;overflow:hidden;margin:8px 0;">
+  <div style="height:100%;width:62%;background:linear-gradient(90deg,#c62828,#ff8f00,#1565c0,#00c853);border-radius:10px;"></div>
+</div>
+<div class="sig sig-warn">
+<strong>定位：高成长AI存储芯片，好公司但需要好价格。</strong>基本面（72）+估值（45）=117 < 120 触发硬约束，总分上限70。<br>
+DDR5超级周期+新品放量的成长逻辑扎实（CAGR 55%），但PE 132x已透支较多预期。当前62分——中性偏观望，等待估值消化或右侧信号。
+</div>
+</div>
+
+<!-- ═══ 行情快照 ═══ -->
+<div class="card">
+<h2>行情快照（2026-08-07 盘中）</h2>
+<div class="kv">
+  <div class="item"><div class="lbl">最新价</div><div class="val" style="color:#c62828;">HKD 269.6</div><div class="sub">+3.3%</div></div>
+  <div class="item"><div class="lbl">IPO发行价</div><div class="val" style="font-size:16px;">106.89</div><div class="sub">2026-02-09上市</div></div>
+  <div class="item"><div class="lbl">IPO至今</div><div class="val" style="font-size:16px;color:#c62828;">+152.2%</div></div>
+  <div class="item"><div class="lbl">52周范围</div><div class="val" style="font-size:16px;">154.0 - 501.0</div><div class="sub">盘中高点543 · 回撤<span class="dn2">-46.2%</span></div></div>
+  <div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px;">3295亿HKD</div><div class="sub">H股仅204亿(6.2%)</div></div>
+  <div class="item"><div class="lbl">PE(TTM) / PB</div><div class="val" style="font-size:16px;">131.66x / 14.7x</div></div>
+  <div class="item"><div class="lbl">H股流通</div><div class="val" style="font-size:16px;">7,577万股</div><div class="sub">日均成交~2亿HKD</div></div>
+  <div class="item"><div class="lbl">A股对照</div><div class="val" style="font-size:16px;">688008</div><div class="sub">AH比价需关注</div></div>
+</div>
+</div>
+
+<!-- ═══ 利润表 ═══ -->
+<div class="card">
+<h2>利润表趋势 <span class="new-badge">NEW</span></h2>
+<span class="small">单季度 | RMB亿元 | 2026Q1为最新实绩（季报数据）。</span>
+<table>
+<tr><th>指标</th><th>2026Q1<span class="new-badge" style="font-size:9px;">新!</span></th><th>2025FY</th><th>2024FY</th><th>趋势</th></tr>
+<tr><td style="font-weight:600;">营业收入</td>
+<td><strong>14.61</strong><br><span class="small">同比<span class="up">+19.5%</span></span></td>
+<td>54.56<br><span class="small">同比<span class="up">+49.9%</span></span></td>
+<td>36.39</td>
+<td class="up">持续高增</td></tr>
+<tr><td style="font-weight:600;">毛利率</td>
+<td><strong>69.8%</strong><br><span class="small">同比+9.3pct</span></td>
+<td>~64%</td>
+<td>~56%</td>
+<td class="up">大幅改善</td></tr>
+<tr><td style="font-weight:600;">归母净利</td>
+<td><strong>8.47</strong><br><span class="small">同比<span class="up">+61.3%</span></span></td>
+<td>22.36<br><span class="small">同比<span class="up">+58.4%</span></span></td>
+<td>14.11</td>
+<td class="up">高速增长</td></tr>
+<tr><td style="font-weight:600;">扣非净利</td>
+<td><strong>6.04</strong><br><span class="small">同比<span class="up">+20.1%</span></span></td>
+<td>—</td>
+<td>—</td>
+<td class="up">稳健</td></tr>
+<tr><td style="font-weight:600;">经营CF</td>
+<td>6.27</td><td>—</td><td>—</td><td>净利含金量74%</td></tr>
+</table>
+<div class="sig sig-warn">
+<strong>关键提示：</strong>① Q1归母+61%含2.33亿投资处置收益（非经常），扣非仅+20%；② 股份支付费用1.0亿拖累（剔除后净利9.42亿，+56.7%）；③ 汇兑损失0.83亿（H股募资外币敞口）。<br>
+<strong>真实经营趋势：</strong>毛利率从56%→70%持续攀升，是"产品迭代+新品放量"驱动的内生改善，质量比数字更好。
+</div>
+</div>
+
+<!-- ═══ 分业务线 ═══ -->
+<div class="card">
+<h2>分业务线与成长逻辑</h2>
+<span class="small">2026Q1产品结构。</span>
+<table>
+<tr><th>产品线</th><th>Q1收入(亿)</th><th>占比</th><th>同比</th><th>判断</th></tr>
+<tr><td style="font-weight:600;">DDR5 RCD（内存接口）</td><td>~11.5</td><td>78%</td><td>稳增</td><td>全球第一梯队，3/4子代占比提升推动ASP上行</td></tr>
+<tr><td style="font-weight:600;">新品四件套</td><td>2.69</td><td>19%</td><td class="up">+93.8%</td><td>MRCD/MDB、PCIe Retimer、CKD、CXL MXC——第二曲线确立</td></tr>
+<tr><td>津逮服务器</td><td>0.42</td><td>3%</td><td class="dn2">-48.2%</td><td>持续萎缩，可忽略</td></tr>
+</table>
+
+<h3>新品2028年收入展望（大摩预测）</h3>
+<table>
+<tr><th>新品</th><th>2028E收入</th><th>逻辑</th></tr>
+<tr><td>MRCD/MDB</td><td>~22亿元</td><td>AI服务器内存带宽升级刚需</td></tr>
+<tr><td>PCIe Retimer</td><td>~30亿元</td><td>PCIe 5.0/6.0普及+国产替代</td></tr>
+<tr><td>PCIe Switch</td><td>~33亿元</td><td>算力互连新蓝海</td></tr>
+</table>
+
+<h3>护城河评估</h3>
+<table>
+<tr><th>维度</th><th>评级</th><th>验证</th></tr>
+<tr><td>技术壁垒</td><td>★★★★★</td><td>DDR5 RCD全球双寡头之一（与Rambus），JEDEC标准深度参与者</td></tr>
+<tr><td>客户壁垒</td><td>★★★★★</td><td>全球前十大内存模组厂均为客户，验证周期长、切换成本高</td></tr>
+<tr><td>AI红利</td><td>★★★★☆</td><td>AI服务器内存带宽需求爆发，DDR5渗透率+子代迭代双轮</td></tr>
+<tr><td>竞争风险</td><td>★★★☆☆</td><td>Rambus同赛道竞争，CXL/Retimer领域面临Astera Labs等</td></tr>
+</table>
+</div>
+
+<!-- ═══ 估值 ═══ -->
+<div class="card">
+<h2>估值分析（PE主锚 + PB辅助 + DCF）</h2>
+<div class="assume"><strong>⚠ 单一业务公司（互连芯片），不适用SOTP。</strong>采用 PE（同业对比+Forward）主锚 + DCF交叉验证。</div>
+
+<h3>一、PE分析</h3>
+<table>
+<tr><th>PE视角</th><th>数值</th><th>解读</th></tr>
+<tr><td>PE(TTM)</td><td style="color:#c62828;font-weight:700;">132x</td><td>历史高位（上市以来）</td></tr>
+<tr><td>Forward PE 2026E</td><td style="color:#c62828;">79.5x</td><td>EPS 3.39 HKD</td></tr>
+<tr><td>Forward PE 2027E</td><td style="color:#c62828;">47.9x</td><td>EPS 5.63 HKD</td></tr>
+<tr><td>Forward PE 2028E</td><td>33.7x</td><td>EPS 8.0 HKD</td></tr>
+<tr><td>Rambus（对标）</td><td>~30x</td><td>美国内存接口同行</td></tr>
+<tr><td>Astera Labs（对标）</td><td>~50x</td><td>AI连接芯片高估值参照</td></tr>
+</table>
+
+<h3>二、PEG</h3>
+<table>
+<tr><th>指标</th><th>数值</th><th>判断</th></tr>
+<tr><td>净利CAGR (2025→2028E)</td><td>54.7%</td><td class="up">超高增速</td></tr>
+<tr><td>Forward PE (2026E)</td><td>79.5x</td><td>—</td></tr>
+<tr><td><strong>PEG</strong></td><td style="color:#ff8f00;font-weight:700;"><strong>1.45</strong></td><td>偏贵但接近合理区间</td></tr>
+</table>
+
+<h3>三、DCF交叉验证</h3>
+<table>
+<tr><th>参数</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
+<tr><td>前5年净利CAGR</td><td>30%</td><td>45%</td><td>55%</td></tr>
+<tr><td>FCF转换率</td><td>60%</td><td>70%</td><td>80%</td></tr>
+<tr><td>WACC / 终端g</td><td>12% / 2%</td><td>10% / 3%</td><td>9% / 3.5%</td></tr>
+<tr><td>每股HKD</td><td style="color:#00c853;">90</td><td>180</td><td style="color:#c62828;">300</td></tr>
+</table>
+
+<h3>估值综合</h3>
+<div class="scenario-grid">
+  <div class="scen scen-bear"><div class="slbl">悲观</div><div class="sval">90-120 HKD</div><div class="schg dn2">-56%</div></div>
+  <div class="scen scen-base"><div class="slbl">中性</div><div class="sval">180-230 HKD</div><div class="schg" style="color:#ff8f00;">-18%</div></div>
+  <div class="scen scen-bull"><div class="slbl">乐观</div><div class="sval">300-450 HKD</div><div class="schg up">+30%</div></div>
+</div>
+<div class="sig sig-warn" style="margin-top:14px;">
+<strong>估值结论：</strong>三部法加权中枢约180-250 HKD。当前269.6处于中枢上沿。<br>
+券商目标价均值445 HKD（高盛583）隐含+65%空间，但建立在2028年净利83亿的高预期上。<br>
+核心矛盾：<strong>成长逻辑全球顶级（CAGR 55%），但PE 132x意味着"完美定价"，容错空间小。</strong>
+</div>
+</div>
+
+<!-- ═══ 新业务市场潜力 ═══ -->
+<div class="card">
+<h2>新业务市场潜力：三曲线的乘数效应 <span class="new-badge">NEW</span></h2>
+<span class="small">TAM测算：内存互连(TrendForce/伯恩斯坦) + PCIe(东海) + CXL(CAGR 170%)。</span>
+<table>
+<tr><th>赛道</th><th>2026E TAM</th><th>2030E TAM</th><th>CAGR</th><th>核心驱动</th><th>澜起卡位</th></tr>
+<tr><td style="font-weight:600;">内存互连芯片</td><td>18.5亿美元</td><td>200亿美元</td><td class="up">25.9%</td><td>MRDIMM价值量7→70-80美元(10x)，渗透率3%→25%</td><td>36.8%第一</td></tr>
+<tr><td style="font-weight:600;">PCIe互连芯片</td><td>39亿美元</td><td>78亿美元</td><td class="up">20.1%</td><td>8卡AI服务器8-16颗Retimer+2-4颗Switch</td><td>Retimer 10.9%第二</td></tr>
+<tr><td style="font-weight:600;">CXL互连芯片</td><td>~1亿美元</td><td>~60亿美元</td><td class="up">170.2%</td><td>内存池化，单机16-32颗MXC+2-4颗Switch</td><td>MXC 92%绝对第一</td></tr>
+</table>
+
+<div class="sig sig-warn">
+<strong>三条曲线时间错峰接力：</strong><br>
+① <strong>内存互连（基本盘）</strong>：MRDIMM单模组价值量提升10倍——1颗MRCD+10颗MDB架构，2028年澜起MRDIMM收入约33亿<br>
+② <strong>PCIe（第二曲线）</strong>：AI服务器标配，澜起2025年已推PCIe 6.x/CXL 3.x产品<br>
+③ <strong>CXL（弹性最大）</strong>：CAGR 170%，澜起全球首发CXL 1.1→3.1三代，已批量供货，2028年MXC收入约35亿
+</div>
+</div>
+
+<!-- ═══ 护城河对比 ═══ -->
+<div class="card">
+<h2>护城河对比：vs 国际巨头 <span class="new-badge">NEW</span></h2>
+<span class="small">错位竞争格局——你强我弱、我强你优。</span>
+<table>
+<tr><th>赛道</th><th>澜起</th><th>主要对手</th><th>护城河差异</th></tr>
+<tr><td style="font-weight:600;">DDR5 RCD/DB</td><td style="color:#c62828;font-weight:700;">36.8%第一</td><td>瑞萨36%、Rambus 20.5%</td><td>澜起全代际量产领先一个子代；Rambus以IP授权为主、芯片规模小；瑞萨内存非核心、迭代慢</td></tr>
+<tr><td style="font-weight:600;">PCIe Retimer</td><td>10.9%第二</td><td class="up">Astera Labs 86%</td><td>Astera深耕北美云厂+捆绑Scorpio Switch；澜起靠自研SerDes IP(32/64GT/s已量产)+国产算力替代抢份额</td></tr>
+<tr><td style="font-weight:600;">CXL MXC</td><td style="color:#c62828;font-weight:700;">92%第一</td><td>Astera（2026H2才量产）</td><td>澜起全球首发CXL 1.1→3.1，M88MX6852已量产领先半年以上，三星/SK海力士CXL模组全搭载</td></tr>
+<tr><td style="font-weight:600;">PCIe Switch</td><td>追赶中</td><td class="up">博通主导、Astera强</td><td>澜起布局较晚，2028年目标33亿收入，尚未形成威胁</td></tr>
+</table>
+
+<div class="sig sig-bull">
+<strong>共同护城河极深（行业属性）：</strong>JEDEC标准认证需18-24个月，通过DRAM厂商、CPU平台、模组厂、CSP四方验证；客户切换周期1-2年；DDR5 RCD用28nm以下先进制程。全球仅3家能量产、CR3&gt;93%——教科书级寡头垄断。<br>
+<strong>对标参照：</strong>Astera Labs（澜起"影子股"）Q1净利+152%，市值已~200亿美元。澜起在更多赛道有第一份额，成长性对标甚至更优。
+</div>
+</div>
+
+<!-- ═══ 自下而上模型 ═══ -->
+<div class="card">
+<h2>自下而上出货量模型（2026-2028E） <span class="new-badge">NEW</span></h2>
+<span class="small">独立建模：出货量×ASP×份额，不采用券商最终结论，仅参考其框架。AI服务器出货量假设 200/260/340万台。</span>
+<table>
+<tr><th>业务线</th><th>测算逻辑</th><th>2026E</th><th>2027E</th><th>2028E</th></tr>
+<tr><td style="font-weight:600;">内存接口(含MRDIMM)</td><td>TAM×份额45%</td><td>60</td><td>75</td><td>95</td></tr>
+<tr><td class="muted">其中MRDIMM</td><td>渗透率3/8/15%×24模组×$75×50%</td><td>4</td><td>14</td><td>33</td></tr>
+<tr><td style="font-weight:600;">PCIe Retimer</td><td>AI每台12-14颗×$9-11×份额15→25%</td><td>5</td><td>8</td><td>15</td></tr>
+<tr><td style="font-weight:600;">CXL MXC</td><td>TAM 0.7/1.9/5.2亿美元×份额92%</td><td>5</td><td>13</td><td>35</td></tr>
+<tr><td style="font-weight:600;">PCIe Switch</td><td>起步阶段</td><td>0</td><td>2</td><td>5</td></tr>
+<tr><td>津逮服务器</td><td>持续萎缩</td><td>2</td><td>2</td><td>2</td></tr>
+<tr style="font-weight:700;background:#f8f9fc;"><td>合计营收(亿RMB)</td><td></td><td>71</td><td>100</td><td>151</td></tr>
+<tr style="font-weight:700;background:#f8f9fc;"><td>归母净利(亿RMB)</td><td>毛利率70→72%，费用率21%</td><td>35-37</td><td>46-51</td><td>62-74</td></tr>
+</table>
+<div class="sig sig-warn">
+<strong>模型结论：</strong>2028年营收可达150亿（3年翻2.8倍），其中<strong>CXL MXC(35亿)+MRDIMM(33亿)</strong>贡献近一半增量——这两块是弹性核心。最大变量是CXL渗透率：若内存池化落地慢于预期，2028年营收将回落至120亿附近。
+</div>
+</div>
+
+<!-- ═══ 三情景目标价 ═══ -->
+<div class="card">
+<h2>三情景目标股价（2028E） <span class="new-badge">NEW</span></h2>
+<span class="small">目标市值=2028E净利×合理PE(自判)；总股本12.22亿股；1RMB≈1.087HKD。当前价HKD 269.6。</span>
+<table>
+<tr><th>情景</th><th>2028E净利</th><th>合理PE(自判)</th><th>目标市值</th><th>每股HKD</th><th>vs现价</th></tr>
+<tr><td>悲观（增长失速）</td><td>45亿</td><td>25x</td><td>1,125亿</td><td style="color:#00c853;font-weight:700;">100</td><td class="dn2">-63%</td></tr>
+<tr><td>中性（成长兑现）</td><td>62亿</td><td>40x</td><td>2,480亿</td><td style="color:#ff8f00;font-weight:700;">221</td><td style="color:#ff8f00;">-18%</td></tr>
+<tr><td>乐观（CXL爆发+份额提升）</td><td>75亿</td><td>50x</td><td>3,750亿</td><td style="color:#c62828;font-weight:700;">334</td><td class="up">+24%</td></tr>
+</table>
+<table>
+<tr><th>2028E净利 \ PE</th><th>25x</th><th>30x</th><th>40x</th><th>50x</th><th>60x</th></tr>
+<tr><td>悲观 45亿</td><td>100</td><td>120</td><td>160</td><td>200</td><td>240</td></tr>
+<tr><td>中性 62亿</td><td>138</td><td>165</td><td style="font-weight:700;">221</td><td>276</td><td>331</td></tr>
+<tr><td>乐观 75亿</td><td>167</td><td>200</td><td>267</td><td style="font-weight:700;">334</td><td>400</td></tr>
+</table>
+<div class="sig sig-bear">
+<strong>关键读数：</strong>当前市值3,031亿RMB，隐含PE(2028E)达49x——已按中性情景打满40x合理上沿。<br>
+<strong>中性情景221 HKD仍低于现价269.6</strong>，安全边际为负；乐观情景334 HKD才+24%。<br>
+<strong>风险收益比不佳：</strong>向下悲观情景100-160 HKD（-40%~-63%）的敞口，明显大于向上乐观情景的+24%。
+</div>
+</div>
+
+<!-- ═══ 技术面 ═══ -->
+<div class="card">
+<h2>技术面 <span class="new-badge">NEW</span></h2>
+<span class="small">基于港股K线（2026-02-09上市以来120个交易日）。</span>
+<div class="tech-grid" style="margin-top:12px;">
+  <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">K28.0·D24.5·J34.9</div><span class="tag-oversold">低位上翘</span></div>
+  <div class="tech-item"><div class="name">MACD</div><div class="val">DIF -27.11·DEA -27.22</div><span class="tag-oversold">接近金叉</span></div>
+  <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">上363·中291·下219</div><span class="tag-neutral">位置35%</span></div>
+  <div class="tech-item"><div class="name">RSI</div><div class="val">RSI6 46.1·RSI12 43.0</div><span class="tag-neutral">中性</span></div>
+  <div class="tech-item"><div class="name">CCI(14)</div><div class="val">-53.9</div><span class="tag-neutral">中性</span></div>
+</div>
+<div class="sig sig-bear" style="margin-top:12px;">
+<strong>技术研判：</strong>从盘中高点543回撤46%至270。MACD绿柱归零接近金叉、KDJ低位上翘、BOLL位置35%——<strong>短期底部信号初现。</strong><br>
+但MA20(291)＞现价、MA60(371)≫现价，中期均线空头排列，5日+0.2%/20日-23%/60日-35%——<strong>中期趋势尚未反转。</strong><br>
+关键位：支撑219（BOLL下轨），压力291（MA20）。放量站稳MA20才确认反转。
+</div>
+</div>
+
+<!-- ═══ 资金面 ═══ -->
+<div class="card">
+<h2>资金面与筹码</h2>
+<table>
+<tr><th>指标</th><th>数值</th><th>判断</th></tr>
+<tr><td>券商覆盖</td><td>6家，平均评级1.83</td><td>1强买+5买入+0持有</td></tr>
+<tr><td>券商目标价</td><td>均值~445 HKD</td><td class="up">较现价+65%</td></tr>
+<tr><td>南向/中央结算持仓</td><td>~18%</td><td>港股通资金参与度高</td></tr>
+<tr><td>H股流通</td><td>7,577万股（6.2%）</td><td>⚠ 盘子小、波动大</td></tr>
+<tr><td>股东户数</td><td>124,181户</td><td>散户参与度高</td></tr>
+<tr><td>基石/解禁</td><td>2026年8月进入窗口期</td><td>⚠ 需关注解禁抛压</td></tr>
+</table>
+</div>
+
+<!-- ═══ 跟踪指标 ═══ -->
+<div class="card">
+<h2>关键跟踪指标</h2>
+<table>
+<tr><th>指标</th><th>当前</th><th>信号</th></tr>
+<tr><td>DDR5渗透率</td><td>持续提升</td><td>3/4代RCD占比上升=ASP上行</td></tr>
+<tr><td>新品收入占比</td><td>19% (Q1)</td><td>每季+3~5pct=第二曲线兑现</td></tr>
+<tr><td>毛利率</td><td>69.8%</td><td>&gt;70%=产品结构持续优化</td></tr>
+<tr><td>中报披露</td><td>2026年8月</td><td>⭐ 验证Q2新品放量节奏</td></tr>
+<tr><td>H股解禁</td><td>2026年8月</td><td>⚠ 短期最大不确定性</td></tr>
+</table>
+</div>
+
+<!-- ═══ 风险 ═══ -->
+<div class="card">
+<h2>风险提示</h2>
+<ol>
+<li><strong>韩国反垄断调查（当前最大不确定性）</strong>——2026-07-15韩国检察厅搜查办公室，涉嫌与瑞萨/Rambus串通（CR3&gt;93%）。高盛/大摩/伯恩斯坦一致判断：最坏一次性罚款~2.9亿、订单不受影响（切换周期1-2年），但靴子未落地。<span class="up">高</span></li>
+<li><strong>估值消化风险</strong>——PE 132x，当前价格已定价中性情景40x上沿，若AI存储需求低于预期，估值向50-80x回归。<span class="up">高</span></li>
+<li><strong>DDR5 RCD竞争</strong>——Rambus同赛道，价格战风险；新一代标准切换窗口存在份额波动。<span class="up">高</span></li>
+<li><strong>H股解禁抛压</strong>——2026年2月上市，8月基石投资者解禁窗口临近，小盘股冲击大。<span style="color:#ff8f00;">中</span></li>
+<li><strong>盈利质量</strong>——Q1归母+61%含2.33亿投资处置收益，扣非仅+20%；非经常损益不可持续。<span style="color:#ff8f00;">中</span></li>
+<li><strong>汇率风险</strong>——H股募资外币敞口大，Q1汇兑损失0.83亿。<span style="color:#ff8f00;">中</span></li>
+<li><strong>H股流动性</strong>——流通盘仅6.2%，机构进出易造成剧烈波动。<span style="color:#ff8f00;">中</span></li>
+<li><strong>新业务竞争</strong>——PCIe Retimer/CXL领域面临Astera Labs、Marvell等国际巨头。<span style="color:#ff8f00;">中</span></li>
+</ol>
+</div>
+
+<div class="footer">
+诊断时间：2026-08-07 17:15 | Brad 12-Step V2.0<br>
+数据源：腾讯财经(HK行情+K线)、东财、ETNet一致预期(6家券商)、公司2026Q1季报/2025年报<br>
+<strong style="color:#c62828;">⚠ 以上分析仅供参考，不构成个人投资建议。</strong>港股无涨跌停限制，小盘H股波动风险极大。
+</div>
+
+</div></body></html>
