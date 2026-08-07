@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micron Technology (MU) 个股深度诊断报告 v1</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+.header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.85}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
+.price{font-size:52px;font-weight:800}
+.chg{font-size:20px;padding:4px 12px;border-radius:8px}
+.chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+.chg.up{background:rgba(198,40,40,.2);color:#c62828}
+.card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h2{font-size:18px;color:#0d47a1;border-bottom:2px solid #e3f2fd;padding-bottom:10px;margin-bottom:16px}
+.card h3{font-size:15px;color:#1565c0;margin:20px 0 8px}
+.card h4{font-size:14px;color:#555;margin:12px 0 6px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
+.kv .lbl{font-size:11px;color:#888}
+.kv .val{font-size:20px;font-weight:700;color:#0d47a1}
+.kv .sub{font-size:11px;color:#555;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#e3f2fd;color:#0d47a1;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+tr:hover td{background:#f8f9fc}
+.up{color:#c62828}.dn2{color:#00c853}
+.sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
+.sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
+.vcard{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:12px;padding:24px;margin-bottom:16px}
+.vcard h2{font-size:20px;color:#0d47a1;margin-bottom:12px}
+.vcard .score{font-size:60px;font-weight:800;color:#1565c0;text-align:center;margin:10px 0}
+.tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
+.tech-item .name{font-size:12px;color:#888}
+.tech-item .val{font-size:20px;font-weight:700;color:#0d47a1}
+.tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bear{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-neutral{border:1px solid #ff8f00;color:#ff8f00;padding:1px 8px;border-radius:10px;display:inline-block}
+.assume{background:#fff8e1;border-left:3px solid #ffc107;padding:8px 12px;margin:12px 0;font-size:12px;border-radius:0 6px 6px 0}
+.assume strong{color:#f57c00}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.scen{border-radius:8px;padding:14px;text-align:center}
+.scen-bear{background:#e8f5e9}.scen-base{background:#e3f2fd}.scen-bull{background:#fce4ec}
+.scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}
+.scen .schg{font-size:12px}
+.footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
+ol li{padding:5px 0;font-size:14px}
+.small{font-size:11px;color:#999;display:block}
+.dupont-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.dupont-box{background:#f8f9fc;border-radius:10px;padding:16px;text-align:center}
+.dupont-box .title{font-size:12px;color:#888}
+.dupont-box .num{font-size:24px;font-weight:800;color:#0d47a1;margin:6px 0}
+.dupont-box .detail{font-size:11px;color:#555}
+.arrow{font-size:20px;color:#1565c0;font-weight:bold}
+.new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
+@media print{body{background:white}.card{box-shadow:none;border:1px solid #ddd}}
+@media(max-width:640px){.tech-grid{grid-template-columns:repeat(2,1fr)}.scenario-grid{grid-template-columns:1fr}body{padding:10px}}
+</style>
+</head>
+<body><div class="container">
+<div class="header">
+  <div class="meta">美股深度诊断报告 v1 | 2026-08-07 | stockanalysis.com(S&P Global) + Yahoo Finance + Counterpoint Research + 公司财报</div>
+  <h1>Micron Technology <span style="font-weight:400;font-size:18px">MU | NASDAQ</span></h1>
+  <div class="price-row"><span class="price">$881.47</span><span class="chg dn">-1.31%</span><span style="font-size:13px;opacity:.85">盘前 +1.75%</span></div>
+  <div style="margin-top:8px;font-size:13px;opacity:.9">
+    市值 $9,955亿 | PE(TTM) 19.9x | Forward PE(FY27) 5.7x | 52周 $106.75-$1,255 | YTD +179.5% | <strong>全球唯一美国本土 HBM 制造商</strong>
+  </div>
+</div>
+
+<!-- ===== 综合评分 ===== -->
+<div class="vcard"><h2>综合诊断评分</h2><div class="score">77/100</div>
+<p style="text-align:center;font-size:12px;color:#888;margin-top:-8px">首次覆盖 · AI 内存超级周期核心标的，评分落在"增持"区间</p>
+<table><tr><th width="110">维度</th><th width="70">评分</th><th>核心判断</th></tr>
+<tr><td>基本面</td><td class="up">88</td><td>FY26 Q3 营收$41.5B(+346% YoY)创纪录，毛利率84.6%历史最高，ROE 66.6%，经营CF $51.4B TTM 含金量102%</td></tr>
+<tr><td>估值</td><td>78</td><td>Forward PE(FY27) 5.7x，PEG≈0.05-0.11 极低——但PB 9.9x偏高，DCF因周期股属性显示现价已包含乐观预期，GuruFocus 估高估60%</td></tr>
+<tr><td>成长性</td><td class="up">92</td><td>FY27 一致预期 EPS $155.56(+112%)、营收 $240B(+85%)；3Y EPS CAGR 172.8%；Q4 指引$50B 远超预期$42.5B</td></tr>
+<tr><td>技术面</td><td>58</td><td>6/25 高点$1,255→7/29 低点$739 回撤41%，现超跌反弹：KDJ金叉+MACD零下金叉，但J值78偏高、现价仍在MA50($972)下方</td></tr>
+<tr><td>资金情绪</td><td>72</td><td>机构持股79.3%稳定，CBOE Vest Q2增持34.9%；空头3.21%偏低；8/4 DRAM份额利好放量反弹+6%</td></tr>
+<tr><td>风险</td><td class="dn2">52</td><td>周期见顶风险(PE低点常是周期顶)+CXMT长鑫竞争+2025年价格垄断集体诉讼+7月单月-12%为2005年来最差</td></tr>
+<tr><td>筹码/事件</td><td>80</td><td>零解禁；16项SCA锁定40%营收；HBM4量产供NVIDIA Vera Rubin；9/22财报为下一个催化剂</td></tr>
+<tr><td>机构共识</td><td class="up">90</td><td>46家覆盖，Strong Buy 31/Buy 9，目标价均值$1,508(+71%)，中位$1,550</td></tr>
+</table>
+<p style="margin-top:14px;font-size:14px"><strong>定位：AI 存储超级周期的绝对核心，HBM 供不应求已锁定至 2027 全年、SCA 长约重塑盈利稳定性。</strong>Q3 毛利率 84.6% 为美光 47 年历史最高，DRAM 份额升至 25% 逼近 SK 海力士。市场按"超级周期延续至 FY27+"定价（Forward PE 5.7x 看似极低，但周期股盈利顶部 PE 低是常态），GuruFocus 测算现价高于内在价值约 60%。本框架加权中枢约 $1,154（上行 +31%），落在增持区间，但**必须紧盯周期拐点信号**——DCF 中性情景仅 $416 说明若 2027 供需反转，股价回撤空间极大。</p>
+</div>
+
+<!-- ===== 行情快照 ===== -->
+<div class="card"><h2>行情快照（2026-08-06 收盘）</h2>
+<div class="kv">
+<div class="item"><div class="lbl">最新价</div><div class="val">$881.47</div><div class="sub">8/6收盘 $881.47 · 8/7盘前 $896.93</div></div>
+<div class="item"><div class="lbl">涨跌幅</div><div class="val dn">-1.31%</div><div class="sub">8/4 单日 +6.3%（DRAM份额利好）</div></div>
+<div class="item"><div class="lbl">今开/最高/最低</div><div class="val" style="font-size:13px">$843.11/$913.33/$827.00</div></div>
+<div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">$9,955亿</div><div class="sub">总股本 11.3亿股</div></div>
+<div class="item"><div class="lbl">PE(G)/PE(F)/PB</div><div class="val" style="font-size:14px">19.89/6.11/9.88</div></div>
+<div class="item"><div class="lbl">52周高低</div><div class="val" style="font-size:14px">$106.75 - $1,255.00</div></div>
+<div class="item"><div class="lbl">YTD/5日/20日/60日</div><div class="val"><span class="up">+179.5%</span>/<span class="up">+0.8%</span>/<span class="dn2">-11.1%</span>/<span class="up">+10.8%</span></div></div>
+<div class="item"><div class="lbl">Beta/RSI14</div><div class="val" style="font-size:14px">2.21/47.9</div></div>
+<div class="item"><div class="lbl">分析师1年目标均价</div><div class="val"><span class="up">$1,507.79</span></div><div class="sub">区间$361-$2,200 | KeyBanc $1,750最牛</div></div>
+<div class="item"><div class="lbl">下次财报</div><div class="val" style="font-size:14px;color:#c62828">2026.09.22</div><div class="sub">FY26 Q4 · 公司指引EPS $30.73 · 距当前46天</div></div>
+</div>
+<div class="sig sig-bull"><strong>超级周期引擎（为何今年涨了 7 倍）：</strong>① HBM 是 AI GPU 的"标配内存"，美光为美国唯一 HBM 制造商，2026 全年产能售罄、2027 年产能已预售；② HBM4(36GB 12-high, >2.8TB/s) 已量产供货 NVIDIA Vera Rubin，黄仁勋 6/5 确认三家供应商均已认证出货；③ 6/24 FY26 Q3 财报全面炸裂：营收 $41.5B(+346% YoY)、净利 $28.2B、毛利率 84.6%，次日股价飙至盘中 $1,255 历史新高；④ Q4 指引营收 ~$50B(+20% QoQ) 远超分析师 $42.5B 预期。</div>
+<div class="sig sig-warn"><strong>反面声音：</strong>① 7 月单月 -12% 为 2005 年以来最差月度（半导体板块轮动+获利了结）；② GuruFocus 估现价高于内在价值 60%；③ 三巨头(Samsung/SK Hynix/Micron)掌控 90% DRAM 市场，2025 年 6 月有价格垄断集体诉讼；④ 中国 CXMT 长鑫 DRAM 份额从 &lt;1% 飙至 7%（+716%），HBM 晶圆份额 2028E 或达 12%。</div>
+</div>
+
+<!-- ===== 利润表 ===== -->
+<div class="card"><h2>利润表趋势（GAAP | $M | 单季）<span class="new-badge">NEW</span></h2>
+<p style="font-size:12px;color:#888;margin-bottom:12px">Micron 财年截止 8 月底。最新季度 FY26 Q3（2026.05.28 截止，2026.06.24 公布）。GAAP/Non-GAAP 差异很小（无大额收购摊销，仅 SBC 约 $0.3B/季），此处以 GAAP 为主。D&A 按 TTM 均摊估算。</p>
+<table>
+<tr><th>指标</th><th>FY26 Q3<br><span class="small">(新!)</span></th><th>FY26 Q2</th><th>FY26 Q1</th><th>FY25 Q4</th><th>FY25 Q3</th><th>FY25全年</th></tr>
+<tr style="background:#f8f9fc"><td><strong>营收($M)</strong></td><td><strong>41,456</strong><br><span class="small">环比+73.7% · 同比+345.7%</span></td><td>23,860<br><span class="small">+74.9% · +196.3%</span></td><td>13,643<br><span class="small">+20.6% · +56.7%</span></td><td>11,315<br><span class="small">+21.7% · +46.0%</span></td><td>9,301<br><span class="small">+15.5% · +36.6%</span></td><td>37,378<br><span class="small">+48.9%</span></td></tr>
+<tr><td><strong>毛利率(GAAP)</strong></td><td><strong>84.6%</strong><br><span class="small">+10.2pp QoQ</span></td><td>74.4%</td><td>56.0%</td><td>44.7%</td><td>37.7%</td><td>39.8%</td></tr>
+<tr style="background:#f8f9fc"><td><strong>营业利润率</strong></td><td><strong>80.4%</strong></td><td>67.6%</td><td>45.0%</td><td>32.3%</td><td>23.3%</td><td>26.1%</td></tr>
+<tr><td><strong>GAAP净利($M)</strong></td><td><strong>28,243</strong><br><span class="small">净利率68.1% · +105% QoQ</span></td><td>13,785<br><span class="small">57.8%</span></td><td>5,240<br><span class="small">38.4%</span></td><td>3,201<br><span class="small">28.3%</span></td><td>1,885<br><span class="small">20.3%</span></td><td>8,539</td></tr>
+<tr style="background:#e3f2fd"><td><strong>GAAP稀释EPS</strong></td><td><strong>$24.67</strong><br><span class="small">adjusted $25.11</span></td><td>$12.07</td><td>$4.60</td><td>$2.83</td><td>$1.68</td><td>$7.59</td></tr>
+<tr><td><strong>折旧摊销($M,估)</strong></td><td><strong>~2,250</strong></td><td>~2,250</td><td>~2,250</td><td>~2,090</td><td>~2,090</td><td>8,352</td></tr>
+</table>
+<div class="sig sig-warn"><strong>⚠ 解读：</strong>FY26 Q3 营收环比 +73.7% 为史上最强单季环比之一，由 HBM 放量+全线内存涨价（CMBU +78%、CDBU +103%、MCBU +49%、AEBU +71% QoQ）驱动。毛利率从 FY24 的 -0.7% 一路飙升至 84.6%——这是内存超级周期盈利弹性的极致体现。管理层表示 16 项 SCA（战略客户协议，多为 5 年期）已覆盖约 40% 营收，即使按地板价履约毛利率仍将远高于历史周期高峰，盈利"扁平化"程度前所未有。</div>
+<div class="assume"><strong>假设说明：</strong>季度 D&A 为 TTM $9,011M 均摊估算（FY25 实际 $8,352M）；adjusted EPS 为管理层口径（含 SBC 等调回，差异仅 $0.44/季）。</div>
+</div>
+
+<!-- ===== ROE杜邦 ===== -->
+<div class="card"><h2>ROE 杜邦拆解 <span class="new-badge">NEW</span>（TTM 口径）</h2>
+<p style="font-size:12px;color:#888;margin-bottom:12px">TTM 数据（截至 2026.05.28）：营收 $90,274M / 净利 $50,469M / 总资产 $134,112M / 股东权益 $100,724M。</p>
+<div class="dupont-grid">
+<div class="dupont-box">
+  <div class="title">净利率 (NPM)</div>
+  <div class="num">55.9%</div>
+  <div class="detail">TTM NI $50,469M ÷ TTM Rev $90,274M<br>历史周期顶水平</div>
+</div>
+<div class="dupont-box" style="display:flex;align-items:center;justify-content:center">
+  <span class="arrow">×</span>
+</div>
+<div class="dupont-box">
+  <div class="title">资产周转率 (AT)</div>
+  <div class="num">0.85x</div>
+  <div class="detail">TTM Rev $90,274M ÷ Avg Assets ~$106.5B<br>重资产 fab 模式，周转随收入爆发抬升</div>
+</div>
+</div>
+<div class="dupont-grid" style="margin-top:8px">
+<div class="dupont-box" style="grid-column:span 3;text-align:center">
+  <div style="display:flex;align-items:center;justify-content:center;gap:20px">
+    <div><span class="arrow" style="font-size:28px">=</span></div>
+    <div style="text-align:center">
+      <div class="title" style="font-size:13px">ROE (TTM)</div>
+      <div class="num" style="font-size:30px">66.6%</div>
+      <div class="detail">55.9% × 0.85x × 1.33(average) ≈ 63% · 期末口径 66.6%<br>权益乘数(EM): $134.1B/$100.7B = 1.33x（极低杠杆）</div>
+    </div>
+  </div>
+</div>
+</div>
+<table style="margin-top:14px">
+<tr><th>指标</th><th>Micron</th><th>SK Hynix</th><th>Samsung(半导体)</th><th>行业参考</th></tr>
+<tr><td>ROE (TTM)</td><td class="up"><strong>66.6%</strong></td><td>高（HBM龙头）</td><td>中</td><td>周期顶普遍 40-70%</td></tr>
+<tr><td>净利率</td><td class="up"><strong>55.9%</strong></td><td>高</td><td>中</td><td>周期顶 40-60%</td></tr>
+<tr><td>资产周转率</td><td>0.85x</td><td>~0.8x</td><td>~1.0x</td><td>重资产 fab 0.6-1.0x</td></tr>
+<tr><td>权益乘数</td><td>1.33x</td><td>~2.0x</td><td>~1.8x</td><td>-</td></tr>
+<tr style="background:#e3f2fd"><td><strong>核心特征</strong></td><td colspan="3"><strong>高净利率驱动 + 极低杠杆</strong>（净现金 $19.6B）</td><td>-</td></tr>
+</table>
+<div class="sig sig-bull"><strong>ROE 核心发现：66.6% 的 ROE 由"史诗级净利率"驱动（55.9%），而非杠杆。</strong>Micron 历史上周期顶 ROE 可达 40-70%，本轮因 HBM 定价权+SCA 长约，盈利质量比以往周期更扎实。权益乘数仅 1.33x、净现金 $19.6B——资产负债表是 47 年最健康状态。但注意：<strong>周期股 ROE 顶点的警示意义</strong>——历史经验是盈利峰值往往出现在股价峰值之前，ROE 从 66% 回落的速度取决于供需何时反转。</div>
+</div>
+
+<!-- ===== 现金流 ===== -->
+<div class="card"><h2>现金流独立分析（$M）</h2>
+<table>
+<tr><th>指标</th><th>FY26 Q3</th><th>FY26 Q2</th><th>FY26 Q1</th><th>FY25 Q4</th><th>FY25全年</th><th>TTM</th></tr>
+<tr style="background:#f8f9fc"><td>经营现金流</td><td><strong>25,388</strong></td><td>11,903</td><td>8,411</td><td>5,730</td><td>17,525</td><td>51,432</td></tr>
+<tr><td>资本支出</td><td>-7,826</td><td>-6,387</td><td>-5,389</td><td>-5,658</td><td>-15,857</td><td>-25,260</td></tr>
+<tr style="background:#f8f9fc"><td><strong>自由现金流</strong></td><td><strong>17,562</strong></td><td>5,516</td><td>3,022</td><td>72</td><td>1,668</td><td>26,172</td></tr>
+<tr><td>FCF利润率</td><td>42.4%</td><td>23.1%</td><td>22.2%</td><td>0.6%</td><td>4.5%</td><td>29.0%</td></tr>
+</table>
+<div class="sig sig-bull"><strong>现金引擎全面启动：</strong>TTM 经营现金流 $51.4B（净利润含量 102%），FCF $26.2B。Q3 单季 FCF 达 $17.6B（利润率 42%），因盈利能力爆发而 Capex 节奏相对温和。公司宣布超 $250B 美国本土投资计划（含 ID1 新厂，2Q27 投产、4Q27 达 25 万片/月）。Q4 指引隐含单季 FCF 有望再创新高。净现金从 FY25 的 -$5.0B 一举转为 +$19.6B。</div>
+<div class="sig sig-warn"><strong>关注点：</strong>Capex 强度正快速上升（TTM $25.3B vs FY25 $15.9B，+59%），2027 年新厂投产将进一步推高折旧与资本开支——这是周期股"利润增长->扩产->供给释放->价格回落"的经典循环起点，需持续跟踪。</div>
+</div>
+
+<!-- ===== 资产负债表 ===== -->
+<div class="card"><h2>资产负债表关键指标（2026.05.28 | $M）</h2>
+<table>
+<tr><th>指标</th><th>2026.05</th><th>FY2025</th><th>FY2024</th><th>关注</th></tr>
+<tr><td>总资产</td><td><strong>134,112</strong></td><td>82,798</td><td>69,416</td><td>随盈利与扩产快速扩张</td></tr>
+<tr><td>现金及短期投资</td><td><strong>26,022</strong></td><td>10,307</td><td>8,106</td><td class="up">现金大幅累积</td></tr>
+<tr><td>应收账款</td><td><strong>31,025</strong></td><td>9,265</td><td>6,615</td><td class="dn2">TTM +$21.6B（收入暴增伴生，需盯回款）</td></tr>
+<tr><td>存货</td><td><strong>8,567</strong></td><td>8,355</td><td>8,875</td><td>供不应求下库存低位</td></tr>
+<tr><td>固定资产(PP&E)</td><td><strong>57,109</strong></td><td>47,326</td><td>40,394</td><td>扩产进行时</td></tr>
+<tr><td>商誉</td><td><strong>1,150</strong></td><td>1,150</td><td>1,150</td><td>占总资产0.9%，无减值风险</td></tr>
+<tr><td>总债务</td><td><strong>6,376</strong></td><td>15,278</td><td>14,007</td><td class="up">大幅去杠杆</td></tr>
+<tr style="background:#e3f2fd"><td><strong>净现金</strong></td><td><strong>+19,646</strong></td><td>-4,971</td><td>-5,901</td><td class="up">每股 $17.16 · 47年来最健康</td></tr>
+<tr><td>股东权益</td><td><strong>100,724</strong></td><td>54,165</td><td>45,131</td><td>每股账面 $88.43</td></tr>
+<tr><td>资产负债率</td><td><strong>24.9%</strong></td><td>34.6%</td><td>35.0%</td><td class="up">显著改善</td></tr>
+<tr><td>流动比率/速动</td><td><strong>3.42/2.93</strong></td><td>2.52</td><td>2.64</td><td class="up">流动性充足</td></tr>
+</table>
+<div class="sig sig-bull"><strong>资产负债表评价：47 年最强。</strong>净现金 $19.6B、Debt/EBITDA 0.09x、利息覆盖 258x、Altman Z 9.42 / Piotroski F 8——财务风险极低，为逆周期扩产与回购提供弹药（TTM 回购 $1.4B）。<strong>唯一警示：</strong>应收 $31B（TTM +$21.6B）增速快于营收，反映超大规模客户账期拉长，属超级周期伴生现象，但若 AI 资本开支降温需警惕回款恶化。</div>
+</div>
+
+<!-- ===== 分业务线 ===== -->
+<div class="card"><h2>分业务线深度分析 <span class="new-badge">NEW</span></h2>
+<p style="font-size:12px;color:#888;margin-bottom:12px">FY26 Q3 分部收入（$M）及环比增速。DRAM 约占公司收入 80%（Counterpoint 口径）。</p>
+<div style="height:260px"><canvas id="segChart"></canvas></div>
+<table style="margin-top:14px">
+<tr><th>业务线</th><th>FY26 Q3收入</th><th>占比</th><th>环比</th><th>毛利率</th><th>核心驱动与地位</th></tr>
+<tr><td><strong>云内存 CMBU</strong>(HBM+云DRAM)</td><td>13,769</td><td>33.2%</td><td class="up">+77.7%</td><td>83%</td><td>HBM 全球三强，唯一美系；HBM3E/HBM4 供 NVIDIA，2026 售罄、2027 预售</td></tr>
+<tr><td><strong>数据中心 CDBU</strong>(服务器DRAM/SSD)</td><td>11,524</td><td>27.8%</td><td class="up">+102.6%</td><td>87%</td><td>数据中心 NAND SSD 突破 $1B/季；企业级 SSD 份额提升</td></tr>
+<tr><td><strong>移动与客户端 MCBU</strong></td><td>11,521</td><td>27.8%</td><td class="up">+49.4%</td><td>87%</td><td>LPDDR 供 AI 手机/PC；AI PC 渗透提升单机容量</td></tr>
+<tr><td><strong>汽车与嵌入式 AEBU</strong></td><td>4,634</td><td>11.2%</td><td class="up">+71.1%</td><td>-</td><td>车规 DRAM/NAND，L2+ 自动驾驶带动，增长最稳健</td></tr>
+</table>
+
+<h3>行业格局：DRAM 三巨头垄断 + 中国追赶（Counterpoint Q2'26 份额）</h3>
+<div style="height:260px"><canvas id="shareChart"></canvas></div>
+<table style="margin-top:14px">
+<tr><th>厂商</th><th>DRAM份额(Q2'26)</th><th>同比变化</th><th>竞争态势</th></tr>
+<tr><td>Samsung 三星</td><td><strong>39%</strong></td><td class="up">重回第一</td><td>传统DRAM涨价受益+HBM扩产，2024年以来最高份额</td></tr>
+<tr><td>SK Hynix</td><td><strong>26%</strong></td><td class="dn2">-13pp（39%→26%）</td><td>HBM 依赖度最高，HBM3E降价+LTA长约价承压，但 HBM4 出货在即</td></tr>
+<tr><td><strong>Micron 美光</strong></td><td><strong>25%</strong></td><td class="up">+3pp（22%→25%）</td><td class="up">DRAM 收入 5 倍增长，Counterpoint 预计将超越 SK Hynix 成第二</td></tr>
+<tr><td>CXMT 长鑫</td><td><strong>7%</strong></td><td class="up">+6pp（&lt;1%→7%）</td><td class="dn2">+716% 全球增速最快，HBM 晶圆份额 2028E 或达 12%——最大中期威胁</td></tr>
+</table>
+
+<h3>竞争护城河评估</h3>
+<table>
+<tr><th>维度</th><th>Micron 优势</th><th>对手的护城河</th><th>差距/风险</th></tr>
+<tr><td>技术</td><td>1γ DRAM 节点领先，HBM4 率先量产（36GB/2.8TB/s/20%能效提升）</td><td>SK Hynix 曾占 HBM 60%+ 份额，三星传统 DRAM 成本最优</td><td>HBM 份额仍落后 SK Hynix</td></tr>
+<tr><td>供给</td><td>美国本土制造+ID1 新厂，$250B 投资；SCA 长约锁量锁价</td><td>韩系产能弹性大，政府补贴</td><td>2027 年行业供给集中释放风险</td></tr>
+<tr><td>地缘</td><td class="up">唯一美国 HBM 供应商，受益出口管制红利</td><td>韩系受美政策约束出口中国受限</td><td>对华销售受管制（中国收入占比下降）</td></tr>
+<tr><td>客户</td><td>NVIDIA/Hyperscaler 深度绑定，16项SCA覆盖40%营收</td><td>SK Hynix 独供 NVIDIA 部分 SKU</td><td>客户集中（AI 资本开支若降温冲击大）</td></tr>
+</table>
+<div class="sig sig-bull"><strong>护城河结论：</strong>本轮超级周期中美光护城河显著加深——① 技术追上（HBM4 与韩系同步量产）；② 地缘红利（美国唯一 HBM 厂，出口管制下享"安全溢价"）；③ 长约锁定（SCA 覆盖 40% 营收，5 年期，价格区间设计）。管理层称供需紧平衡"延续至 2027 年后"（Agentic AI、Physical AI 需求仍早期）。<strong>最大变数：CXMT 长鑫</strong>——从 &lt;1% 到 7% 只用了 4 个季度，若在 HBM 低端放量+中国本土 AI 需求自给，2027-28 年可能松动价格体系。</div>
+</div>
+
+<!-- ===== 估值三部法 ===== -->
+<div class="card"><h2>估值三部法 <span class="new-badge">NEW</span>（PE 主锚 + PEG + DCF）</h2>
+<p style="font-size:12px;color:#888;margin-bottom:14px">当前 $881.47，市值 $9,955亿。方法选择：Micron 为单一存储业务（DRAM/NAND 同周期），按框架采用 <strong>PE 主锚 + DCF 交叉 + PB 辅助</strong>，不做 SOTP 拆分（分部均为内存，增速/利润率高度联动）。数据源：S&P Global 一致预期（39-46 家投行，2026-08-03）。</p>
+
+<h3>一、一致预期速览（持续大幅上修）</h3>
+<table>
+<tr><th></th><th>当前季度(Aug'26 Q4)</th><th>FY2026</th><th>FY2027</th><th>FY2028</th></tr>
+<tr style="background:#e3f2fd"><td><strong>营收一致预期</strong></td><td><strong>~$50.0B</strong></td><td><strong>$129.76B</strong></td><td><strong>$240.11B</strong></td><td>待上修</td></tr>
+<tr><td>同比增速</td><td class="up">+342%</td><td class="up">+247.2%</td><td class="up">+85.0%</td><td>-</td></tr>
+<tr style="background:#e3f2fd"><td><strong>GAAP/调整 EPS</strong></td><td><strong>$30.73</strong>(公司指引)</td><td><strong>$73.43</strong></td><td><strong>$155.56</strong></td><td>~$180+</td></tr>
+<tr><td>Forward PE @$881.47</td><td>-</td><td><strong>12.0x</strong></td><td><strong>5.7x</strong></td><td>~4.9x</td></tr>
+<tr><td>EPS 增长</td><td class="up">+25% QoQ</td><td class="up">+785.8%</td><td class="up">+111.8%</td><td>~+16%</td></tr>
+</table>
+<div class="sig sig-bull">一致预期上修动能极强：FY26 EPS 预期 $73.43（区间 $67.39-$80.16），FY27 $155.56（+112%）。KeyBanc 8 月将目标价 $1,600→$1,750，Citi $1,400、Bernstein $1,300、TD Cowen $1,600。管理层 Q4 指引 EPS $30.73 远超此前市场 $25-27 预期，说明"beat-and-raise"周期仍在上行段。</div>
+
+<h3>二、PE 主锚——历史区间 + 同业对比 + Forward 逐年</h3>
+<table>
+<tr><th>指标</th><th>数值</th><th>判断</th></tr>
+<tr><td>当前 PE(TTM)</td><td>19.9x</td><td>TTM 已含爆发盈利；周期股 PE 在盈利峰值最低（5-10x）</td></tr>
+<tr><td>Forward PE (FY26E)</td><td>12.0x</td><td>偏高——市场尚未完全计入 FY26 全年盈利</td></tr>
+<tr style="background:#e3f2fd"><td><strong>Forward PE (FY27E)</strong></td><td><strong>5.7x</strong></td><td class="up"><strong>显著低于历史周期顶 8-10x</strong></td></tr>
+<tr><td>同业参考</td><td>SK Hynix ~5-6x (2026E)</td><td>内存三巨头周期上行段 PE 均低</td></tr>
+<tr><td>PB 辅助</td><td>9.88x</td><td>vs ROE 66.6% → PB/ROE≈0.15，相对合理但绝对值高</td></tr>
+<tr><td>PS (TTM)</td><td>11.03x</td><td>Forward PS 4.28x，收入端相对温和</td></tr>
+</table>
+<p style="font-size:13px"><strong>历史 PE 区间逻辑：</strong>Micron 过去 3 个周期（2017/2021/2024）盈利峰值期 Forward PE 多在 5-12x。当前 FY27E 5.7x 处于周期上行中段的"低 PE 区"，<strong>但这是周期股的双刃剑——PE 最低点往往对应盈利最高点</strong>，若 2027 供需反转，EPS 回撤 30-50% 时 PE 会迅速显得"便宜"，实为价值陷阱。关键判断：SCA 长约（40% 营收、5 年期、地板价保毛利）使本轮盈利顶部比历史更持久，支撑"低 PE 可持续"。</p>
+
+<h3>三、PEG 交叉验证</h3>
+<table>
+<tr><th>指标</th><th>数值</th><th>判断</th></tr>
+<tr><td>EPS CAGR (FY26→FY27)</td><td class="up">+111.8%</td><td>超高增速</td></tr>
+<tr><td>Forward PE (FY27)</td><td>5.7x</td><td>极低</td></tr>
+<tr style="background:#e3f2fd"><td><strong>PEG (FY27 PE ÷ FY27 EPS Growth)</strong></td><td><strong>0.05</strong></td><td class="up"><strong>显著低估（&lt;0.8）</strong></td></tr>
+<tr><td>PEG (5yr, Yahoo)</td><td><strong>0.04</strong></td><td>考虑远期增速放缓仍极低</td></tr>
+<tr><td>合理 PE（PEG=1 取 FY26→FY28 CAGR ~45.6%）</td><td>~45x</td><td>市场给予 5.7x 说明定价已隐含周期折价</td></tr>
+</table>
+<div class="assume"><strong>PEG 局限提示：</strong>周期股 PEG 参考意义有限——增长来自涨价而非量增，可持续性差。此处 PEG 极低只能说明"若超级周期兑现则估值极便宜"，不能作为买入的独立依据。</div>
+
+<h3>四、DCF 交叉验证（三情景）</h3>
+<table>
+<tr><th>参数</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
+<tr><td>前5年FCF增速</td><td>10/8/5/3/2%</td><td>25/20/15/10/8%</td><td>35/28/22/15/10%</td></tr>
+<tr><td>FCF转换率</td><td>60%</td><td>80%</td><td>85%</td></tr>
+<tr><td>WACC</td><td>14%</td><td>13%</td><td>12%</td></tr>
+<tr><td>终端增长 g</td><td>2.0%</td><td>3.0%</td><td>3.5%</td></tr>
+<tr><td>FCF 基数</td><td colspan="3">TTM FCF $26,172M（转换率80% → 基数~$26B）</td></tr>
+<tr style="background:#e3f2fd"><td><strong>DCF每股估值</strong></td><td><strong>$248</strong></td><td><strong>$416</strong></td><td><strong>$610</strong></td></tr>
+<tr><td>vs 现价 $881</td><td class="dn2">-72%</td><td class="dn2">-53%</td><td class="dn2">-31%</td></tr>
+</table>
+<div class="sig sig-warn"><strong>DCF 警示（重要）：</strong>DCF 三情景全部低于现价——这不是"估值方法失灵"，而是周期股的天然特性：① 高 WACC（Beta 2.21 → 13%）；② 巨量 Capex（TTM $25B）侵蚀 FCF 转换率；③ 市场按"盈利峰值后均值回归"折现。DCF 中性 $416 与 GuruFocus"高估 60%"的判断方向一致。<strong>结论：现价完全由"超级周期延续"的预期支撑，DCF 给不出安全边际，这是本框架将估值分定在 78（而非更高）的根本原因。</strong></div>
+
+<h3>五、估值综合结论</h3>
+<div class="scenario-grid">
+<div class="scen scen-bear"><div class="slbl">悲观（2027 供需反转）</div><div class="sval">$715</div><div class="schg dn2">-19%</div></div>
+<div class="scen scen-base"><div class="slbl">中性（超级周期延续）</div><div class="sval">$1,154</div><div class="schg up">+31%</div></div>
+<div class="scen scen-bull"><div class="slbl">乐观（HBM4 超预期）</div><div class="sval">$1,494</div><div class="schg up">+69%</div></div>
+</div>
+<table style="margin-top:14px">
+<tr><th>方法</th><th>悲观</th><th>中性</th><th>乐观</th><th>权重</th><th>逻辑</th></tr>
+<tr><td>PE 主锚 (FY27E 8-10x)</td><td>$871</td><td>$1,400</td><td>$1,789</td><td>50%</td><td>FY27 EPS $155.56 × 5.6x/9x/11.5x</td></tr>
+<tr><td>PEG (合理 PE 反推)</td><td>$871</td><td>$1,400</td><td>$1,789</td><td>25%</td><td>与 PE 主锚交叉验证</td></tr>
+<tr><td>DCF</td><td>$248</td><td>$416</td><td>$610</td><td>25%</td><td>周期股保守折现</td></tr>
+<tr style="background:#e3f2fd"><td><strong>加权结果</strong></td><td><strong>$715</strong></td><td><strong>$1,154</strong></td><td><strong>$1,494</strong></td><td>-</td><td>中性中枢 +31%</td></tr>
+</table>
+<div class="sig sig-bull"><strong>估值结论：中性中枢 $1,154（+31%），评级"增持"。</strong>与机构一致预期（均值 $1,508 / +71%）相比，本框架中枢更保守，原因是 DCF 三情景全部折价、GuruFocus 提示高估、且 7 月已出现 2005 年以来最差单月——市场对超级周期的定价分歧极大（分析师目标价 $361-$2,200）。<strong>若您相信"SCA 长约 + 供不应求至 2028"的结构性叙事，5.7x Forward PE 确实便宜；若认为 2027 年韩系/CXMT 扩产将逆转供需，则 $881 已透支 1-2 年盈利。</strong>投资决策本质是对"周期长度"的押注。</div>
+</div>
+
+<!-- ===== 技术面 ===== -->
+<div class="card"><h2>技术面辅助（2026-08-06 收盘）</h2>
+<div class="tech-grid">
+<div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">K57.8<br>D47.4/J78.4</div><div class="sub"><span class="tag-bull">金叉</span> J值偏高</div></div>
+<div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">-27.6<br>DEA-28.1</div><div class="sub">柱+1.0 <span class="tag-bull">零下金叉</span></div></div>
+<div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">$893<br>$766-$1,021</div><div class="sub">中轨下方45%</div></div>
+<div class="tech-item"><div class="name">RSI(6/12/14)</div><div class="val">51.3<br>48.0/47.9</div><div class="sub"><span class="tag-neutral">中性</span></div></div>
+<div class="tech-item"><div class="name">CCI(14)</div><div class="val">-14.4</div><div class="sub"><span class="tag-neutral">中性</span></div></div>
+</div>
+<div class="assume" style="margin-top:12px">均线参考：MA50 = $971.96（现价在其下，短期压力）、MA200 = $531.67（现价高出 66%，中期多头趋势未破坏）。ATR 约 $65，日均成交 3,500-4,500 万股。</div>
+
+<h3>关键价格节点回溯</h3>
+<table>
+<tr><th>日期</th><th>事件</th><th>收盘价</th><th>涨跌</th></tr>
+<tr><td>2025-08-07</td><td>52周低点（AI 叙事启动前）</td><td>$110.79</td><td>-</td></tr>
+<tr><td>2026-01-02</td><td>年初起点</td><td>$315.42</td><td>-</td></tr>
+<tr><td>2026-06-24</td><td>FY26 Q3 财报炸裂（营收+346%）</td><td>$1,048.51</td><td class="up">+34%</td></tr>
+<tr><td>2026-06-25</td><td>历史高点（盘中 $1,255）</td><td>$1,213.56</td><td class="up">+15.7%</td></tr>
+<tr><td>2026-07-17</td><td>回调破 $900（板块轮动）</td><td>$848.95</td><td class="dn2">-30% 自高点</td></tr>
+<tr><td>2026-07-28/29</td><td>阶段低点（盘中 $739）</td><td>$820.53</td><td class="dn2">-41% 自高点</td></tr>
+<tr><td>2026-08-04</td><td>DRAM 份额 25% 利好，放量反弹</td><td>$892.67</td><td class="up">+6.3%</td></tr>
+<tr><td>2026-08-06</td><td>现价</td><td>$881.47</td><td class="dn2">-1.31%</td></tr>
+</table>
+<div class="sig sig-warn"><strong>综合技术判断：超跌反弹进行中，但趋势尚未反转。</strong>从 $1,255 高点回撤 41% 后，7/29 低点 $739 触发 KDJ 金叉 + MACD 零下金叉 + 放量阳线，8/4 放量 +6% 确认短线底。但现价 $881 仍在 MA50（$972）与 BOLL 中轨（$893）下方，RSI/CCI 中性未超买也未超卖——技术面处于"跌深反弹第一波"，上方压力 $893-$972，下方支撑 $820-$766。若要确认中期反转，需站上 $972 且 MACD 翻正。短线 J 值 78 偏高，追高需谨慎，回调至 $820 附近是相对更好的技术买点。</div>
+</div>
+
+<!-- ===== 资金面与筹码 ===== -->
+<div class="card"><h2>资金面与筹码分析</h2>
+<h3>机构持仓（2026-03-31）</h3>
+<table>
+<tr><th>机构</th><th>持股(百万股)</th><th>占比</th><th>变动</th></tr>
+<tr><td>BlackRock</td><td>103.15</td><td>9.13%</td><td>稳定</td></tr>
+<tr><td>Vanguard</td><td>73.14</td><td>6.48%</td><td>稳定</td></tr>
+<tr><td>State Street</td><td>52.24</td><td>4.63%</td><td>稳定</td></tr>
+<tr><td>Capital World</td><td>42.05</td><td>3.72%</td><td>稳定</td></tr>
+<tr><td>Invesco</td><td>35.68</td><td>3.16%</td><td>-</td></tr>
+<tr style="background:#e3f2fd"><td><strong>CBOE Vest</strong></td><td>增持 +$68.8M</td><td>+34.9%</td><td class="up">Q2 大幅加仓</td></tr>
+</table>
+<p style="font-size:12px;color:#888">机构持股合计 79.32%（4,430 家机构），内部人持股 0.22%。前 5 大机构持仓稳定，无踩踏迹象。</p>
+
+<h3>做空与筹码</h3>
+<table>
+<tr><th>指标</th><th>当前</th><th>上月</th><th>信号</th></tr>
+<tr><td>空头股数</td><td>36.21M 股</td><td>31.67M 股</td><td class="dn2">+14.3% 做空增加</td></tr>
+<tr><td>空头占流通</td><td>3.21%</td><td>~2.8%</td><td>仍偏低，但环比上升</td></tr>
+<tr><td>空头回补天数</td><td>0.69 天</td><td>-</td><td>极低，轧空压力小</td></tr>
+</table>
+
+<h3>分析师评级分布（2026-07）</h3>
+<table>
+<tr><th>评级</th><th>数量</th><th>占比</th></tr>
+<tr><td class="up">Strong Buy / Buy</td><td>31 / 9</td><td>89%</td></tr>
+<tr><td>Hold</td><td>4</td><td>9%</td></tr>
+<tr><td class="dn2">Sell / Strong Sell</td><td>1 / 0</td><td>2%</td></tr>
+</table>
+<div class="sig sig-warn"><strong>核心矛盾总结：</strong>机构筹码高度稳定（79% 机构持股、前 5 大无减持、CBOE Vest 加仓 35%）vs 空头环比增加 14% 与 7 月 2005 年以来最差单月——反映"长线机构坚定 vs 短线资金获利了结"的分歧。做空比 3.2% 不高，不构成显著轧空条件；分析师 89% 买入、目标均价 +71%，但目标价离散度 $361-$2,200 显示对周期持续性的判断分歧极大。</div>
+</div>
+
+<!-- ===== 跟踪指标 ===== -->
+<div class="card"><h2>关键跟踪指标与事件</h2>
+<h3>一、基本面验证指标</h3>
+<table>
+<tr><th>指标</th><th>当前值</th><th>追踪阈值</th><th>信号含义</th></tr>
+<tr><td>季度毛利率</td><td>84.6%</td><td>跌破 70%</td><td class="dn2">价格回落信号，超级周期降温</td></tr>
+<tr><td>HBM 订单能见度</td><td>2027 全年售罄</td><td>新增订单停滞</td><td class="dn2">需求拐点预警</td></tr>
+<tr><td>DRAM 现货价/合约价</td><td>合约涨、现货波动</td><td>合约价环比转负</td><td class="dn2">供需反转最先行指标</td></tr>
+<tr><td>SCA 覆盖营收</td><td>~40%（16项）</td><td>目标 &gt;50%</td><td class="up">盈利稳定性增强</td></tr>
+<tr><td>Capex 强度</td><td>TTM $25.3B</td><td>FY27 超 $35B</td><td class="dn2">供给释放前兆</td></tr>
+<tr><td>CXMT 长鑫份额</td><td>DRAM 7%</td><td>HBM 晶圆 12%(2028E)</td><td class="dn2">竞争恶化信号</td></tr>
+</table>
+
+<h3>二、业务里程碑事件</h3>
+<table>
+<tr><th>事件</th><th>当前进度</th><th>关注点</th></tr>
+<tr><td>HBM4 量产</td><td>已量产（36GB 12-high）</td><td>NVIDIA Vera Rubin 放量节奏</td></tr>
+<tr><td>ID1 新厂</td><td>2Q27 投产，4Q27 达 25 万片/月</td><td>美国本土产能爬坡</td></tr>
+<tr><td>FY26 Q4 财报</td><td>2026-09-22</td><td class="up">指引 EPS $30.73 能否兑现/上修</td></tr>
+<tr><td>$250B 美国投资</td><td>已宣布</td><td>补贴落地与产能规划</td></tr>
+</table>
+
+<h3>三、筹码与政策面信号</h3>
+<table>
+<tr><th>信号</th><th>当前状态</th><th>关注阈值</th></tr>
+<tr><td>做空比例</td><td>3.21%（环比 +14%）</td><td>升至 6%+ → 谨慎</td></tr>
+<tr><td>价格垄断诉讼</td><td>2025-06 提起</td><td>实质性进展 → 风险重估</td></tr>
+<tr><td>美对华出口管制</td><td>HBM/先进DRAM 受限</td><td>管制扩大/豁免变化</td></tr>
+</table>
+
+<h3>关键时间节点</h3>
+<table>
+<tr><th>日期</th><th>事件</th><th>重要性</th></tr>
+<tr><td>2026-09-22</td><td>FY26 Q4 财报（Q4 指引 $50B/$30.73 验证）</td><td class="up">★★★★★</td></tr>
+<tr><td>2026 下半年</td><td>NVIDIA Vera Rubin 出货带动 HBM4 放量</td><td class="up">★★★★</td></tr>
+<tr><td>2026-08~12</td><td>HBM 现货价回升预期（Counterpoint 预计 Q3 再涨）</td><td>★★★</td></tr>
+<tr><td>2Q27</td><td>ID1 新厂投产（供给端关键变量）</td><td>★★★</td></tr>
+<tr><td>2026 全年</td><td>CXMT 扩产与 HBM 切入进展</td><td>★★★</td></tr>
+</table>
+</div>
+
+<!-- ===== 风险提示 ===== -->
+<div class="card"><h2>风险提示</h2>
+<ol>
+<li><strong>内存周期见顶风险（严重，历史验证率最高）</strong>：存储是强周期行业，历史规律是"盈利峰值 ≈ 股价峰值"前后 1-2 个季度见顶。当前毛利率 84.6% 为历史极值，一旦 2027 年韩系扩产+CXMT 放量逆转供需，EPS 可能回撤 30-50%，现价 5.7x Forward PE 将迅速变"贵"（DCF 中性仅 $416）。</li>
+<li><strong>中国 CXMT 长鑫竞争（高）</strong>：DRAM 份额 4 个季度从 &lt;1% → 7%（+716%），HBM 晶圆份额 2028E 或达 12%。中国本土 AI 芯片配套需求推动其以价换量，是打破"内存三巨头"格局的最大变量。</li>
+<li><strong>价格垄断集体诉讼（中高）</strong>：2025 年 6 月提起的三巨头联合定价诉讼，若胜诉或和解需巨额赔偿；三巨头 90% 份额亦引发反垄断监管关注（"内存 OPEC"叙事）。</li>
+<li><strong>股价极端波动（高）</strong>：Beta 2.21，2026 年 7 月单月 -12%（2005 年以来最差）；6/25 高点 $1,255 → 7/29 低点 $739 回撤 41%。万亿市值公司的波动率不亚于小盘股，追高者风险敞口极大。</li>
+<li><strong>估值争议（中高）</strong>：GuruFocus 估现价高于内在价值 60%；DCF 三情景（$248-$610）全部低于现价；分析师目标价从 $361 到 $2,200 分歧巨大——现价透支了"超级周期延续"的乐观预期，安全边际有限。</li>
+<li><strong>客户集中与 AI 资本开支依赖（中）</strong>：HBM 收入集中于 NVIDIA 与超大规模云厂商（2026 年全球 AI 数据中心资本开支 $725B+）。若任一 Hyperscaler 削减 AI Capex 或自研替代，订单可快速收缩。</li>
+<li><strong>地缘与出口管制（中）</strong>：对华 HBM/先进 DRAM 出口受限，中国收入占比被动下降；管制政策变化（放宽/加码）均影响收入结构与竞争格局。</li>
+<li><strong>应收账款激增（中低）</strong>：应收 $31B（TTM +$21.6B），增速快于营收，反映客户账期拉长；若 AI 降温需警惕坏账与回款恶化。</li>
+</ol>
+<div class="sig sig-warn"><strong>综合风险定性：</strong>本报告将风险维度评 52 分（多个中等风险 + 1 个重大风险——周期见顶）。Micron 的财务风险（杠杆、流动性）几乎为零，但<strong>商业模式内在的周期性风险</strong>是本标的最高权重风险，无法通过基本面指标消除，只能通过持续跟踪 DRAM 价格、HBM 订单能见度与供给扩张节奏来管理。</div>
+</div>
+
+<div class="footer">
+诊断时间：2026-08-07 18:00 (GMT+8) · 版本：v1（首次覆盖）<br>
+数据来源：stockanalysis.com (S&P Global Market Intelligence) · Yahoo Finance · Counterpoint Research · 美光 FY26 Q3 财报及电话会议 · KGI 研究报告<br>
+⚠ 本报告仅供研究参考，不构成个人投资建议。内存行业强周期属性下，估值结论可能随供需快速变化，请以个人风险承受能力和独立研究为依据。
+</div>
+</div>
+<script>
+const seg = document.getElementById('segChart');
+new Chart(seg, {
+  type: 'bar',
+  data: {
+    labels: ['云内存 CMBU','数据中心 CDBU','移动客户端 MCBU','汽车嵌入式 AEBU'],
+    datasets: [{
+      label: 'FY26 Q3 收入 ($M)',
+      data: [13769, 11524, 11521, 4634],
+      backgroundColor: ['#1565c0','#42a5f5','#90caf9','#bbdefb'],
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { display: false }, title: { display: true, text: '分部收入结构 — 云内存+数据中心合计 61%', color: '#0d47a1' } },
+    scales: { y: { beginAtZero: true, title: { display: true, text: '$M' } } }
+  }
+});
+const share = document.getElementById('shareChart');
+new Chart(share, {
+  type: 'doughnut',
+  data: {
+    labels: ['Samsung 三星 39%','SK Hynix 26%','Micron 美光 25%','CXMT 长鑫 7%','其他 3%'],
+    datasets: [{
+      data: [39, 26, 25, 7, 3],
+      backgroundColor: ['#1565c0','#42a5f5','#c62828','#ff8f00','#e0e0e0'],
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'right' }, title: { display: true, text: '全球 DRAM 收入份额 (Q2 2026, Counterpoint)', color: '#0d47a1' } }
+  }
+});
+</script>
+</body></html>
