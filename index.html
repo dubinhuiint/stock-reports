@@ -6,35 +6,315 @@
 <title>Brad 的股票分析报告</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;padding:40px 20px;text-align:center}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;padding:40px 20px;text-align:center;min-height:100vh}
+.container{max-width:960px;margin:0 auto}
 h1{font-size:28px;color:#1a237e;margin-bottom:8px}
-p{color:#888;margin-bottom:32px}
-ul{list-style:none;max-width:500px;margin:0 auto}
-li{margin:12px 0}
-a{display:block;background:white;padding:16px 24px;border-radius:12px;text-decoration:none;color:#1a237e;font-weight:600;box-shadow:0 1px 4px rgba(0,0,0,.06);transition:transform .2s}
-a:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.12)}
-span.date{display:block;font-size:12px;color:#aaa;margin-top:4px}
-.tag{display:inline-block;padding:2px 8px;border-radius:8px;font-size:11px;margin-left:4px}
+.subtitle{color:#888;margin-bottom:28px}
+
+.section{background:white;border-radius:16px;padding:18px 22px;margin-bottom:18px;box-shadow:0 1px 4px rgba(0,0,0,.06);text-align:left;border:1px solid #eef0f4}
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #f0f2f5;flex-wrap:wrap;gap:8px}
+.section-title{font-size:17px;font-weight:700;color:#1a237e;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.section-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+.badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:11px;background:#fff3cd;color:#856404;font-weight:600;border:1px solid #ffe69c}
+.badge-update{background:#e3f2fd;color:#0d47a1;border-color:#bbdefb}
+
+.count-pill{font-size:11px;color:#666;background:#eef0f4;padding:3px 10px;border-radius:10px;font-weight:600}
+
+.btn{padding:5px 12px;border:1px solid #1a237e30;background:white;color:#1a237e;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;transition:background .15s}
+.btn:hover{background:#1a237e08}
+.btn:active{transform:translateY(1px)}
+
+.stock-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;min-height:64px;transition:background .15s;border-radius:10px;padding:4px}
+.stock-list.dropzone.drag-over{background:#fff8e1;outline:2px dashed #f39c12;outline-offset:-4px}
+.stock-list.dropzone.drag-over-watch{background:#e3f2fd;outline:2px dashed #1a237e;outline-offset:-4px}
+
+.stock-item{background:#fafbfc;border:1px solid #eef0f4;border-radius:10px;padding:10px 12px 10px 30px;cursor:grab;transition:transform .15s,box-shadow .15s,opacity .15s,border-color .15s;text-align:left;position:relative;user-select:none}
+.stock-item:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08);border-color:#1a237e30}
+.stock-item:active{cursor:grabbing}
+.stock-item.dragging{opacity:.35;cursor:grabbing}
+.stock-item::before{content:"⠿";position:absolute;left:8px;top:50%;transform:translateY(-50%);color:#bbb;font-size:14px;line-height:1}
+
+.stock-item a{display:block;text-decoration:none;color:#1a237e;font-weight:600;font-size:14px;line-height:1.3}
+.stock-item a:hover{text-decoration:underline}
+.stock-item .meta{display:block;font-size:11px;color:#888;margin-top:4px;line-height:1.4}
+.stock-item .tag{display:inline-block;padding:1px 6px;border-radius:6px;font-size:10px;margin-left:4px;font-weight:600}
 .tag-buy{background:#e74c3c15;color:#e74c3c}
 .tag-hold{background:#f39c1215;color:#f39c12}
 .tag-new{background:#1a237e15;color:#1a237e}
+
+.empty-hint{grid-column:1/-1;text-align:center;padding:20px;color:#bbb;font-size:13px;font-style:italic;border:2px dashed #ddd;border-radius:10px;background:#fafbfc}
+.empty-hint-watch{color:#1a237e80;border-color:#1a237e30;background:#e3f2fd30}
+
+.footer-hint{text-align:center;color:#999;font-size:12px;margin-top:18px;line-height:1.6}
+
+.export-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center;z-index:100}
+.export-modal.show{display:flex}
+.export-box{background:white;padding:20px;border-radius:12px;max-width:560px;width:92%;box-shadow:0 10px 40px rgba(0,0,0,.2)}
+.export-box h3{color:#1a237e;font-size:16px;margin-bottom:6px}
+.export-box .desc{color:#888;font-size:12px;margin-bottom:10px}
+.export-box pre{background:#f5f5f5;padding:10px;border-radius:8px;font-size:11px;overflow:auto;text-align:left;max-height:260px;border:1px solid #eee}
+.export-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+
+@media (max-width:600px){
+  .stock-list{grid-template-columns:1fr}
+  .section-header{flex-direction:column;align-items:flex-start}
+}
 </style>
 </head>
 <body>
-<h1>Brad 的股票分析报告</h1>
-<p>基本面为主，技术面辅助 | 成长股 &amp; 周期股专项研究 | 行情已刷新至 2026-08-17</p>
-<ul>
-<li><a href="xcdata_diagnosis.html">协创数据 (300857) — 深度诊断<span class="date">2026-08-17 | A股 | AI算力转型 <span class="tag tag-new">行情刷新</span></span></a></li>
-<li><a href="smic_diagnosis.html">中芯国际 (00981.HK) — 深度诊断 v1.1<span class="date">2026-08-17 | 港股 | 晶圆代工 <span class="tag tag-buy">增持·Q2超预期</span></span></a></li>
-<li><a href="tencent_diagnosis.html">腾讯控股 (00700.HK) — 个股深度诊断<span class="date">2026-08-17 | 港股 | 中国互联网龙头 <span class="tag tag-hold">持有·Q2已出</span></span></a></li>
-<li><a href="mu_diagnosis.html">Micron (MU) — 个股深度诊断 v1.1<span class="date">2026-08-17 | 美股 | AI内存超级周期 <span class="tag tag-buy">增持·重回$1000</span></span></a></li>
-<li><a href="montage_diagnosis.html">澜起科技 (6809.HK) — 个股深度诊断<span class="date">2026-08-17 | 港股 | 内存互连芯片 <span class="tag tag-hold">观望·CXL弹性大</span></span></a></li>
-<li><a href="huaqin_diagnosis.html">华勤技术 (03296.HK) — 个股深度诊断<span class="date">2026-08-17 | 港股 | AI服务器ODM <span class="tag tag-hold">次新股·波动大</span></span></a></li>
-<li><a href="lenovo_diagnosis.html">联想集团 (00992.HK) — 个股深度诊断<span class="date">2026-08-17 | 港股 | AI服务器 <span class="tag tag-hold">重估中·YTD+270%</span></span></a></li>
-<li><a href="cmoc_diagnosis.html">洛阳钼业 (3993.HK) — 个股深度诊断<span class="date">2026-08-17 | 港股 | 铜钴 <span class="tag tag-buy">买入·100%机构推荐</span></span></a></li>
-<li><a href="mrvl_diagnosis.html">Marvell Technology (MRVL) — 个股深度诊断 v4<span class="date">2026-08-17 | 美股 | AI半导体 <span class="tag tag-hold">偏贵·8/27财报</span></span></a></li>
-<li><a href="reports/阳光电源_300274.html">阳光电源 (300274) — 全球光储双料冠军 v3<span class="date">2026-08-17 | A股 | 光伏储能 <span class="tag tag-buy">买入·回购落地</span></span></a></li>
-<li><a href="mindray_diagnosis.html">迈瑞医疗 (300760) — 个股深度诊断 v3<span class="date">2026-08-17 | A股 | 医疗器械 <span class="tag tag-hold">增持·8/29中报</span></span></a></li>
-</ul>
+<div class="container">
+  <h1>Brad 的股票分析报告</h1>
+  <p class="subtitle">基本面为主，技术面辅助 | 成长股 &amp; 周期股专项研究 | 行情已刷新至 2026-08-17</p>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-title">
+        <span>⭐ 特别关注</span>
+        <span class="badge">数据更新默认目标</span>
+      </div>
+      <div class="section-meta">
+        <span class="count-pill" id="watchlist-count">0 只</span>
+        <button class="btn" onclick="exportWatchlist()">📋 导出列表</button>
+        <button class="btn" onclick="clearWatchlist()">↺ 清空</button>
+      </div>
+    </div>
+    <ul id="watchlist" class="stock-list dropzone" data-group="watchlist"></ul>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-title"><span>📋 全部股票</span></div>
+      <div class="section-meta"><span class="count-pill" id="others-count">0 只</span></div>
+    </div>
+    <ul id="others" class="stock-list dropzone" data-group="others"></ul>
+  </section>
+
+  <p class="footer-hint">
+    💡 拖拽股票卡片（左侧 ⠿ 手柄）可在两组之间移动，同组内也可重新排序<br>
+    分组状态自动保存在本机浏览器（localStorage），换设备需重新分组
+  </p>
+</div>
+
+<div class="export-modal" id="export-modal" onclick="if(event.target===this)closeExport()">
+  <div class="export-box">
+    <h3>⭐ 特别关注股票列表</h3>
+    <p class="desc">下方 JSON 用于数据更新脚本，仅更新这些股票的行情/财报/研报</p>
+    <pre id="export-content"></pre>
+    <div class="export-actions">
+      <button class="btn" onclick="copyExport()">📋 复制 JSON</button>
+      <button class="btn" onclick="closeExport()">关闭</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============ 股票元数据（与 index_v17 保持一致）============
+const STOCKS = [
+  {id:"xcdata",   name:"协创数据",            code:"300857",    url:"xcdata_diagnosis.html",            date:"2026-08-17", market:"A股", industry:"AI算力转型",      tag:"new",  tagText:"行情刷新"},
+  {id:"smic",     name:"中芯国际",            code:"00981.HK", url:"smic_diagnosis.html",              date:"2026-08-17", market:"港股", industry:"晶圆代工",        tag:"buy",  tagText:"增持·Q2超预期"},
+  {id:"tencent",  name:"腾讯控股",            code:"00700.HK", url:"tencent_diagnosis.html",           date:"2026-08-17", market:"港股", industry:"中国互联网龙头",  tag:"hold", tagText:"持有·Q2已出"},
+  {id:"mu",       name:"Micron",             code:"MU",       url:"mu_diagnosis.html",                date:"2026-08-17", market:"美股", industry:"AI内存超级周期",  tag:"buy",  tagText:"增持·重回$1000"},
+  {id:"montage",  name:"澜起科技",            code:"6809.HK",  url:"montage_diagnosis.html",           date:"2026-08-17", market:"港股", industry:"内存互连芯片",    tag:"hold", tagText:"观望·CXL弹性大"},
+  {id:"huaqin",   name:"华勤技术",            code:"03296.HK", url:"huaqin_diagnosis.html",            date:"2026-08-17", market:"港股", industry:"AI服务器ODM",     tag:"hold", tagText:"次新股·波动大"},
+  {id:"lenovo",   name:"联想集团",            code:"00992.HK", url:"lenovo_diagnosis.html",            date:"2026-08-17", market:"港股", industry:"AI服务器",        tag:"hold", tagText:"重估中·YTD+270%"},
+  {id:"cmoc",     name:"洛阳钼业",            code:"3993.HK",  url:"cmoc_diagnosis.html",              date:"2026-08-17", market:"港股", industry:"铜钴",            tag:"buy",  tagText:"买入·100%机构推荐"},
+  {id:"mrvl",     name:"Marvell Technology", code:"MRVL",     url:"mrvl_diagnosis.html",              date:"2026-08-17", market:"美股", industry:"AI半导体",        tag:"hold", tagText:"偏贵·8/27财报"},
+  {id:"sungrow",  name:"阳光电源",            code:"300274",    url:"reports/阳光电源_300274.html",     date:"2026-08-17", market:"A股", industry:"光伏储能",        tag:"buy",  tagText:"买入·回购落地"},
+  {id:"mindray",  name:"迈瑞医疗",            code:"300760",    url:"mindray_diagnosis.html",          date:"2026-08-17", market:"A股", industry:"医疗器械",        tag:"hold", tagText:"增持·8/29中报"}
+];
+
+const STORAGE_KEY = "brad_watchlist_v1";
+
+// ============ 分组状态加载/保存 ============
+function loadGroups(){
+  try{
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    if(data && Array.isArray(data.watchlist) && Array.isArray(data.others)){
+      const allIds = new Set(STOCKS.map(s=>s.id));
+      const validWl = data.watchlist.filter(id => allIds.has(id));
+      const validOt = data.others.filter(id => allIds.has(id));
+      const seen = new Set([...validWl, ...validOt]);
+      const newOnes = STOCKS.filter(s => !seen.has(s.id)).map(s=>s.id);
+      return { watchlist: validWl, others: [...validOt, ...newOnes] };
+    }
+  }catch(e){}
+  return { watchlist: [], others: STOCKS.map(s=>s.id) };
+}
+
+function saveGroups(g){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(g));
+}
+
+// ============ 渲染 ============
+function renderStock(stock){
+  const tagClass = "tag-" + stock.tag;
+  return `
+    <li class="stock-item" draggable="true" data-id="${stock.id}">
+      <a href="${stock.url}">${stock.name} <span style="color:#888;font-weight:500">(${stock.code})</span></a>
+      <span class="meta">${stock.date} | ${stock.market} | ${stock.industry} <span class="tag ${tagClass}">${stock.tagText}</span></span>
+    </li>`;
+}
+
+function renderGroup(groupId, ids){
+  const el = document.getElementById(groupId);
+  if(ids.length === 0){
+    const hint = groupId === "watchlist"
+      ? "⬇ 从下方「全部股票」拖入此处加入特别关注"
+      : "（空）所有股票已在特别关注组";
+    el.innerHTML = `<li class="empty-hint ${groupId==='watchlist'?'empty-hint-watch':''}">${hint}</li>`;
+  }else{
+    el.innerHTML = ids.map(id => {
+      const s = STOCKS.find(x => x.id === id);
+      return s ? renderStock(s) : "";
+    }).join("");
+  }
+  document.getElementById(groupId + "-count").textContent = ids.length + " 只";
+}
+
+let groups = loadGroups();
+
+function renderAll(){
+  renderGroup("watchlist", groups.watchlist);
+  renderGroup("others", groups.others);
+  bindItemEvents();
+}
+
+// ============ 拖拽逻辑 ============
+function bindItemEvents(){
+  document.querySelectorAll(".stock-item").forEach(item => {
+    item.addEventListener("dragstart", e => {
+      item.classList.add("dragging");
+      e.dataTransfer.setData("text/plain", item.dataset.id);
+      e.dataTransfer.effectAllowed = "move";
+    });
+    item.addEventListener("dragend", () => {
+      item.classList.remove("dragging");
+      document.querySelectorAll(".dropzone").forEach(d => d.classList.remove("drag-over","drag-over-watch"));
+    });
+  });
+}
+
+function bindDropzone(listEl){
+  listEl.addEventListener("dragover", e => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    listEl.classList.add(listEl.dataset.group === "watchlist" ? "drag-over-watch" : "drag-over");
+  });
+  listEl.addEventListener("dragleave", e => {
+    if(!listEl.contains(e.relatedTarget)){
+      listEl.classList.remove("drag-over","drag-over-watch");
+    }
+  });
+  listEl.addEventListener("drop", e => {
+    e.preventDefault();
+    listEl.classList.remove("drag-over","drag-over-watch");
+    const id = e.dataTransfer.getData("text/plain");
+    if(!id) return;
+
+    const toGroup = listEl.dataset.group;
+    const fromGroup = groups.watchlist.includes(id) ? "watchlist" : "others";
+
+    // 计算插入位置（按拖放点的最近 stock-item 决定 before/after）
+    const afterEl = getDragAfterElement(listEl, e.clientY, e.clientX);
+    const insertBeforeId = afterEl ? afterEl.dataset.id : null;
+
+    if(fromGroup === toGroup){
+      // 同组重排
+      const arr = groups[toGroup];
+      const curIdx = arr.indexOf(id);
+      if(curIdx === -1) return;
+      arr.splice(curIdx, 1);
+      if(insertBeforeId){
+        const tIdx = arr.indexOf(insertBeforeId);
+        arr.splice(tIdx, 0, id);
+      }else{
+        arr.push(id);
+      }
+    }else{
+      // 跨组移动
+      groups[fromGroup] = groups[fromGroup].filter(x => x !== id);
+      if(insertBeforeId){
+        const tIdx = groups[toGroup].indexOf(insertBeforeId);
+        groups[toGroup].splice(tIdx, 0, id);
+      }else{
+        groups[toGroup].push(id);
+      }
+    }
+
+    saveGroups(groups);
+    renderAll();
+  });
+}
+
+// 返回当前应插入到哪个元素之前（基于鼠标位置）
+function getDragAfterElement(container, y, x){
+  const els = [...container.querySelectorAll(".stock-item:not(.dragging)")];
+  let closest = { offset: -Infinity, element: null };
+  for(const child of els){
+    const box = child.getBoundingClientRect();
+    const cx = box.left + box.width / 2;
+    const cy = box.top + box.height / 2;
+    // 综合距离（更接近的优先）
+    const dist = Math.hypot(x - cx, y - cy);
+    // 鼠标在元素中心之前（左/上）则候选
+    const isBefore = (y < cy) || (Math.abs(y - cy) < box.height/2 && x < cx);
+    if(isBefore && -dist > closest.offset){
+      closest = { offset: -dist, element: child };
+    }
+  }
+  return closest.element;
+}
+
+document.querySelectorAll(".dropzone").forEach(bindDropzone);
+
+// ============ 导出/清空 ============
+function exportWatchlist(){
+  const list = groups.watchlist
+    .map(id => STOCKS.find(s => s.id === id))
+    .filter(Boolean)
+    .map(s => ({ id:s.id, name:s.name, code:s.code, market:s.market, url:s.url }));
+  const payload = {
+    scope: "watchlist",
+    count: list.length,
+    updated_at: new Date().toISOString().slice(0,19) + "+08:00",
+    stocks: list
+  };
+  document.getElementById("export-content").textContent = JSON.stringify(payload, null, 2);
+  document.getElementById("export-modal").classList.add("show");
+}
+
+function closeExport(){
+  document.getElementById("export-modal").classList.remove("show");
+}
+
+function copyExport(){
+  const text = document.getElementById("export-content").textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    alert("✅ 已复制到剪贴板！");
+  }).catch(() => {
+    // 降级：选中文本
+    const pre = document.getElementById("export-content");
+    const range = document.createRange();
+    range.selectNode(pre);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    alert("复制失败，请手动 Ctrl+C 复制选中文本");
+  });
+}
+
+function clearWatchlist(){
+  if(groups.watchlist.length === 0) return;
+  if(!confirm(`确定清空特别关注组（${groups.watchlist.length} 只股票）？股票会移回「全部股票」组。`)) return;
+  const moved = groups.watchlist.slice();
+  groups.watchlist = [];
+  groups.others = [...groups.others, ...moved];
+  saveGroups(groups);
+  renderAll();
+}
+
+// 初始渲染
+renderAll();
+</script>
 </body>
 </html>
