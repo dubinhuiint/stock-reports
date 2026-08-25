@@ -75,7 +75,8 @@ h1{font-size:28px;color:#1a237e;margin-bottom:8px}
       </div>
       <div class="section-meta">
         <span class="count-pill" id="watchlist-count">0 只</span>
-        <button class="btn" onclick="exportWatchlist()">📋 导出列表</button>
+        <button class="btn" onclick="copyUpdateLink()">🔗 复制更新链接</button>
+        <button class="btn" onclick="exportWatchlist()">📋 导出 JSON</button>
         <button class="btn" onclick="clearWatchlist()">↺ 清空</button>
       </div>
     </div>
@@ -92,7 +93,8 @@ h1{font-size:28px;color:#1a237e;margin-bottom:8px}
 
   <p class="footer-hint">
     💡 拖拽股票卡片（左侧 ⠿ 手柄）可在两组之间移动，同组内也可重新排序<br>
-    分组状态自动保存在本机浏览器（localStorage），换设备需重新分组
+    分组自动保存在本机 + 页面链接（#watch= 参数）+ 云端（由 WorkBuddy 更新报告时同步）<br>
+    <b>跨设备 / 让 WorkBuddy 更新：</b>复制当前页面地址发给自己或贴给 WorkBuddy，会自动识别「特别关注」组并只更新这些股票
   </p>
 </div>
 
@@ -126,25 +128,62 @@ const STOCKS = [
 ];
 
 const STORAGE_KEY = "brad_watchlist_v1";
+const REMOTE_WATCHLIST = "https://raw.githubusercontent.com/dubinhuiint/stock-reports/main/watchlist.json";
 
 // ============ 分组状态加载/保存 ============
-function loadGroups(){
+// 优先级：URL hash（#watch=...，跨设备/贴给 WorkBuddy）> 本机 localStorage > 云端 watchlist.json
+function normalizeGroups(data){
+  const allIds = new Set(STOCKS.map(s=>s.id));
+  const validWl = (data.watchlist || []).filter(id => allIds.has(id));
+  const validOt = (data.others || []).filter(id => allIds.has(id));
+  const seen = new Set([...validWl, ...validOt]);
+  const newOnes = STOCKS.filter(s => !seen.has(s.id)).map(s=>s.id);
+  return { watchlist: validWl, others: [...validOt, ...newOnes] };
+}
+
+function parseHashGroups(){
+  const m = location.hash.match(/watch=([A-Za-z0-9_,]*)/);
+  if(!m) return null;
+  const ids = m[1].split(",").filter(Boolean);
+  if(ids.length === 0) return null;
+  return normalizeGroups({ watchlist: ids, others: [] });
+}
+
+function updateHash(g){
+  try{
+    const h = (g.watchlist && g.watchlist.length) ? "#watch=" + g.watchlist.join(",") : "";
+    history.replaceState(null, "", location.pathname + location.search + h);
+  }catch(e){}
+}
+
+async function loadGroups(){
+  // 1) URL hash（最高优先：跨设备恢复链接 / 贴给 WorkBuddy 的链接）
+  const fromHash = parseHashGroups();
+  if(fromHash){ saveGroups(fromHash); return fromHash; }
+  // 2) 本机 localStorage（本设备最近拖拽的状态）
+  let local = null;
   try{
     const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
-    if(data && Array.isArray(data.watchlist) && Array.isArray(data.others)){
-      const allIds = new Set(STOCKS.map(s=>s.id));
-      const validWl = data.watchlist.filter(id => allIds.has(id));
-      const validOt = data.others.filter(id => allIds.has(id));
-      const seen = new Set([...validWl, ...validOt]);
-      const newOnes = STOCKS.filter(s => !seen.has(s.id)).map(s=>s.id);
-      return { watchlist: validWl, others: [...validOt, ...newOnes] };
+    if(data && Array.isArray(data.watchlist) && Array.isArray(data.others)) local = normalizeGroups(data);
+  }catch(e){}
+  // 3) 云端 watchlist.json（WorkBuddy 上次更新报告时同步的权威状态；新设备恢复靠它）
+  try{
+    const r = await fetch(REMOTE_WATCHLIST + "?t=" + Date.now(), { cache: "no-store" });
+    if(r.ok){
+      const data = await r.json();
+      if(data && Array.isArray(data.watchlist)){
+        const remote = normalizeGroups(data);
+        saveGroups(remote);
+        return remote;
+      }
     }
   }catch(e){}
-  return { watchlist: [], others: STOCKS.map(s=>s.id) };
+  return local || { watchlist: [], others: STOCKS.map(s=>s.id) };
 }
 
 function saveGroups(g){
   localStorage.setItem(STORAGE_KEY, JSON.stringify(g));
+  updateHash(g);
 }
 
 // ============ 渲染 ============
@@ -173,13 +212,19 @@ function renderGroup(groupId, ids){
   document.getElementById(groupId + "-count").textContent = ids.length + " 只";
 }
 
-let groups = loadGroups();
+// ============ 初始渲染（异步加载分组）============
+let groups = { watchlist: [], others: STOCKS.map(s=>s.id) };
 
 function renderAll(){
   renderGroup("watchlist", groups.watchlist);
   renderGroup("others", groups.others);
   bindItemEvents();
 }
+
+(async function init(){
+  groups = await loadGroups();
+  renderAll();
+})();
 
 // ============ 拖拽逻辑 ============
 function bindItemEvents(){
@@ -270,6 +315,16 @@ function getDragAfterElement(container, y, x){
 document.querySelectorAll(".dropzone").forEach(bindDropzone);
 
 // ============ 导出/清空 ============
+function copyUpdateLink(){
+  updateHash(groups); // 确保链接反映当前分组
+  const url = location.origin + location.pathname + (groups.watchlist.length ? "#watch=" + groups.watchlist.join(",") : "");
+  navigator.clipboard.writeText(url).then(() => {
+    alert("✅ 已复制更新链接！\n\n贴给 WorkBuddy 即可自动识别并只更新「特别关注」组的 " + groups.watchlist.length + " 只股票。\n发给自己（微信/邮件）可在其他设备恢复分组。");
+  }).catch(() => {
+    prompt("复制下方链接（发给 WorkBuddy 或自己）：", url);
+  });
+}
+
 function exportWatchlist(){
   const list = groups.watchlist
     .map(id => STOCKS.find(s => s.id === id))
