@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美丽田园医疗健康(02373.HK) 深度分析报告</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
+  .container{max-width:960px;margin:0 auto}
+  .header{background:linear-gradient(135deg,#1a237e,#283593);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+  .header h1{font-size:28px;margin-bottom:4px}
+  .header .meta{font-size:13px;opacity:.85}
+  .price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
+  .price{font-size:52px;font-weight:800}
+  .chg{font-size:20px;padding:4px 12px;border-radius:8px}
+  .chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+  .chg.up{background:rgba(198,40,40,.15);color:#c62828}
+  .card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .card h2{font-size:18px;color:#1a237e;border-bottom:2px solid #e8eaf6;padding-bottom:10px;margin-bottom:16px}
+  .card h3{font-size:15px;color:#3949ab;margin:20px 0 8px}
+  .card h4{font-size:14px;color:#555;margin:12px 0 6px}
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+  .kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
+  .kv .lbl{font-size:11px;color:#888}
+  .kv .val{font-size:20px;font-weight:700;color:#1a237e}
+  .kv .sub{font-size:11px;color:#555;margin-top:2px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+  th{background:#e8eaf6;color:#1a237e;padding:8px 10px;text-align:left;font-weight:600}
+  td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+  tr:hover td{background:#f8f9fc}
+  .up{color:#c62828}.dn2{color:#00c853}
+  .badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600}
+  .b-buy{background:#c62828;color:#fff}
+  .b-n{background:#ff8f00;color:#fff}
+  .sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
+  .sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
+  .vcard{background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-radius:12px;padding:24px;margin-bottom:16px}
+  .vcard h2{font-size:20px;color:#1a237e;margin-bottom:12px}
+  .vcard .score{font-size:60px;font-weight:800;color:#3949ab;text-align:center;margin:10px 0}
+  .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+  .tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
+  .tech-item .name{font-size:12px;color:#888}
+  .tech-item .val{font-size:20px;font-weight:700;color:#1a237e}
+  .tech-item .tag{font-size:12px;margin-top:4px}
+  .tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+  .tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+  .tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+  .tag-bear{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+  .tag-neutral{border:1px solid #ff8f00;color:#ff8f00;padding:1px 8px;border-radius:10px;display:inline-block}
+  .assume{background:#fff8e1;border-left:3px solid #ffc107;padding:8px 12px;margin:12px 0;font-size:12px;border-radius:0 6px 6px 0}
+  .assume strong{color:#f57c00}
+  .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .scen{border-radius:8px;padding:14px;text-align:center}
+  .scen-bear{background:#e8f5e9}.scen-base{background:#e8eaf6}.scen-bull{background:#fce4ec}
+  .scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}
+  .scen .schg{font-size:12px}
+  .footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
+  ol li{padding:5px 0;font-size:14px}
+  .small{font-size:11px;color:#999;display:block}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+  <div class="meta">个股深度诊断报告 v1.1 · 2026-09-03 · Wind金融数据(02373.HK) + 公告/研报 · Brad 股票分析框架</div>
+  <h1>美丽田园医疗健康 <span style="font-weight:400;font-size:18px">02373 · 港股主板</span></h1>
+  <div class="price-row">
+    <span class="price">17.80</span>
+    <span class="chg dn">-2.20%</span>
+  </div>
+  <div style="margin-top:8px;font-size:13px;opacity:.9">
+    市值 44.78亿港元 | PE(TTM) 10.13 · PB 2.72 | 股息率 4.04% | H1营收+29% · 净利+40% · ROE 32%
+  </div>
+</div>
+
+<!-- ===== 综合评分 ===== -->
+<div class="vcard">
+  <h2>综合诊断评分</h2>
+  <div class="score">73/100</div>
+  <div style="background:#fff3e0;border-left:4px solid #ff8f00;padding:10px 14px;border-radius:6px;font-size:13px;margin:10px 0">
+  <strong>核心判断：高增长 + 极低估值的高端医美连锁，ROE 极高，但增长质量靠并购驱动。</strong>2026H1 营收 18.82 亿（<strong>+29%</strong>）、净利 2.39 亿（<strong>+40%</strong>）、经调整净利率 14.0%、经营现金流 5.51 亿（+34%），<strong>ROE 高达 32%（FY2025）</strong>，商业模式是典型的"现金牛"。<strong>PE(TTM) 仅 10.13 倍、股息率 4.04%</strong>，机构 24 位分析师一致强力推荐/买入（0 持有/卖出），目标均价 35.28（<strong>+98%</strong>）。<strong>但两大隐忧：</strong>①增长高度依赖并购（扣掉思妍丽并表，有机收入增速仅 2.9%）；②商誉+无形资产占总权益 164%，减值风险大。股价年初大跌后近 60 日已反弹 +8%，中期企稳，但短线中报利好兑现后连续回落。
+  </div>
+  <table>
+    <tr><th width="110">维度</th><th>评分</th><th>核心判断</th></tr>
+    <tr><td>基本面</td><td class="up">82</td><td><strong>优秀</strong>：营收+29%、净利+40%、毛利率51.4%(+2.1pct)、<strong>ROE 32%(FY2025)、经营现金流9.99亿为净利3.18亿的3.1倍</strong>，高端会员复购模式现金牛属性强</td></tr>
+    <tr><td>估值</td><td class="up">85</td><td>PE(TTM) 10.13倍<strong>极低</strong> + 股息率4.04% + 机构目标价+98%；PEG&lt;0.3，估值显著低于高成长属性</td></tr>
+    <tr><td>成长性</td><td>75</td><td>H1净利+40%，但<strong>并购驱动为主</strong>（思妍丽并表3.8亿，扣掉后有机收入增速仅2.9%）；内生+外延双轮，下半年拟推进2-3宗并购</td></tr>
+    <tr><td>技术面</td><td>48</td><td>年初大跌后近60日反弹+8%(从52周低点15.02回升)，站上MA60(17.73)中期企稳；但短线中报利好兑现后连跌4日，MACD即将死叉</td></tr>
+    <tr><td>资金面</td><td>50</td><td>港股流动性差(换手0.06%、日成交仅250万港元)；公司持续回购(8月每股19.09港元)，机构密集调研</td></tr>
+    <tr><td>风险</td><td>60</td><td><strong>商誉+无形资产占总权益164%</strong>(减值风险大) + 并购整合风险 + 医美消费疲软 + 港股流动性折价</td></tr>
+    <tr><td>筹码/事件</td><td>62</td><td>回购 + 9月多家券商策略会密集调研 + 下半年2-3宗并购催化；但小盘股筹码结构一般</td></tr>
+    <tr><td>机构共识</td><td class="up">85</td><td>24位分析师<strong>87.5%强力推荐+12.5%买入(0持有/卖出)</strong>，目标均价32.94-35.28(最高42.64/最低23.50)</td></tr>
+  </table>
+</div>
+
+<!-- ===== 行情 ===== -->
+<div class="card">
+  <h2>行情快照（2026-09-03 收盘 · Wind）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新价</div><div class="val">17.80</div><div class="sub">9/3 <span class="dn2">-2.20%</span> · 港股</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">44.78亿港元</div><div class="sub">总股本2.48亿股</div></div>
+    <div class="item"><div class="lbl">PE(TTM) / PE(静)</div><div class="val" style="font-size:16px">10.13 / 12.74</div><div class="sub">估值显著偏低</div></div>
+    <div class="item"><div class="lbl">PB</div><div class="val" style="font-size:16px">2.72</div><div class="sub">每股净资产6.55港元</div></div>
+    <div class="item"><div class="lbl">股息率</div><div class="val" style="font-size:16px">4.04%</div><div class="sub">股息TTM 0.72港元</div></div>
+    <div class="item"><div class="lbl">52周范围</div><div class="val" style="font-size:16px">15.02 - 40.04</div><div class="sub">现价距52周低点+18.5%</div></div>
+    <div class="item"><div class="lbl">年初至今</div><div class="val dn2" style="font-size:16px">-32.01%</div><div class="sub">近60日 +8.01%(企稳反弹)</div></div>
+    <div class="item"><div class="lbl">EPS(TTM)</div><div class="val" style="font-size:16px">1.77港元</div><div class="sub">2026H1 EPS 0.91元(+33.8%)</div></div>
+  </div>
+</div>
+
+<!-- ===== 最新动态 ===== -->
+<div class="card">
+  <h2>最新动态（2026-08 → 09-03）<span class="badge b-buy">NEW</span></h2>
+  <table>
+    <tr><th width="110">日期</th><th>事件</th><th>影响</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>09-01~03</strong></td>
+      <td>密集参加国海/兴业/华泰/广发/东吴/开源等券商策略会，UBS 组织门店调研</td>
+      <td class="up">机构关注度高，催化剂密集</td>
+    </tr>
+    <tr>
+      <td>09-02</td>
+      <td>8 月回购 3 万股（每股 19.09 港元，作库存股份）</td>
+      <td class="up">持续回购，管理层认为低估</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>08-28</strong></td>
+      <td><strong>2026 中期业绩：</strong>营收 18.82 亿(+29%)、净利 2.39 亿(+40%)、经调整净利 2.63 亿(+40%)、毛利率 51.4%(+2.1pct)、经营现金流 5.51 亿(+34%)</td>
+      <td class="up">营收净利双增，现金牛属性凸显</td>
+    </tr>
+    <tr>
+      <td>08-28</td>
+      <td>副董事长连松泳：下半年计划落地 2-3 宗并购（单标的营收 5000万-1亿），关注美容保健/消费医疗上游，评估出海</td>
+      <td class="up">外延并购持续，成长逻辑延续</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td>08-28</td>
+      <td>启用集团品牌"BFG 美田集团"，定位美与健康产业集团；门店总数 706 家（直营 395 + 加盟 311）</td>
+      <td class="up">品牌升级 + 门店扩张</td>
+    </tr>
+    <tr>
+      <td>08月</td>
+      <td>升级自研品牌 Ladmirer 肌喻，定位全球高奢院线专研；与资生堂战略合作（2月）+ 诺奖得主任首席科学顾问</td>
+      <td class="up">供应链/研发壁垒强化</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ===== 利润表 ===== -->
+<div class="card">
+  <h2>利润表趋势（年度 + 2026H1 · Wind）</h2>
+  <table>
+    <tr><th>指标</th><th>FY2023</th><th>FY2024</th><th>FY2025</th><th>2026H1</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>营业收入(亿)</strong></td><td>21.45</td><td>25.72</td><td>30.01</td><td><strong>18.82</strong></td>
+    </tr>
+    <tr>
+      <td><strong>归母净利润(亿)</strong></td><td>2.16</td><td>2.28</td><td>3.18</td><td><strong>2.22</strong></td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>毛利率</strong></td><td>45.6%</td><td>46.3%</td><td>49.1%</td><td><strong>51.4%</strong></td>
+    </tr>
+    <tr>
+      <td><strong>净利率</strong></td><td>10.7%</td><td>9.8%</td><td>11.3%</td><td><strong>12.7%</strong></td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>ROE</strong></td><td class="up">43.5%</td><td>26.2%</td><td class="up">32.3%</td><td>18.3%(H1)</td>
+    </tr>
+    <tr>
+      <td><strong>经营现金流(亿)</strong></td><td>6.26</td><td>7.97</td><td>9.99</td><td><strong>5.51</strong></td>
+    </tr>
+  </table>
+  <p style="font-size:12px;color:#888;margin:6px 0">注：归母净利润为 Wind 口径（2026H1 归母 2.22 亿，公司公告"净利润"2.39 亿含少数股东损益，两者增速均为 +40%）。营收/净利/现金流连续三年稳步增长，毛利率从 45.6% 提升至 51.4%，盈利能力持续增强。</p>
+
+  <h3>H1 同比明细（公司公告口径）</h3>
+  <table>
+    <tr><th>指标</th><th>2025H1</th><th>2026H1</th><th>同比</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>营业收入(亿)</strong></td><td>14.59</td><td><strong>18.82</strong></td><td class="up">+29.0%</td>
+    </tr>
+    <tr>
+      <td><strong>毛利(亿)</strong></td><td>7.20</td><td><strong>9.67</strong></td><td class="up">+34.3%</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>毛利率</strong></td><td>49.3%</td><td><strong>51.4%</strong></td><td class="up">+2.1pct</td>
+    </tr>
+    <tr>
+      <td><strong>净利润(亿)</strong></td><td>1.71</td><td><strong>2.39</strong></td><td class="up">+40.2%</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>经调整净利润(亿)</strong></td><td>1.88</td><td><strong>2.63</strong></td><td class="up">+39.9%</td>
+    </tr>
+    <tr>
+      <td><strong>经调整净利率</strong></td><td>12.9%</td><td><strong>14.0%</strong></td><td class="up">+1.1pct</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>经营现金流净额(亿)</strong></td><td>4.10</td><td><strong>5.51</strong></td><td class="up">+34.4%</td>
+    </tr>
+    <tr>
+      <td><strong>EPS(元)</strong></td><td>0.68</td><td><strong>0.91</strong></td><td class="up">+33.8%</td>
+    </tr>
+  </table>
+  <div class="sig sig-bull">
+    <strong>盈利质量优秀：</strong>毛利率 51.4%（+2.1pct）、经调整净利率 14.0%（+1.1pct）同步提升，经营现金流 5.51 亿远超净利 2.39 亿（净利润现金含量 2.3 倍），现金储备 24 亿。高端会员复购模式下，量价齐升（直营客流 +32%、客单价 +5.1%），是消费股中罕见的"高质量增长"。
+  </div>
+  <div class="sig sig-bull">
+    <strong>ROE 极高（关键亮点）：</strong>FY2025 ROE 高达 32.3%（FY2023 曾达 43.5%），远超多数消费/医疗股——这是"轻资产 + 高净利率 + 预收款模式"叠加的结果，资本回报率极强。资产负债率 78.9% 看似高，但<strong>本质是"好负债"</strong>：会员预收款（储值卡）计入合同负债，而非有息负债，反映的是客户预付费的商业模式，不构成偿债压力（现金储备 24 亿足以覆盖）。
+  </div>
+  <div class="sig sig-warn">
+    <strong>增长质量警示（关键）：</strong>营收 +29% 中，<strong>思妍丽并表贡献 3.8 亿</strong>（2026年1月起并表）。若剔除思妍丽，<strong>有机收入增速仅约 2.9%、净利增速约 17.6%</strong>——内生增长其实较弱，高增长相当程度是"并购买来的"。这是理解美丽田园的关键：它的增长引擎是"外延并购 + 投后整合"，而非纯内生。
+  </div>
+</div>
+
+<!-- ===== 分业务 ===== -->
+<div class="card">
+  <h2>分业务线分析（2026H1）</h2>
+  <table>
+    <tr><th>业务线</th><th>收入(亿)</th><th>同比</th><th>毛利率</th><th>定位</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>美容和保健服务</strong></td><td><strong>10.95</strong></td><td class="up">+35.7%</td><td>44.2%</td>
+        <td style="font-size:12px">基石业务，第一触点，直营客流113万人次(+33%)，量价齐升</td>
+      </tr>
+    <tr>
+      <td><strong>医疗美容服务</strong></td><td><strong>6.03</strong></td><td class="up">+20.9%</td><td>58.9%</td>
+        <td style="font-size:12px">高毛利消费医疗，向会员转化医美需求</td>
+      </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>亚健康医疗服务</strong></td><td><strong>1.84</strong></td><td class="up">+20.0%</td><td>69.0%</td>
+        <td style="font-size:12px">毛利率最高，亚健康评估干预</td>
+      </tr>
+  </table>
+
+  <h3>品牌矩阵（"双美 + 双保健"）</h3>
+  <table>
+    <tr><th>品牌</th><th>定位</th><th>直营门店</th><th>说明</th></tr>
+    <tr style="background:#f8f9fc"><td><strong>美丽田园</strong></td><td>高端美容服务第一品牌（沙利文认证）</td><td>156家</td><td>主品牌，1993年起家，30万会员数据</td></tr>
+    <tr><td><strong>思妍丽</strong></td><td>高端科技美容</td><td>102家</td><td>2026年1月并表，贡献营收3.8亿，经调整净利率11%</td></tr>
+    <tr style="background:#f8f9fc"><td><strong>奈瑞儿</strong></td><td>智能美养第一品牌</td><td>83家</td><td>经调整净利率10.8%，AI"小奈"大模型</td></tr>
+    <tr><td>贝黎诗/秀可儿/研源医疗等</td><td>医美/保健补充</td><td>—</td><td>多品牌矩阵，覆盖全生命周期</td></tr>
+  </table>
+
+  <h3>商业模式与护城河</h3>
+  <ol style="font-size:14px">
+    <li><strong>"双美+双保健"漏斗模型：</strong>以高频低价的美容保健为第一触点获客，向高毛利的医美/亚健康医疗转化，会员全生命周期价值挖掘——这是商业模式的核心壁垒</li>
+    <li><strong>高端品牌稀缺性：</strong>中国高端美容服务第一品牌（沙利文），门店集中一线/新一线城市（直营202/156家），高端定位带来定价权</li>
+    <li><strong>并购整合能力：</strong>思妍丽、奈瑞儿并表后经调整净利率持续提升（9.5%→11%、10.4%→10.8%），证明投后整合可复制</li>
+    <li><strong>强现金流：</strong>预收款模式 + 会员复购，经营现金流远超净利，现金储备 24 亿支撑并购</li>
+    <li><strong>风险点：</strong>商誉/无形资产占总权益 164% 减值风险；医美行业竞争加剧 + 消费降级；并购标的质地分化</li>
+  </ol>
+</div>
+
+<!-- ===== 估值 ===== -->
+<div class="card">
+  <h2>估值分析（PE + PEG 为主锚）</h2>
+  <p style="font-size:12px;color:#888;margin-bottom:14px">
+    美丽田园属<strong>消费医疗连锁</strong>，盈利稳定、现金流好，用 PE + PEG 估值。当前 PE(TTM) 10.13 倍，对一家净利 +40% 的消费医疗龙头显著偏低。
+  </p>
+
+  <h3>一、PE 估值</h3>
+  <div class="assume"><strong>⚠ 假设：</strong>2026E 全年经调整净利约 5.5 亿人民币（H1 已 2.63 亿，H2 旺季 + 思妍丽全年并表 + 新并购），总股本 2.48 亿股，港币/人民币 ≈ 1.09</div>
+  <table>
+    <tr><th>情景</th><th>2026E净利(亿RMB)</th><th>目标PE</th><th>目标价(港币)</th></tr>
+    <tr><td>悲观</td><td>5.0</td><td>12x</td><td class="dn2">~26 港币</td></tr>
+    <tr><td>中性</td><td>5.5</td><td>15x</td><td><strong>~36 港币</strong></td></tr>
+    <tr><td>乐观</td><td>6.0</td><td>18x</td><td class="up">~47 港币</td></tr>
+  </table>
+
+  <h3>二、PEG 交叉验证</h3>
+  <p style="font-size:12px;color:#555">净利增速 40%（2026H1），PE(TTM) 10.13 倍，<strong>PEG = 10.13/40 ≈ 0.25</strong>，远低于 1（低估）。即便增速打对折到 20%，PEG 仍仅 0.5，估值显著偏低。<strong>前提：增速可持续（并购 + 内生双轮不掉链子）。</strong></p>
+
+  <h3>三、机构共识对比</h3>
+  <table>
+    <tr><th>来源</th><th>评级分布</th><th>目标价(港币)</th></tr>
+    <tr><td>富途 24位分析师</td><td class="up">87.5%强力推荐 + 12.5%买入（0持有/卖出）</td><td>均价 32.94（最高42.64/最低23.50）</td></tr>
+    <tr><td>腾讯行情 3家机构</td><td class="up">一致买入/增持</td><td>均价 35.28（最高38.49/最低30.00）</td></tr>
+    <tr><td>Yahoo 1年预测</td><td class="up">买入</td><td>35.88</td></tr>
+  </table>
+
+  <div class="sig sig-warn" style="margin-top:12px">
+    <strong>估值结论：</strong>现价 17.80 港币，PE(TTM) 10.13 倍、PEG 0.25、股息率 4.04%，对一家净利 +40% 的消费医疗龙头<strong>显著低估</strong>。机构目标价中枢 33-35 港币（+86~97%），对应 2026E PE 约 15 倍。但<strong>低估值背后是市场的两个疑虑：</strong>①增长靠并购（有机增速仅 2.9%），可持续性存疑；②商誉+无形资产占总权益 164% 的减值风险。市场给 10 倍 PE，实质是"打折定价并购驱动的增长"。<strong>投资逻辑成立的关键变量：并购整合能否持续提效（思妍丽/奈瑞儿净利率已证明）+ 商誉是否减值。</strong>
+  </div>
+</div>
+
+<!-- ===== 技术面 ===== -->
+<div class="card">
+  <h2>技术面辅助（2026-09-03 收盘 · Wind）</h2>
+  <div class="tech-grid">
+    <div class="tech-item">
+      <div class="name">KDJ(9,3,3)</div>
+      <div class="val" style="font-size:16px">K38.05 · D51.88 · J10.39</div>
+      <div class="tag"><span class="tag-bear">短线偏弱</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">J值低位，接近超卖</div>
+    </div>
+    <div class="tech-item">
+      <div class="name">MACD(12,26,9)</div>
+      <div class="val" style="font-size:16px">DIF 0.094（收窄）</div>
+      <div class="tag"><span class="tag-neutral">即将死叉</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">DIF由0.32回落至0.09</div>
+    </div>
+    <div class="tech-item">
+      <div class="name">RSI</div>
+      <div class="val" style="font-size:16px">RSI6=36.10</div>
+      <div class="tag"><span class="tag-neutral">偏弱</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">接近超卖区</div>
+    </div>
+    <div class="tech-item">
+      <div class="name">均线 / BOLL</div>
+      <div class="val" style="font-size:16px">站上MA60(17.73)</div>
+      <div class="tag"><span class="tag-neutral">中轨下方</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">贴近BOLL下轨17.69</div>
+    </div>
+  </div>
+  <p style="font-size:12px;color:#888;margin-top:10px">
+    均线：MA5=18.61 / MA10=18.68 / MA20=18.56 / MA60=17.73 / MA120=18.47 / MA250=23.50。现价 17.80 站上 MA60，但低于 MA5/10/20 和 BOLL 中轨 18.49。<br>
+    <strong>综合判断（Wind 修正）：</strong>此前判断"一路下跌"需修正——股价实际是<strong>年初大跌后，近 60 日已反弹 +8.01%（从 52 周低点 15.02 回升至 17.80）</strong>，中期趋势已在修复（站上 MA60）。但短线处于<strong>"中报利好兑现后回落"</strong>状态：8/28 中报超预期当日冲高 19.49（+7.92%），随后连续 4 日回落至 17.80，MACD 即将死叉、KDJ J 值 10.39 低位、RSI6=36 偏弱，短线仍有回调压力。<br>
+    <strong>关键位</strong>：下方支撑 17.69（BOLL下轨）/ 17.73（MA60）；上方压力 18.5（MA5/20）/ 18.5-19.5（前期平台）。<strong>策略：</strong>中期趋势已企稳（60日 +8%、站上 MA60），估值极具吸引力（PE 10.13 + 股息 4%），但短线利好兑现回落未止跌，左侧可在 MA60（17.7）附近分批、右侧等放量站回 MA20（18.6）确认。
+  </p>
+</div>
+
+<!-- ===== 资金面 ===== -->
+<div class="card">
+  <h2>资金面 &amp; 筹码</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">总股本</div><div class="val">2.48亿股</div><div class="sub">全流通</div></div>
+    <div class="item"><div class="lbl">日成交额</div><div class="val dn2">199万港元</div><div class="sub">换手率0.04% · 流动性差</div></div>
+    <div class="item"><div class="lbl">公司回购</div><div class="val up">持续</div><div class="sub">8月每股19.09港元回购</div></div>
+    <div class="item"><div class="lbl">股息TTM</div><div class="val up">0.72港元</div><div class="sub">股息率4.07%</div></div>
+  </div>
+  <div class="sig sig-warn" style="margin-top:12px">
+    <strong>筹码面：</strong>港股小盘股（市值仅 44 亿港元），<strong>流动性极差</strong>——日成交额不足 200 万港元、换手率 0.04%，股价易受少量资金影响，机构进出困难，这也是低估值的重要原因之一（流动性折价）。正面信号：公司持续回购（8 月每股 19.09 港元），且 9 月初密集参加多家券商策略会、UBS 组织门店调研，机构关注度在提升。
+  </div>
+</div>
+
+<!-- ===== 跟踪指标 ===== -->
+<div class="card">
+  <h2>关键跟踪指标与催化剂</h2>
+  <table>
+    <tr><th width="200">指标/事件</th><th>当前状态</th><th>关注阈值/信号</th></tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>同店收入增速（有机增长）</strong></td><td>美丽田园同店+5.5%</td><td>是衡量内生增长的核心，若持续5%+则内生健康</td>
+    </tr>
+    <tr>
+      <td><strong>并购落地</strong></td><td>下半年拟2-3宗</td><td>标的质地 + 并表后净利率是否提升</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>商誉减值</strong></td><td>占总权益164%</td><td>年度减值测试，若计提将冲击利润</td>
+    </tr>
+    <tr>
+      <td><strong>直营门店客流/客单价</strong></td><td>+32% / +5.1%</td><td>量价齐升是否延续</td>
+    </tr>
+    <tr style="background:#f8f9fc">
+      <td><strong>会员数</strong></td><td>年化活跃22万(+45.6%)</td><td>会员增长是医美转化基础</td>
+    </tr>
+    <tr>
+      <td><strong>AI 转型</strong></td><td>奈瑞儿"AI小奈"100%应用</td><td>数字化降本增效</td>
+    </tr>
+  </table>
+  <p style="font-size:12px;color:#888;margin-top:8px"><strong>催化剂日历：</strong>2026年10月三季报 · 下半年 2-3 宗并购公告 · 医美行业政策/消费数据 · 品牌出海评估进展。</p>
+</div>
+
+<!-- ===== 风险 ===== -->
+<div class="card">
+  <h2>风险提示</h2>
+  <ol>
+    <li><strong>商誉与无形资产减值风险（核心）：</strong>商誉+无形资产合计相当于总权益约 164%，主要来自思妍丽、奈瑞儿等并购。若标的业绩不及预期，减值将直接冲击利润</li>
+    <li><strong>并购驱动的增长可持续性：</strong>剔除思妍丽并表，有机收入增速仅 2.9%。一旦并购节奏放缓或标的质地下降，高增长可能"断档"</li>
+    <li><strong>医美消费疲软：</strong>消费降级 + 医美行业竞争加剧（医美获客成本上升、价格战），可能压制客单价和毛利率</li>
+    <li><strong>港股流动性风险：</strong>日成交不足 200 万港元、换手率 0.04%，机构难进出，股价波动大，低估值可能长期维持（流动性折价）</li>
+    <li><strong>监管风险：</strong>医美/医疗行业监管趋严（广告、资质、医疗安全），合规成本上升</li>
+    <li><strong>技术面短线回调：</strong>中报利好兑现后连跌 4 日、MACD 即将死叉，短线仍有回调压力；中期虽已企稳（60日 +8%），但左侧介入仍需承受进一步下行风险</li>
+  </ol>
+</div>
+
+<div class="footer">
+  <p style="margin-bottom:6px">诊断时间：2026-09-03（v1.1 · Wind数据源恢复后重校） · 数据来源：Wind 金融数据(02373.HK) + 公司公告/港交所披露/雪球/Yahoo · Brad 股票分析框架</p>
+  <p style="color:#c62828;font-weight:600;margin-top:6px">⚠ 以上分析仅供参考，不构成任何投资建议。PE/PEG 中所有假设已在报告内标注。投资决策请结合自身判断，风险自担。</p>
+</div>
+
+</div>
+</body>
+</html>

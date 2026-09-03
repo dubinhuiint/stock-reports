@@ -2,6 +2,6 @@
   "scope": "watchlist",
   "note": "云端分组状态（权威）。由 WorkBuddy 在每次报告更新时自动写入。网页端拖拽分组后，把带 #watch= 参数的页面链接贴给 WorkBuddy 即可识别并同步到此文件。其他设备打开网页时自动读取此文件恢复分组。",
   "watchlist": ["mindray", "tbea"],
-  "others": ["xcdata", "smic", "tencent", "mu", "montage", "huaqin", "lenovo", "cmoc", "mrvl", "sungrow", "se"],
-  "updatedAt": "2026-09-03 13:58+08:00"
+  "others": ["xcdata", "smic", "tencent", "mu", "montage", "huaqin", "lenovo", "cmoc", "mrvl", "sungrow", "se", "bf"],
+  "updatedAt": "2026-09-03 18:27+08:00"
 }
