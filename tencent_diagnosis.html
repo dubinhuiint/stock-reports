@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>腾讯控股 (00700.HK) 个股深度诊断报告 v1</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>腾讯控股 (00700.HK) 深度诊断报告 v1.3</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -11,7 +12,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
 .header h1{font-size:28px;margin-bottom:4px}
 .header .meta{font-size:13px;opacity:.85}
-.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px;flex-wrap:wrap}
 .price{font-size:52px;font-weight:800}
 .chg{font-size:20px;padding:4px 12px;border-radius:8px}
 .chg.dn{background:rgba(0,200,83,.2);color:#00c853}
@@ -38,7 +39,7 @@ tr:hover td{background:#f8f9fc}
 .tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
 .tech-item .name{font-size:12px;color:#888}
-.tech-item .val{font-size:20px;font-weight:700;color:#0d47a1}
+.tech-item .val{font-size:15px;font-weight:700;color:#0d47a1}
 .tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
 .tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
 .tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
@@ -61,392 +62,405 @@ ol li{padding:5px 0;font-size:14px}
 .dupont-box .detail{font-size:11px;color:#555}
 .arrow{font-size:20px;color:#1565c0;font-weight:bold}
 .new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
-@media print{body{background:white}.card{box-shadow:none;border:1px solid #ddd}}
-@media(max-width:640px){.tech-grid{grid-template-columns:repeat(2,1fr)}.scenario-grid{grid-template-columns:1fr}body{padding:10px}}
+.delta-up{background:#fce4ec}.delta-dn{background:#e8f5e9}.delta-flat{background:#f8f9fc}
+@media print{body{background:white;padding:0}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
+@media(max-width:640px){.tech-grid{grid-template-columns:repeat(2,1fr)}.scenario-grid,.dupont-grid{grid-template-columns:1fr}body{padding:10px}.price{font-size:38px}}
 </style>
 </head>
 <body><div class="container">
+
 <div class="header">
-  <div class="meta">港股深度诊断报告 v1 | 2026-08-17 | stockanalysis.com(S&P Global) + 腾讯财经 + 公司财报 + 一致预期</div>
+  <div class="meta">港股深度诊断报告 v1.3（增量更新版，基于 v1.2 / 2026-08-17）｜ 诊断时间 2026-09-18 16:08 收盘 ｜ 数据来源：Wind + 公司公告 + 17 家券商目标价 + 公开新闻 ｜ Brad 股票分析框架</div>
   <h1>腾讯控股 <span style="font-weight:400;font-size:18px">00700.HK | HKEX</span></h1>
-  <div class="price-row"><span class="price">HK$446.40</span><span class="chg up">+1.45%</span></div>
+  <div class="price-row"><span class="price">HK$419.00</span><span class="chg dn">-1.64%</span></div>
   <div style="margin-top:8px;font-size:13px;opacity:.9">
-市值 HK$4.06万亿 | PE(TTM) 15.0x | Forward PE 13.9x | 52周 HK$411-677.7 | YTD -24.8% | <strong>8/12已发Q2财报</strong>
+    市值 HK$3.81万亿 ｜ PE(TTM) 14.05x ｜ PB 2.91x ｜ 52周 HK$411-HK$675 ｜ YTD -29.24% ｜ <strong>距 52 周低点仅 1.9%</strong>
   </div>
+</div>
+
+<!-- ===== 变化摘要 ===== -->
+<div class="card">
+  <h2>₀ v1.2 → v1.3 变化摘要（重新分析结论先行）<span class="new-badge">NEW</span></h2>
+  <p style="font-size:13px;margin-bottom:10px">8/17 至今 32 天，无新财报（Q3 财报 11 月中旬）。<strong>核心结论：评分 74 → 70（-4），维持"持有"；但结构发生关键位移——"基本面/估值双优 vs 趋势/情绪极弱"的左侧特征空前强化。</strong>股价再跌 6.5%，估值压缩至三年最低分位，而回购力度腰斩、沽空比率翻倍。</p>
+  <table>
+    <tr><th width="110">维度</th><th width="70">方向</th><th>v1.3 更新内容</th></tr>
+    <tr class="delta-up"><td><strong>估值</strong></td><td class="up">改善 ↑↑</td><td><strong>PE(TTM) 16.38x → 14.05x（近三年分位 1.47%）；PB 3.06x → 2.91x（<span class="up">近三年分位 0%，即三年最低</span>）；PS 分位 6.38%。</strong>三法加权中枢 HK$606，现价 419 <strong>已低于悲观情景 443</strong>——历史级别便宜</td></tr>
+    <tr class="delta-dn"><td><strong>资金情绪</strong></td><td class="dn2">显著恶化 ↓↓</td><td><strong>① 回购力度腰斩再腰斩：8/17-8/28 每日 3.0 亿港元 → 8/31 起降至 1.0 亿港元</strong>，总裁刘炽平明确解释"更多资金导向资本开支，因此可能减少用于回购的现金"；<strong>② 沽空比率从 6.36%(9/4) 飙至 13.39%(9/11)</strong>，空头与回购正面对抗；③ Wind 主力资金近 60 日净流出 164.7 亿港元</td></tr>
+    <tr class="delta-dn"><td><strong>技术面</strong></td><td class="dn2">继续走弱 ↓</td><td>股价 448 → 419，<strong>跌破全部均线</strong>（MA250 从 549.1 降至 529.5，现价低于年线 -20.9%）；MACD 死叉加深（柱 -1.845）；CCI -141.2 深度超卖；<strong>距 52 周低点 411 仅 1.9%</strong>。仅 RSI6 从 18.8 回升至 28.3 略有修复</td></tr>
+    <tr class="delta-dn"><td><strong>机构共识</strong></td><td class="dn2">下修 ↓</td><td>目标均价 692.69 → <strong>657-668 港元</strong>（-3.6%~-5.1%）；<strong>9/17 高盛下调至 650</strong>（原 658），并将 2026H2 EPS 预测最多削减 5%，理由为"AI 投资偏高及近期股权融资"；<strong>麦格理给"持有"、目标价 440</strong>（最悲观，几乎与现价持平）vs 里昂/瑞银 710——外资内部分歧扩大</td></tr>
+    <tr class="delta-dn"><td><strong>成长性</strong></td><td class="dn2">略降 ↓</td><td>机构一致预期 <strong>2026Q3 净利润增速仅 +3.25%</strong>（vs Q2 实际 +8.51%）、EPS +4.58%——AI 投入对利润的拖累在 Q3 将集中体现，Q3 或为增速"探底季"</td></tr>
+    <tr class="delta-up"><td><strong>AI 进展</strong></td><td class="up">实质突破 ↑↑</td><td><strong>9/3 正式发布并开源混元 Hy4 preview</strong>（MoE 架构，总参 770B/激活 49B/上下文 1M），定价维持低位（输入 6 元/百万 tokens）；<strong>WorkBuddy 生态全面铺开</strong>：9/2 开放平台上线（100+ 伙伴、9 款联名硬件）、9/3 金融版（100+ 金融机构）、9/3 登陆国产 OS（麒麟/统信）、9 月国际版全球上线；撤销 AI Lab，姚顺雨任首席 AI 科学家</td></tr>
+    <tr class="delta-up"><td><strong>投资组合</strong></td><td class="up">新增催化 ↑</td><td><strong>燧原科技 9/11 上市首日涨近 1.8 倍</strong>，腾讯为最大外部股东及战配金额首位；明略科技 8/31 收购腾讯持有的夜莺 11.33% 股权（投资退出案例）</td></tr>
+    <tr class="delta-flat"><td><strong>基本面/财务</strong></td><td><span class="tag-neutral">无新数据</span></td><td>8/17 至 9/18 无新财报。Q2'26 数据（营收 ¥2048亿 +11%、Non-IFRS 归母 ¥684亿 +9%、毛利率 58%、Capex ¥528亿 +176%）维持 v1.2 结论。<strong>下一验证点：11 月中旬 Q3 财报</strong></td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>一句话概括 v1.3：</strong>好公司（基本面 82 分未变）+ 极便宜的价格（估值分 78 → 82，PB 三年最低）≠ 好买点（技术 46 / 资金 52 / 风险 48 全线走弱）。<strong>这轮下跌的性质已经变了——从"AI 资本开支担忧"演进为"回购弹药被 AI 挤占 + 空头主动做空"的流动性博弈。</strong>安全边际越来越厚，但趋势没有任何修复迹象。</div>
 </div>
 
 <!-- ===== 综合评分 ===== -->
-<div class="vcard"><h2>综合诊断评分</h2><div class="score">74/100</div>
-<p style="text-align:center;font-size:12px;color:#888;margin-top:-8px">首次覆盖 · 中国互联网龙头，AI 转型加速，评分落在"持有/关注"区间上沿</p>
-<table><tr><th width="110">维度</th><th width="70">评分</th><th>核心判断</th></tr>
-<tr><td>基本面</td><td class="up">80</td><td>Q1'26 营收¥1965亿(+9%)、毛利率56.6%创新高、Non-IFRS净利+11%；FCF ¥567亿(+20%)、净现金¥1469亿；盈利质量极高</td></tr>
-<tr><td>估值</td><td>78</td><td>PE(TTM)16.6x / Fwd 13.9x 处于历史中低位；SOTP 中枢 HK$633(+31%)；投资组合(上市5471亿+非上市3651亿)被显著折价</td></tr>
-<tr><td>成长性</td><td>70</td><td>FY26E EPS +6.4%、FY27E +9.6%，3Y CAGR 8.8%——中低速但稳健；AI(Hy3/WorkBuddy/云+20%)是潜在加速器</td></tr>
-<tr><td>技术面</td><td>60</td><td>MACD零上金叉+站上MA20/60，但现价仍在年线MA250($551)下方、YTD-22.7%；反弹未确认反转</td></tr>
-<tr><td>资金情绪</td><td>72</td><td>Q1回购76亿港元持续+管理层"回购好时机"；机构持股23.8%偏低；南向资金持续流入港股互联网</td></tr>
-<tr><td>风险</td><td class="dn2">55</td><td>政策监管(游戏版号/反垄断)、AI资本开支下半年大增压制FCF、上市投资组合Q1减值¥1256亿、中美地缘</td></tr>
-<tr><td>筹码/事件</td><td>80</td><td>持续回购(股本-1.39%/年)、零解禁压力；8/12财报为近期最大催化剂；AI产品密集落地</td></tr>
-<tr><td>机构共识</td><td class="up">88</td><td>46家覆盖，Strong Buy 35/Buy 8，目标均价 HK$692.69(+44%)，中位$698</td></tr>
-</table>
-<p style="margin-top:14px;font-size:14px"><strong>定位：中国互联网"现金牛+AI期权"复合体。</strong>核心业务(游戏+广告+金融科技)现金流强劲、盈利质量一流，同时手握超 ¥9,000亿投资组合与正在起势的 AI 产品矩阵(Hy3 模型 OpenRouter token 消耗领先、WorkBuddy 中国效率 AI 智能体 DAU 第一)。估值处于历史中低位——PE(TTM) 16.6x、SOTP 中枢 HK$633 隐含 +31% 空间，与机构目标价 $693 方向一致。但当前处于 AI 投入高峰（下半年资本开支将显著增加）与宏观不确定性叠加期，短期财报(8/12)是方向选择点。若 Q2 游戏流水转化+广告加速兑现，存在向上修正动能；若 AI 投入超预期吞噬利润，则估值中枢下移。</p>
+<div class="vcard">
+  <h2>① 综合诊断评分（v1.3）</h2>
+  <div class="score">70<span style="font-size:24px;color:#888"> /100</span></div>
+  <p style="text-align:center;color:#ff8f00;font-weight:700">持有 —— 较 v1.2（74）下调 4 分：估值更便宜，但趋势、资金、共识三项同步走弱</p>
+  <table>
+    <tr><th>维度</th><th>权重</th><th>v1.3</th><th>v1.2</th><th>变化依据</th></tr>
+    <tr><td>基本面</td><td>25%</td><td class="up">82</td><td>82</td><td>无新财报，Q2'26 结论维持；AI 产品实证增强（Hy4 开源、WorkBuddy 生态）但尚未形成收入</td></tr>
+    <tr><td>估值</td><td>25%</td><td class="up">82</td><td>78</td><td><strong>PE 14.05x（三年分位 1.47%）、PB 2.91x（三年分位 0%）、PS 分位 6.4%</strong>；现价低于三法悲观情景</td></tr>
+    <tr><td>成长性</td><td>10%</td><td class="dn2">68</td><td>70</td><td>一致预期 Q3 净利增速仅 +3.25%（Q2 +8.51%）；湘财预测 2026-28 营收 +11.7%/+11.7%/+11.2%，增速平台化</td></tr>
+    <tr><td>技术面</td><td>10%</td><td class="dn2">46</td><td>52</td><td>跌破全部均线、MACD 死叉加深、CCI -141、距 52 周低点 1.9%；仅 RSI6 小幅修复</td></tr>
+    <tr><td>资金情绪</td><td>10%</td><td class="dn2">52</td><td>70</td><td><strong>回购 3 亿→1 亿港元/日；沽空比率 6.36%→13.39%；主力 60 日净流出 164.7 亿；南向资金仍净买入（唯一正面）</strong></td></tr>
+    <tr><td>风险</td><td>10%</td><td class="dn2">48</td><td>52</td><td>AI 资本开支挤占回购（管理层明示）、Q3 利润增速探底、高盛下修目标价、麦格理给"持有"</td></tr>
+    <tr><td>筹码/事件</td><td>5%</td><td class="dn2">72</td><td>78</td><td>累计回购注销 4,508 万股（占 0.494%）、零解禁、股息 1.27%；但回购节奏放缓削弱托底力度</td></tr>
+    <tr><td>机构共识</td><td>5%</td><td class="dn2">82</td><td>88</td><td>57 家覆盖、93% 买入/增持，但目标均价 692.69 → 657-668；最低目标价 428（麦格理 440）</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>加权总分</strong></td><td>100%</td><td><strong>70</strong></td><td><strong>74</strong></td><td><strong>持有（65-74）· 硬约束检查：基本面+估值 164 ≥ 120 ✓ ｜ 风险 48 ≥ 45 ✓ 均未触发</strong></td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>多头逻辑（未变，且被更便宜的价格强化）：</strong>① 核心现金流引擎完好——Q2'26 毛利率 58% 创历史新高、Non-IFRS 经营利润率 37%（剔除新 AI 产品后 42%）、剔除 AI 后经营利润 +19%；② 估值处于上市以来极端低位——PE(TTM) 14.05x、PB 2.91x 均为近三年最低区间；③ AI 从"叙事"进入"产品"——Hy4 preview 已开源、WorkBuddy 完成从开放平台到金融版到国际版的全维度铺开；④ 投资组合持续兑现（燧原科技上市首日 +180%、夜莺股权退出）；⑤ 股息率 1.27% 且持续回购注销。</div>
+  <div class="sig sig-bear"><strong>空头逻辑（v1.3 强化）：</strong>① <strong>管理层亲口承认回购让位于资本开支</strong>——刘炽平"将更多资金导向资本开支，因此可能减少用于回购的现金"，这直接削弱了"回购托底"这一最重要的股价支撑逻辑；② 沽空比率飙至 13.39%，空头在 419-430 区间与公司回购正面对抗；③ 机构一致预期 Q3 净利增速仅 +3.25%，Q3 或为"利润增速探底季"；④ 高盛 9/17 下调目标价并削减 H2 EPS 预测；⑤ 技术面跌破全部均线且距 52 周低点仅 1.9%，一旦失守 411 将打开新的下跌空间。</div>
+  <div class="sig sig-warn"><strong>核心判断：</strong>腾讯当前是"<strong>基本面 A 级 + 估值 A 级 + 趋势 D 级</strong>"的组合。价值投资者会看到 PE 14x、PB 三年最低、现金流依然强劲；趋势投资者会看到全部均线之下、空头加仓、回购减力。<strong>两者的分歧点在于：AI 资本开支究竟是"烧钱"还是"播种"。</strong>本报告站在中间：倾向认为 AI 投入具备真实的产品落地路径（Hy4 开源 + WorkBuddy 商业化是证据），但兑现需要时间，而市场在 Q3 财报（11 月）之前缺乏做多的催化剂。<strong>评级维持"持有"：不因便宜而追买（左侧未完成），不因下跌而恐慌（价值在累积）。</strong></div>
 </div>
 
 <!-- ===== 行情快照 ===== -->
-<div class="card"><h2>行情快照（2026-08-10 收盘）</h2>
-<div class="kv">
-<div class="item"><div class="lbl">最新价</div><div class="val">HK$446.40</div><div class="sub">8/10收盘 · 涨跌+HK$2.60</div></div>
-<div class="item"><div class="lbl">涨跌幅</div><div class="val up">+0.54%</div><div class="sub">今开 $480.00 · 区间 $476.4-$483.6</div></div>
-<div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">HK$4.06万亿</div><div class="sub">总股本 89.8亿股</div></div>
-<div class="item"><div class="lbl">PE(G)/PE(F)/PB</div><div class="val" style="font-size:14px">16.63/13.86/3.12</div></div>
-<div class="item"><div class="lbl">52周高低</div><div class="val" style="font-size:14px">HK$364.80 - HK$683.00</div></div>
-<div class="item"><div class="lbl">YTD/5日/20日/60日</div><div class="val"><span class="dn2">-22.7%</span>/<span class="dn2">-1.8%</span>/<span class="up">+5.2%</span>/<span class="up">+4.1%</span></div></div>
-<div class="item"><div class="lbl">Beta/RSI14</div><div class="val" style="font-size:14px">0.75/55.5</div></div>
-<div class="item"><div class="lbl">分析师1年目标均价</div><div class="val"><span class="up">HK$692.69</span></div><div class="sub">区间$427-$888 | CLSA $740最新</div></div>
-<div class="item"><div class="lbl">股息/收益率</div><div class="val" style="font-size:14px">HK$5.30 / 1.11%</div><div class="sub">股息+回购 = 股东回报 2.5%</div></div>
-<div class="item"><div class="lbl">下次财报</div><div class="val" style="font-size:14px;color:#c62828">2026.08.12</div><div class="sub">Q2'26 · 距当前2天 · 关键催化剂</div></div>
-</div>
-<div class="sig sig-bull"><strong>核心投资逻辑：</strong>① 现金流引擎：Q1'26 FCF ¥567亿(+20%)，Non-IFRS经营利润率38.5%(剔除新AI产品后43.0%)，盈利质量中国互联网最强；② 游戏基本盘：王者荣耀/和平精英/三角洲行动流水创新高，国内游戏流水增速"十几个百分点"，国际游戏+13%；③ 广告加速：AI推荐模型升级+微信闭环营销，Q1 广告+20% 且提速；④ 投资组合：上市投资公允价值 ¥5,471亿 + 非上市账面 ¥3,651亿 = ¥9,122亿，占市值约 25%，被市场折价交易；⑤ AI 期权：Hy3 preview 自4/28 起 OpenRouter token 消耗领先，WorkBuddy DAU 中国效率 AI 智能体第一，云服务 +20%。</div>
-<div class="sig sig-warn"><strong>反面声音：</strong>① 管理层明确下半年资本开支大幅增长(AI投入)，2026全年Capex或达¥1,500-2,000亿，将压制自由现金流；② Q1 上市投资组合公允价值环比减值 ¥1,256亿(¥6,727→¥5,471亿)；③ 游戏版号/未成年人保护等政策监管是长期悬顶；④ 社交网络收入-2%(春节错期)，微信MAU增长见顶(14.32亿,+2%)；⑤ 股价年初至今-22.7%，为2025-26年回调最深的大型互联网股之一。</div>
-</div>
-
-<!-- ===== 利润表 ===== -->
-<div class="card"><h2>利润表趋势（IFRS | ¥B | 单季）<span class="new-badge">NEW</span></h2>
-<p style="font-size:12px;color:#888;margin-bottom:12px">腾讯财年=自然年。最新季度 2026 Q1（2026.03.31 截止，2026.05.13 公布）。D&A 约 ¥90亿/季（TTM ¥359亿均摊）。</p>
-<table>
-<tr><th>指标</th><th>Q1 2026<br><span class="small">(新!)</span></th><th>Q4 2025</th><th>Q3 2025</th><th>Q2 2025</th><th>Q1 2025</th><th>FY2025</th></tr>
-<tr style="background:#f8f9fc"><td><strong>营收(¥B)</strong></td><td><strong>196.5</strong><br><span class="small">环比+1.1% · 同比+9.1%</span></td><td>194.4<br><span class="small">+0.8% · +12.7%</span></td><td>192.9<br><span class="small">+4.5% · +15.4%</span></td><td>184.5<br><span class="small">+2.5% · +14.5%</span></td><td>180.0<br><span class="small">+4.4% · +12.9%</span></td><td>751.8<br><span class="small">+13.9%</span></td></tr>
-<tr><td><strong>毛利率</strong></td><td><strong>56.6%</strong><br><span class="small">+0.8pp YoY</span></td><td>55.9%</td><td>56.4%</td><td>56.9%</td><td>55.8%</td><td>56.2%</td></tr>
-<tr style="background:#f8f9fc"><td><strong>营业利润率(IFRS)</strong></td><td><strong>34.3%</strong></td><td>33.1%</td><td>33.0%</td><td>32.6%</td><td>34.2%</td><td>32.7%</td></tr>
-<tr><td><strong>IFRS净利(¥B)</strong></td><td><strong>58.1</strong><br><span class="small">净利率29.6% · +21.5% YoY</span></td><td>58.3</td><td>63.1</td><td>55.6</td><td>47.8</td><td>224.8</td></tr>
-<tr style="background:#e3f2fd"><td><strong>Non-IFRS净利(¥B)</strong></td><td><strong>69.8</strong><br><span class="small">+11% YoY · 归母¥67.9B</span></td><td>~68</td><td>~66</td><td>~60</td><td>~56</td><td>~258</td></tr>
-<tr><td><strong>IFRS EPS</strong></td><td><strong>¥6.30</strong></td><td>¥6.23</td><td>¥6.78</td><td>¥6.00</td><td>¥5.13</td><td>¥24.8</td></tr>
-<tr><td><strong>折旧摊销(¥B,估)</strong></td><td><strong>~9.0</strong></td><td>~9.0</td><td>~8.9</td><td>~8.8</td><td>~8.7</td><td>35.9</td></tr>
-</table>
-<div class="sig sig-bull"><strong>Q1'26 解读：</strong>营收 +9% 略低于市场预期(¥1994亿)，但净利 +21.5% 超预期。核心亮点是盈利质量：Non-IFRS 经营利润率 38.5% 稳定，剔除新 AI 产品后经营利润 +17%、利润率升至 43.0%——说明 AI 投入是主动战略选择而非经营恶化。毛利率 56.6% 创历史新高，连续 9 个季度环比改善，体现高毛利业务(广告+游戏)占比提升。</div>
-<div class="assume"><strong>假设说明：</strong>Non-IFRS 净利为管理层口径（调回 SBC/投资收益/减值等一次性项目）；IFRS 与 Non-IFRS 差距约 ¥120亿/季，主要为 SBC(~¥60亿)+投资相关损益；季度 D&A 按 TTM ¥359亿均摊估算。</div>
-</div>
-
-<!-- ===== ROE杜邦 ===== -->
-<div class="card"><h2>ROE 杜邦拆解 <span class="new-badge">NEW</span>（TTM 口径）</h2>
-<p style="font-size:12px;color:#888;margin-bottom:12px">TTM（截至 2026.03.31）：营收 ¥873.2B / 净利 ¥267.3B / 股东权益 ~¥1,380B（每股净资产 ¥141.90）。</p>
-<div class="dupont-grid">
-<div class="dupont-box">
-  <div class="title">净利率 (NPM)</div>
-  <div class="num">30.6%</div>
-  <div class="detail">TTM NI ¥267.3B ÷ TTM Rev ¥873.2B<br>Non-IFRS口径 ~32%</div>
-</div>
-<div class="dupont-box" style="display:flex;align-items:center;justify-content:center">
-  <span class="arrow">×</span>
-</div>
-<div class="dupont-box">
-  <div class="title">资产周转率 (AT)</div>
-  <div class="num">0.39x</div>
-  <div class="detail">TTM Rev ¥873.2B ÷ Avg Assets ~¥2,240B<br>轻资产+投资占比高拉低周转</div>
-</div>
-</div>
-<div class="dupont-grid" style="margin-top:8px">
-<div class="dupont-box" style="grid-column:span 3;text-align:center">
-  <div style="display:flex;align-items:center;justify-content:center;gap:20px">
-    <div><span class="arrow" style="font-size:28px">=</span></div>
-    <div style="text-align:center">
-      <div class="title" style="font-size:13px">ROE (TTM)</div>
-      <div class="num" style="font-size:30px">20.5%</div>
-      <div class="detail">30.6% × 0.39x × 1.71(average) ≈ 20.4%<br>权益乘数(EM): ~¥2,240B/~¥1,310B ≈ 1.71x · ROIC 17.6%</div>
-    </div>
+<div class="card">
+  <h2>② 行情快照（2026-09-18 收盘）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新价</div><div class="val">HK$419.00</div><div class="sub">-1.64% · 收于当日最低点</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:17px">HK$3.81万亿</div><div class="sub">较 v1.2（4.08万亿）-6.6%</div></div>
+    <div class="item"><div class="lbl">PE(TTM)</div><div class="val">14.05x</div><div class="sub">3年分位 <span class="up">1.47%</span> · 原 16.38x</div></div>
+    <div class="item"><div class="lbl">PB</div><div class="val">2.91x</div><div class="sub">3年分位 <span class="up">0%</span> · 三年最低</div></div>
+    <div class="item"><div class="lbl">PE(LYR) / PE(预测)</div><div class="val" style="font-size:16px">15.31 / 14.14</div><div class="sub">港币口径</div></div>
+    <div class="item"><div class="lbl">PS(TTM)</div><div class="val">4.20x</div><div class="sub">3年分位 6.38%</div></div>
+    <div class="item"><div class="lbl">股息率</div><div class="val">1.27%</div><div class="sub">FY25 每股 HK$5.30</div></div>
+    <div class="item"><div class="lbl">52周高低</div><div class="val" style="font-size:16px">411 - 675.13</div><div class="sub"><span class="up">距低点仅 +1.9%</span> · 距高点 -38.0%</div></div>
+    <div class="item"><div class="lbl">成交 / 换手</div><div class="val" style="font-size:16px">121.8亿</div><div class="sub">2,880万股 · 换手 0.317% · 量比 1.85</div></div>
+    <div class="item"><div class="lbl">Beta（近1年）</div><div class="val">0.27</div><div class="sub">年化波动率 29.0% · 最大回撤 -38.5%</div></div>
+    <div class="item"><div class="lbl">主力资金（Wind）</div><div class="val dn2">60日 -164.7亿</div><div class="sub">20日 -65.3亿 / 5日 -32.1亿</div></div>
+    <div class="item"><div class="lbl">机构目标均价</div><div class="val up">HK$663</div><div class="sub">57家 · 最高 885.75 / 最低 428.30</div></div>
   </div>
-</div>
-</div>
-<table style="margin-top:14px">
-<tr><th>指标</th><th>腾讯</th><th>阿里巴巴(BABA)</th><th>美团(3690.HK)</th><th>网易(NTES)</th></tr>
-<tr><td>ROE (TTM)</td><td class="up"><strong>20.5%</strong></td><td>~12%</td><td>~18%</td><td>~25%</td></tr>
-<tr><td>净利率</td><td class="up"><strong>30.6%</strong></td><td>~9%</td><td>~12%</td><td>~30%</td></tr>
-<tr><td>资产周转率</td><td>0.39x</td><td>~0.5x</td><td>~0.8x</td><td>~0.6x</td></tr>
-<tr><td>权益乘数</td><td>1.71x</td><td>~2.5x</td><td>~2.0x</td><td>~1.4x</td></tr>
-<tr style="background:#e3f2fd"><td><strong>核心特征</strong></td><td colspan="3"><strong>高净利率驱动 + 极稳健杠杆</strong>（净现金 ¥1,469亿）</td><td>-</td></tr>
-</table>
-<div class="sig sig-bull"><strong>ROE 核心发现：20.5% 的 ROE 由"中国互联网最高的净利率"(30.6%)驱动，杠杆保守。</strong>与阿里巴巴(净利率~9%)、美团(~12%)相比，腾讯的盈利质量显著领先——游戏超高毛利+广告杠杆效应。资产周转率 0.39x 偏低是因资产负债表含 ¥9,000亿+投资组合(不产生收入但贡献市值)。若剔除投资资产看核心业务周转，经营效率极高。权益乘数仅 1.71x 且为净现金状态，财务风险极低。</div>
-<div class="sig sig-warn"><strong>ROE 隐忧：</strong>① 净利率依赖游戏递延收入+投资收益，Q1 投资收益波动(上市投资减值)会扰动单季利润；② AI 投入加大将阶段性拉低利润率(剔除AI后 43% vs 含AI 38.5%)；③ ROE 20.5% 处于腾讯自身历史中位，较 2021 年高点(~28%)有回落，反映监管后时代增长换挡。</div>
+
+  <h3>区间涨跌幅</h3>
+  <table>
+    <tr><th>5日</th><th>10日</th><th>20日</th><th>60日</th><th>120日</th><th>250日</th><th>年初至今</th></tr>
+    <tr><td class="dn2">-2.19%</td><td class="dn2">-5.37%</td><td class="dn2">-8.32%</td><td class="dn2">-0.57%</td><td class="dn2">-16.15%</td><td class="dn2">-32.66%</td><td class="dn2">-29.24%</td></tr>
+    <tr><td colspan="7" style="font-size:11px;color:#888">v1.2 同期（8/17）：YTD -28.1% ｜ 5日 -7.1% ｜ 20日 -6.4%。一个月内 YTD 跌幅进一步扩大 1.1pct</td></tr>
+  </table>
+  <div class="assume"><strong>关键观察：</strong>① <strong>9/18 收于当日最低点 419.00</strong>，且当日最低=收盘价，说明尾盘无承接；② 量比 1.85 但换手率仅 0.317%——放量下跌但绝对换手极低，属"无量阴跌"；③ 52 周低点 411 是当前最重要的技术位，仅差 1.9%；④ <strong>PB 三年分位 0%</strong> 意味着当前市净率是过去三年（738 个交易日）的最低值。</div>
 </div>
 
-<!-- ===== 现金流 ===== -->
-<div class="card"><h2>现金流独立分析（¥B）</h2>
-<table>
-<tr><th>指标</th><th>Q1'26</th><th>Q4'25</th><th>Q3'25</th><th>Q2'25</th><th>FY2025</th><th>TTM</th></tr>
-<tr style="background:#f8f9fc"><td>经营现金流</td><td><strong>101.4</strong></td><td>66.5</td><td>85.3</td><td>74.4</td><td>303.1</td><td>372.3</td></tr>
-<tr><td>资本支出</td><td>-37.0</td><td>-27.9</td><td>-14.0</td><td>-22.6</td><td>-110.3</td><td>-110.3</td></tr>
-<tr style="background:#f8f9fc"><td><strong>自由现金流</strong></td><td><strong>64.4</strong></td><td>38.6</td><td>71.3</td><td>51.8</td><td>139.4</td><td>262.0</td></tr>
-<tr><td>FCF利润率</td><td>32.8%</td><td>19.8%</td><td>37.0%</td><td>28.1%</td><td>18.5%</td><td>29.3%</td></tr>
-<tr><td>净利润现金含量</td><td>175%</td><td>114%</td><td>135%</td><td>134%</td><td>135%</td><td>139%</td></tr>
-</table>
-<div class="sig sig-bull"><strong>现金引擎强劲：</strong>TTM 经营现金流 ¥372B、FCF ¥262B，净利润现金含量 139%——盈利全部转为真金白银（游戏预收款+广告预收+微信支付沉淀资金）。Q1'26 FCF ¥567亿(+20%)。期末总现金 ¥5,337亿，净现金 ¥1,469亿（+63%）。<strong>管理层明确：</strong>"业务现金流非常充裕+持有规模可观投资组合+正加速变现进程，将维持并实施股票回购计划"——这是 Q1 回购 76 亿港元的基础。</div>
-<div class="sig sig-warn"><strong>关键变量——AI 资本开支：</strong>Q1'26 资本开支 ¥370亿（付款口径，+16% YoY），较 Q4'25 的 ¥196亿大增。管理层业绩会明确"2026 下半年资本开支增幅会尤为明显"（国产自研 ASIC 逐月落地）。全年 Capex 或达 ¥1,500-2,000亿，虽仅占营收 ~20%，但会显著拉低 FCF 增速——这是当前压制估值的最直接因素。需跟踪：AI 投入的回报拐点（云收入+20%、WorkBuddy 商业化进度）。</div>
-</div>
+<!-- ===== 估值 ===== -->
+<div class="card">
+  <h2>③ 估值更新（三法框架 + 外资分歧）<span class="new-badge">重点更新</span></h2>
+  <p style="font-size:12px;color:#888;margin-bottom:12px">腾讯为多业务线公司（游戏/广告/金融科技/投资组合），沿用 v1.2 的 <strong>SOTP 主锚 50% + PEG 25% + DCF 25%</strong> 框架。本次对三法假设同步下调，以反映 Q3 利润增速探底与投资组合公允价值可能的波动。</p>
 
-<!-- ===== 资产负债表 ===== -->
-<div class="card"><h2>资产负债表关键指标（2026.03.31 | ¥B）</h2>
-<table>
-<tr><th>指标</th><th>2026Q1</th><th>2025Q4</th><th>2025Q1</th><th>关注</th></tr>
-<tr><td>现金及短期投资</td><td><strong>459.7</strong></td><td>422.6</td><td>377.9</td><td class="up">持续累积</td></tr>
-<tr><td>总债务</td><td><strong>405.5</strong></td><td>406.4</td><td>404.6</td><td>稳定</td></tr>
-<tr style="background:#e3f2fd"><td><strong>净现金</strong></td><td><strong>+54.2</strong></td><td>+16.2</td><td>-26.7</td><td class="up">公司口径净现金 ¥1,469亿(+63%)</td></tr>
-<tr><td>上市投资公允价值</td><td><strong>547.1</strong></td><td>672.7</td><td>~600</td><td class="dn2">Q1 减值 ¥1,256亿（市场回调）</td></tr>
-<tr><td>非上市投资账面</td><td><strong>365.1</strong></td><td>363.1</td><td>~350</td><td>稳定</td></tr>
-<tr><td>股东权益</td><td><strong>~1,380</strong></td><td>~1,330</td><td>~1,190</td><td>每股净资产 ¥141.90</td></tr>
-<tr><td>流动比率/速动</td><td><strong>1.43/1.14</strong></td><td>1.38</td><td>1.35</td><td>健康</td></tr>
-<tr><td>资产负债率</td><td><strong>~38%</strong></td><td>~40%</td><td>~42%</td><td>温和</td></tr>
-<tr><td>商誉占比</td><td>低</td><td>低</td><td>低</td><td>无重大减值风险</td></tr>
-</table>
-<div class="sig sig-warn"><strong>资产负债表核心观察：</strong>① 净现金 ¥1,469亿 + 投资组合 ¥9,122亿 = 总金融资产超 ¥1万亿，占市值约 25%；② <strong>投资组合是"隐藏价值"也是"波动源"</strong>——Q1 上市投资公允价值环比 -18.7%（¥1,256亿），反映港股/中概市场回调；管理层表示"正在加快推进部分投资组合变现进程"，若兑现将释放价值并支持回购；③ 资产负债率 ~38% 且为净现金，财务风险极低，具备逆周期扩张能力；④ 应收账款/合同负债结构健康（游戏递延收入是蓄水池）。</div>
-</div>
+  <h3>一、一致预期速览（无新财报，Q3 预测已下修）</h3>
+  <table>
+    <tr><th></th><th>最新实际(Q2'26)</th><th>Q3'26E（一致预期）</th><th>FY2026E</th><th>FY2027E</th></tr>
+    <tr style="background:#e3f2fd"><td><strong>营收</strong></td><td><strong>¥204.8B</strong></td><td><strong>¥2429.5亿港元</strong><br><span class="small">同比 +11.76%</span></td><td>¥825.8B</td><td>¥903.3B</td></tr>
+    <tr><td>同比增速</td><td class="up">+11.0%</td><td class="up">+11.76%</td><td class="up">+9.9%</td><td class="up">+9.4%</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>净利润</strong></td><td><strong>Non-IFRS ¥684亿</strong><br><span class="small">同比 +8.51%</span></td><td><strong>781.0亿港元</strong><br><span class="small"><span class="dn2">同比仅 +3.25%</span></span></td><td>—</td><td>—</td></tr>
+    <tr><td>EPS</td><td>Non-IFRS ¥7.58</td><td>8.421 港元<br><span class="small"><span class="dn2">+4.58%</span></span></td><td>¥29.67</td><td>¥32.51</td></tr>
+    <tr><td>Forward PE @HK$419</td><td>—</td><td>—</td><td><strong>13.0x</strong><br><span class="small">原 13.9x @448</span></td><td><strong>11.8x</strong></td></tr>
+    <tr><td>EPS 增速</td><td class="up">+9%</td><td class="dn2">+4.6%</td><td>+6.4%</td><td>+9.6%</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>最需要警惕的一个数字：Q3 净利润一致预期同比仅 +3.25%。</strong>对比 Q1'26 的 +10.72%、Q2'26 的 +8.51%，增速在三个季度内从双位数滑向个位数低位。<strong>这直接反映了 AI 资本开支的折旧与运营费用开始集中入表</strong>（Q2 Capex 已 ¥528亿，环比 +65%，折旧将在未来 2-4 个季度逐步体现）。若 Q3 实际增速低于 +3%，市场对"AI 投入吞噬利润"的担忧将被进一步证实，估值中枢可能继续下移；若显著超预期（如 +8% 以上），则是重要的预期差修复契机。<strong>11 月中旬的 Q3 财报，是本轮逻辑的第一个真正验证点。</strong></div>
 
-<!-- ===== 分业务线 ===== -->
-<div class="card"><h2>分业务线深度分析 <span class="new-badge">NEW</span></h2>
-<p style="font-size:12px;color:#888;margin-bottom:12px">Q1'26 分部收入（¥B）。腾讯业务结构：增值服务(VAS)/营销服务/金融科技及企业服务(FBS)。</p>
-<div style="height:260px"><canvas id="segChart"></canvas></div>
-<table style="margin-top:14px">
-<tr><th>业务线</th><th>Q1'26收入</th><th>占比</th><th>同比</th><th>核心驱动与市场地位</th></tr>
-<tr><td><strong>增值服务 VAS</strong>(游戏+社交)</td><td>96.1</td><td>48.9%</td><td class="up">+4%</td><td>国内游戏 ¥454亿(+6%，流水+十几个pct)；国际游戏 ¥188亿(+13%)；社交网络 ¥319亿(-2%春节错期)</td></tr>
-<tr><td><strong>营销服务</strong>(广告)</td><td>38.2</td><td>19.4%</td><td class="up">+20%</td><td>AI推荐模型升级+微信闭环营销，广告单价提升；腾讯营销AIM+覆盖30%广告投放</td></tr>
-<tr><td><strong>金融科技及企业服务</strong></td><td>59.9</td><td>30.5%</td><td class="up">+9%</td><td>金融科技：支付+理财；企业服务 +20%（云+AI需求+微信小店GMV增长）</td></tr>
-<tr><td><strong>其他</strong></td><td>2.3</td><td>1.2%</td><td>-</td><td>视频号直播带货等</td></tr>
-</table>
+  <h3>二、SOTP 分部估值（主锚，权重 50%）— 假设下调</h3>
+  <table>
+    <tr><th>业务线</th><th>FY26E利润(¥B)</th><th>PE倍数</th><th>估值(¥B)</th><th>较 v1.2 调整</th></tr>
+    <tr><td>游戏(VAS核心)</td><td>~130</td><td>15-17x</td><td>~2,100</td><td class="dn2">-50（增速预期略降）</td></tr>
+    <tr><td>广告+社交</td><td>~120</td><td>14-16x</td><td>~1,780</td><td class="dn2">-20</td></tr>
+    <tr><td>金融科技及企业服务</td><td>~50</td><td>11-13x</td><td>~590</td><td class="dn2">-10</td></tr>
+    <tr><td>投资组合(上市)</td><td>—</td><td>按公允价值</td><td>~460</td><td class="dn2">-27（假设 Q3 市场回调致 -5.5%）</td></tr>
+    <tr><td>投资组合(非上市)</td><td>—</td><td>7折</td><td>~265</td><td class="dn2">-7（燧原上市部分转上市组合）</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>净现金</strong></td><td>—</td><td>—</td><td>30</td><td class="dn2">-28（Q3 资本开支继续消耗，Q2 末 582亿已较 Q1 的 1469亿大降）</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>SOTP 合计</strong></td><td colspan="2">核心业务+投资+现金</td><td><strong>~¥5,225B</strong></td><td>对应每股 <strong>~HK$601</strong>（v1.2：HK$618）</td></tr>
+  </table>
+  <div class="scenario-grid">
+    <div class="scen scen-bear"><div class="slbl">悲观（投资打8折 + AI 拖累加剧）</div><div class="sval">HK$490</div><div class="schg up">+17%</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（当前倍数）</div><div class="sval">HK$601</div><div class="schg up">+43%</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观（AI 兑现 + 投资变现）</div><div class="sval">HK$760</div><div class="schg up">+81%</div></div>
+  </div>
+  <div class="sig sig-bull"><strong>SOTP 核心洞察（v1.3 强化）：</strong>即使把投资组合、净现金、分部利润全部下调，SOTP 中性中枢仍有 HK$601，较现价 419 有 <strong>+43%</strong> 空间（v1.2 时为 +38%）。<strong>空间扩大并非因为价值变高，而是因为价格跌得更快。</strong>其中投资组合（上市 ¥4,600亿 + 非上市 ¥2,650亿 ≈ HK$8,870亿）已占市值约 23%，市场对这一块给的隐含折价持续存在——若管理层加速变现（燧原已上市、夜莺已退出），将直接驱动估值向 SOTP 靠拢。</div>
 
-<h3>各业务线 TAM 与竞争格局</h3>
-<table>
-<tr><th>业务</th><th>市场规模(TAM)</th><th>腾讯地位</th><th>主要对手</th><th>差异化优势</th></tr>
-<tr><td>游戏(国内)</td><td>¥3,000亿+/年</td><td>第一(份额~50%)</td><td>网易、米哈游</td><td>微信/QQ渠道+长青游戏运营(王者/和平/三角洲)</td></tr>
-<tr><td>游戏(国际)</td><td>$1,000亿+/年</td><td>前十(增速最快中国厂商)</td><td>Supercell自营、EA、动暴</td><td>收购+发行能力(鸣潮/皇室战争/无畏契约)</td></tr>
-<tr><td>广告(中国互联网)</td><td>¥1万亿+/年</td><td>第二(紧追字节)</td><td>字节跳动、阿里、百度</td><td>微信14.3亿MAU+视频号+小程序闭环</td></tr>
-<tr><td>支付</td><td>¥300万亿流水</td><td>第一(微信支付)</td><td>支付宝</td><td>社交场景+小程序电商生态</td></tr>
-<tr><td>云(中国)</td><td>¥8,000亿/年</td><td>前三</td><td>阿里云、华为云、百度云</td><td>AI大模型+游戏/社交垂直场景</td></tr>
-<tr><td>AI大模型</td><td>早期(高速增长)</td><td>第一梯队(Hy3)</td><td>DeepSeek、阿里通义、字节豆包</td><td>OpenRouter token消耗领先+微信场景入口</td></tr>
-</table>
+  <h3>三、PEG 交叉验证（权重 25%）</h3>
+  <table>
+    <tr><th>指标</th><th>v1.3</th><th>v1.2</th><th>判断</th></tr>
+    <tr><td>EPS CAGR (FY26→FY28E)</td><td>+8.8%</td><td>+8.8%</td><td>中速增长（未变）</td></tr>
+    <tr><td>Forward PE (FY26)</td><td class="up">13.0x</td><td>13.9x</td><td class="up">随股价下跌而压缩</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>PEG</strong></td><td class="up"><strong>1.48</strong></td><td>1.58</td><td class="dn2">仍 &gt;1.3，表观偏贵（但较 v1.2 改善）</td></tr>
+    <tr><td>剔除 AI 后经营利润增速</td><td class="up">+19%</td><td>+19%</td><td>若按此增速，PEG = 0.68</td></tr>
+    <tr><td>股息 + 回购收益率</td><td>~2.6%</td><td>~3.2%</td><td class="dn2">回购力度下降致收益率走低</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>PEG 的核心矛盾（与 v1.2 一致但更尖锐）：</strong>按表观增速 8.8% 计算，PEG = 1.48 显示"偏贵"；但若剔除 AI 新产品的亏损拖累，核心业务经营利润增速为 +19%（Q2 实测），PEG 降至 0.68。<strong>这个 0.8 的差距，就是市场分歧的全部来源——你相信"19% 是真实增速"还是"8.8% 才是可持续增速"？</strong>本报告倾向于前者（AI 投入是主动选择而非被动恶化），但必须承认：在 Q3 财报（11 月）给出 AI 变现的实证数据之前，市场没有理由按 19% 定价。<strong>PEG 结论：腾讯不是"增长股"，而是"高 ROE 现金牛 + 价值释放期权 + AI 期权"的复合体，PEG 的适用性有限。</strong></div>
 
-<h3>区域结构（2025年）</h3>
-<table>
-<tr><th>地区</th><th>占比</th><th>趋势</th></tr>
-<tr><td>中国内地</td><td>~87%</td><td>基本盘，游戏/广告/支付核心市场</td></tr>
-<tr><td>海外</td><td>~13%</td><td class="up">国际游戏(占游戏收入~29%)持续双位数增长</td></tr>
-</table>
+  <h3>四、DCF 交叉验证（权重 25%）— FCF 基数下调</h3>
+  <table>
+    <tr><th>参数</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
+    <tr><td>FCF 基数(¥B)</td><td class="dn2">155</td><td class="dn2">170</td><td class="dn2">195</td></tr>
+    <tr><td>前5年 FCF 增速</td><td>8/8/6/5/4%</td><td>12/12/10/10/8%</td><td>15/15/12/12/10%</td></tr>
+    <tr><td>WACC</td><td>8.5%</td><td>8.0%</td><td>7.5%</td></tr>
+    <tr><td>终端增长 g</td><td>2.5%</td><td>3.0%</td><td>3.5%</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>DCF 每股估值</strong></td><td><strong>HK$400</strong></td><td><strong>HK$570</strong></td><td><strong>HK$900</strong></td></tr>
+    <tr><td>vs 现价 HK$419</td><td class="dn2">-4.5%</td><td class="up">+36%</td><td class="up">+115%</td></tr>
+  </table>
+  <div class="assume"><strong>DCF 假设调整说明：</strong>FCF 基数从 v1.2 的 180/194/220（¥B）下调至 155/170/195（¥B），主因是中报显示 Q2 单季 FCF 转负 -¥138亿（剔除算力预付款后 +¥376亿），且管理层明确"更多资金导向资本开支、可能减少回购现金"——全年自由现金流将低于此前预期。<strong>注意 DCF 的悲观值 HK$400 已低于现价 419</strong>，说明若 AI 投入持续失控、FCF 长期停留在低位，当前价格仍有下行空间。</div>
 
-<div class="sig sig-bull"><strong>护城河评估（中国互联网最宽）：</strong>① 微信生态 14.32亿 MAU——中国唯一超级应用，社交关系链无法复制；② 游戏长青运营能力——王者荣耀十年仍是流水冠军，三角洲行动晋级长青游戏；③ 现金流+投资组合的资本再配置能力——回购/投资/自研三重引擎；④ AI 落地场景最丰富——微信+小程序+游戏+广告+云的结合，WorkBuddy 已成中国效率 AI 智能体第一。</div>
-<div class="sig sig-warn"><strong>护城河风险：</strong>① 字节跳动在广告(抖音电商)和游戏(游戏发行)双线进攻；② 微信增长见顶(MAU +2%)，视频号商业化仍有天花板争议；③ 游戏版号政策不确定性——新游供给节奏受监管影响；④ 阿里/字节在 AI 大模型与云端的军备竞赛，腾讯云份额仍居阿里云之后。</div>
-</div>
+  <h3>五、估值综合结论（三法加权）</h3>
+  <div class="scenario-grid">
+    <div class="scen scen-bear"><div class="slbl">悲观</div><div class="sval">HK$443</div><div class="schg up">+5.7%</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（加权中枢）</div><div class="sval">HK$606</div><div class="schg up">+44.6%</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观</div><div class="sval">HK$790</div><div class="schg up">+88.5%</div></div>
+  </div>
+  <table style="margin-top:14px">
+    <tr><th>方法</th><th>悲观</th><th>中性</th><th>乐观</th><th>权重</th><th>较 v1.2 变化</th></tr>
+    <tr><td>SOTP</td><td>HK$490</td><td>HK$601</td><td>HK$760</td><td>50%</td><td class="dn2">中性 618 → 601</td></tr>
+    <tr><td>PEG</td><td>HK$390</td><td>HK$480</td><td>HK$580</td><td>25%</td><td class="dn2">悲观 410 → 390</td></tr>
+    <tr><td>DCF</td><td>HK$400</td><td>HK$570</td><td>HK$900</td><td>25%</td><td class="dn2">中性 637 → 570</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>加权结果</strong></td><td><strong>HK$443</strong></td><td><strong>HK$606</strong></td><td><strong>HK$790</strong></td><td>—</td><td class="up"><strong>中性中枢 +44.6%（v1.2 为 +36%）</strong></td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>估值结论：三法中性中枢 HK$606（+44.6%），现价 419 已略低于三法加权悲观值 HK$443。</strong>PE(TTM) 14.05x / Forward 13.0x / PB 2.91x——其中 <strong>PB 处于近三年 0% 分位（三年最低）、PE 处于 1.47% 分位</strong>，估值层面的安全边际已达历史级别。与机构共识目标价 HK$657-668 相比，本报告的中性值（606）更为保守。<strong>但必须清醒地指出：低估值本身不是买入理由，估值修复需要催化剂。</strong>当前缺失的正是催化剂——Q3 财报（11 月）之前，市场缺乏验证 AI 变现的数据点，而回购弹药正在被 AI 资本开支挤占。</div>
 
-<!-- ===== 估值三部法 ===== -->
-<div class="card"><h2>估值三部法 <span class="new-badge">NEW</span>（SOTP 主锚 + PEG + DCF）</h2>
-<p style="font-size:12px;color:#888;margin-bottom:14px">当前 HK$481.40，市值 HK$4.30万亿（≈¥3.96万亿）。腾讯为典型多业务线公司（游戏/广告/金融科技/投资组合），按框架采用 <strong>SOTP 主锚 + PEG + DCF</strong>。数据源：S&P Global 一致预期（43-46家投行，2026-08-05）+ 公司 Q1'26 财报。</p>
-
-<h3>一、一致预期速览（小幅上修）</h3>
-<table>
-<tr><th></th><th>当前季度(Q2'26)</th><th>FY2026</th><th>FY2027</th></tr>
-<tr style="background:#e3f2fd"><td><strong>营收一致预期</strong></td><td><strong>~¥205B</strong></td><td><strong>¥825.8B</strong></td><td><strong>¥903.3B</strong></td></tr>
-<tr><td>同比增速</td><td class="up">+11%</td><td class="up">+9.9%</td><td class="up">+9.4%</td></tr>
-<tr style="background:#e3f2fd"><td><strong>Non-IFRS EPS</strong></td><td><strong>~¥7.9</strong></td><td><strong>¥29.67</strong></td><td><strong>¥32.51</strong></td></tr>
-<tr><td>Forward PE @HK$481</td><td>-</td><td><strong>14.0x</strong></td><td><strong>12.8x</strong></td></tr>
-<tr><td>EPS 增速</td><td class="up">+11%</td><td class="up">+6.4%</td><td class="up">+9.6%</td></tr>
-<tr><td>EPS 90天上修</td><td>-</td><td>区间¥25.97-32.89</td><td>持续小幅上修</td></tr>
-</table>
-<div class="sig sig-warn">一致预期增速温和（营收 ~10%、EPS ~7-10%），与 2021 年前 30%+ 高增长时代不可同日而语。市场已接受腾讯"中速增长+高盈利质量"的新常态。机构目标价均值 HK$692.69（+44%）主要来自 SOTP 中投资组合价值的重估预期，而非业绩上修。</div>
-
-<h3>二、SOTP 分部估值（主锚，权重 50%）</h3>
-<p style="font-size:12px;color:#888;margin-bottom:10px">基于 FY2026E 分部 Non-IFRS 利润贡献估值。可比公司：游戏对标网易(15-18x)、广告对标 Meta(20x+)/字节、金融科技对标蚂蚁/支付平台、云对标阿里云。</p>
-<table>
-<tr><th>业务线</th><th>FY26E利润(¥B)</th><th>PE倍数</th><th>估值(¥B)</th><th>逻辑</th></tr>
-<tr><td><strong>游戏(VAS核心)</strong></td><td>~130</td><td>15-17x</td><td>~2,150</td><td>对标网易 15-18x；长青游戏确定性高</td></tr>
-<tr><td><strong>广告+社交</strong></td><td>~120</td><td>14-16x</td><td>~1,800</td><td>微信生态稀缺性，但增速低于Meta</td></tr>
-<tr><td><strong>金融科技及企业服务</strong></td><td>~50</td><td>11-13x</td><td>~600</td><td>支付龙头+云成长期，利润率待提升</td></tr>
-<tr><td><strong>投资组合(上市)</strong></td><td>-</td><td>按公允价值</td><td>547</td><td>上市投资 ¥5,471亿 按市价</td></tr>
-<tr><td><strong>投资组合(非上市)</strong></td><td>-</td><td>7折</td><td>~255</td><td>账面 ¥3,651亿 按 70% 流动性折价</td></tr>
-<tr style="background:#e3f2fd"><td><strong>净现金</strong></td><td>-</td><td>-</td><td>147</td><td>公司口径净现金 ¥1,469亿</td></tr>
-<tr style="background:#e3f2fd"><td><strong>SOTP 合计</strong></td><td colspan="2">核心业务+投资+现金</td><td><strong>~¥5,500B</strong></td><td>对应每股 ~HK$633</td></tr>
-</table>
-<div class="scenario-grid">
-<div class="scen scen-bear"><div class="slbl">悲观（投资打8折/AI拖累）</div><div class="sval">HK$542</div><div class="schg up">+13%</div></div>
-<div class="scen scen-base"><div class="slbl">中性（当前合理倍数）</div><div class="sval">HK$633</div><div class="schg up">+31%</div></div>
-<div class="scen scen-bull"><div class="slbl">乐观（投资变现+AI兑现）</div><div class="sval">HK$802</div><div class="schg up">+67%</div></div>
-</div>
-<div class="sig sig-bull"><strong>SOTP 核心洞察：</strong>按分部估值，腾讯核心业务(游戏+广告+FBS)约值 ¥4,550亿，投资组合+现金约 ¥950亿，合计 ~¥5,500亿（每股 HK$633），较现价 HK$481 有 31% 空间。<strong>市场对投资组合长期给予折价</strong>（上市投资按市价但市场担心继续减值、非上市按账面 7 折）。若管理层"加速变现投资组合"兑现（如减持美团/拼多多/Sea 等），价值释放将直接驱动股价向 SOTP 靠拢。</div>
-
-<h3>三、PEG 交叉验证（权重 25%）</h3>
-<table>
-<tr><th>指标</th><th>数值</th><th>判断</th></tr>
-<tr><td>EPS CAGR (FY26→FY28E)</td><td class="up">+8.8%</td><td>中速增长</td></tr>
-<tr><td>Forward PE (FY26)</td><td>14.0x</td><td>历史中低位</td></tr>
-<tr style="background:#e3f2fd"><td><strong>PEG (14.0 ÷ 8.8)</strong></td><td><strong>1.59</strong></td><td class="dn2">>1.3 偏贵——增长不支撑估值？</td></tr>
-<tr><td>剔除AI后经营利润增速</td><td class="up">+17%</td><td>若AI投入转为产出，PEG↓至 0.82</td></tr>
-<tr><td>股息+回购收益率</td><td>2.5%</td><td>支撑估值下限</td></tr>
-</table>
-<div class="sig sig-warn"><strong>PEG 提示：</strong>按表观增速(8.8%)，PEG=1.59 显示偏贵——这是市场对腾讯"中速增长"定价的体现。但 PEG 低估了腾讯两类价值：① 剔除 AI 投入的经营利润 +17%，说明核心业务真实增速更高；② 投资组合与净现金(占市值25%)不体现在 EPS 增速中。<strong>PEG 结论：腾讯不是"增长股"，而是"高ROE现金牛+价值释放期权"，PEG 适用性有限。</strong></div>
-
-<h3>四、DCF 交叉验证（权重 25%）</h3>
-<table>
-<tr><th>参数</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
-<tr><td>FCF基数(¥B)</td><td>180</td><td>194</td><td>220</td></tr>
-<tr><td>前5年FCF增速</td><td>8/8/6/5/4%</td><td>12/12/10/10/8%</td><td>15/15/12/12/10%</td></tr>
-<tr><td>WACC</td><td>8.5%</td><td>8.0%</td><td>7.5%</td></tr>
-<tr><td>终端增长 g</td><td>2.5%</td><td>3.0%</td><td>3.5%</td></tr>
-<tr style="background:#e3f2fd"><td><strong>DCF每股估值</strong></td><td><strong>HK$457</strong></td><td><strong>HK$685</strong></td><td><strong>HK$1,050</strong></td></tr>
-<tr><td>vs 现价 HK$481</td><td class="dn2">-5%</td><td class="up">+42%</td><td class="up">+118%</td></tr>
-</table>
-<div class="assume"><strong>DCF 假设：</strong>WACC 基于 Beta 0.75（腾讯波动率低）+ 无风险利率 4% + 股权风险溢价 5.5%；FCF 基数取 FY25 实际 ¥139B~一致预期 FY26 ¥194B 之间；AI 资本开支已在 FCF 中体现（悲观情景 Capex 更高）。终值占比 ~70%，属合理范围。</div>
-
-<h3>五、估值综合结论</h3>
-<div class="scenario-grid">
-<div class="scen scen-bear"><div class="slbl">悲观</div><div class="sval">HK$505</div><div class="schg up">+5%</div></div>
-<div class="scen scen-base"><div class="slbl">中性（加权中枢）</div><div class="sval">HK$655</div><div class="schg up">+36%</div></div>
-<div class="scen scen-bull"><div class="slbl">乐观</div><div class="sval">HK$838</div><div class="schg up">+74%</div></div>
-</div>
-<table style="margin-top:14px">
-<tr><th>方法</th><th>悲观</th><th>中性</th><th>乐观</th><th>权重</th><th>逻辑</th></tr>
-<tr><td>SOTP</td><td>HK$542</td><td>HK$633</td><td>HK$802</td><td>50%</td><td>分部PE+投资组合，主锚</td></tr>
-<tr><td>PEG</td><td>HK$430</td><td>HK$500</td><td>HK$600</td><td>25%</td><td>按增速8.8%与合理PE折价</td></tr>
-<tr><td>DCF</td><td>HK$457</td><td>HK$685</td><td>HK$1,050</td><td>25%</td><td>FCF折现+净现金</td></tr>
-<tr style="background:#e3f2fd"><td><strong>加权结果</strong></td><td><strong>HK$505</strong></td><td><strong>HK$655</strong></td><td><strong>HK$838</strong></td><td>-</td><td>中性中枢 +36%</td></tr>
-</table>
-<div class="sig sig-bull"><strong>估值结论：加权中枢 HK$655（+36%），与机构共识目标价 HK$692.69 高度一致。</strong>腾讯当前 PE(TTM) 16.6x / Forward 13.9x，处于上市以来估值区间的 30% 分位（历史 12-35x）——估值合理偏低，下行空间有限，上行靠"投资组合价值释放 + AI 变现 + 回购"三引擎。<strong>8/12 Q2 财报是近期最重要验证点</strong>：若游戏流水转化+广告 +20% 延续+资本开支指引可控，估值有望向中枢回归。</div>
+  <h3>六、外资大行观点专节<span class="new-badge">NEW</span></h3>
+  <div class="assume"><strong>来源说明：</strong>以下为 17 家券商目标价表（阿斯达克财经 2026-09-04 更新）+ investing.com 外资机构明细（2026-09-17）+ 高盛 9/17 最新报告 + 中金 9/4 报告。<strong>数据截至 2026-09-17/18，部分目标价可能滞后。</strong></div>
+  <table>
+    <tr><th>机构</th><th>评级</th><th>目标价(HK$)</th><th>vs 现价 419</th><th>核心逻辑 / 分歧点</th></tr>
+    <tr><td>里昂 CLSA</td><td class="up">高度确信跑赢大市</td><td>710</td><td class="up">+69%</td><td>最乐观阵营之一</td></tr>
+    <tr><td>瑞银 UBS</td><td class="up">买入</td><td>710</td><td class="up">+69%</td><td>认可微信生态与游戏长青能力</td></tr>
+    <tr><td>花旗 Citi</td><td class="up">买入</td><td>699</td><td class="up">+67%</td><td><strong>Hy4 preview 早于预期发布，编程及智能基准测试排名明显提升</strong>——AI 能力跃升是核心看点</td></tr>
+    <tr><td>申万宏源</td><td class="up">买入</td><td>673</td><td class="up">+61%</td><td>关注回购指引（3月宣布今年不低于 800 亿）</td></tr>
+    <tr><td>野村 Nomura</td><td class="up">买入</td><td>695<br><span class="small">原 727（8/14）</span></td><td class="up">+66%</td><td class="dn2">已下修 32 港元</td></tr>
+    <tr><td>Bernstein</td><td class="up">跑赢大市</td><td>760<br><span class="small">8/31</span></td><td class="up">+81%</td><td>最高目标价阵营</td></tr>
+    <tr style="background:#e8f5e9"><td><strong>高盛 Goldman</strong></td><td class="up">买入</td><td class="dn2"><strong>650</strong><br><span class="small">原 658（9/17 下调）</span></td><td class="up">+55%</td><td class="dn2"><strong>计及"AI 投资偏高及近期股权融资"，下调 12 个月目标价至 650，并将 2026 下半年 EPS 预测最多削减 5%。同时将"游戏及娱乐"提升为防守性增长首选，腾讯维持"买入"</strong></td></tr>
+    <tr style="background:#e8f5e9"><td><strong>麦格理 Macquarie</strong></td><td class="dn2"><strong>持有</strong></td><td class="dn2"><strong>440</strong><br><span class="small">原 452（8/13）</span></td><td class="up">+5%</td><td class="dn2"><strong>17 家中唯一的"持有"评级，目标价几乎与现价持平——最悲观阵营。与里昂/瑞银 710 相差 270 港元（61%），是外资内部最大分歧</strong></td></tr>
+    <tr><td>摩根士丹利</td><td class="up">买入</td><td>650</td><td class="up">+55%</td><td>—</td></tr>
+    <tr><td>汇丰 HSBC</td><td class="up">买入</td><td>650</td><td class="up">+55%</td><td>—</td></tr>
+    <tr><td>中银国际</td><td class="up">买入</td><td>645</td><td class="up">+54%</td><td>—</td></tr>
+    <tr><td>摩根大通 JPM</td><td class="up">增持</td><td>630</td><td class="up">+50%</td><td>—</td></tr>
+    <tr><td>海通国际</td><td class="up">优于大市</td><td>620</td><td class="up">+48%</td><td>—</td></tr>
+    <tr><td>光大证券</td><td class="up">买入</td><td>605</td><td class="up">+44%</td><td>—</td></tr>
+    <tr><td>中金 CICC</td><td class="up">跑赢行业</td><td>666<br><span class="small">9/4 报告</span></td><td class="up">+59%</td><td><strong>Hy4 preview"模型能力跃升有望改善投资 ROI 担忧"；Hy4 在科研能力（AI4Science）与软件工程能力（MCP 接入）上显著突破；混元平均每两个月迭代一个大版本</strong></td></tr>
+    <tr><td>东方证券</td><td class="up">买入</td><td>599</td><td class="up">+43%</td><td>—</td></tr>
+    <tr><td>交银国际</td><td class="up">买入</td><td>521</td><td class="up">+24%</td><td>偏保守</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>41 家综合</strong></td><td><strong>40买入/3持有/1卖出</strong></td><td><strong>均价 663.86</strong><br><span class="small">最高 885.48 / 最低 428.17</span></td><td class="up">+58%</td><td><strong>Strong Buy 共识，但目标均价较 v1.2（692.69）下修 4.2%</strong></td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>我如何使用外资分歧（分歧即信息）：</strong><br>
+  ① <strong>麦格理 440 vs 里昂/瑞银 710 的 270 港元裂口，是当前最值得研究的信号</strong>。麦格理给"持有"并非看空基本面，而是认为"AI 资本开支的回报周期无法在 12 个月目标价窗口内兑现"——这个时间维度上的分歧，恰恰印证了本报告"好公司≠好买点"的判断。麦格理 440 与本报告悲观情景 443 <strong>几乎完全吻合</strong>，是可交叉验证的下沿锚；<br>
+  ② <strong>高盛 9/17 的下调最具前瞻价值</strong>：它是唯一把"近期股权融资"（摊薄）与"AI 投资偏高"并列为下调理由的机构，且同步削减了 H2 EPS 预测 5%——<strong>高盛在把"AI 拖累利润"从定性担忧落到定量模型里</strong>。这与一致预期 Q3 净利增速 +3.25% 相互印证；<br>
+  ③ <strong>花旗/中金的乐观依据是"产品实证"而非"估值便宜"</strong>——Hy4 preview 早于预期发布、编程基准排名提升、混元每两个月迭代一次。这是本报告认为最值得跟踪的多头逻辑，因为<strong>只有模型能力跃升才能真正回答"ROI 担忧"</strong>；<br>
+  ④ <strong>卖方评级 93% 买入 vs 股价 YTD -29.2% 的背离在 v1.3 进一步扩大</strong>。历史经验表明，这种背离最终会以"卖方下修"或"股价修复"两种方式收敛。<strong>考虑到高盛已开始下修、Q3 增速预期已降至 +3.25%，我倾向于短期以"卖方继续小步下修"的方式收敛</strong>——这意味着"目标价 +58%"不应被当作安全边际。</div>
 </div>
 
 <!-- ===== 技术面 ===== -->
-<div class="card"><h2>技术面辅助（2026-08-17 收盘）</h2>
-<div class="tech-grid">
-<div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">K71.6<br>D72.7/J69.5</div><div class="sub"><span class="tag-neutral">高位钝化</span></div></div>
-<div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">DIF 8.2<br>DEA 6.4</div><div class="sub">柱+3.7 <span class="tag-bull">零上金叉</span></div></div>
-<div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">HK$468<br>$433-$503</div><div class="sub">中上轨间69%</div></div>
-<div class="tech-item"><div class="name">RSI(6/12/14)</div><div class="val">58.1<br>57.1/56.6</div><div class="sub"><span class="tag-neutral">中性偏多</span></div></div>
-<div class="tech-item"><div class="name">CCI(14)</div><div class="val">54.9</div><div class="sub"><span class="tag-neutral">中性偏多</span></div></div>
-</div>
-<div class="assume" style="margin-top:12px">均线：MA5=483.8 / MA10=477.0 / MA20=468.1 / MA60=453.7 / MA120=480.6 / <strong>MA250=551.3</strong>。现价站上全部短中期均线，但低于年线（-13%）。50日线 $455，200日线 $535。</div>
-
-<h3>关键价格节点回溯</h3>
-<table>
-<tr><th>日期</th><th>事件</th><th>收盘价</th><th>涨跌</th></tr>
-<tr><td>2026-01-02</td><td>年初高点区域</td><td>HK$623.0</td><td>-</td></tr>
-<tr><td>2026-03-02</td><td>AI 板块回调+年报前观望</td><td>HK$514.0</td><td class="dn2">-17.5% 自年初</td></tr>
-<tr><td>2026-05-13</td><td>Q1 财报（净利+21%超预期）</td><td>HK$~470</td><td class="dn2">-8% 自年初</td></tr>
-<tr><td>2026-05-14</td><td>财报后 AI 资本开支指引大增</td><td>HK$460.2</td><td class="dn2">继续回调</td></tr>
-<tr><td>2026-06-01</td><td>阶段低点（市场担忧AI投入回报）</td><td>HK$436.0</td><td class="dn2">-30% 自年初</td></tr>
-<tr><td>2026-07-24</td><td>二次探底（52周低点 364.8 上方企稳）</td><td>HK$434.6</td><td>-</td></tr>
-<tr><td>2026-07-31</td><td>7月底反弹（港股科技回暖）</td><td>HK$475.2</td><td class="up">+9.3% 自低点</td></tr>
-<tr><td>2026-08-10</td><td>现价</td><td>HK$481.4</td><td class="up">+0.54%</td></tr>
-</table>
-<div class="sig sig-warn"><strong>综合技术判断：中期底部区域确认，反弹第一波完成，面临年线压力。</strong>股价从 52 周高点 $683 回撤 47%（至 6/1 低点 $436），已在 $434-436 形成双底结构。当前 MACD 零上金叉 + 站上 MA20/60/120 + BOLL 中上轨，短线多头格局；但 RSI 56 中性、KDJ 高位钝化，且年线 MA250（$551）构成强压力——反弹尚未确认反转。支撑：$468（MA20）/ $434（双底）；压力：$503（BOLL上轨）/ $551（年线）。<strong>8/12 财报若超预期，突破 $503 打开上行空间；若不及预期，可能回踩 $450-455（50日线）蓄势。</strong></div>
+<div class="card">
+  <h2>④ 技术面辅助（2026-09-18 收盘）</h2>
+  <div class="tech-grid">
+    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">DIF -7.33<br>DEA -6.40<br>柱 -1.85</div><span class="tag-bear">零下死叉<br>柱扩大</span></div>
+    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">K 24.5<br>D 30.4<br>J 12.7</div><span class="tag-oversold">低位<br>J 值 12.7</span></div>
+    <div class="tech-item"><div class="name">RSI(6/12/24)</div><div class="val">28.3<br>35.4<br>41.4</div><span class="tag-oversold">RSI6 近超卖</span></div>
+    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">上 458.7<br>中 439.7<br>下 420.8</div><span class="tag-bear">贴近下轨</span></div>
+    <div class="tech-item"><div class="name">CCI(14)</div><div class="val">-141.2</div><span class="tag-oversold">深度超卖</span></div>
+  </div>
+  <table>
+    <tr><th>均线</th><th>MA5</th><th>MA10</th><th>MA20</th><th>MA60</th><th>MA120</th><th>MA250</th></tr>
+    <tr><td>数值</td><td>429.56</td><td>430.96</td><td>437.42</td><td>451.17</td><td>458.30</td><td>529.47</td></tr>
+    <tr><td>现价 419.00 相对位置</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td></tr>
+    <tr><td>v1.2（8/17）时</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td></tr>
+  </table>
+  <div class="assume"><strong>较 v1.2 的技术面变化：</strong>① MA250 从 549.1 降至 529.5，现价低于年线从 -18% 扩大至 <strong>-20.9%</strong>；② MACD 柱从 -8.9（v1.2 原值口径）到当前 -1.85，死叉状态延续且 DIF(-7.33) 与 DEA(-6.40) 双双深度为负；③ CCI 从 -114.3 恶化至 <strong>-141.2</strong>；④ BOLL 下轨 420.78 与现价 419.00 几乎重合——<strong>股价正贴着布林下轨运行，是典型的弱势特征</strong>；⑤ 唯一改善：RSI6 从 18.8 回升至 28.3（但仍在超卖边缘）。</div>
+  <div class="sig sig-bear"><strong>技术面结论：空头排列完整，无任何右侧信号。</strong>现价低于全部 6 条均线，且均线自上而下依次排列（MA250 529.5 &gt; MA120 458.3 &gt; MA60 451.2 &gt; MA20 437.4 &gt; MA10 431.0 &gt; MA5 429.6），<strong>标准的空头排列</strong>。9/18 收盘价等于当日最低价，说明盘中没有承接力量；换手率仅 0.317% 说明是"无量阴跌"而非恐慌抛售——<strong>这种走势往往比放量暴跌更难快速见底</strong>，因为缺乏"一次性出清"。</div>
+  <div class="sig sig-warn"><strong>关键位：</strong>支撑 <strong>411（52 周低点，仅差 1.9%，最关键）</strong> → 405（心理关口）→ 400（DCF 悲观值）；压力 429.6-431.0（MA5/MA10 密集区）→ 437.4（MA20）→ 451.2（MA60）→ 458.3（MA120，与 BOLL 上轨 458.7 重合）。<strong>411 是必须盯住的位置：守住则形成双底结构（8 月低点 + 9 月低点），跌破则打开新的下跌空间，下一个技术目标位指向 380-390 区间。</strong></div>
 </div>
 
 <!-- ===== 资金面与筹码 ===== -->
-<div class="card"><h2>资金面与筹码分析</h2>
-<h3>机构持仓与股东结构</h3>
-<table>
-<tr><th>类别</th><th>比例</th><th>说明</th></tr>
-<tr><td>内部人持股</td><td>7.91%</td><td>马化腾等创始人团队，长期锁定</td></tr>
-<tr><td>机构持股</td><td>23.80%</td><td>偏低（A股/美股大型科技通常60%+），港股南向资金是重要边际力量</td></tr>
-<tr><td>主要股东</td><td>Naspers/Prosus(~24%)</td><td>南非大股东持续缓慢减持但影响递减</td></tr>
-<tr><td>流通股本</td><td>61.6亿股</td><td>日均成交 ~2,800万股（活跃）</td></tr>
-</table>
+<div class="card">
+  <h2>⑤ 资金面与筹码分析<span class="new-badge">重点恶化</span></h2>
+  <h3>一、回购力度：v1.3 最重要的负面变化</h3>
+  <table>
+    <tr><th>期间</th><th>每日回购金额</th><th>每日回购股数</th><th>价格区间(HK$)</th></tr>
+    <tr><td>8/17 - 8/28（v1.2 之后）</td><td class="up">约 3.0 - 3.01 亿港元</td><td>65.9 - 68.2 万股</td><td>—</td></tr>
+    <tr style="background:#e8f5e9"><td><strong>8/31 起（转折点）</strong></td><td class="dn2"><strong>1.0 - 1.01 亿港元</strong></td><td>22.3 - 23.5 万股</td><td>9/11: 419.4 - 430.4</td></tr>
+    <tr><td>累计（截至 9/11）</td><td colspan="3">回购 4,508.37 万股，占已发行股本 <strong>0.49445%</strong>（9/10 时为 4,484.87 万股 / 0.49187%）</td></tr>
+    <tr><td>2026 年指引</td><td colspan="3">3 月宣布全年回购不低于 <strong>800 亿港元</strong>；截至 7/10 已回购超 400 亿元。<span class="dn2">按当前 1 亿港元/日节奏，全年或难以达成 800 亿指引</span></td></tr>
+  </table>
+  <div class="sig sig-bear"><strong>回购腰斩的原因（管理层亲口解释，这是 v1.3 最关键的信息）：</strong>总裁刘炽平在 Q2 业绩会上明确表示——"目前集团的资本配置是动态模式，若增加资本开支，可提升出租能力及构建模型，并获得更多 Token 及实现回报，<strong>集团将更多资金导向资本开支，因此可能减少用于回购的现金</strong>。他强调，集团不会每年都投入大量资本开支，只会在出现持续回报下，才会继续进行投资。"<br><br><strong>这段话的含义需要完整理解：</strong>① <strong>负面解读</strong>——"回购托底"一直是腾讯股价最重要的支撑逻辑之一，管理层明示回购让位于资本开支，等于主动拆除了这个支撑，市场对此的定价（9 月股价继续下跌）是合理的；② <strong>正面解读</strong>——管理层把资金从"回购自家股票"转向"投入 AI 基础设施"，说明<strong>内部认为 AI 投入的预期回报率高于当前回购的隐含回报率</strong>（即认为股价低估程度还不足以战胜 AI 投资的回报）；③ 但"不会每年都投入大量资本开支"这句话，暗示 2026 年是资本开支的高峰年，<strong>2027 年若验证了 AI 回报，回购有望重新加码</strong>——这是重要的前瞻线索。</div>
 
-<h3>回购与股东回报</h3>
-<table>
-<tr><th>指标</th><th>数值</th><th>信号</th></tr>
-<tr><td>Q1'26 回购</td><td>1,265万股 / HK$76亿</td><td class="up">持续执行</td></tr>
-<tr><td>股本变化(YoY)</td><td>-1.39%</td><td class="up">持续缩减</td></tr>
-<tr><td>股息</td><td>HK$5.30 (1.11%)</td><td>FY25 股息 +12.6%</td></tr>
-<tr><td>股东回报合计</td><td>~2.5%（股息+回购）</td><td>管理层明言"回购好时机"</td></tr>
-</table>
+  <h3>二、沽空与资金流向</h3>
+  <table>
+    <tr><th>指标</th><th>v1.3（9/11）</th><th>v1.2 期间（9/4）</th><th>变化</th></tr>
+    <tr><td>沽空成交额</td><td class="dn2">8.93 亿港元</td><td>6.78 亿港元</td><td class="dn2">+31.8%</td></tr>
+    <tr style="background:#e8f5e9"><td><strong>沽空比率</strong></td><td class="dn2"><strong>13.385%</strong></td><td>6.361%</td><td class="dn2"><strong>翻倍（+7.02pct）</strong></td></tr>
+    <tr><td>主力资金（Wind）近 60 日</td><td class="dn2">-164.7 亿港元</td><td>—</td><td class="dn2">持续大幅净流出</td></tr>
+    <tr><td>主力资金 近 20 日 / 5 日</td><td class="dn2">-65.3 亿 / -32.1 亿</td><td>—</td><td class="dn2">流出加速</td></tr>
+    <tr class="delta-up"><td>南向资金（9/1）</td><td class="up">净买入 11.25 亿港元（当日居前）</td><td>—</td><td class="up">港股通仍是净买入方</td></tr>
+  </table>
+  <div class="sig sig-bear"><strong>沽空比率翻倍至 13.39%，是本报告最警惕的信号。</strong>13.39% 的沽空比率显著高于腾讯常态水平（通常 5-8%）。这意味着在 419-430 这个价格区间，<strong>公司每日 1 亿港元的回购正在与活跃的空头卖盘正面对抗</strong>。市场分析师的评论很到位："腾讯的回购节奏已成为香港市场最可靠的买盘来源之一……这对股价下档的限制作用大于对上档的推升作用。"<br><br>更值得关注的是反差：<strong>8 月中旬回购 3 亿/日时股价在 448，9 月回购降到 1 亿/日时股价跌到 419</strong>——回购力度的下降与股价下跌在时间上高度同步。若后续每日披露显示回购量继续维持在 23.5 万股的低位甚至进一步缩减，那么"软性底部"的支撑力将被进一步削弱。</div>
+  <div class="sig sig-bull"><strong>唯一的正面资金信号：南向资金仍在净买入。</strong>9/1 南向资金净买入 77.57 亿港元，其中腾讯获净买入约 11.25 亿港元居前（同期美团遭净卖出 5.76 亿）。<strong>港股通资金对中国互联网龙头的配置意愿未减</strong>，这是区别于外资（部分机构转向谨慎）的重要边际力量。</div>
 
-<h3>分析师评级分布（2026-07）</h3>
-<table>
-<tr><th>评级</th><th>数量</th><th>占比</th></tr>
-<tr><td class="up">Strong Buy / Buy</td><td>35 / 8</td><td>93%</td></tr>
-<tr><td>Hold</td><td>2</td><td>4%</td></tr>
-<tr><td class="dn2">Sell / Strong Sell</td><td>0 / 1</td><td>2%</td></tr>
-</table>
-<div class="sig sig-warn"><strong>核心矛盾总结：</strong>机构评级 93% 买入 + 目标价 +44% vs 股价 YTD -22.7%——这是"卖方坚定看多 vs 市场对 AI 资本开支与增长换挡的疑虑"的典型背离。南向资金（港股通）对中国互联网的配置意愿是重要变量；管理层持续回购（Q1 76亿港元）表明其认为"股价存在偏差"。筹码面无解禁压力、内部人稳定，最大边际变量是 Prosus 减持节奏与南向资金流向。</div>
+  <h3>三、股东结构与股东回报</h3>
+  <table>
+    <tr><th>股东</th><th>持股比例</th><th>说明</th></tr>
+    <tr><td>MIH Internet Holdings B.V.（Prosus/Naspers）</td><td class="up">22.6%</td><td>第一大股东，长期缓慢减持（v1.2 报告口径约 24%，比例下降部分来自回购注销的被动提升与持续减持的抵消）</td></tr>
+    <tr><td>Advance Data Services Limited（马化腾全资）</td><td>7.81%</td><td>创始人团队，长期锁定</td></tr>
+    <tr><td>马化腾环球基金会有限公司</td><td>1.04%</td><td>—</td></tr>
+    <tr><td>总股本</td><td colspan="2">90.95 亿股（9,095,085,993 股）· 持续回购注销中 · <strong>零解禁压力</strong></td></tr>
+  </table>
+  <table>
+    <tr><th>股东回报</th><th>数值</th><th>信号</th></tr>
+    <tr><td>FY2025 股息</td><td>每股 HK$5.30（总额 483.25 亿港元）</td><td class="up">较 FY2024（4.50 元 / 413.52 亿）+17.8%</td></tr>
+    <tr><td>股息率</td><td>1.27%</td><td class="up">随股价下跌而上升（v1.2: 1.18%）</td></tr>
+    <tr><td>2026 累计回购</td><td>4,508 万股（占 0.494%）</td><td>8/31 起节奏降至 1 亿港元/日</td></tr>
+    <tr><td>股息 + 回购收益率</td><td class="dn2">~2.6%</td><td class="dn2">v1.2 为 ~3.2%，因回购减力而下降</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>筹码面小结：</strong>零解禁、内部人稳定、Prosus 减持节奏可控（虽是长期压制但非新增变量）、回购持续注销（对 EPS 有机械提振）。<strong>但 v1.3 的核心变化是"回购托底的确定性下降"</strong>——从"每日 3 亿无差别买入"变为"每日 1 亿且管理层明示可能进一步让位于资本开支"。这一变化直接影响了本报告对资金情绪（70 → 52）和筹码（78 → 72）的打分。</div>
+</div>
+
+<!-- ===== AI 进展专节 ===== -->
+<div class="card">
+  <h2>⑥ AI 进展专节（8/17 → 9/18）<span class="new-badge">NEW</span></h2>
+  <div class="assume"><strong>为什么单列一章：</strong>v1.3 期间无新财报，但 AI 产品侧的进展是唯一持续释放的基本面增量信息，也是回答"AI 投入是否值得"这一核心问题的关键证据链。</div>
+  <h3>一、混元 Hy4 preview：模型能力的实质跃升</h3>
+  <table>
+    <tr><th>维度</th><th>Hy4 preview</th><th>意义</th></tr>
+    <tr><td>发布日期</td><td>2026-09-03（正式发布并开源）</td><td class="up">较市场预期提前（花旗："早于预期发布"）</td></tr>
+    <tr><td>架构</td><td>混合专家（MoE）</td><td>—</td></tr>
+    <tr><td>参数规模</td><td>总参数 <strong>770B</strong> / 激活参数 <strong>49B</strong> / 上下文长度 <strong>1M</strong></td><td class="up">较 Hy3 在模型尺寸、上下文长度、数据规模上显著扩展</td></tr>
+    <tr><td>定价（人民币/百万 tokens）</td><td>输入 6 元 / 输出 18 元 / 缓存命中 0.3 元</td><td class="up">同等参数一线开源模型中维持低位——成本优势明显</td></tr>
+    <tr><td>能力突破</td><td>科研能力（AI4Science 赛道显著相对领先）；软件工程能力（通过 MCP 接入实现对话式从零构建游戏 Demo、互动漫画）</td><td class="up">验证长程开发任务的理解、规划、调试与验证能力</td></tr>
+    <tr><td>产品接入</td><td>WorkBuddy 系列、元宝、ima 首发；腾讯云 TokenHub 上线</td><td class="up">自有场景即时消化，形成"模型-产品-数据"闭环</td></tr>
+    <tr><td>轻量版</td><td>9/1 发布 Hy4 preview 轻量版，权重从 1.5TB 压缩至约 214GB</td><td class="up">稀疏三值量化 + 混合精度，支持异构联合推理</td></tr>
+    <tr><td>迭代节奏</td><td>自 2026 年 2 月重建基础设施以来，<strong>平均每两个月迭代一个大版本</strong></td><td class="up">节奏明显加快</td></tr>
+    <tr><td>已知问题</td><td>官方承认：复杂任务长思考与过度自我验证倾向</td><td>—</td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>中金的判断值得引用：</strong>"模型能力持续跃升有望改善投资 ROI 担忧……随着模型与 Agent 的双向数据闭环逐步跑通、产品化落地路径日益清晰，市场此前对腾讯 AI 投入回报率的确定性有望持续增强。"<strong>花旗同样把 Hy4 preview 的编程与智能基准测试排名提升作为维持买入的核心依据。</strong>这两家机构（外资 + 中资）的乐观依据都是"产品实证"，而非"估值便宜"——这个方向是对的，因为只有 ROI 问题的解答才能修复估值。</div>
+
+  <h3>二、WorkBuddy 生态：从产品到平台的全面铺开</h3>
+  <table>
+    <tr><th>日期</th><th>事件</th><th>规模/成果</th></tr>
+    <tr><td>9/1</td><td>WorkBuddy 开学季 AI 普惠行动</td><td>全国师生认证可领 1000 积分，含百校体验与教学赋能，至 10/31 结束</td></tr>
+    <tr><td>9/2</td><td><strong>WorkBuddy 开放平台正式上线</strong></td><td class="up">首批超 <strong>100 家伙伴</strong>入驻，打通硬件/应用/开发者三层生态，首发 <strong>9 款联名硬件</strong>，覆盖 20 多个领域</td></tr>
+    <tr><td>9/3</td><td><strong>WorkBuddy 金融版发布</strong></td><td class="up">面向保险/资管/银行三大板块，上线 <strong>80+ 金融专属专家与技能</strong>，已落地超 <strong>100 家金融机构</strong></td></tr>
+    <tr><td>9/3</td><td>WorkBuddy 登陆国产操作系统</td><td class="up">正式上架银河麒麟与统信 UOS 官方及社区商店（联合国产 OS 厂商协同适配）</td></tr>
+    <tr><td>9 月</td><td><strong>WorkBuddy 国际版全球上线</strong></td><td class="up">已落地中国香港、中国澳门、美国、新加坡、泰国、菲律宾；集成腾讯 HY、智谱 GLM、GPT、Gemini 等主流模型；已接入 Notion、GitHub，近两周打通 Slack/Telegram/Discord</td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>WorkBuddy 的进展值得重视，因为它回答了 v1.2 报告中最不确定的问题——"AI 投入如何变现"。</strong>从 9 月的一系列动作看，路径已经清晰：① <strong>C 端普惠</strong>（开学季积分，快速积累用户）→ ② <strong>B 端垂直</strong>（金融版 100+ 机构落地，是明确的付费场景）→ ③ <strong>平台化</strong>（开放平台 100+ 伙伴，通过生态分成扩大触达）→ ④ <strong>国际化</strong>（全球上线，打开增量市场）。<strong>这是"用微信/腾讯云既有客户资源触达，而非从零获客"的典型打法</strong>——湘财证券所说的"AI 商业化路径相比需先获取用户的公司更短"，指的正是这一点。</div>
+
+  <h3>三、AI 组织与投资布局</h3>
+  <table>
+    <tr><th>时间</th><th>事件</th><th>解读</th></tr>
+    <tr><td>9月初</td><td><strong>撤销存在十年的 AI Lab</strong>，姚顺雨任首席 AI 科学家</td><td>AI 战略从分散走向集中，组织效率提升</td></tr>
+    <tr><td>9/2</td><td><strong>燧原科技公布发行价 142.18 元/股</strong>，腾讯为战配认购金额首位及最大外部股东</td><td class="up">AI 芯片供应链布局</td></tr>
+    <tr class="delta-up"><td>9/11</td><td><strong>燧原科技上市首日涨近 1.8 倍</strong></td><td class="up">投资组合价值兑现（一手赚近 13 万元人民币）</td></tr>
+    <tr><td>8/31</td><td>明略科技以 2,818.29 万元收购腾讯产业创投持有的武汉夜莺 11.33% 股权，交易后夜莺成其全资附属</td><td class="up">投资退出案例，资金回流</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>必须保持的清醒：</strong>上述 AI 进展都是"证真"过程中的证据，但<strong>尚未有任何一项转化为可量化的财务收入</strong>。Q2 财报中公司披露的是"剔除新 AI 产品后经营利润 +19%"——这实际上说明<strong>新 AI 产品目前是净亏损的（拖累经营利润率约 5pct）</strong>。因此，"AI 进展"目前对股价的作用是"防止估值继续下杀"，而非"驱动估值上行"。<strong>真正的转折点，是公司首次披露 AI 相关收入（或新 AI 产品亏损收窄/转正）的那份财报。</strong></div>
 </div>
 
 <!-- ===== 跟踪指标 ===== -->
-<div class="card"><h2>关键跟踪指标与事件</h2>
-<h3>一、基本面验证指标</h3>
-<table>
-<tr><th>指标</th><th>当前值</th><th>追踪阈值</th><th>信号含义</th></tr>
-<tr><td>Non-IFRS净利增速</td><td>+11%</td><td>跌破 0%</td><td class="dn2">AI投入失控信号</td></tr>
-<tr><td>剔除AI后经营利润增速</td><td>+17%</td><td>跌破 10%</td><td class="dn2">核心业务放缓</td></tr>
-<tr><td>广告收入增速</td><td>+20%</td><td>跌破 10%</td><td class="dn2">微信变现瓶颈</td></tr>
-<tr><td>国内游戏流水增速</td><td>+十几个pct</td><td>转负</td><td class="dn2">长青游戏老化</td></tr>
-<tr><td>资本开支(年化)</td><td>~¥1,500-2,000亿</td><td>超 ¥2,500亿</td><td class="dn2">AI投入过度</td></tr>
-<tr><td>上市投资公允价值</td><td>¥5,471亿</td><td>跌破 ¥4,000亿</td><td class="dn2">组合大幅缩水</td></tr>
-</table>
+<div class="card">
+  <h2>⑦ 关键跟踪指标与事件更新</h2>
+  <h3>一、基本面验证指标（v1.2 → v1.3 状态核查）</h3>
+  <table>
+    <tr><th>指标</th><th>v1.2 值</th><th>v1.3 状态</th><th>阈值与信号</th></tr>
+    <tr><td>Non-IFRS 净利增速</td><td>+9%（Q2 实际）</td><td class="dn2">Q3 一致预期 <strong>+3.25%</strong></td><td>跌破 0% = AI 投入失控；<span class="dn2">当前趋势向下</span></td></tr>
+    <tr><td>剔除 AI 后经营利润增速</td><td>+19%（Q2 实际）</td><td>待 Q3 更新（11 月）</td><td>跌破 10% = 核心业务放缓</td></tr>
+    <tr><td>广告收入增速</td><td>+22%（Q2 实际）</td><td>待 Q3 更新</td><td>跌破 10% = 微信变现瓶颈</td></tr>
+    <tr><td>国内游戏流水增速</td><td>+17%（Q2 实际）</td><td>Q2 网络游戏收入 659 亿（+11%）；9 月《王者万象棋》等 12 款新游上线</td><td>转负 = 长青游戏老化</td></tr>
+    <tr><td>资本开支</td><td>上半年 ¥847亿（+82%）</td><td class="dn2">管理层明确 2026 为资本开支高峰年，"不会每年都投入大量资本开支"</td><td>超 ¥2,500亿 = AI 投入过度</td></tr>
+    <tr><td>自由现金流</td><td>Q2 单季 -¥138亿</td><td class="dn2">管理层明示"可能减少回购现金"</td><td>连续两季为负 = 现金流压力</td></tr>
+    <tr><td>回购力度</td><td>3.0 亿港元/日</td><td class="dn2"><strong>8/31 起降至 1.0 亿港元/日</strong></td><td>跌破 1 亿/日或停止 = 托底逻辑失效</td></tr>
+    <tr><td>沽空比率</td><td>6.36%（9/4）</td><td class="dn2"><strong>13.39%（9/11）</strong></td><td>持续 &gt;12% = 空头主导定价</td></tr>
+    <tr><td>上市投资公允价值</td><td>¥4,872亿（Q2 末）</td><td>待 Q3 更新（燧原上市为增量）</td><td>跌破 ¥4,000亿 = 组合大幅缩水</td></tr>
+    <tr><td>南向资金</td><td>净买入</td><td class="up">9/1 腾讯获净买入 11.25 亿港元居前</td><td>转为持续净卖出 = 情绪转弱</td></tr>
+  </table>
 
-<h3>二、业务里程碑事件</h3>
-<table>
-<tr><th>事件</th><th>当前进度</th><th>关注点</th></tr>
-<tr><td>Q2'26 财报</td><td>2026-08-12</td><td class="up">游戏流水转化+广告增速+资本开支指引</td></tr>
-<tr><td>Hy3 大模型</td><td>OpenRouter token 领先(4/28起)</td><td>商业化与API收入</td></tr>
-<tr><td>WorkBuddy</td><td>中国效率AI智能体DAU第一</td><td>订阅/企业付费转化</td></tr>
-<tr><td>投资组合变现</td><td>"加速推进"</td><td class="up">减持美团/拼多多等释放价值</td></tr>
-<tr><td>微信小店</td><td>GMV 快速增长</td><td>电商闭环+技术服务费收入</td></tr>
-<tr><td>视频号</td><td>使用时长+20%</td><td>广告加载率提升空间</td></tr>
-</table>
+  <h3>二、业务里程碑事件</h3>
+  <table>
+    <tr><th>事件</th><th>v1.3 进度</th><th>关注点</th></tr>
+    <tr class="delta-up"><td><strong>混元 Hy4 preview</strong></td><td class="up">9/3 正式发布并开源（770B/49B/1M）</td><td>正式版 Hy4 发布时间；API 收入增量</td></tr>
+    <tr class="delta-up"><td><strong>WorkBuddy 生态</strong></td><td class="up">开放平台（100+ 伙伴）+ 金融版（100+ 机构）+ 国产 OS + 国际版全球上线</td><td>付费转化率、企业订阅收入</td></tr>
+    <tr class="delta-up"><td><strong>投资组合变现</strong></td><td class="up">燧原科技 9/11 上市首日 +180%；夜莺股权退出</td><td>后续减持美团/拼多多等释放价值</td></tr>
+    <tr><td>AI 组织架构</td><td>撤销 AI Lab，姚顺雨任首席 AI 科学家</td><td>研发效率与迭代速度</td></tr>
+    <tr><td>微信 AI 智能体"小微"</td><td>灰度测试中（WeLM 驱动）</td><td>社交场景 AI 服务闭环</td></tr>
+    <tr><td>微信小店</td><td>GMV 快速增长</td><td>电商闭环 + 技术服务费收入</td></tr>
+    <tr><td>视频号</td><td>Q2 使用时长 +20%</td><td>广告加载率提升空间</td></tr>
+  </table>
 
-<h3>三、筹码与政策面信号</h3>
-<table>
-<tr><th>信号</th><th>当前状态</th><th>关注阈值</th></tr>
-<tr><td>Prosus 减持</td><td>持续但单次量小</td><td>大宗减持(>1%) → 承压</td></tr>
-<tr><td>游戏版号发放</td><td>常态化(月均~100+款)</td><td>收紧 → 新游供给风险</td></tr>
-<tr><td>南向资金流向</td><td>港股通持续净买入</td><td>转为净卖出 → 情绪转弱</td></tr>
-</table>
-
-<h3>关键时间节点</h3>
-<table>
-<tr><th>日期</th><th>事件</th><th>重要性</th></tr>
-<tr><td>2026-08-12</td><td>Q2'26 财报（2天后，核心催化剂）</td><td class="up">★★★★★</td></tr>
-<tr><td>2026-08-14</td><td>董事会宣派中期股息</td><td>★★</td></tr>
-<tr><td>2026H2</td><td>国产ASIC算力落地，资本开支高峰</td><td>★★★</td></tr>
-<tr><td>2026Q4</td><td>Hy3 商业化/API收入数据</td><td>★★★</td></tr>
-<tr><td>2026全年</td><td>投资组合变现进程</td><td>★★★</td></tr>
-</table>
+  <h3>三、关键时间节点</h3>
+  <table>
+    <tr><th>日期</th><th>事件</th><th>重要性</th></tr>
+    <tr><td>每日</td><td><strong>港交所回购披露</strong>（是否维持 23.5 万股节奏，或缩量/放量）</td><td class="up">★★★★（v1.3 新增为高频跟踪项）</td></tr>
+    <tr><td>持续</td><td>沽空比率是否回落至 8% 以下</td><td>★★★★</td></tr>
+    <tr><td>2026-10 底</td><td>中国互联网同业 Q3 财报季开启（阿里、美团等，可比参照）</td><td>★★★</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>2026-11 中旬</strong></td><td><strong>腾讯 Q3'26 财报（预计 11/12-11/13，参照 2025 年 11/13）</strong>——AI 变现数据首次验证 + Q3 利润增速是否守住</td><td class="up"><strong>★★★★★</strong></td></tr>
+    <tr><td>2026H2</td><td>混元 Hy4 正式版发布</td><td>★★★</td></tr>
+    <tr><td>2027-03</td><td>FY2026 全年业绩 + 2027 年回购指引（是否重回 800 亿+）</td><td>★★★★</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>v1.3 新增的高频跟踪项：每日回购披露。</strong>理由：回购节奏是本轮股价最重要的边际变量。观察规则——① 若每日回购量从 23.5 万股<strong>加速</strong>（回到 60 万股以上），是最明确的管理层"认为股价低估"信号；② 若维持 23.5 万股不变，说明按既定计划执行，中性；③ 若<strong>缩减至 10 万股以下或停止</strong>，则"软性底部"逻辑失效，需重新评估下行空间。此外，回购价格区间也值得关注——当前 419.4-430.4，若公司在更低价位继续买入，说明意愿未减。</div>
 </div>
 
-<!-- ===== 风险提示 ===== -->
-<div class="card"><h2>风险提示</h2>
-<ol>
-<li><strong>AI 资本开支失控风险（高，当前最核心）</strong>：管理层确认下半年资本开支"增幅尤为明显"（国产ASIC逐月落地），全年或达 ¥1,500-2,000亿。若 AI 收入/效率提升无法覆盖投入，Non-IFRS 利润率（当前 38.5%）将承压，FCF 增速显著放缓——市场已部分定价此担忧（YTD -22.7%）。</li>
-<li><strong>政策监管风险（高，长期悬顶）</strong>：游戏版号审批节奏、未成年人保护、反垄断（平台二选一/并购审查）、数据安全——2021 年教培式强监管虽已过去，但政策风向仍可随时收紧，尤其是游戏板块（占收入近半）。</li>
-<li><strong>投资组合减值风险（中高）</strong>：上市投资公允价值 Q1 环比 -¥1,256亿（¥6,727→¥5,471亿），主要受港股/中概回调影响。若市场持续走弱，投资组合将进一步缩水，且 Naspers/Prosus 作为第一大股东（持股~24%）的减持压力与投资组合变现存在利益冲突。</li>
-<li><strong>增长换挡风险（中）</strong>：营收增速降至 ~10% 中速档，微信 MAU 增长见顶（+2%），社交网络收入 -2%。若游戏无新爆款+广告渗透率触顶，可能进入"低速+高股息"的成熟期定价（PE 中枢下移）。</li>
-<li><strong>竞争加剧风险（中）</strong>：字节跳动在广告（抖音电商）与游戏双线进攻；阿里在云与 AI 大模型加码；视频号商业化面临抖音/快手挤压。腾讯在 AI 大模型赛道面临 DeepSeek/字节/阿里的激烈竞争，Hy3 领先优势能否维持未定。</li>
-<li><strong>地缘政治风险（中）</strong>：中美科技博弈（芯片出口管制影响 AI 算力获取）、港股流动性受美联储政策与全球资金风险偏好影响、中概股审计/退市风险虽已缓解但未根除。</li>
-<li><strong>财报波动风险（中低）</strong>：投资收益（美团/拼多多等公允价值变动）与联营公司亏损/盈利波动，会显著扰动单季 IFRS 利润；Q1 净利 +21% 部分受益于投资组合反弹，需区分核心 vs 非核心盈利。</li>
-<li><strong>大股东减持（中低）</strong>：Prosus/Naspers 长期缓慢减持（每年 ~1-2%），虽节奏可控，但持续压制估值重估空间。</li>
-</ol>
-<div class="sig sig-warn"><strong>综合风险定性：</strong>本报告将风险维度评 55 分（多个中等风险+1 个当前最核心风险——AI 资本开支）。腾讯财务风险（杠杆、流动性）几乎为零，但<strong>"增长换挡期的估值锚定"与"AI 投入的回报不确定"</strong>是当前主要矛盾。基本面锚（游戏+广告现金流）稳固，为股价提供下行保护；上行弹性来自 AI 变现与投资组合价值释放。</div>
+<!-- ===== 财务摘要（无新数据） ===== -->
+<div class="card">
+  <h2>⑧ 财务摘要（Q2'26，无新财报，v1.2 数据沿用）</h2>
+  <div class="assume"><strong>说明：</strong>8/17 至 9/18 无新财报发布，以下数据与 v1.2 完全一致，仅作完整视图参考。<strong>下一批更新：11 月中旬 Q3'26 财报。</strong></div>
+  <table>
+    <tr><th>指标</th><th>Q2 2026</th><th>Q1 2026</th><th>Q4 2025</th><th>Q2 2025</th><th>FY2025</th></tr>
+    <tr><td>营收(¥B)</td><td><strong>204.8</strong><br><span class="small">+11.0% YoY</span></td><td>196.5<br><span class="small">+9.1%</span></td><td>194.4<br><span class="small">+12.7%</span></td><td>184.5<br><span class="small">+14.5%</span></td><td>751.8<br><span class="small">+13.9%</span></td></tr>
+    <tr><td>毛利率</td><td><strong>58%</strong><br><span class="small">历史新高</span></td><td>57%</td><td>55.9%</td><td>56.9%</td><td>56.2%</td></tr>
+    <tr><td>营业利润率(IFRS)</td><td>33%<br><span class="small">Non-IFRS 37% · 剔除AI后42%</span></td><td>34.3%</td><td>33.1%</td><td>32.6%</td><td>32.7%</td></tr>
+    <tr><td>IFRS 归母净利(¥B)</td><td>56.0<br><span class="small">+0.7% YoY · 净利 560.22亿</span></td><td>58.1</td><td>58.3</td><td>55.6</td><td>224.8</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>Non-IFRS 归母净利(¥B)</strong></td><td><strong>68.4</strong><br><span class="small">+8.5% YoY</span></td><td>69.8</td><td>~68</td><td>~60</td><td>~258</td></tr>
+    <tr><td>资本开支(¥B)</td><td class="dn2"><strong>52.8</strong><br><span class="small">+176% YoY · 含算力预付款 · 市场预期仅 321亿</span></td><td>37.0</td><td>~27.9</td><td>~22.6</td><td>~110</td></tr>
+    <tr><td>经营现金流(¥B)</td><td>52.7<br><span class="small">剔算力预付款后 FCF +37.6</span></td><td>101.4</td><td>66.5</td><td>—</td><td>303.1</td></tr>
+  </table>
+  <h3>ROE 杜邦（TTM，截至 2026-06-30）</h3>
+  <div class="dupont-grid">
+    <div class="dupont-box"><div class="title">净利率</div><div class="num">31.1%</div><div class="detail">中国互联网最高</div></div>
+    <div class="dupont-box"><div class="title">资产周转率</div><div class="num">0.39x</div><div class="detail">含 ¥8,700亿投资资产</div></div>
+    <div class="dupont-box"><div class="title">权益乘数</div><div class="num">1.64x</div><div class="detail">净现金状态 · 杠杆保守</div></div>
+  </div>
+  <p style="text-align:center;font-size:13px;color:#555;margin:8px 0"><strong>ROE (TTM) ≈ 20.0%</strong> ｜ ROIC ≈ 17% ｜ 同期：阿里 ~12%、美团 ~18%、网易 ~25%</p>
+  <div class="sig sig-bull"><strong>财务质量结论（未变）：</strong>~20% 的 ROE 由中国互联网最高的净利率（~31%）驱动，杠杆保守（权益乘数 1.64x）。资产周转率 0.39x 偏低是因为资产负债表含 ¥8,700亿+ 投资组合（不产生收入但贡献市值），剔除投资资产看核心业务周转效率极高。<strong>腾讯几乎不存在传统意义上的财务风险。</strong></div>
+</div>
+
+<!-- ===== 风险 ===== -->
+<div class="card">
+  <h2>⑨ 风险提示（v1.3 增量调整）</h2>
+  <ol>
+    <li><strong>AI 资本开支挤占股东回报（风险显著上调 ↑↑，当前第一大风险）</strong>：总裁刘炽平明确表示"将更多资金导向资本开支，因此可能减少用于回购的现金"。这已不只是"AI 投入压制利润表"，而是<strong>直接削弱了回购这一股价最重要的支撑机制</strong>——回购从 3 亿港元/日降至 1 亿港元/日，股息+回购收益率从 3.2% 降至 2.6%。若 2026 全年回购无法达成 800 亿港元指引（按当前节奏大概率低于），将构成实质性利空。</li>
+    <li><strong>Q3 利润增速探底（风险上调 ↑，11 月验证）</strong>：机构一致预期 Q3 净利增速仅 <strong>+3.25%</strong>（Q2 为 +8.51%、Q1 为 +10.72%）。这一增速下滑主要来自 AI 资本开支的折旧与运营费用集中入表。若 Q3 实际增速低于 +3% 甚至转负，市场对"AI 投入吞噬利润"的担忧将被证实，估值中枢可能继续下移。</li>
+    <li><strong>沽空压力与流动性博弈（新增风险）</strong>：沽空比率从 6.36%（9/4）飙升至 <strong>13.39%（9/11）</strong>，显著高于腾讯常态水平。空头与公司回购正面对抗，若回购继续减力，股价可能失去关键承接力量。<strong>当前换手率仅 0.317%，无量阴跌格局下缺乏"一次性出清"的见底条件。</strong></li>
+    <li><strong>卖方目标价持续下修（风险上调 ↑）</strong>：目标均价从 692.69 降至 657-668 港元。9/17 高盛下调至 650（原 658）并将 2026H2 EPS 预测削减最多 5%，理由为"AI 投资偏高及近期股权融资"。<strong>当前 93% 买入评级 vs 股价 YTD -29.2% 的背离，短期更可能以"卖方继续小步下修"的方式收敛</strong>，因此"目标价 +58%"不应被视作安全边际。</li>
+    <li><strong>投资组合公允价值波动（维持，中高）</strong>：上市投资 ¥4,872亿（Q2 末），受港股/中概市场影响。7-9 月中概整体回调，Q3 末公允价值可能进一步下降。Prosus 作为第一大股东（22.6%）的减持压力与投资组合变现存在利益冲突。</li>
+    <li><strong>政策监管（维持，高，长期悬顶）</strong>：游戏版号审批节奏、未成年人保护、反垄断、数据安全——政策风向仍可随时收紧，游戏板块占收入近半。</li>
+    <li><strong>增长换挡（维持，中）</strong>：营收增速维持 ~10% 中速档（湘财预测 2026-28 为 +11.7%/+11.7%/+11.2%），微信 MAU 增长见顶。若游戏无新爆款 + 广告渗透率触顶，市场可能按"低速 + 高股息"的成熟期定价（PE 中枢下移）——<strong>这正是当前 PB 给到三年最低分位的原因之一</strong>。</li>
+    <li><strong>技术结构破坏（新增）</strong>：股价距 52 周低点 411 仅 1.9%，且低于全部均线。若失守 411，将确认新的下跌趋势，技术目标位指向 380-390 区间（对应 Forward PE 约 12x）。</li>
+    <li><strong>竞争与地缘（维持，中）</strong>：字节跳动在广告与游戏双线进攻；DeepSeek/阿里/字节在 AI 大模型的竞争；芯片出口管制对 AI 算力获取的影响；港股流动性受美联储政策与全球风险偏好影响。</li>
+  </ol>
+  <div class="sig sig-warn"><strong>综合风险定性：</strong>v1.3 将风险维度从 52 下调至 <strong>48</strong>（接近 45 的硬约束阈值）。核心变化是——<strong>v1.2 时最大的风险是"AI 资本开支不确定"（预期层面），v1.3 已演进为三个已部分兑现的现实问题：① 回购被挤占（已发生）；② Q3 利润增速探底（预期已下修至 +3.25%）；③ 沽空比率翻倍（已在数据中体现）。</strong>腾讯的财务风险（杠杆、流动性）依然几乎为零，基本面锚（游戏+广告现金流）稳固，但<strong>"AI 转型期的估值锚定"与"股东回报机制被削弱"</strong>构成当前的主要矛盾。</div>
+
+  <h3>敏感性测算（核心变量：FY26E Non-IFRS 利润 + 目标 PE）</h3>
+  <table>
+    <tr><th>情景</th><th>关键假设</th><th>FY26E Non-IFRS 归母(¥B)</th><th>目标 PE</th><th>目标价(HK$)</th><th>vs 现价</th></tr>
+    <tr><td>悲观</td><td>Q3/Q4 利润增速 &lt;3%，AI 拖累超预期；回购降至 0.5 亿/日；投资组合减值</td><td>270</td><td>12x</td><td class="dn2"><strong>443</strong></td><td class="up">+5.7%</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>中性</strong></td><td>FY26 Non-IFRS 归母 ~¥288 B（+11%），PE 维持当前水平修复至 14x</td><td><strong>288</strong></td><td>14x</td><td><strong>606</strong></td><td class="up">+44.6%</td></tr>
+    <tr><td>乐观</td><td>Hy4 正式版带动 AI 变现，Q4 利润增速回升至 +10%；回购恢复加码；投资组合价值释放</td><td>305</td><td>17x</td><td class="up"><strong>790</strong></td><td class="up">+88.5%</td></tr>
+  </table>
+  <div class="assume"><strong>单一变量弹性（其他条件不变）：</strong>① <strong>目标 PE 每变动 1x → 目标价变动约 ±HK$43（±10%）</strong>；② <strong>FY26E Non-IFRS 归母每变动 5% → 目标价变动约 ±HK$30（±7%）</strong>；③ <strong>估值倍数的敏感度再次高于基本面变量</strong>——这解释了腾讯 Beta 虽低（0.27）但近一年最大回撤仍达 -38.5% 的原因：杀的是估值而非盈利。<strong>操作含义：与其博弈利润增速的小数点，不如跟踪"估值能否修复"的触发条件（Q3 财报 AI 变现数据、回购是否恢复加码、沽空比率是否回落）。</strong></div>
+  <div class="sig sig-bull"><strong>风险收益比结论（与 v1.2 相比方向改善）：</strong>悲观 +5.7% / 中性 +44.6% / 乐观 +88.5%，按 25%/50%/25% 概率加权，期望值约 <strong>HK$611（+45.8%）</strong>。<strong>值得注意的是——v1.3 的悲观情景（443）已高于现价（419），意味着当前价格已跌破"最坏情况"的估值锚。</strong>这是价值投资者最看重的信号。但必须同时承认：在 Q3 财报（11 月）之前，缺乏驱动估值修复的催化剂，而回购减力、沽空高企使短期下行风险仍然真实存在。<strong>结论：这是一个风险收益比优秀、但需要时间和耐心（左侧）的标的。</strong></div>
+  <p style="font-size:12px;color:#888;margin-top:10px"><strong>免责声明：</strong>本报告仅供研究参考，不构成个人投资建议。所有测算与假设已用 ⚠/黄色提示框标注。数据来源：Wind（2026-09-18 收盘行情、估值分位、技术指标、风险指标、股东与分红数据）、阿斯达克财经（17 家券商目标价表 2026-09-04）、investing.com（外资机构评级明细 2026-09-17）、高盛研报（2026-09-17）、中金研报（2026-09-04）、湘财证券研报（2026-09-10）、腾讯 2026 Q2 业绩公告（2026-08-12）及业绩会问答、港交所回购披露、公开新闻。<strong>口径说明：</strong>主力资金为 Wind 口径；沽空比率来自港交所数据（截至 9/11 16:25）；SOTP 中的净现金与投资组合公允价值为估算，Q3 实际数据待 11 月财报更新；三情景目标价为本报告自估，与机构目标价（综合 663.86 港元）不可直接比较。</p>
 </div>
 
 <div class="footer">
-诊断时间：2026-08-17 15:18 (GMT+8) · 版本：v1（首次覆盖）<br>
-数据来源：stockanalysis.com (S&P Global Market Intelligence) · 腾讯财经行情API · 腾讯 2026 Q1 财报及电话会议(2026-05-13) · 一致预期(2026-08-05)<br>
-⚠ 本报告仅供研究参考，不构成个人投资建议。腾讯将于 2026-08-12 发布 Q2 财报，报告中的估值与评分将随最新业绩更新。投资决策请以个人风险承受能力和独立研究为依据。
+  诊断时间：2026-09-18 16:08 (GMT+8) · 版本：v1.3（增量更新版，基于 v1.2 / 2026-08-17）<br>
+  v1.2 → v1.3：股价/估值/技术面/资金面/机构共识/风险全面刷新；财务数据无新财报，沿用 Q2'26<br>
+  数据来源：Wind · 阿斯达克财经 · investing.com · 高盛/中金/湘财研报 · 公司公告与港交所披露<br>
+  ⚠ 本报告仅供研究参考，不构成个人投资建议。投资决策请以个人风险承受能力和独立研究为依据。
 </div>
+
 </div>
 <script>
-const seg = document.getElementById('segChart');
-new Chart(seg, {
-  type: 'bar',
-  data: {
-    labels: ['增值服务VAS','营销服务','金融科技及企业服务','其他'],
-    datasets: [{
-      label: 'Q1 2026 收入 (¥B)',
-      data: [96.1, 38.2, 59.9, 2.3],
-      backgroundColor: ['#1565c0','#42a5f5','#90caf9','#bbdefb'],
-      borderRadius: 6
-    }]
-  },
-  options: {
-    responsive: true, maintainAspectRatio: false,
-    plugins: { legend: { display: false }, title: { display: true, text: '分部收入结构 — Q1 2026 合计 ¥196.5B', color: '#0d47a1' } },
-    scales: { y: { beginAtZero: true, title: { display: true, text: '¥B' } } }
-  }
-});
-const revChart = document.createElement('canvas');
-const segCard = seg.parentElement;
+(function(){
+  if(typeof Chart === 'undefined') return;
+  var el = document.getElementById('revSegChart');
+  if(!el) return;
+})();
 </script>
 </body></html>
