@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marvell Technology (MRVL) 个股深度诊断报告 v6</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marvell Technology (MRVL) 深度诊断报告 v7 | 2026-09-21</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
@@ -60,466 +61,373 @@ ol li{padding:5px 0;font-size:14px}
 .dupont-box .detail{font-size:11px;color:#555}
 .arrow{font-size:20px;color:#1565c0;font-weight:bold}
 .new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
+@media print{body{background:white;padding:0}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
 </style>
 </head>
-<body><div class="container">
+<body>
+<div class="container">
+
 <div class="header">
-  <div class="meta">美股深度诊断报告 v6 <span class="new-badge">UPDATED</span> | 2026-08-28 | Wind + 财报/电话会议 + 卖方研报 | Brad 股票分析框架</div>
-  <h1>Marvell Technology <span style="font-weight:400;font-size:18px">MRVL | NASDAQ</span></h1>
-  <div class="price-row"><span class="price">$227.30</span><span class="chg dn">-5.9%</span><span style="font-size:13px;opacity:.85">8/28盘中（美东09:39，Wind）· 财报后连续走弱</span></div>
-  <div style="margin-top:8px;font-size:13px;opacity:.9">
-    市值 $1,990亿 | Forward PE ~54x(FY27)/~33x(FY28) | 52周 $61.31-$329.80 | YTD +168% | <strong>Q2财报beat但"利好兑现"持续发酵 · 财报后两日累跌约-7.3%</strong>
+  <h1>Marvell Technology (MRVL) 个股深度诊断报告</h1>
+  <div class="meta">v7 · 更新版 | 报告日期 2026-09-21 | 数据截至 2026-09-18 美股收盘 | 框架：Brad Stock Analysis 12 步</div>
+  <div class="meta">数据来源：Wind（行情/财务/估值分位）· 公司披露与 8-K · 谷歌权证协议原文 · 卖方研报（TipRanks/investing.com/MarketBeat）</div>
+  <div class="price-row">
+    <div class="price">$244.25</div>
+    <div class="chg up">+1.45%</div>
+    <div style="font-size:13px;opacity:.9">9/18 收盘 · 市值 $2,142 亿 · YTD +188%<br>较 8/28 财报后低点 $222 回升约 10%</div>
   </div>
 </div>
 
-<!-- ===== 综合评分 ===== -->
-<div class="vcard"><h2>综合诊断评分</h2><div class="score">66/100</div>
-<p style="text-align:center;font-size:12px;color:#888;margin-top:-8px">v6：Q2财报beat+指引上调(基本面↑)，但股价高开低走-1.49%兑现"利好兑现"，估值透支(高盛$195)<br>基本面加速 vs 估值透支的拉锯——原报告"财报前追高需警惕"的判断被验证</p>
-<table><tr><th width="110">维度</th><th>评分</th><th>核心判断</th></tr>
-<tr><td>基本面</td><td class="up">84</td><td>Q2营收$2.74B(+37%创纪录)、数据中心$2.17B(+46%/占79%)；Non-GAAP EPS $0.94 beat；Google扩展协议+warrants绑定；custom FY28翻倍</td></tr>
-<tr><td>估值</td><td>58</td><td>Forward PE ~54x(FY27)/~33x(FY28)，高盛Neutral $195(认为overvalued)；三法加权中枢$211(SOTP 50%+PEG 25%+DCF 25%)，现价$227.3溢价+7.7%</td></tr>
-<tr><td>成长性</td><td class="up">90</td><td>FY28营收指引上调至$18B(+50%)；数据中心FY27指引+60%；custom FY28翻倍+；scale-up optics(NPO/CPO)指引"meaningfully"上调</td></tr>
-<tr><td>技术面</td><td>50</td><td>财报后$254.6高开→$240.4低走，收$241.45(-1.49%)；利好兑现抛压，但未破位，$240附近有支撑</td></tr>
-<tr><td>资金情绪</td><td>48</td><td>财报日成交$99亿(巨量)换手4.68%获利了结；做空比3.9%中高位；FMR减持26.3%仍是红旗</td></tr>
-<tr><td>风险</td><td class="dn2">45</td><td>估值无安全边际(核心)；客户集中(Google/AWS/Microsoft)；Broadcom ASIC竞争；中国收入占比高；AI Capex叙事逆转风险</td></tr>
-</table>
-<p style="margin-top:14px;font-size:14px"><strong>定位：基本面加速的高成长AI半导体，但估值已透支未来2年增长，财报后"利好兑现"印证了这一点。</strong>Q2财报全面超预期（营收+37%、指引再上调FY28 $18B），Google用warrants绑定深化合作、custom FY28翻倍——基本面是真好。但股价高开低走收-1.49%，说明市场预期已打满（YTD+184%），<strong>"卖事实"发生</strong>。高盛Neutral $195（现价已超其目标价约17%）vs KeyBanc $400，分歧极大。核心矛盾：<strong>基本面加速 vs 估值透支</strong>——当前价位已price in FY28增长，安全边际为负，追高需FY29及以后的新故事支撑。</p>
+<!-- ============ 综合诊断 ============ -->
+<div class="vcard">
+  <h2>综合诊断评分</h2>
+  <div class="score">65<span style="font-size:24px;color:#555">/100</span></div>
+  <div style="text-align:center;font-size:14px;color:#0d47a1;font-weight:600;margin-bottom:14px">合理 / 略贵（分数受风险约束封顶）—— 基本面加速、估值透支的老问题依旧</div>
+  <table>
+    <tr><th>维度</th><th>权重</th><th>得分</th><th>较 v6（8/28）</th><th>核心判断</th></tr>
+    <tr><td>基本面</td><td>25%</td><td>86</td><td class="up">84 → 86</td><td>Q2 营收 $2.74B（+37% 创纪录）、数据中心 $2.17B（+46%、占 79%）；指引连续第二次上调</td></tr>
+    <tr><td>估值</td><td>25%</td><td>52</td><td class="dn2">58 → 52</td><td>Forward PE 58x(FY27)/36x(FY28)；<strong>PB 11.56x 处 3 年 96.0% 分位</strong>；股价已超过多数卖方目标价</td></tr>
+    <tr><td>成长性</td><td>10%</td><td>91</td><td class="up">90 → 91</td><td><strong>谷歌协议至 FY2033 挂钩 $1,200 亿合格营收</strong>；custom FY28 翻倍以上；FY27 $120 亿 / FY28 $180 亿</td></tr>
+    <tr><td>技术面</td><td>10%</td><td>66</td><td class="up">50 → 66</td><td>站上全部均线；MACD 零上；但 60 日仍 -11.7%，处于"财报后修复"阶段</td></tr>
+    <tr><td>资金情绪</td><td>10%</td><td>56</td><td class="up">48 → 56</td><td>9 月起卖方密集上调（Piper $270 首次覆盖、JPM $305）；标普 500 纳入红利</td></tr>
+    <tr><td>风险</td><td>10%</td><td>44</td><td class="dn2">45 → 44</td><td>客户集中（Google/AWS/Microsoft）+ 博通 ASIC 份额 60% vs MRVL 20-25% + <strong>加息周期压制高估值</strong> → <strong>触发总分上限 65</strong></td></tr>
+    <tr><td>筹码/事件</td><td>5%</td><td>74</td><td class="up">70 → 74</td><td>谷歌权证 5,897 万股锁定 7 年绑定；<strong>10/6 投资者日为决定性催化</strong></td></tr>
+    <tr><td>机构共识</td><td>5%</td><td>80</td><td class="up">75 → 80</td><td>40 家买入 / 5 家持有；目标均价 $270.47-298.38，区间 $143-400</td></tr>
+  </table>
+  <div class="assume"><strong>硬约束校验：</strong>基本面+估值 = 138（≥120，未触发）；<strong>风险 44 &lt; 45 → 总分上限 65 生效</strong>。原始加权分 67.9，封顶后总分 65。</div>
 </div>
 
-<!-- ===== 行情快照 ===== -->
-<div class="card"><h2>行情快照（2026-08-28 盘中 · Wind）</h2>
-<div class="kv">
-<div class="item"><div class="lbl">最新价</div><div class="val">$227.30</div><div class="sub">8/28盘中 · 财报后连续第2日下跌</div></div>
-<div class="item"><div class="lbl">涨跌幅</div><div class="val dn">-5.9%</div><div class="sub">较8/27收盘$241.45 · 开盘低开$222.2(-8%)后回升</div></div>
-<div class="item"><div class="lbl">今开/最高/最低</div><div class="val" style="font-size:13px">$222.2/$228.0/$222.1</div></div>
-<div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">$2,041亿</div><div class="sub">较财报前$2,114亿蒸发约$73亿</div></div>
-<div class="item"><div class="lbl">PE(G TTM)/Forward</div><div class="val" style="font-size:14px">~79/~54x(FY27)</div></div>
-<div class="item"><div class="lbl">52周高低</div><div class="val" style="font-size:14px">$61.31 - $329.80</div></div>
-<div class="item"><div class="lbl">YTD</div><div class="val"><span class="up">+168%</span></div></div>
-<div class="item"><div class="lbl">财报后两日累跌</div><div class="val dn" style="font-size:14px">约 -7.3%</div><div class="sub">"利好兑现"持续发酵</div></div>
-<div class="item"><div class="lbl">分析师1年目标均价</div><div class="val"><span class="up">$290.80</span></div><div class="sub">区间$180-$400 | 分歧极大（详见下方卖方观点）</div></div>
-<div class="item"><div class="lbl">下次财报</div><div class="val" style="font-size:14px;color:#c62828">2026.11.30</div><div class="sub">FY27 Q3 · 指引营收$3.15B EPS$1.10 · 10/6 Investor Day</div></div>
+<div class="card">
+  <h2>核心判断：谷歌协议把"故事"变成了"合同"，但价格已经先付了钱</h2>
+  <div class="sig sig-bull"><strong>本次最大的实质性变化：谷歌协议的全部细节浮出水面。</strong>8/19 的 8-K 披露：Marvell 向谷歌发行 <strong>58,970,907 股认股权证，行权价 $206.58</strong>，其中最关键的 5,761 万股为<strong>业绩归属</strong>——每 $5 亿合格营收归属约 24 万股，最多 240 档，对应<strong>累计 $1,200 亿合格营收</strong>（衡量期至 2033-01-29）。覆盖范围不止加速器，还包括存储控制器、NIC、内存接口控制器、近内存计算，并含代号 "Kestrel" 的定制产品。<strong>这是 Marvell 首次同时拥有美国三大超大规模客户的设计关系。</strong></div>
+  <div class="sig sig-warn"><strong>但必须说清楚 $1,200 亿不是订单：</strong>它是<strong>权证完全归属所需的营收门槛</strong>，不是谷歌的采购承诺。若谷歌采购不达预期，权证直接失效、不摊薄。这个结构设计很聪明（"谷歌只有真买才拿股，Marvell 只有真有收入才摊薄"），但也意味着<strong>市场此前对 $1,200 亿的解读存在系统性夸大</strong>。</div>
+  <div class="sig sig-bear"><strong>估值仍是决定性问题：</strong>股价从 v6 时的 $227.30 涨至 $244.25（+7.5%），PB 升至 11.56x（3 年 96.0% 分位）。三法加权中性中枢 $217，<strong>现价溢价 12.6%</strong>（v6 时为 7.7%，溢价进一步扩大）。且财经媒体记录的财报后盘后一度跌近 8%——"预期跑在现实前面"的结构没有改变。</div>
 </div>
 
-<div class="sig sig-bull"><strong>Q2 FY2027 财报解读（8/27 盘后，全面超预期）：</strong>① 营收 $2.739B（+37% YoY 创纪录、+13% QoQ），超指引中值 $39M；② 数据中心 $2.17B（+46% YoY）占总营收 79%，AI 纯度极高；③ Non-GAAP EPS $0.94（beat $0.92，+40% YoY）；④ Non-GAAP 毛利率 58.9%、营业利润率 36.6%（+180bp YoY）；⑤ 经营现金流 $605M。<strong>指引再上调（连续第二次）</strong>：Q3 营收 $3.15B±5%（beat 一致 $3.03B）、Non-GAAP EPS $1.10；FY2027 从 $11.5B→~$12B（+45%）；FY2028 从 $16.5B→~$18B（+50%）。数据中心 FY2027 增速指引从 50%→60%。</div>
-<div class="sig sig-warn"><strong>电话会议三大关键信息：</strong>① <strong>Google 扩展协议 + warrants（认股权证）</strong>——覆盖 AI 推理加速器、存储控制器、NIC、内存接口控制器、近内存计算（连接 TPU 生态），Google 用股权绑定 Marvell 为核心 AI 芯片伙伴，是比"订单"更强的信号；② <strong>custom 业务 FY2028 翻倍以上</strong>（XPU + XPU-attach/CXL），H2 FY2027 起显著加速；③ <strong>scale-up optics（NPO/CPO）FY2028 指引"meaningfully"上调</strong>，新增 NVLink Fusion（8/4 加入 NVIDIA 生态）。</div>
-<div class="sig sig-bear"><strong>但"利好兑现"发生了：</strong>财报 beat + 指引上调，股价却高开 $253.44→低走收 $241.45（-1.49%）。原因：YTD +184% 已把极乐观预期打满，"买预期、卖事实"兑现；高盛维持 Neutral $195（认为 overvalued、现价已超目标价约 17%）。这印证了 v5 报告"8/27 财报前追高需警惕利好兑现风险"的判断。</div>
-</div>
-
-<!-- ===== 利润表 ===== -->
-<div class="card"><h2>利润表趋势（GAAP vs Non-GAAP 双口径 | $M）</h2>
-<p style="font-size:12px;color:#888;margin-bottom:12px">Marvell财年截止1月。数据源：Wind + 财报(8/27)。FY27 Q2为最新实绩(2026.08.27盘后公布)。</p>
-<table>
-<tr><th>指标</th><th>FY27 Q2<br><span class="small">(新!)</span></th><th>FY27 Q1</th><th>FY26 Q4</th><th>FY26 Q3</th><th>FY26 Q2</th><th>FY26 Q1</th><th>FY25 Q4</th></tr>
-<tr style="background:#f8f9fc"><td><strong>营收($M)</strong></td><td><strong>2,739</strong><br><span class="small">环比+13.3% · 同比+36.6%</span></td><td>2,424<br><span class="small">+20.8% · +27.6%</span></td><td>2,006<br><span class="small">+5.8% · +72.8%</span></td><td>1,895<br><span class="small">+4.3% · +63.3%</span></td><td>1,817</td><td>1,516</td><td>1,273</td></tr>
-<tr><td><strong>毛利率(GAAP)</strong></td><td><strong>53.1%</strong><br><span class="small">Non-GAAP 58.9%</span></td><td>50.6%</td><td>50.4%</td><td>50.3%</td><td>50.5%</td><td>23.0%</td><td>46.2%</td></tr>
-<tr style="background:#f8f9fc"><td><strong>GAAP净利($M)</strong></td><td><strong>308</strong><br><span class="small">净利率11.2%</span></td><td>34.5<br><span class="small">1.4%</span></td><td>195<br><span class="small">9.7%</span></td><td>178<br><span class="small">9.4%</span></td><td>200</td><td>-676</td><td>-193</td></tr>
-<tr><td><strong>GAAP稀释EPS</strong></td><td><strong>$0.33</strong></td><td>$0.04</td><td>$0.22</td><td>$0.203</td><td>$0.228</td><td>-$0.78</td><td>-$0.22</td></tr>
-<tr style="background:#e3f2fd"><td><strong>Non-GAAP EPS</strong></td><td><strong>$0.94</strong><br><span class="small">beat $0.92 · +40% YoY</span></td><td>$0.80<br><span class="small">beat 0.6%</span></td><td>$0.93(est)</td><td>$0.80</td><td>$0.80</td><td>$0.76</td><td>$0.67</td></tr>
-<tr><td><strong>差额(Non-GAAP - GAAP)</strong></td><td><strong>$0.61</strong></td><td>$0.76</td><td>~$0.71</td><td>$0.60</td><td>$0.57</td><td>$1.54</td><td>$0.89</td></tr>
-</table>
-
-<div class="sig sig-warn" style="margin-top:10px"><strong>⚠ GAAP净利恢复（Q2 $308M vs Q1 $34.5M）：</strong>印证了此前判断——Q1 是 Inphi/Cavium 收购无形资产的季度摊销峰值（财年摊销最高季度），Q2 起 GAAP 净利逐步恢复。Non-GAAP 毛利率 58.9%（+180bp 营业利润率至 36.6%），显示收购摊销的"会计失真"正在逐年递减，GAAP 正向 Non-GAAP 收敛。</div>
-
-<h3>GAAP vs Non-GAAP 桥接分析（续）</h3>
-<p style="font-size:13px">核心鸿沟来自2019-2021年收购Inphi/Cavium等产生的<strong>$130亿+无形资产</strong>在GAAP下逐年摊销。最大两个调整项：(1) <strong>收购无形资产摊销 ~$1.4B/年</strong>(Inphi光互联技术专利/Cavium ARM CPU客户关系，纯会计处理，不涉及现金流出)；(2) <strong>股权激励(SBC) ~$0.6B/年</strong>。Non-GAAP调回合计~$2.3B/年。随着距大型收购时间拉长，摊销压力逐年递减，GAAP净利正向Non-GAAP收敛——但至少还需3-5年才能完全弥合。</p>
-</div>
-
-<!-- ===== ROE杜邦分析 ===== -->
-<div class="card"><h2>ROE杜邦拆解 <span class="new-badge">NEW</span>（GAAP vs Non-GAAP双口径）</h2>
-<p style="font-size:12px;color:#888;margin-bottom:12px">资产/权益数据基于FY26 Q2(最近一期完整资产负债表，总资产$20,586M/净资产$13,422M)。TTM收入$8,720M。</p>
-
-<div class="dupont-grid">
-<div class="dupont-box">
-  <div class="title">净利率 (NPM)</div>
-  <div class="num">29.0%<br><span style="font-size:13px;color:#888">GAAP</span></div>
-  <div class="detail">TTM NI $2,530M ÷ TTM Rev $8,720M<br>Non-GAAP: ~45.1%</div>
-</div>
-<div class="dupont-box" style="display:flex;align-items:center;justify-content:center">
-  <span class="arrow">×</span>
-</div>
-<div class="dupont-box">
-  <div class="title">资产周转率 (AT)</div>
-  <div class="num">0.42x</div>
-  <div class="detail">TTM Rev $8,720M ÷ Avg Assets ~$20.6B<br>轻资产fabless模式典型水平</div>
-</div>
-</div>
-
-<div class="dupont-grid" style="margin-top:8px">
-<div class="dupont-box" style="grid-column:span 3;text-align:center">
-  <div style="display:flex;align-items:center;justify-content:center;gap:20px">
-    <div><span class="arrow" style="font-size:28px">=</span></div>
-    <div style="text-align:center">
-      <div class="title" style="font-size:13px">ROE (GAAP / Non-GAAP)</div>
-      <div class="num" style="font-size:30px">16.0% / 29.3%</div>
-      <div class="detail">GAAP: 29.0% × 0.42x × 1.31(average) = 16.0%<br>Non-GAAP: 调回$1.4B摊销后NI≈$3.93B → ROE≈29.3%<br>权益乘数(EM): $20.6B/$13.4B = 1.54x(期末) · 1.31x(平均)</div>
-    </div>
+<!-- ============ 一、行情快照 ============ -->
+<div class="card">
+  <h2>一、行情快照（2026-09-18 收盘）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新价</div><div class="val">$244.25</div><div class="sub">9/18 单日 +1.45%</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val">$2,142 亿</div><div class="sub">总股本 8.769 亿股</div></div>
+    <div class="item"><div class="lbl">PE(TTM)</div><div class="val">81.13x</div><div class="sub">3 年分位 84.3%（GAAP 净利受摊销压制）</div></div>
+    <div class="item"><div class="lbl">PB(LF)</div><div class="val">11.56x</div><div class="sub">3 年分位 <strong>96.0%</strong> · 历史高位</div></div>
+    <div class="item"><div class="lbl">Forward PE (FY27E)</div><div class="val">~58x</div><div class="sub">按 FY27E EPS $4.21</div></div>
+    <div class="item"><div class="lbl">Forward PE (FY28E)</div><div class="val">~36x</div><div class="sub">按 FY28E EPS $6.76</div></div>
+    <div class="item"><div class="lbl">52 周区间</div><div class="val">$70.6 - $329.8</div><div class="sub">距高点 -25.9%</div></div>
+    <div class="item"><div class="lbl">YTD</div><div class="val">+187.8%</div><div class="sub">250 日 +229.6%</div></div>
+    <div class="item"><div class="lbl">区间涨跌幅</div><div class="val">5日 +3.5%</div><div class="sub">20日 <span class="dn2">-2.7%</span> · 60日 <span class="dn2">-11.7%</span> · 120日 +157.6%</div></div>
+    <div class="item"><div class="lbl">下次财报</div><div class="val">2026-12-01</div><div class="sub">FY27Q3 · 指引营收 $3.15B / EPS $1.10</div></div>
+    <div class="item"><div class="lbl">关键事件</div><div class="val">10/6</div><div class="sub">投资者日（新指引窗口）</div></div>
   </div>
-</div>
-</div>
 
-<table style="margin-top:14px">
-<tr><th>指标</th><th>Marvell(GAAP)</th><th>Marvell(Non-GAAP)</th><th>Broadcom(AVGO)</th><th>NVIDIA(NVDA)</th><th>行业半导体中位</th></tr>
-<tr><td>ROE</td><td>16.0%</td><td class="up"><strong>29.3%</strong></td><td>34.5%</td><td>123.8%</td><td>~18%</td></tr>
-<tr><td>净利率</td><td>29.0%</td><td class="up"><strong>45.1%</strong></td><td>32.0%</td><td>58.9%</td><td>~16%</td></tr>
-<tr><td>资产周转率</td><td>0.42x</td><td>0.42x</td><td>0.37x</td><td>0.83x</td><td>~0.55x</td></tr>
-<tr><td>权益乘数</td><td>1.54x</td><td>1.54x</td><td>2.89x</td><td>1.58x</td><td>~1.8x</td></tr>
-<tr style="background:#e3f2fd"><td><strong>核心特征</strong></td><td colspan="3"><strong>高利润率+低周转(IP驱动fabless)</strong></td><td>超高利润率+高周转</td><td>-</td></tr>
-</table>
-
-<div class="sig sig-bull"><strong>ROE核心发现：Non-GAAP ROE 29.3%属于优秀水平（>20%即优秀）。</strong>Marvell的高ROE靠"超高净利率"驱动(Non-GAAP 45%)，这是IP密集型fabless模式的典型特征。资产周转率0.42x偏低——总资产中$136亿(66%)是收购来的无形资产，它们贡献了巨大利润但不产生额外"收入分母"。如果只看有形资产周转率(>$2.0x)，经营效率极高。EM仅1.54x，远低于Broadcom的2.89x——Marvell杠杆非常保守。</div>
-<div class="sig sig-warn"><strong>ROE的隐忧：</strong>GAAP ROE 16.0%约等于股权资本成本，显示"会计盈利"刚好覆盖资本成本。若非AI周期持续推动利润增长，ROE有下行风险。另，$136亿无形资产占净资产101%，一旦减值将直接摧毁ROE。</div>
+  <div class="sig sig-warn"><strong>宏观逆风对 MRVL 的杀伤力大于存储股：</strong>9/17 美联储加息 25bp 至 3.75-4.00%（三年多来首次），10Y 美债一度破 5%。MRVL 的估值建立在 FY28-29 的远期盈利上（Forward PE 36x FY28），<strong>远期盈利的现值对折现率最敏感</strong>——这解释了为何 60 日涨跌幅仍是 -11.7%，明显弱于同期 MU（-3.1%）与 SNDK（-6.4%）。</div>
 </div>
 
-<!-- ===== 现金流 ===== -->
-<div class="card"><h2>现金流独立分析（$M）</h2>
-<table>
-<tr><th>指标</th><th>FY27 Q1</th><th>FY26 Q4</th><th>FY26 Q3</th><th>FY26 Q2</th><th>FY25 FY</th></tr>
-<tr style="background:#f8f9fc"><td>经营现金流</td><td><strong>~500(est)</strong></td><td>462</td><td>333</td><td>514</td><td>1,681</td></tr>
-<tr><td>资本支出</td><td>~70(est)</td><td>49</td><td>120</td><td>71</td><td>292</td></tr>
-<tr style="background:#f8f9fc"><td><strong>自由现金流</strong></td><td><strong>~430(est)</strong></td><td>414</td><td>214</td><td>444</td><td>1,397</td></tr>
-<tr><td>FCF利润率</td><td>~17.7%</td><td>20.6%</td><td>11.3%</td><td>24.4%</td><td>24.2%</td></tr>
-</table>
-<div class="sig sig-bull"><strong>FCF是MRVL最不被关注但最重要的指标：</strong>TTM杠杆FCF $2.27B(Yahoo)，对应FCF Yield = 1.2%——在$241价位偏低但高成长阶段合理。GAAP净利被摊销扭曲，FCF才是真正的经营质量标尺。Q2经营现金流$606M（环比略降，因供应商产能预付款增加，为未来增长蓄力）。若FY28 EPS $6.8兑现、FCF率维持20%+，FCF可达$5B+(FCF Yield ~2.4%)。</div>
+<!-- ============ 二、利润表 ============ -->
+<div class="card">
+  <h2>二、利润表趋势（GAAP vs Non-GAAP 双口径 | $M）</h2>
+  <p style="font-size:13px;color:#666">Marvell 财年 1 月底截止。最新实绩为 <strong>FY27Q2</strong>（截至 2026-08-01，8/27 盘后公布）。Wind 最新入库为 FY27 H1 累计口径。</p>
+  <table>
+    <tr><th>指标</th><th>FY27Q2</th><th>FY27Q1</th><th>FY26Q4</th><th>FY26Q3</th><th>FY26Q2</th><th>FY25Q4</th></tr>
+    <tr><td>营收</td><td><strong>2,739</strong><br><span class="small up">环比+13.3% 同比+36.6%</span></td><td>2,424<br><span class="small">+20.8% / +27.6%</span></td><td>2,006</td><td>1,895</td><td>1,817</td><td>1,273</td></tr>
+    <tr><td>GAAP 毛利率</td><td>53.1%<br><span class="small">Non-GAAP 58.9%</span></td><td>50.6%</td><td>50.4%</td><td>50.3%</td><td>50.5%</td><td>46.2%</td></tr>
+    <tr><td>GAAP 净利</td><td>308<br><span class="small">净利率 11.2%</span></td><td>34.5</td><td>195</td><td>178</td><td>200</td><td class="dn2">-193</td></tr>
+    <tr><td>Non-GAAP EPS</td><td><strong>$0.94</strong><br><span class="small">beat $0.93 · +40% YoY</span></td><td>$0.80</td><td>$0.93</td><td>$0.80</td><td>$0.80</td><td>$0.67</td></tr>
+    <tr><td>Non-GAAP 营业利润率</td><td>36.6%<br><span class="small">+180bp YoY</span></td><td>—</td><td>33.5%(EBITDA%)</td><td>—</td><td>—</td><td>—</td></tr>
+  </table>
+
+  <h3>FY27 H1 累计（Wind 最新入库）</h3>
+  <div class="kv">
+    <div class="item"><div class="lbl">营业收入</div><div class="val">$51.57 亿</div><div class="sub">上年同期 $39.01 亿（+32.2%）</div></div>
+    <div class="item"><div class="lbl">归母净利润（GAAP）</div><div class="val">$3.425 亿</div><div class="sub">摊销压制，Non-GAAP 约 $8.7 亿/季</div></div>
+    <div class="item"><div class="lbl">销售毛利率</div><div class="val">52.67%</div><div class="sub">Non-GAAP 约 58.9%</div></div>
+    <div class="item"><div class="lbl">营业利润率</div><div class="val">15.65%</div><div class="sub">GAAP 口径</div></div>
+    <div class="item"><div class="lbl">ROE（GAAP）</div><div class="val">2.09%</div><div class="sub">无形资产摊销严重压低</div></div>
+    <div class="item"><div class="lbl">经营现金流</div><div class="val">$12.44 亿</div><div class="sub">Q2 单季 $6.05 亿</div></div>
+    <div class="item"><div class="lbl">资本开支</div><div class="val">$2.87 亿</div><div class="sub">fabless 轻资产</div></div>
+    <div class="item"><div class="lbl">总资产 / 资产负债率</div><div class="val">$275.5 亿 / 32.75%</div><div class="sub">收购 Celestial AI/XConn 后扩张</div></div>
+  </div>
+
+  <div class="sig sig-warn"><strong>GAAP 与 Non-GAAP 的鸿沟仍在（v6 判断延续）：</strong>差距主要来自 2019-2021 年收购 Inphi/Cavium 等产生的 $130 亿+ 无形资产在 GAAP 下的逐年摊销（约 $14 亿/年）+ 股权激励（约 $6 亿/年），Non-GAAP 合计调回约 $23 亿/年。<strong>GAAP ROE 仅 2.09% vs Non-GAAP ROE 约 29%</strong>——看这家公司必须用 Non-GAAP 和现金流，而不是 GAAP 净利。Q2 GAAP 净利 $308M 较 Q1 的 $34.5M 大幅恢复，印证摊销压力正逐年递减。</div>
 </div>
 
-<!-- ===== 估值三部法 ===== -->
-<div class="card"><h2>估值三部法 <span class="new-badge">NEW</span>（PEG + SOTP + DCF）</h2>
-<p style="font-size:12px;color:#888;margin-bottom:14px">当前$227.3，市值$2,041亿。数据源：Wind + 财报(8/27) + 卖方研报。财报后指引再上调：FY2027 营收 $11.53B→~$12B、FY2028 $16.73B→~$18B（+50%），一致预期 EPS 随之上修（FY27 约$4.2、FY28 约$6.8，待投行正式更新）。</p>
+<!-- ============ 三、ROE 与现金流 ============ -->
+<div class="card">
+  <h2>三、ROE 杜邦与现金流质量</h2>
+  <div class="dupont-grid">
+    <div class="dupont-box"><div class="title">净利率（Non-GAAP TTM）</div><div class="num">~45%</div><div class="detail">GAAP TTM 约 29%<br>IP 密集型 fabless 特征</div></div>
+    <div class="dupont-box"><div class="title">资产周转率</div><div class="num">~0.42x</div><div class="detail">总资产中 $136 亿（66%）<br>为收购来的无形资产</div></div>
+    <div class="dupont-box"><div class="title">权益乘数</div><div class="num">~1.54x</div><div class="detail">远低于博通 2.89x<br>杠杆非常保守</div></div>
+  </div>
+  <div style="text-align:center;font-size:15px;color:#0d47a1;font-weight:700;margin:10px 0">Non-GAAP ROE 约 29% · GAAP ROE 仅 2.09%</div>
 
-<!-- 一致预期 -->
-<h3>一、一致预期速览（财报后）</h3>
-<table>
-<tr><th></th><th>Q2实绩(Jul 26)</th><th>Q3指引(Oct 26)</th><th>FY2027</th><th>FY2028</th></tr>
-<tr style="background:#e3f2fd"><td><strong>营收</strong></td><td><strong>$2.739B(实绩)</strong></td><td><strong>$3.15B(指引)</strong></td><td><strong>~$12B</strong></td><td><strong>~$18B</strong></td></tr>
-<tr><td>同比/环比</td><td class="up">+36.6% YoY</td><td class="up">+15% QoQ</td><td class="up">+45%</td><td class="up">+50%</td></tr>
-<tr style="background:#e3f2fd"><td><strong>Non-GAAP EPS</strong></td><td><strong>$0.94(实绩)</strong></td><td><strong>$1.10(指引)</strong></td><td><strong>~$4.2</strong></td><td><strong>~$6.8</strong></td></tr>
-<tr><td>Forward PE @$227.3</td><td>-</td><td>-</td><td><strong>~54x</strong></td><td><strong>~33x</strong></td></tr>
-<tr><td>财报前一致预期</td><td>$2.70B/$0.92</td><td>$3.03B/$1.07</td><td>$11.53B</td><td>$16.73B</td></tr>
-</table>
-<div class="sig sig-bull">财报 beat + 指引连续第二季上调：Q2 营收 $2.739B beat $2.70B、Non-GAAP EPS $0.94 beat $0.92；Q3 指引 $3.15B beat $3.03B；FY2028 指引 $16.73B→$18B。反映数据中心（+46%、占 79%）AI 需求持续超预期，custom 业务 H2 起加速。</div>
-
-<!-- PEG -->
-<h3>二、PEG——增速上调但估值同步抬升</h3>
-<table>
-<tr><th>指标</th><th>数值</th><th>判断</th></tr>
-<tr><td>EPS CAGR (FY27 to FY28)</td><td class="up">~+62%</td><td>指引上调后增速更高</td></tr>
-<tr><td>Forward PE (FY27) @$227.3</td><td>~54x</td><td>高</td></tr>
-<tr style="background:#e3f2fd"><td><strong>PEG (FY27 PE ÷ FY28 EPS Growth)</strong></td><td><strong>~0.87</strong></td><td class="up"><strong>略低于1——增长仍能消化估值，但安全边际薄</strong></td></tr>
-<tr><td>Forward PE (FY28)</td><td><strong>~33x</strong></td><td>若FY28兑现，合理但无溢价空间</td></tr>
-</table>
-<h4 style="margin-top:14px">PEG 三情景目标价（供加权用）</h4>
-<p style="font-size:12px;color:#888">目标价 = FY28 EPS × 合理PE；合理PE = 目标PEG × 可持续增速（用 FY27→FY29 两年 CAGR，因 62% 单年跳升不可持续）。</p>
-<table>
-<tr><th>情景</th><th>FY28 EPS</th><th>可持续增速</th><th>目标PEG</th><th>合理PE</th><th>目标价</th></tr>
-<tr><td>悲观</td><td>$5.44（-20%）</td><td>25%</td><td>1.2</td><td>30x</td><td class="dn2"><strong>$163</strong></td></tr>
-<tr style="background:#e3f2fd"><td>中性</td><td>$6.80</td><td>35%</td><td>1.0</td><td>35x</td><td><strong>$238</strong></td></tr>
-<tr><td>乐观</td><td>$7.82（+15%）</td><td>45%</td><td>0.8</td><td>36x</td><td class="up"><strong>$282</strong></td></tr>
-</table>
-
-<!-- SOTP -->
-<h3>三、SOTP分部估值——当前定价隐含FY28兑现 <span class="new-badge">NEW</span></h3>
-<p style="font-size:12px;color:#888;margin-bottom:10px">将MRVL拆成四大业务线，各自用合理PS倍数估值。PS倍数参考Broadcom ASIC、Credo光互联、传统存储半导体等可比公司。基于FY27E和FY28E两套收入估算。</p>
-
-<table>
-<tr><th>业务线</th><th>FY27E收入</th><th>PS倍数</th><th>EV($B)</th><th>FY28E收入</th><th>PS倍数</th><th>EV($B)</th></tr>
-<tr style="background:#e3f2fd"><td><strong>AI ASIC</strong><br><span class="small">AWS T2/T2.5/T3+MSFT MAIA+GCP</span></td><td>$3.6B</td><td>18x</td><td><strong>$64.8</strong></td><td><strong>$6.7B</strong></td><td>15x</td><td><strong>$100.5</strong></td></tr>
-<tr><td><strong>光互联</strong><br><span class="small">PAM4 DSP+相干+CPO+AEC</span></td><td>$3.5B</td><td>14x</td><td><strong>$49.0</strong></td><td><strong>$6.1B</strong></td><td>12x</td><td><strong>$73.2</strong></td></tr>
-<tr style="background:#f8f9fc"><td><strong>DC非AI</strong><br><span class="small">存储控制器+交换芯片</span></td><td>$2.3B</td><td>5x</td><td><strong>$11.5</strong></td><td><strong>$3.1B</strong></td><td>4x</td><td><strong>$12.4</strong></td></tr>
-<tr><td><strong>非DC</strong><br><span class="small">企业网/运营商/汽车/消费</span></td><td>$2.1B</td><td>3x</td><td><strong>$6.3</strong></td><td><strong>$2.1B</strong></td><td>3x</td><td><strong>$6.3</strong></td></tr>
-<tr style="background:#e3f2fd"><td><strong>SOTP EV合计</strong></td><td>$11.53B</td><td>-</td><td><strong>$131.6</strong></td><td><strong>$18.0B</strong></td><td>-</td><td><strong>$192.4</strong></td></tr>
-<tr><td colspan="3"><strong>+现金$3.84B - 债务$4.42B</strong></td><td><strong>-$0.58B</strong></td><td colspan="2"><strong>+现金 - 债务</strong></td><td><strong>-$0.58B</strong></td></tr>
-<tr style="background:#fff3e0"><td colspan="3"><strong>SOTP股权价值</strong></td><td><strong>$131.0B</strong></td><td colspan="2"><strong>SOTP股权价值</strong></td><td><strong>$191.8B</strong></td></tr>
-<tr style="background:#fff3e0"><td colspan="3"><strong>隐含每股价值(8.98亿股)</strong></td><td><strong>$146/股</strong></td><td colspan="2"><strong>隐含每股价值</strong></td><td><strong>$214/股</strong></td></tr>
-</table>
-
-<div class="sig sig-warn"><strong>SOTP核心结论（8/28修正）：当前$227.3较FY28 SOTP合理价$214已溢价约6%，较财报前$241.45的溢价24%明显收窄。</strong>本次修正将FY28营收指引同步更新至$18B（AI ASIC $6.7B/光互联$6.1B/DC非AI$3.1B/非DC$2.1B），SOTP合理价由$194上修至$214/股。财报后两日股价累跌约-7.3%至$227.3，<strong>估值透支程度已从"溢价24%"收敛到"溢价6%"</strong>——但仍高于合理价，安全边际仍为负，需FY29 custom+scale-up的新故事支撑。若继续回调至$210以下，SOTP视角进入"定价合理"区间。</div>
-
-<div class="scenario-grid" style="margin-top:14px">
-<div class="scen scen-bear"><div class="slbl">SOTP悲观(FY28 PS打8折)</div><div class="sval">$171</div><div class="schg dn2">-25%</div></div>
-<div class="scen scen-base"><div class="slbl">SOTP中性(当前估值锚)</div><div class="sval">$214</div><div class="schg dn2">-6%</div></div>
-<div class="scen scen-bull"><div class="slbl">SOTP乐观(PS上浮15%)</div><div class="sval">$246</div><div class="schg up">+8%</div></div>
+  <table>
+    <tr><th>指标</th><th>FY27Q1</th><th>FY26Q4</th><th>FY26Q3</th><th>FY26 全年</th><th>FY27E</th></tr>
+    <tr><td>经营现金流</td><td>约 $500（est）</td><td>462</td><td>333</td><td>—</td><td>—</td></tr>
+    <tr><td>资本支出</td><td>约 $70（est）</td><td>49</td><td>120</td><td>292</td><td>—</td></tr>
+    <tr><td>自由现金流</td><td>约 $430（est）</td><td>414</td><td>214</td><td>1,440</td><td><strong>2,690</strong></td></tr>
+    <tr><td>FCF 利润率</td><td>约 17.7%</td><td>20.6%</td><td>11.3%</td><td>17.6%</td><td>约 22%</td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>FCF 才是这家公司真正的经营质量标尺：</strong>FY26 FCF $14.4 亿 → FY27E $26.9 亿（+87%，卖方一致预期）。Q2 经营现金流 $6.05 亿（环比略降，因供应商产能预付款增加，为未来增长蓄力）。若 FY28 EPS $6.76 兑现、FCF 转换率维持，FY28 FCF 有望达 <strong>$50 亿+</strong>（FCF Yield 约 2.3%）。</div>
 </div>
 
-<!-- DCF -->
-<h3>四、DCF现金流折现——三情景估值 <span class="new-badge">NEW</span></h3>
-<div class="assume"><strong>⚠ 关键假设：</strong>FY28 Non-GAAP EPS ~$6.24（保守起点，一致预期$6.8）× 8.98亿股 = NI $5.6B；FCF转换率80%(对标历史)；WACC=10%(Beta 2.2+无风险4%+ERP 5%→WACC≈15%，但考虑增长确定性用10%基准)；终端增长3%；详细参数见下方情景表。注：DCF采用保守 EPS 起点，故中性$178低于SOTP/PEG，属"保守锚"。</div>
+<!-- ============ 四、业务与护城河 ============ -->
+<div class="card">
+  <h2>四、业务拆解与竞争护城河</h2>
+  <h3>第一层：分部收入（FY27Q2）</h3>
+  <table>
+    <tr><th>业务线</th><th>营收</th><th>占比</th><th>环比</th><th>同比</th><th>定位</th></tr>
+    <tr><td>数据中心（含 AI ASIC + 光互联 + 存储控制器 + NIC）</td><td><strong>$2,172M</strong></td><td>79%</td><td class="up">+18%</td><td class="up">+46%</td><td>🚀 核心增长引擎</td></tr>
+    <tr><td>通信及其他（企业网/运营商/汽车/消费）</td><td>$568M</td><td>21%</td><td class="dn2">-3%</td><td>+10%</td><td>📉 拖累项（Q3 预计再降 10-15%）</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>公司已高度单一化：</strong>数据中心占比从 FY26Q1 的 76% 升至 Q2 的 79%，公司实质上已从"多元化半导体"转型为"AI 数据中心芯片公司"。这意味着<strong>估值将与 AI Capex 周期完全同频，失去了多元化业务的下行缓冲</strong>。</div>
 
-<table>
-<tr><th>参数</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
-<tr><td>FY28-30 Non-GAAP EPS CAGR</td><td>15%</td><td>25%</td><td>35%</td></tr>
-<tr><td>FY31-33 EPS CAGR</td><td>8%</td><td>12%</td><td>18%</td></tr>
-<tr><td>FCF转换率</td><td>70%</td><td>80%</td><td>85%</td></tr>
-<tr><td>WACC</td><td>12%</td><td>10%</td><td>9%</td></tr>
-<tr><td>终端增长</td><td>2%</td><td>3%</td><td>3.5%</td></tr>
-<tr style="background:#e3f2fd"><td><strong>DCF每股估值</strong></td><td class="dn2"><strong>$122</strong></td><td><strong>$178</strong></td><td class="up"><strong>$268</strong></td></tr>
-</table>
+  <h3>第二层：竞争格局 —— 与博通的差距并未收窄</h3>
+  <table>
+    <tr><th>维度</th><th>Marvell</th><th>Broadcom</th><th>差距解读</th></tr>
+    <tr><td>定制 AI ASIC 份额</td><td>20-25%</td><td><strong>约 60%</strong></td><td>双寡头格局，但博通是绝对主导</td></tr>
+    <tr><td>AI 半导体收入增速（最近季度）</td><td class="dn2">+37%</td><td class="up">+221%（至 $167 亿）</td><td class="dn2"><strong>博通规模与增速双双碾压</strong></td></tr>
+    <tr><td>核心客户</td><td>AWS（Trainium 2.5）、微软（MAIA）、<strong>谷歌（新增）</strong>、英伟达生态</td><td>谷歌（TPU 主供，合约延至 2031）、Meta、OpenAI（"Jalapeno"项目）</td><td>Marvell 拿到了"第二供应商"位置，而非替代</td></tr>
+    <tr><td>英伟达关系</td><td class="up">NVLink Fusion 生态 + $20 亿战略投资</td><td>竞争关系</td><td>Marvell 的独特优势</td></tr>
+    <tr><td>自我定位</td><td colspan="2">CEO Murphy："基本上，我们是整个市场的瑞士"（中立性）</td><td>中立性是差异化，但也意味着不是任何一家的首选</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>关于谷歌协议的准确定位（重要）：</strong>Futurum 研究总监 Brendan Burke 明确指出——<strong>这不意味着 Marvell 从博通手里抢走了 TPU 订单</strong>。博通 4 月已将与谷歌的 TPU/AI 机架合作延长至 2031 年，并向 Anthropic 开放约 3.5GW 的 TPU 算力。谷歌引入 Marvell 的真实动因是"单一供应商是伪装成效率的脆弱性"，属于<strong>供应链多元化</strong>，而非替换。Marvell 的机会在于 TPU 周边芯片（存储控制器、NIC、内存接口、近内存计算）——这是"扩张蛋糕"，不是"抢蛋糕"。</div>
 
-<p style="font-size:12px;color:#888;margin-top:8px">悲观场景假设AI Capex增速放缓+竞品侵蚀份额；中性与SOTP FY28估值接近；乐观场景假设ASIC+光互联持续超预期。</p>
-
-<div class="scenario-grid">
-<div class="scen scen-bear"><div class="slbl">悲观</div><div class="sval">$122</div><div class="schg dn2">-37%</div></div>
-<div class="scen scen-base"><div class="slbl">中性</div><div class="sval">$178</div><div class="schg dn2">-8%</div></div>
-<div class="scen scen-bull"><div class="slbl">乐观</div><div class="sval">$268</div><div class="schg up">+38%</div></div>
+  <h3>护城河四维评估</h3>
+  <table>
+    <tr><th>维度</th><th>评级</th><th>依据</th></tr>
+    <tr><td>技术壁垒</td><td>强</td><td>PAM4 DSP 60%+ 市占（800G 已量产、1.6T 领先）；2nm Electra 相干 DSP；Celestial AI 光子织物补强 CPO；Teralynx T100（102.4 Tbps，功耗较竞品低最多 25%）</td></tr>
+    <tr><td>客户粘性</td><td>强</td><td>谷歌权证 7 年绑定；微软扩展协议覆盖 5 类产品；英伟达 NVLink Fusion 生态；AWS Trainium 2.5/3 双供</td></tr>
+    <tr><td>成本优势</td><td>中</td><td>fabless 轻资产；9/17 与 GlobalFoundries 扩大 SiGe 产能合作保障供应；但无制程成本优势</td></tr>
+    <tr><td>网络效应</td><td>中</td><td>UA-Link/CXL/PCIe 生态绑定；但硬件属性为主</td></tr>
+    <tr><td>客户集中度</td><td class="dn2">高（警示）</td><td>Google/AWS/Microsoft 三家合计占数据中心业务大头，任一客户节奏变化即显著影响业绩</td></tr>
+  </table>
 </div>
 
-<h3>五、三部法加权综合（SOTP 50% + PEG 25% + DCF 25%）<span class="new-badge">NEW</span></h3>
-<table>
-<tr><th>方法</th><th>权重</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
-<tr style="background:#e3f2fd"><td><strong>SOTP 分部估值</strong></td><td><strong>50%</strong></td><td class="dn2">$171</td><td>$214</td><td class="up">$246</td></tr>
-<tr><td><strong>PEG</strong></td><td><strong>25%</strong></td><td class="dn2">$163</td><td>$238</td><td class="up">$282</td></tr>
-<tr><td><strong>DCF</strong></td><td><strong>25%</strong></td><td class="dn2">$122</td><td>$178</td><td class="up">$268</td></tr>
-<tr style="background:#fff3e0"><td><strong>加权中枢</strong></td><td><strong>100%</strong></td><td class="dn2"><strong>$157</strong></td><td><strong>$211</strong></td><td class="up"><strong>$260</strong></td></tr>
-</table>
-<div class="sig sig-warn" style="margin-top:12px"><strong>加权结论（8/28）：三法按 Skill 权重加权后，中性中枢 <b>$211</b>，当前 $227.3 仍溢价约 +7.7%——偏贵，但已较财报日的溢价 15-24% 大幅收敛。</strong>三法中性值高度收敛（SOTP $214 / PEG $238 / DCF $178），交汇区间约 $178-238。悲观中枢 $157（下行 -31%）、乐观中枢 $260（空间 +14.6%）。<strong>结论维持"偏贵、不追高"</strong>：$227.3 高于中性加权中枢 7.7%，安全边际仍为负；$211（中性中枢）以下进入合理区间，$210 附近（SOTP 合理价）赔率改善。追高需 10/6 Investor Day 及 FY29 custom/scale-up 新故事支撑。</div>
-<div class="sig sig-warn"><strong>核心风险：</strong>所有估值模型都建立在FY28 EPS约$6.8(+62%增长)的假设上。若AI Capex增速放缓、Broadcom/云厂商自研ASIC侵蚀份额、或Google/AWS订单节奏不及预期，EPS可能在$5.5-6区间，届时SOTP会降至$150-165，较现价$227.3跌幅30%+。高盛Neutral $195（现价已超其目标价约17%）提示"最坏情况已非小概率"。</div>
+<!-- ============ 五、谷歌权证协议 ============ -->
+<div class="card">
+  <h2>五、谷歌协议深度拆解 <span class="new-badge">本次核心</span></h2>
+  <table>
+    <tr><th>条款</th><th>内容</th><th>解读</th></tr>
+    <tr><td>商业协议签署日</td><td>2026-07-29</td><td>8/19 才通过 8-K 公开，市场延迟反应</td></tr>
+    <tr><td>权证规模</td><td>58,970,907 股，行权价 <strong>$206.58</strong></td><td>按现价 $244.25 计，内在价值约 $22 亿；全额行权可带来约 $121.8 亿现金</td></tr>
+    <tr><td>时间归属部分</td><td>1,360,867 股（第一年按季度归属）</td><td>占比仅 2.3%，可忽略</td></tr>
+    <tr><td><strong>业绩归属部分</strong></td><td>57,610,040 股；每 $5 亿合格营收归属约 240,000 股，最多 240 档</td><td><strong>需累计 $1,200 亿合格营收才全部归属</strong>——这是门槛，不是订单</td></tr>
+    <tr><td>衡量期</td><td>2026-08-01 至 2033-01-29</td><td>约 6.5 年，年均需约 $185 亿合格营收才能满额归属</td></tr>
+    <tr><td>覆盖范围</td><td>AI 推理加速器、存储控制器、NIC、内存接口控制器、近内存计算；含代号 "Kestrel" 的定制产品</td><td><strong>广度是关键</strong>——不是单一 XPU，而是 TPU 周边的多类芯片</td></tr>
+    <tr><td>潜在持股上限</td><td>初始限制 4.999%（可通知后调整）</td><td>58.97M ÷ 876.9M 全部归属后约 <strong>6.7%</strong>（部分媒体所称"71%"系计算错误）</td></tr>
+    <tr><td>权证到期</td><td>2033-08-18</td><td>—</td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>结构设计的精妙之处：</strong>时间归属只占 2.3%，97.7% 与真实营收挂钩——<strong>"谷歌只有真买才拿股，Marvell 只有真有收入才摊薄"</strong>。这把股权激励变成了营收对赌，比单纯的"战略投资"或"订单"都更强。同时对 Marvell 的现金流友好：若全额行权可带来约 $122 亿现金（不摊薄现有股东的价值，因为钱进了公司）。</div>
+  <div class="sig sig-warn"><strong>但也必须泼一盆冷水：</strong>① 年均 $185 亿合格营收的门槛，相当于 Marvell FY27 全年营收（$120 亿）的 1.5 倍——<strong>这是极难达成的目标</strong>，权证大概率只能部分归属；② CEO 明确表示该协议<strong>对 FY2028 的贡献已包含在此前指引中，实质性影响从 FY2029 才开始显现</strong>；③ 8/27 财报后盘后跌近 8%，正是因为"长期指引未能显著上调"——市场对"远水"缺乏耐心。</div>
 </div>
 
-<!-- ===== 分业务线(更新) ===== -->
-<div class="card"><h2>分业务线深度 — FY27重大更新 <span class="new-badge">NEW</span></h2>
+<!-- ============ 六、估值 ============ -->
+<div class="card">
+  <h2>六、估值分析（多业务线 → SOTP 主锚 + PEG + DCF）</h2>
+  <h3>一致预期速览</h3>
+  <table>
+    <tr><th>口径</th><th>FY27Q2 实绩</th><th>FY27Q3 指引</th><th>FY2027E</th><th>FY2028E</th></tr>
+    <tr><td>营收</td><td>$2.739B</td><td>$3.15B</td><td><strong>$12.05B</strong>（+47%）</td><td><strong>$18.21B</strong>（+51%）</td></tr>
+    <tr><td>Non-GAAP EPS</td><td>$0.94</td><td>$1.10</td><td><strong>$4.21</strong></td><td><strong>$6.76</strong></td></tr>
+    <tr><td>Forward PE @ $244.25</td><td>—</td><td>—</td><td>58.0x</td><td>36.1x</td></tr>
+  </table>
 
-<h3>FY27 Q1收入结构（2026.04.30公布）</h3>
-<table>
-<tr><th>产线</th><th>FY27 Q1收入</th><th>占比</th><th>QoQ</th><th>YoY</th><th>核心驱动</th></tr>
-<tr style="background:#f8f9fc"><td><strong>数据中心</strong></td><td><strong>$1,830M</strong></td><td>75.5%</td><td>-8.7%</td><td class="up">+27%</td><td>AI ASIC季节性下滑(Q1通常最低)+光互联继续增长</td></tr>
-<tr><td>企业网络</td><td>$141M</td><td>5.8%</td><td>-</td><td>-</td><td>传统业务，拖累</td></tr>
-<tr style="background:#f8f9fc"><td>运营商</td><td>$106M</td><td>4.4%</td><td>-</td><td>-</td><td>5G基建周期</td></tr>
-<tr><td>汽车/工业</td><td>$103M</td><td>4.3%</td><td>-</td><td>-</td><td>车载以太网缓慢渗透</td></tr>
-<tr style="background:#f8f9fc"><td>消费</td><td>$243M</td><td>10.0%</td><td>-</td><td>-</td><td>季节性+SSD控制器</td></tr>
-</table>
+  <h3>锚一：SOTP 分部估值（权重 50%）</h3>
+  <table>
+    <tr><th>业务线</th><th>FY28E 收入</th><th>PS 倍数</th><th>EV</th><th>倍数逻辑</th></tr>
+    <tr><td>AI ASIC（AWS T2.5/T3 + MSFT MAIA + GCP）</td><td>$6.7B</td><td>15x</td><td>$100.5B</td><td>博通 AI ASIC 板块隐含 PS 15-20x；MRVL 增速更快但客户集中度更高</td></tr>
+    <tr><td>光互联（PAM4 DSP + 相干 + CPO + AEC）</td><td>$6.1B</td><td>12x</td><td>$73.2B</td><td>PAM4 DSP 60%+ 市占 + CPO 全栈；纯对标 Credo（PS 10-12x）给龙头溢价</td></tr>
+    <tr><td>数据中心非 AI（存储控制器 + 交换）</td><td>$3.1B</td><td>4x</td><td>$12.4B</td><td>成熟业务，增速约 30%</td></tr>
+    <tr><td>非数据中心（企业网/运营商/汽车/消费）</td><td>$2.1B</td><td>3x</td><td>$6.3B</td><td>增速近零，对标 NXP/TI 传统半导体</td></tr>
+    <tr style="font-weight:700"><td>SOTP EV 合计</td><td>$18.0B</td><td>—</td><td>$192.4B</td><td>减净债务 $0.58B → 股权 <strong>$191.8B</strong></td></tr>
+  </table>
+  <div class="assume"><strong>每股价值取决于股本口径：</strong>按 Wind 总股本 8.769 亿股 → <strong>$219/股</strong>；按含谷歌权证全额归属的稀释后 9.36 亿股 → <strong>$205/股</strong>。本报告取区间 <strong>$205-219</strong>，中值 $212。PS 倍数是 SOTP 的唯一杠杆——若 AI ASIC 倍数从 15x 降至 12x，SOTP 将降至约 $185。</div>
 
-<p style="font-size:12px;color:#888;margin-top:8px">注：非DC分项为估算值。DC Q1 $1.83B虽环比-8.7%但同比+27%，且Q2指引$2.7B总收入(~$2.05B DC)创历史新高，验证全年$11.5B+收入目标。</p>
+  <h3>锚二：PEG（权重 25%）</h3>
+  <p style="font-size:13px">Forward PE(FY28) = 36.1x；FY27→FY29 EPS CAGR 假设约 50%（FY27 $4.21 → FY29 $9.5 量级）→ <strong>PEG = 0.72</strong>（&lt;1，增长仍能消化估值）。但注意 PEG 对"两年后的 $9.5 EPS"高度依赖——这个数字目前没有合同支撑。</p>
+  <table>
+    <tr><th>情景</th><th>FY28E EPS</th><th>合理 PE</th><th>目标价</th></tr>
+    <tr><td>悲观</td><td>$5.40（-20%）</td><td>30x</td><td class="dn2">$162</td></tr>
+    <tr><td>中性</td><td>$6.76</td><td>35x</td><td><strong>$237</strong></td></tr>
+    <tr><td>乐观</td><td>$7.80（+15%）</td><td>38x</td><td class="up">$296</td></tr>
+  </table>
 
-<h3>分业务线估值逻辑 <span class="new-badge">NEW</span>（→ 驱动 SOTP）</h3>
-<div class="assume"><strong>⚠ 本表为SOTP分部估值的"源数据"。</strong>以下各业务线的收入估算、PS倍数选择及逻辑判断若发生调整，SOTP估值应以本表为准同步更新。注：非DC三类(企业网/运营商/汽车消费)分别估值差异极小，合并处理。</div>
+  <h3>锚三：DCF（权重 25%）</h3>
+  <table>
+    <tr><th>参数</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
+    <tr><td>FY28-30 Non-GAAP EPS CAGR</td><td>15%</td><td>25%</td><td>35%</td></tr>
+    <tr><td>FCF 转换率</td><td>70%</td><td>80%</td><td>85%</td></tr>
+    <tr><td>WACC</td><td>12%</td><td>10.5%</td><td>9.5%</td></tr>
+    <tr><td>终端增长</td><td>2.0%</td><td>3.0%</td><td>3.5%</td></tr>
+    <tr><td><strong>DCF 每股价值</strong></td><td class="dn2">$140</td><td><strong>$205</strong></td><td class="up">$300</td></tr>
+  </table>
+  <div class="assume"><strong>WACC 上调说明：</strong>v6 用 10% 中性 WACC。鉴于美联储 9 月已加息至 3.75-4.00%、10Y 美债破 5%，本报告将中性 WACC 上调至 10.5%、悲观 12%。若长端利率站稳 5%+，中性 WACC 应进一步升至 11-12%，DCF 中枢将下压 8-12%。</div>
 
-<table>
-<tr><th width="105">业务线</th><th>FY27E收入</th><th>FY28E收入</th><th>PS(FY27E)</th><th>PS(FY28E)</th><th>估值逻辑</th></tr>
+  <h3>三法加权综合</h3>
+  <table>
+    <tr><th>方法</th><th>权重</th><th>悲观</th><th>中性</th><th>乐观</th></tr>
+    <tr><td>SOTP 分部估值</td><td>50%</td><td>$171</td><td>$212</td><td>$245</td></tr>
+    <tr><td>PEG</td><td>25%</td><td>$162</td><td>$237</td><td>$296</td></tr>
+    <tr><td>DCF</td><td>25%</td><td>$140</td><td>$205</td><td>$300</td></tr>
+    <tr style="font-weight:700"><td>加权中枢</td><td>100%</td><td>$161</td><td>$217</td><td>$272</td></tr>
+  </table>
+  <div class="scenario-grid" style="margin-top:14px">
+    <div class="scen scen-bear"><div class="slbl">悲观（概率 ~30%）</div><div class="sval">$161</div><div class="schg dn2">-34.1%</div><div class="small">AI Capex 放缓 + 份额被侵蚀</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（概率 ~50%）</div><div class="sval">$217</div><div class="schg dn2">-11.2%</div><div class="small">FY28 $18B 兑现，按合理倍数定价</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观（概率 ~20%）</div><div class="sval">$272</div><div class="schg up">+11.4%</div><div class="small">谷歌 + scale-up optics 超预期</div></div>
+  </div>
 
-<tr style="background:#e3f2fd">
-  <td><strong>AI ASIC</strong></td>
-  <td><strong>$3.6B</strong></td>
-  <td><strong>$6.7B</strong></td>
-  <td><strong>18x</strong></td>
-  <td><strong>15x</strong></td>
-  <td style="font-size:12px">
-    <strong>PS 18x (FY27) / 15x (FY28)：</strong>Broadcom AI ASIC板块隐含PS约15-20x，Marvell增速更快(AI ASIC FY27→FY28 +67%)但客户集中度高(AWS+MSFT双客户)，给18x中性，远期随增速回落降至15x。<br>
-    <strong>关键变量：</strong>若MAIA放量超预期或Google签约→PS可上修至20x+；若Trainium 4份额归零→需降至12x以下。
-  </td>
-</tr>
-
-<tr>
-  <td><strong>光互联</strong></td>
-  <td><strong>$3.5B</strong></td>
-  <td><strong>$6.1B</strong></td>
-  <td><strong>14x</strong></td>
-  <td><strong>12x</strong></td>
-  <td style="font-size:12px">
-    <strong>PS 14x (FY27) / 12x (FY28)：</strong>光互联板块增速(+57%)略低于ASIC但护城河更深(PAM4 DSP 60%+市占+CPO全栈)。纯光互联对标Credo(PS ~10-12x)，Marvell的DSP龙头溢价给14x。远期Broadcom Taurus追赶压力→降至12x。<br>
-    <strong>关键变量：</strong>若Celestial AI CPO 2027超预期放量→PS可上修至16x+；若博通提前拿下大客户DSP设计win→PS降至10x。
-  </td>
-</tr>
-
-<tr style="background:#f8f9fc">
-  <td><strong>DC非AI</strong></td>
-  <td><strong>$2.3B</strong></td>
-  <td><strong>$3.1B</strong></td>
-  <td><strong>5x</strong></td>
-  <td><strong>4x</strong></td>
-  <td style="font-size:12px">
-    <strong>PS 5x/4x：</strong>成熟业务(HDD/SSD控制器+交换芯片)，增速不高(~30%)，对标传统存储半导体(Micron PS ~3-5x，Seagate ~1-2x)。给5x反映数据中心存储的AI溢出需求。
-  </td>
-</tr>
-
-<tr>
-  <td><strong>非DC合计</strong></td>
-  <td><strong>$2.1B</strong></td>
-  <td><strong>$2.1B</strong></td>
-  <td><strong>3x</strong></td>
-  <td><strong>3x</strong></td>
-  <td style="font-size:12px">
-    <strong>PS 3x：</strong>企业网/运营商/汽车/消费合计增速近乎为零(~+5%)，属传统半导体"拖累型"业务。3x PS对标NXP/TI等传统模拟半导体低增长板块。若不剥离，远期可能拖累整体估值。<br>
-    <strong>关键变量：</strong>若Marvell剥离非DC业务→估值释放(单独3x vs 并入高增长板块被"平均"压低)，但公司当前无相关计划。
-  </td>
-</tr>
-
-<tr style="background:#fff3e0">
-  <td><strong>合计 → SOTP EV</strong></td>
-  <td><strong>$11.53B</strong></td>
-  <td><strong>$18.0B</strong></td>
-  <td colspan="2" style="text-align:center"><strong>FY27E EV $131.6B / FY28E EV $192.4B</strong></td>
-  <td style="font-size:12px">
-    <strong>FY27E: $64.8+49.0+11.5+6.3 = $131.6B EV</strong><br>
-    <strong>FY28E: $90.0+66.0+12.0+6.6 = $174.6B EV</strong><br>
-    - 净债务$0.58B → FY27E股权$131.0B($146/股) · FY28E股权$174.0B(<strong>$194/股</strong>)
-  </td>
-</tr>
-</table>
-
-<div class="sig sig-warn"><strong>⚠ SOTP 联动机制：</strong>以上 PS 倍数和收入估计是 SOTP 的唯一数据源。若因竞争动态、管理层指引或行业变化需要调整某条业务线的收入或倍数，SOTP 部分的表格和结论必须同步更新，以本表为准。</div>
-
-<h3>关键竞争动态（2026.06-08 · 财报后更新）</h3>
-
-<h4 style="color:#c62828">1. Trainium 3/4 — 市场"噪音"vs管理层的定心丸</h4>
-<p style="font-size:13px">
-<strong>最新进展(JPMorgan 2026.07)：</strong>Marvell管理层在JPM闭门会议中明确表示——<strong>"Trainium 3 CY2026全年订单已锁定，微软MAIA 3nm按计划H2 2026量产爬坡至2027，2nm(Trainium 4/MAIA 2nm)设计工作已启动"</strong>。管理层对市场的Alchip替代叙事感到"困惑和沮丧"，称全是"噪音"。<br><br>
-<strong>但事实是：</strong>Trainium 3确实存在双供格局(Alchip主供台积电CoWoS版+Marvell供ASE封装版50万台)，Trainium 4核心计算设计也确实被Alchip+Annapurna主导。JPM的"无收入缺口"承诺不是指份额不变，而是指Trainium 2.5持续+Trainium 3 50万台+MAIA放量+附加芯片共同构成"收入不降"的格局。<br><br>
-<strong>新变量——AWS外卖Trainium：</strong>6月Bloomberg报道AWS考虑对外直接销售Trainium芯片(目前仅AWS内部使用)。Anthropic承诺10年$1000亿+AWS投资，已部署超100万颗Trainium。若外卖成真，Trainium总产能翻倍，Marvell的50万台份额价值也会翻倍。<br><br>
-<strong>新变量——Google入局：</strong>Google正与Marvell洽谈共同开发2款新AI芯片——内存处理单元(与TPU协同)+新型推理TPU。目标2027年设计完成，初期200万颗产量。Google并非替换Broadcom(TPU主供)，而是在供应链中引入第三方分散风险。这对Marvell是纯增量，预计FY29贡献收入。<br><br>
-<strong>✅ 8/27 财报会确认——Google 扩展协议 + warrants：</strong>从"洽谈"升级为<b>正式扩展协议</b>，覆盖 AI 推理加速器、存储控制器、NIC、内存接口控制器、近内存计算（连接 TPU 生态）。Google 用<strong>认股权证（warrants）</strong>绑定 Marvell 为核心 AI 芯片伙伴——是比"订单"更强的信号，但 warrants 行权会摊薄现有股东。<br><br>
-<strong>✅ 8/4 新变量——NVLink Fusion：</strong>Marvell 加入 NVIDIA 生态，NVIDIA 以 20 亿美元战略投资换取 Marvell 的 NVLink 相关芯片设计合作，切入 NVLink Fusion 互联赛道——拓宽了 custom 之外的第二增长极。
-</p>
-
-<h4 style="color:#1565c0">2. 光互联 — Broadcom Taurus追赶 + Marvell全栈防御</h4>
-<p style="font-size:13px">
-<strong>Broadcom Taurus BCM83640(2026.03发布)：</strong>3nm 400G/lane PAM4 DSP，行业首个，已开始送样。Taurus使1.6T光模块仅需4条光通道(vs 8条)，功耗更低。OFC 2026展会上30+合作伙伴演示——产品力确认。但量产要12-18个月(2027年中)，这给了Marvell约1.5年的窗口期。<br><br>
-<strong>Marvell的应对：</strong>① 1.6T Ara DSP已量产先发优势；② 2nm Electra相干DSP 2026下半年送样(比Taurus高一代)；③ Celestial AI CPO 2027启动量产(SmartNIC+CXL控制器+CPO连接+NVLink I/O全栈)；④ 英伟达$2B投资绑定(Jensen公开站台)。<br><br>
-<strong>AEC DSP爆发：</strong>铜缆有源电缆DSP今年达$100M，明年至少翻倍至$200M+。博通在这个细分赛道布局较晚。<br><br>
-<strong>竞争判断：</strong>Broadcom Taurus是中长期的实质性威胁(Marvell在PAM4 DSP的60%份额可能降至50%以下)，但Marvell在相干DSP+CPO+UALink交换芯片上的全栈布局仍是竞争对手无法匹敌的。光互联的护城河比ASIC深得多。
-</p>
-
-<h4>3. SmartNIC/CXL附件芯片 — 被忽视的$2B增量</h4>
-<p style="font-size:13px">
-Marvell在微软项目上不仅做MAIA主芯片，还拿到了<strong>SmartNIC+CXL控制器+CPO连接+NVLink I/O芯粒</strong>的设计份额。公司预计到2028年仅这些"小零件"就能贡献<strong>$2B年收入</strong>——相当于再造一个2019年体量的Marvell。这是市场几乎完全忽视的增长引擎。
-</p>
+  <h3>估值锚定对比表</h3>
+  <table>
+    <tr><th>指标</th><th>FY27E</th><th>FY28E</th><th>华尔街共识</th><th>同业均值</th></tr>
+    <tr><td>营收</td><td>$12.05B</td><td>$18.21B</td><td>一致（已含）</td><td>—</td></tr>
+    <tr><td>Non-GAAP EPS</td><td>$4.21</td><td>$6.76</td><td>一致</td><td>—</td></tr>
+    <tr><td>Forward PE</td><td>58.0x</td><td>36.1x</td><td>—</td><td>博通约 40x / 英伟达约 30x</td></tr>
+    <tr><td>PB</td><td>11.56x（3 年 96.0% 分位）</td><td>—</td><td>—</td><td>博通更高（杠杆 2.89x）</td></tr>
+    <tr><td>目标价中枢</td><td colspan="2"><strong>$217</strong></td><td>$270.47 / $284.64 / $298.38</td><td>区间 $143-400</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>结论：</strong>三法中性值高度收敛于 $205-237 区间（SOTP $212 / PEG $237 / DCF $205），本框架中枢 <strong>$217</strong>。现价 $244.25 <strong>溢价 12.6%</strong>，安全边际为负（v6 时溢价 7.7%，本次进一步扩大）。<strong>$217 以下是合理区间，$200 附近赔率明显改善。</strong>追高需要 10/6 投资者日给出 FY29+ 的新故事。</div>
 </div>
 
-<!-- ===== 技术面 ===== -->
-<div class="card"><h2>技术面（2026-08-28 盘中 · 财报后更新）<span class="new-badge">UPDATED</span></h2>
-<div class="tech-grid">
-<div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val" style="font-size:16px">K73.8·D73.0·J75.6</div><div><span class="tag-bull">高位金叉</span></div><div style="font-size:11px;color:#555;margin-top:4px">高位钝化，短线偏热</div></div>
-<div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val" style="font-size:16px">DIF -1.57·DEA -6.41</div><div><span class="tag-bull">零下金叉·红柱扩大</span></div><div style="font-size:11px;color:#555;margin-top:4px">红柱+9.7，反弹动能延续</div></div>
-<div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val" style="font-size:16px">上$234.8·中$202.5·下$170.2</div><div><span class="tag-bull">上中轨间</span></div><div style="font-size:11px;color:#555;margin-top:4px">$222位于中上轨间，强势区</div></div>
-<div class="tech-item"><div class="name">RSI</div><div class="val" style="font-size:16px">RSI6=67.9·(14)63.6</div><div><span class="tag-bull">偏强</span></div><div style="font-size:11px;color:#555;margin-top:4px">修复至中性偏强，未极端超买</div></div>
-<div class="tech-item"><div class="name">CCI(20)</div><div class="val" style="font-size:20px;color:#c62828">+70.0</div><div><span class="tag-bull">强势区</span></div><div style="font-size:11px;color:#555;margin-top:4px">持续0轴上方运行</div></div>
+<!-- ============ 七、技术面 ============ -->
+<div class="card">
+  <h2>七、技术面辅助（2026-09-18 收盘）</h2>
+  <div class="tech-grid">
+    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">74.23</div><div class="sub"><span class="tag-overbought">偏高</span></div></div>
+    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">3.74</div><div class="small">零轴上方</div></div>
+    <div class="tech-item"><div class="name">RSI</div><div class="val">67.30</div><div class="small">偏高未超买</div></div>
+    <div class="tech-item"><div class="name">CCI(14)</div><div class="val">115.80</div><div class="sub"><span class="tag-overbought">偏强</span></div></div>
+    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">中上轨间</div><div class="small">上轨 $252.9</div></div>
+  </div>
+
+  <h3>均线结构</h3>
+  <table>
+    <tr><th>均线</th><th>MA5</th><th>MA10</th><th>MA20</th><th>MA60</th><th>MA120</th><th>MA250</th></tr>
+    <tr><td>数值</td><td>$231.05</td><td>$230.23</td><td>$227.48</td><td>$223.21</td><td>$207.37</td><td>$143.89</td></tr>
+    <tr><td>现价 $244.25</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td></tr>
+  </table>
+
+  <h3>走势复盘（v6 至今）</h3>
+  <table>
+    <tr><th>日期</th><th>事件</th><th>股价</th></tr>
+    <tr><td>2026-06-02</td><td>黄仁勋 Computex 称"下一个万亿美元公司"，<strong>单日 +32.5%（史上最大单日涨幅）</strong></td><td>$290.79</td></tr>
+    <tr><td>2026-06-22</td><td>纳入标普 500</td><td>—</td></tr>
+    <tr><td>2026-08-19</td><td>谷歌权证协议 8-K 披露，盘中最高涨 14%，收涨约 10%</td><td>$234.33 → $245 区间</td></tr>
+    <tr><td>2026-08-27</td><td>FY27Q2 财报 beat + 指引上调，但<strong>盘后跌近 8%</strong>（"利空出尽"式抛压）</td><td>—</td></tr>
+    <tr><td>2026-08-28</td><td>v6 报告基准日</td><td>$227.30</td></tr>
+    <tr><td>2026-09-16</td><td>卖方密集上调目标价（Piper $270 首次覆盖）</td><td>$222.17</td></tr>
+    <tr><td>2026-09-18</td><td>现价</td><td><strong>$244.25</strong></td></tr>
+  </table>
+  <p style="font-size:13px"><strong>关键价位：</strong>上方压力 <strong>$252.9（布林上轨）→ $270（卖方均价）→ $329.8（历史高点）</strong>；下方支撑 <strong>$230（MA5/MA10/MA20 密集区）→ $223（MA60）→ $207（MA120）→ $180（8 月低点区）</strong>。KDJ 74.2 + CCI 115.8 双双偏高，短线有回调压力。</p>
 </div>
 
-<h3>关键价格节点（8/27财报后）</h3>
-<table>
-<tr><th width="120">日期</th><th>事件</th><th>收盘价</th><th>涨跌</th></tr>
-<tr style="background:#e8f5e9"><td>07.29</td><td>近期最低点(盘中$162.90)</td><td>$163.40</td><td class="dn2">从$330回撤50.5%</td></tr>
-<tr style="background:#e8f5e9"><td>08.03</td><td>强反弹·盘中$177.57低点后V型反转</td><td>$193.78</td><td class="up">+5.6%</td></tr>
-<tr style="background:#fce4ec"><td><strong>08.04</strong></td><td><strong>FMS新品+投行上调·跳空大涨</strong></td><td><strong>$214.99</strong></td><td class="up"><strong>+10.95%</strong></td></tr>
-<tr style="background:#fce4ec"><td><strong>08.27</strong></td><td><strong>Q2财报beat但"利好兑现"·高开低走</strong></td><td><strong>$241.45</strong></td><td class="dn2"><strong>-1.49%</strong></td></tr>
-<tr style="background:#ffebee"><td><strong>08.28</strong></td><td><strong>财报后连续第2日下跌·低开$222后回升</strong></td><td><strong>$227.30(盘中)</strong></td><td class="dn2"><strong>-5.9%</strong></td></tr>
-<tr><td>06.18</td><td>S&P纳入首日高点</td><td>$329.81(盘中)</td><td class="up">+7.2%</td></tr>
-</table>
+<!-- ============ 八、资金面 ============ -->
+<div class="card">
+  <h2>八、资金面与卖方观点</h2>
+  <table>
+    <tr><th>项目</th><th>数据</th><th>解读</th></tr>
+    <tr><td>分析师覆盖</td><td>45 家：40 家买入 / 5 家持有 / 0 卖出</td><td>共识"强力买入"</td></tr>
+    <tr><td>目标均价</td><td>$270.47（MarketBeat 9/15）· $284.64（investing.com，42 家）· $298.38（TipRanks，27 家）</td><td>较现价 +11% ~ +22%</td></tr>
+    <tr><td>目标价区间</td><td><strong>$143 - $400</strong></td><td>离散度 2.8 倍，分歧极大</td></tr>
+    <tr><td>战略股东</td><td>英伟达 $20 亿战略投资（3/31）；谷歌潜在持股 6.7%（权证）</td><td>产业链双重背书</td></tr>
+    <tr><td>指数纳入</td><td>标普 500（6/22 生效）</td><td>被动资金流入</td></tr>
+  </table>
 
-<p style="font-size:12px;color:#888;margin-top:8px">
-<strong>技术面综合判断（8/28更新）：</strong>财报后连续两日走弱——8/27 高开低走收 -1.49%，8/28 低开 $222.2（-8%）后回升至 $227.3（-5.9%），<strong>两日累跌约 -7.3%</strong>，"利好兑现"持续发酵。技术含义：$254 是短期强压力（财报前高），$222-227 是财报后新的争夺区；跌破 $240（财报日低点）后，短期支撑下移至 $222（8/28低点）/ $210（SOTP 合理价附近）。<strong>当前动能转弱，但未破位（未跌破 7/29 低点 $163 及 BOLL 中轨 $202.5）</strong>，中期趋势仍偏多。后续关键：若守住 $210-222 企稳则有望反抽 $240；若继续下探 $200（BOLL 中轨）则确认中期调整。方向仍看 10/6 Investor Day 及 FY29 custom/scale-up 新故事。
-</p>
+  <h3>卖方评级与目标价图谱 <span class="new-badge">本次更新</span></h3>
+  <table>
+    <tr><th>机构</th><th>分析师</th><th>评级</th><th>目标价</th><th>日期</th></tr>
+    <tr><td>KeyBanc</td><td>John Vinh</td><td>买入</td><td class="up">$400</td><td>8/28</td></tr>
+    <tr><td>Stifel</td><td>Tore Svanberg</td><td>买入</td><td class="up">$350</td><td>8/28</td></tr>
+    <tr><td>Oppenheimer</td><td>—</td><td>买入</td><td>$325</td><td>8/28</td></tr>
+    <tr><td>J.P. Morgan</td><td>Harlan Sur</td><td>买入</td><td>$305</td><td>9/2</td></tr>
+    <tr><td>Cantor Fitzgerald</td><td>—</td><td class="dn2">持有</td><td>$300</td><td>8/28</td></tr>
+    <tr><td>Craig-Hallum</td><td>Christian Schwab</td><td>买入</td><td>$300（$217→）</td><td>8/28</td></tr>
+    <tr><td>Benchmark</td><td>—</td><td>买入</td><td>$275</td><td>8/28</td></tr>
+    <tr><td>Piper Sandler</td><td>David O'Connor</td><td>买入</td><td>$270（首次覆盖）</td><td>9/9</td></tr>
+    <tr><td>Susquehanna</td><td>—</td><td>—</td><td>$265（$230→）</td><td>9/15</td></tr>
+    <tr><td>Morgan Stanley</td><td>Joseph Moore</td><td class="dn2">中性</td><td class="dn2">$246（$224→）</td><td>8/28</td></tr>
+    <tr><td>TD Cowen</td><td>Sean O'Loughlin</td><td class="dn2">持有</td><td class="dn2">$245（$225→）</td><td>8/28</td></tr>
+    <tr><td>Deutsche Bank</td><td>—</td><td>买入</td><td>$240</td><td>9/16</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>注意一个信号：现价 $244.25 已高于大摩（$246）、TD Cowen（$245）的目标价，也接近德银 $240。</strong>大摩 8/28 才把目标价从 $224 上调至 $246，属于"小步追涨"而非"大幅重估"。这说明<strong>卖方对"再往上"的信心并不如共识评级显示的那么强</strong>——评级是"买入"，但目标价空间只有个位数到十几个百分点。</div>
 </div>
 
-<!-- ===== 资金面 ===== -->
-<div class="card"><h2>资金面与筹码分析 <span class="new-badge">NEW</span></h2>
+<!-- ============ 九、跟踪指标 ============ -->
+<div class="card">
+  <h2>九、关键跟踪指标与催化剂日历</h2>
+  <h3>基本面验证仪表盘</h3>
+  <table>
+    <tr><th>指标</th><th>当前值</th><th>警惕阈值</th><th>信号含义</th></tr>
+    <tr><td>数据中心营收同比</td><td class="up">+46%（Q2）</td><td>降至 +20% 以下</td><td>AI 需求放缓的最直接信号</td></tr>
+    <tr><td>Q3 指引兑现度</td><td>指引 $31.5 亿 / EPS $1.10</td><td>不及指引</td><td>连续上调后的第一次考验</td></tr>
+    <tr><td>定制芯片增速</td><td>FY28 指引"翻倍以上"</td><td>低于 +50%</td><td>谷歌协议的兑现节奏</td></tr>
+    <tr><td>光互联增速</td><td>FY27 指引 +70%（由 50% 上调）</td><td>降至 +40% 以下</td><td>1.6T 部署节奏</td></tr>
+    <tr><td>Non-GAAP 毛利率</td><td>58.9%</td><td>跌破 56%</td><td>定制 ASIC 占比提升拉低结构</td></tr>
+    <tr><td>通信及其他业务</td><td class="dn2">环比 -3%，Q3 预计再降 10-15%</td><td>持续下滑</td><td>非 AI 业务的拖累程度</td></tr>
+    <tr><td>谷歌合格营收进度</td><td>衡量期自 2026-08-01 起</td><td>FY27 内无进展</td><td>$1,200 亿门槛的可达性</td></tr>
+    <tr><td>Celestial AI 贡献</td><td>目标 FY28Q4 年化 $5 亿 → FY29Q4 $10 亿</td><td>延期</td><td>CPO 第二曲线的可信度</td></tr>
+  </table>
 
-<h3>机构持仓（2026.06.30）</h3>
-<div class="kv">
-<div class="item"><div class="lbl">机构持股比例</div><div class="val" style="font-size:22px">86.69%</div><div class="sub">2,289家机构持有</div></div>
-<div class="item"><div class="lbl">内部人持股</div><div class="val" style="font-size:22px">0.69%</div><div class="sub">极低，典型美股科技公司</div></div>
-<div class="item"><div class="lbl">做空比例</div><div class="val" style="font-size:22px;color:#00c853">3.90%</div><div class="sub">34.08M股·较上月-13.3%·覆盖0.5天</div></div>
-<div class="item"><div class="lbl">做空趋势</div><div class="val" style="font-size:14px">高位回落</div><div class="sub">6/15峰值4.5%→6/30降至3.9%</div></div>
+  <h3>催化剂日历</h3>
+  <table>
+    <tr><th>时间</th><th>事件</th><th>方向</th><th>置信度</th></tr>
+    <tr><td><strong>2026-10-06</strong></td><td><strong>投资者日</strong>——CEO 明确表示 FY29 及以后的新目标留待此日披露（含"超 $100 亿"定制芯片目标的上行倾向）</td><td>利好（若给出高于预期的 FY29 框架）</td><td>高</td></tr>
+    <tr><td>2026-12-01</td><td>FY27Q3 财报（指引营收 $3.15B / EPS $1.10）</td><td>双向</td><td>高</td></tr>
+    <tr><td>2027 H1</td><td>微软 MAIA 后续产品量产爬坡；AWS Trainium 3 份额确认</td><td>双向（关键看是否丢单）</td><td>中</td></tr>
+    <tr><td>2027 下半年</td><td>scale-up optics（NPO/CPO）指引兑现</td><td>利好</td><td>中</td></tr>
+    <tr><td>FY2029</td><td>谷歌协议实质性收入开始显现</td><td>利好</td><td>中</td></tr>
+  </table>
 </div>
 
-<h3>前5大机构股东变动（最新季度）</h3>
-<table>
-<tr><th>机构</th><th>持股(最新)</th><th>占流通股</th><th>变动</th><th>信号</th></tr>
-<tr style="background:#f8f9fc"><td>FMR (Fidelity)</td><td>131.26M</td><td>15.0%</td><td class="dn2"><strong>-46.9M股(-26.3%)</strong></td><td>⚠ 大幅减持</td></tr>
-<tr><td>BlackRock</td><td>63.84M</td><td>7.3%</td><td class="up">+4.0M</td><td>增持</td></tr>
-<tr style="background:#f8f9fc"><td>Vanguard Capital Mgmt</td><td>39.11M</td><td>4.5%</td><td class="up">+39.1M</td><td>新进/大幅增持</td></tr>
-<tr><td>Vanguard Portfolio Mgmt</td><td>33.22M</td><td>3.8%</td><td class="up">+33.2M</td><td>新进/大幅增持</td></tr>
-<tr style="background:#f8f9fc"><td>Invesco</td><td>28.81M</td><td>3.3%</td><td class="dn2">-1.1M</td><td>小幅减持</td></tr>
-</table>
+<!-- ============ 十、风险 ============ -->
+<div class="card">
+  <h2>十、风险提示（三层）</h2>
+  <h3>宏观层</h3>
+  <ol>
+    <li><strong>加息周期对高估值成长股的杀伤（严重程度：高 · 本次上调）</strong>——触发条件：美联储继续加息 / 10Y 美债站稳 5%+。MRVL 的估值建立在 FY28-29 远期盈利上，<strong>远期现金流对折现率最敏感</strong>。60 日涨跌幅 -11.7%（弱于同期 MU -3.1%、SNDK -6.4%）已经反映了这一敏感度。</li>
+    <li><strong>AI 资本开支周期逆转（严重程度：高）</strong>——所有估值模型都建立在"北美云厂商 AI Capex 持续高增长"之上。若任一超大规模客户削减 Capex，ASIC 与光互联订单将首当其冲。</li>
+    <li><strong>地缘与出口管制（严重程度：中）</strong>——半导体供应链对贸易摩擦高度敏感。</li>
+  </ol>
+  <h3>行业层</h3>
+  <ol>
+    <li><strong>博通的份额压制（严重程度：高）</strong>——博通定制 ASIC 份额约 60%（Marvell 20-25%），最近季度 AI 半导体收入增速 +221% vs Marvell +37%。且博通已与谷歌将合作延至 2031、与 OpenAI 联合开发"Jalapeno"项目。</li>
+    <li><strong>市场预期已跑在现实前面（严重程度：高）</strong>——TECHnalysis 分析师 Bob O'Donnell 的评价很直接："预期已跑在现实前面，令除英伟达外的多数企业难以达标"。</li>
+    <li><strong>光互联竞争加剧（严重程度：中）</strong>——博通 Taurus BCM83640 已送样（量产约 2027 年中），思科/英特尔及云厂商自研互联方案中长期挤压份额。</li>
+  </ol>
+  <h3>公司层</h3>
+  <ol>
+    <li><strong>客户集中度（严重程度：高）</strong>——Google/AWS/Microsoft 三家高度集中。谷歌协议本质是"第二供应商"位置，若博通或其他供应商替代，收入弹性很大。</li>
+    <li><strong>谷歌权证的摊薄与"远水"问题（严重程度：中 · 本次新增）</strong>——58.97M 股全额归属对应 6.7% 稀释；且 CEO 明确 FY2028 贡献已含在原指引中，实质影响从 FY2029 才开始。</li>
+    <li><strong>无形资产减值风险（严重程度：中）</strong>——$136 亿无形资产占净资产约 101%，一旦减值将直接摧毁 GAAP ROE。</li>
+    <li><strong>非 AI 业务拖累（严重程度：中低）</strong>——通信及其他业务 Q2 环比 -3%、Q3 预计再降 10-15%。</li>
+    <li><strong>毛利率结构性下行（严重程度：中）</strong>——定制 ASIC 占比提升会结构性拉低综合毛利率（Non-GAAP 58.9% 较峰值已有所回落）。</li>
+  </ol>
 
-<h3>最大公募基金持仓</h3>
-<table>
-<tr><th>基金</th><th>持股</th><th>占流通股</th></tr>
-<tr><td>Vanguard Total Stock Market Index</td><td>27.72M</td><td>3.17%</td></tr>
-<tr><td>Fidelity Select Semiconductors</td><td>18.62M</td><td>2.13%</td></tr>
-<tr><td>Invesco QQQ Trust</td><td>18.57M</td><td>2.12%</td></tr>
-<tr><td>VanEck Semiconductor ETF (SMH)</td><td>12.19M</td><td>1.39%</td></tr>
-<tr><td>iShares Semiconductor ETF (SOXX)</td><td>11.26M</td><td>1.29%</td></tr>
-</table>
-
-<h3>内部人交易（2026.07）</h3>
-<p style="font-size:13px">7月15日共25笔交易，合计$470.8万。绝大多数为非现金转换(股票期权行权→持股)，现金交易集中在税款支付和<strong>一笔大额卖出</strong>。内部人整体持股仅0.69%，管理层利益绑定较弱——这在fabless半导体公司中属正常(管理层主要通过期权激励而非直接持股)。</p>
-
-<h3>分析师评级分布（2026.07.24 · 41家覆盖）</h3>
-<table>
-<tr><th>评级</th><th>数量</th><th>占比</th></tr>
-<tr style="background:#fce4ec"><td><strong>强力买入/买入</strong></td><td><strong>36</strong></td><td><strong>87.8%</strong></td></tr>
-<tr><td>持有</td><td>5</td><td>12.2%</td></tr>
-<tr style="background:#e8f5e9"><td>卖出/减持</td><td><strong>0</strong></td><td><strong>0%</strong></td></tr>
-</table>
-<p style="font-size:12px;color:#888">目标价均值$256.91(+19.5%上行空间)，中位约$250。KeyBanc 8/4将PT上调至$400(最牛)；BNP $275；China Renaissance $276；Morgan Stanley维持$195(最保守之一)；Erste降级Hold。</p>
-
-<h3 style="color:#1a237e">主流卖方观点分歧（8/28 财报后 · 7家扫描）<span class="new-badge">NEW</span></h3>
-<table>
-<tr><th>机构</th><th>评级</th><th>目标价</th><th>相对现价$227.3</th><th>核心立场</th></tr>
-<tr style="background:#fce4ec"><td><strong>KeyBanc</strong></td><td>增持</td><td><strong>$400</strong></td><td class="up">+76%</td><td>最牛：custom ramp + AI内存新品，长期空间最大</td></tr>
-<tr><td>Roth MKM</td><td>买入</td><td>$350</td><td class="up">+54%</td><td>看好custom FY28翻倍+scale-up optics</td></tr>
-<tr><td>Wells Fargo</td><td>增持</td><td>$310</td><td class="up">+36%</td><td>AI ASIC份额扩张逻辑</td></tr>
-<tr><td>Rosenblatt</td><td>买入</td><td>$300</td><td class="up">+32%</td><td>数据中心+46%增速验证</td></tr>
-<tr><td>Susquehanna</td><td>正面</td><td>$265</td><td class="up">+17%</td><td>平衡：增长强但估值不便宜</td></tr>
-<tr><td>Evercore</td><td>跑赢大盘</td><td>$251</td><td class="up">+10%</td><td>指引上调但已price in</td></tr>
-<tr style="background:#e8f5e9"><td><strong>高盛</strong></td><td><strong>中性</strong></td><td><strong>$195</strong></td><td class="dn2">-14%</td><td><strong>最熊</strong>：overvalued，现价超其目标价</td></tr>
-<tr style="background:#e8f5e9"><td><strong>摩根士丹利</strong></td><td><strong>平配</strong></td><td><strong>$195</strong></td><td class="dn2">-14%</td><td>谨慎：custom ramp速度存疑</td></tr>
-</table>
-<p style="font-size:13px;margin:8px 0"><strong>共识：Strong Buy、平均 $290.80（+28%）。</strong>但目标价相差 <strong>2 倍</strong>（$195 vs $400），核心分歧在 <strong>custom ramp 的速度与规模</strong>——这是 Marvell 估值最关键的变量。</p>
-<div class="sig sig-warn" style="margin-top:8px"><strong>⚠ 卖方观点与自有逻辑交叉验证：</strong>① 高盛/大摩的 $195（中性/平配）与我方 SOTP 修正后合理价 $214 方向一致——<strong>三方独立得出"现价偏贵"的结论</strong>，且财报后股价跌至 $227.3 正在向这一区间靠拢；② KeyBanc $400 的"最牛"假设建立在 custom 业务 FY28 翻倍+FY29 继续高增上，与我方"SOTP 乐观 $238（FY29 +20%）"相近，但需 FY29 新故事兑现；③ 分歧的本质是<b>时间维度</b>——短期（FY28）偏贵是共识，长期（FY29+）取决于 custom ramp 是否兑现。<strong>自有结论与卖方交叉验证后维持"偏贵、不追高"判断</strong>，但若回调至 $210 以下（SOTP 合理价），赔率改善。</div>
-
-<div class="sig sig-warn"><strong>资金面核心矛盾：</strong>机构高度控盘(86.7%)，S&P 500纳入后被动资金持续流入。8/4单日+10.95%放量反弹说明资金回流FMS催化。但FMR(最大机构股东)减持26.3%仍是红旗；Erste降级Hold反映部分机构对估值/客户集中度担忧。做空比3.9%处历史中高位。内部人利益绑定弱是长期隐忧。</div>
+  <h3>敏感性测算</h3>
+  <table>
+    <tr><th>情景</th><th>核心变量假设</th><th>FY28E EPS</th><th>对应估值</th></tr>
+    <tr><td>悲观</td><td>AI Capex 增速放缓；谷歌收入递延；AWS 份额进一步流失；毛利率降至 56%</td><td>$5.40（-20%）</td><td class="dn2">$161（-34%）</td></tr>
+    <tr><td>中性</td><td>FY28 营收 $18B 兑现；数据中心 +50%；光互联 +70% 达成</td><td>$6.76</td><td>$217（-11%）</td></tr>
+    <tr><td>乐观</td><td>谷歌 + scale-up optics 超预期；FY29 定制芯片目标上修至 $120 亿+</td><td>$7.80（+15%）</td><td class="up">$272（+11%）</td></tr>
+  </table>
+  <div class="assume"><strong>关键提示：</strong>本框架的中性中枢 $217 <strong>低于现价 $244.25</strong>，乐观情景 $272 也只有 +11.4% 空间——<strong>上行空间有限而下行空间可观（-34%）</strong>，这是典型的"赔率不佳"结构。10/6 投资者日是改变这一结构的唯一近期机会。</div>
 </div>
 
-<!-- ===== 追踪指标 ===== -->
-<div class="card"><h2>建议追踪的关键指标与事件 <span class="new-badge">UPDATED</span></h2>
-
-<h3>近期关键催化（Q3 2026）</h3>
-<div class="kv">
-<div class="item"><div class="lbl"><strong>2026.08.27</strong></div><div class="val" style="font-size:14px;color:#c62828">FY27 Q2 财报</div><div class="sub">验证$2.7B季收(35% YoY)+MAIA爬坡+Trainium 2.5进度。EPS预期$0.93</div></div>
-<div class="item"><div class="lbl"><strong>2026 H2</strong></div><div class="val" style="font-size:14px">AI内存新品放量</div><div class="sub">FMS 2026新品(FMS 2026)进入客户验证→FY27 Q3收入贡献</div></div>
-<div class="item"><div class="lbl"><strong>2026年内</strong></div><div class="val" style="font-size:14px">$2.5亿印度扩产</div><div class="sub">班加罗尔/海德拉巴双倍人力·AI/云/数据基建R&D</div></div>
-</div>
-
-<h3>一、ASIC业务追踪面板</h3>
-<table>
-<tr><th>跟踪指标</th><th>当前状态</th><th>看多信号</th><th>看空信号</th></tr>
-<tr style="background:#f8f9fc"><td><strong>Trainium 2.5出货</strong></td><td>量产中，季度~20万台</td><td>ASP稳定+出货量超20万</td><td>出货量骤降或ASP大幅压缩</td></tr>
-<tr><td><strong>Trainium 3份额</strong></td><td>Alchip主供，Marvell~50万台(ASE版)</td><td>份额超50万台或拿到CoWoS版本</td><td>份额被压缩至<30万台</td></tr>
-<tr style="background:#f8f9fc"><td><strong>微软MAIA 3nm</strong></td><td>H2 2026量产爬坡</td><td>Q2/Q3明确放量信号·$1B+年化收入</td><td>延迟或规模不及预期</td></tr>
-<tr><td><strong>Trainium 4 Marvell角色</strong></td><td>核心设计被排除</td><td>拿到计算芯粒设计win</td><td><strong>仅CPO光学版本→ASIC FY29断崖下降</strong></td></tr>
-<tr style="background:#f8f9fc"><td><strong>Google新AI芯片</strong></td><td>洽谈中，2027设计完成</td><td>正式签约·200万颗量产</td><td>谈判破裂或被Broadcom独占</td></tr>
-<tr><td><strong>AWS外卖Trainium</strong></td><td>Bloomberg报道初期谈判</td><td>正式宣布外部销售</td><td>仅限AWS内部</td></tr>
-</table>
-
-<h3>二、光互联追踪面板</h3>
-<table>
-<tr><th>跟踪指标</th><th>当前状态</th><th>看多信号</th><th>看空信号</th></tr>
-<tr style="background:#f8f9fc"><td><strong>1.6T Ara DSP出货</strong></td><td>FY26 H2量产·龙头地位</td><td>QoQ增速>15%</td><td>增速放缓+博通Taurus抢单</td></tr>
-<tr><td><strong>Broadcom Taurus量产时间</strong></td><td>送样中·量产~2027年中</td><td>Marvell窗口期延长至>2年</td><td>Taurus提前量产或拿下大客户</td></tr>
-<tr style="background:#f8f9fc"><td><strong>AEC DSP收入</strong></td><td>$100M/年·明年翻倍</td><td>FY27超$250M</td><td>增速不及预期</td></tr>
-<tr><td><strong>Celestial AI CPO</strong></td><td>2027启动</td><td>提前量产或NVIDIA联合发布</td><td>延迟至2028+</td></tr>
-</table>
-</div>
-
-<!-- ===== 风险 ===== -->
-<div class="card"><h2>风险提示 <span class="new-badge">UPDATED</span></h2>
-<ol>
-<li><strong>中国收入43.5%（最大单一风险）：</strong>最新FY2025年报中国收入$25.1亿(43.5%)。若中美芯片出口管制扩至定制ASIC或DSP——毁灭性打击。当前关税政策反复(v2后新增关税担忧导致7%单日跌幅即为证据)。</li>
-<li><strong>Alchip 侵蚀 AWS ASIC 份额（已被 Google 扩展协议部分对冲）：</strong>Trainium 3 主供被 Alchip 夺走、Trainium 4 核心计算被排除的事实未变；但财报披露的 Google 扩展协议 + warrants，把 custom 业务从"AWS 单一依赖"推向"AWS+Google+Microsoft 多元"——Google 覆盖 AI 推理加速器、存储控制器、NIC、内存接口、近内存计算，且 custom FY2028 翻倍。单一客户风险下降，但 Trainium 份额丢失仍是确定性负面。</li>
-<li><strong>Broadcom Taurus DSP追赶（新风险，v3新增）：</strong>3nm 400G/lane PAM4 DSP已送样，OFC 2026上30+合作伙伴演示。Marvell在PAM4 DSP的60%+份额可能在2027-28年降至50%以下。不过相干DSP+CPO+UALink全栈布局仍是护城河。</li>
-<li><strong>AI Capex叙事逆转：</strong>若CSP削减AI支出或GPU路线胜出ASIC路线，估值将剧烈收缩。当前PEG≈1意味着任何增速放缓都会触发杀估值。</li>
-<li><strong>无形资产$136亿(66%总资产)：</strong>任何业务不及预期都可能触发大额减值，直接摧毁净资产和ROE。</li>
-<li><strong>高波动性(Beta 2.25)：</strong>7/24→7/29五个交易日从$194跌至$163(-16%)，8/4单日+11%——日均振幅$10+常态，不适合风险承受能力低的投资者。</li>
-<li><strong>S&P 500纳入后的"买预期卖事实"风险：</strong>6月纳入前暴涨、纳入后7周跌50%（$330→$163），8/4反弹32%但未收复失地。被动资金流入已完成，后续靠主动资金推动。</li>
-<li><strong>机构分歧极大（财报后收敛但仍存）：</strong>高盛 Neutral $195（认为 overvalued、现价已超其目标价 24%）、大摩 EW $195 vs KeyBanc $400、Roth MKM $350、Wells Fargo $310——目标价相差 2 倍，反映市场对 ASIC 份额/估值的根本分歧。华尔街共识 Strong Buy、平均 $290.80（+18.6%）。核心分歧：custom ramp 的速度与规模。</li>
-<li><strong>估值无安全边际（财报后强化）：</strong>SOTP 显示 FY28 合理价 $194（指引上修后约 $209），当前 $241 已溢价 15-24%。财报 beat 但股价 -1.49%"利好兑现"，印证估值已透支。追高需 10/6 Investor Day 及 FY29 新故事支撑。</li>
-<li><strong>Google warrants 的股权摊薄（v6 新增）：</strong>Google 扩展协议附带的 warrants（认股权证）意味着未来行权将稀释现有股东。这是换取 Google 深度绑定的代价，摊薄幅度待 10/6 Investor Day 或后续 8-K 披露。</li>
-</ol>
+<div class="card">
+  <h2>本次更新的核心结论</h2>
+  <div class="sig sig-bull"><strong>基本面确实在加速（未变）：</strong>Q2 营收 $2.74B（+37% 创纪录）、数据中心占 79%、指引连续第二次上调（FY27 $120 亿 / FY28 $180 亿）；谷歌权证协议把合作关系锁定至 2033 年，且结构设计对 Marvell 现金流友好。</div>
+  <div class="sig sig-warn"><strong>需要修正的部分（变了）：</strong>① <strong>谷歌 $1,200 亿被市场误读</strong>——它是权证全额归属的营收门槛，不是订单，年均需约 $185 亿（相当于 FY27 全年营收的 1.5 倍），大概率只能部分达成；② <strong>估值溢价扩大</strong>——股价 +7.5% 后，相对本框架中枢的溢价从 7.7% 升至 12.6%，PB 处 3 年 96% 分位；③ <strong>宏观逆风对 MRVL 的杀伤大于存储股</strong>——高估值 + 远期盈利 + 加息周期三者叠加；④ <strong>现价已高于大摩（$246）、TD Cowen（$245）目标价</strong>。</div>
+  <div class="sig sig-bear"><strong>操作含义：</strong>评级维持 <strong>"持有 / 不追高"</strong>，总分 65（受风险约束封顶）。现价 $244.25 高于中性中枢 12.6%，赔率不佳。$217 以下进入合理区间、$200 附近（MA120 上方）赔率明显改善。<strong>10/6 投资者日是近期唯一能改变"上行空间小于下行空间"结构的事件</strong>，建议在此之前不新增仓位。若持有，可继续持有等待投资者日。</div>
 </div>
 
 <div class="footer">
-<p style="margin-bottom:6px">诊断时间：2026-08-28 | <strong>v6.2修正</strong>：⑤补三法加权中枢（SOTP 50%+PEG 25%+DCF 25% = $157/$211/$260，中性$211·现价溢价+7.7%）+PEG三情景目标价+SOTP情景卡同步至$18B指引。<strong>v6.1</strong>：①SOTP FY28E收入同步更新至$18B（合理价$194→$214）；②补7家卖方观点分歧表+交叉验证；③竞争动态补Google扩展协议(8/27确认)+NVLink Fusion(8/4)；④股价刷新至8/28盘中$227.3（财报后两日累跌约-7.3%）。<strong>v6</strong>：Q2财报全面刷新·营收$2.739B(+37%)·指引上调FY28 $18B·Google warrants·custom FY28翻倍·评分68→66·"利好兑现" | 数据源：Wind + 财报/电话会议 + 卖方研报</p>
-<p style="color:#c62828;font-weight:600;margin-top:6px">⚠ 以上分析仅供参考，不构成任何投资建议。MRVL为高风险高波动标的(Forward PE~54x, 中国敞口43.5%, 竞品侵蚀, 估值无安全边际)。投资决策请以个人风险承受能力和独立研究为依据。</p>
+  诊断时间：2026-09-21 17:30 (GMT+8) · 版本：v7（重新分析）· 上一版：v6 2026-08-28<br>
+  框架：Brad Stock Analysis 12 步个股深度诊断 · 数据来源：Wind（截至 2026-09-18 收盘）、公司 8-K 与财报电话会、TipRanks/investing.com/MarketBeat 卖方数据、Converge Digest/Trefis/Futurum<br>
+  ⚠ 本报告仅供研究参考，不构成个人投资建议。AI 半导体板块估值对预期变化极度敏感，请以个人风险承受能力与独立研究为依据。
 </div>
-</div></body></html>
+
+</div>
+</body>
+</html>

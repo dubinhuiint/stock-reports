@@ -2,8 +2,8 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sandisk (SNDK.O) 深度诊断报告 2026-09-08</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sandisk (SNDK) 深度诊断报告 v2 | 2026-09-21</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
@@ -11,7 +11,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
 .header h1{font-size:28px;margin-bottom:4px}
 .header .meta{font-size:13px;opacity:.85}
-.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px;flex-wrap:wrap}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
 .price{font-size:52px;font-weight:800}
 .chg{font-size:20px;padding:4px 12px;border-radius:8px}
 .chg.dn{background:rgba(0,200,83,.2);color:#00c853}
@@ -61,295 +61,349 @@ ol li{padding:5px 0;font-size:14px}
 .dupont-box .detail{font-size:11px;color:#555}
 .arrow{font-size:20px;color:#1565c0;font-weight:bold}
 .new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
-@media print{body{padding:0;background:white}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
+@media print{body{background:white;padding:0}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
 <div class="container">
 
 <div class="header">
-  <h1>Sandisk Corporation (SNDK.O) 深度诊断报告 <span class="new-badge">NEW</span></h1>
-  <div class="meta">NAND 闪存 · 美股 | 报告日期: 2026-09-08 | 数据截至: 2026-09-04 收盘 | 数据来源: Wind、公司披露、TrendForce、公开新闻</div>
+  <h1>Sandisk Corporation (SNDK.O) 深度诊断报告</h1>
+  <div class="meta">v2 · 更新版 | 报告日期 2026-09-21 | 数据截至 2026-09-18 美股收盘 | 框架：Brad Stock Analysis 12 步</div>
+  <div class="meta">数据来源：Wind（行情/财务/估值分位）· 公司披露与电话会 · 高盛/伯恩斯坦/巴克莱/华兴资本 · TrendForce · Morningstar</div>
   <div class="price-row">
-    <span class="price">$1,740.00</span>
-    <span class="chg up">+11.90%</span>
-    <span style="font-size:13px;opacity:.85">2026-09-04 收盘 · 3连涨 · 总市值 $2,548亿</span>
+    <div class="price">$1,791.82</div>
+    <div class="chg up">+10.99%</div>
+    <div style="font-size:13px;opacity:.9">9/18 收盘 · 市值 $2,624 亿 · YTD +655%<br>3 个交易日（9/16→9/18）累计上涨 17.9%</div>
   </div>
 </div>
 
-<!-- 综合评分 -->
+<!-- ============ 综合诊断 ============ -->
 <div class="vcard">
   <h2>综合诊断评分</h2>
-  <div class="score">64<span style="font-size:24px;color:#888"> /100</span></div>
-  <p style="text-align:center;color:#c62828;font-weight:700">等待 —— 典型的"周期顶部好公司"：基本面数据炸裂，但盈利主引擎是涨价周期馈赠，估值已预支超级周期延续</p>
+  <div class="score">64<span style="font-size:24px;color:#555">/100</span></div>
+  <div style="text-align:center;font-size:14px;color:#0d47a1;font-weight:600;margin-bottom:14px">等待 / 偏贵 —— 好公司、强周期、贵估值。三个特征在本轮更新中同时被强化</div>
   <table>
-    <tr><th>维度</th><th>权重</th><th>得分</th><th>一句话依据</th></tr>
-    <tr><td>基本面</td><td>25%</td><td class="up">82</td><td>FY26 营收 +175%、归母 $114亿转正、毛利率 29.8%→84.6%、连续 7 季超预期；但 2/3 增长靠涨价</td></tr>
-    <tr><td>估值</td><td>25%</td><td class="dn2">45</td><td>PB 16.2x（上市以来 89% 分位）、PS 12.6x；前瞻 PE 7-10x 的"便宜"是周期顶部 EPS 造成的假象</td></tr>
-    <tr><td>成长性</td><td>10%</td><td class="up">85</td><td>FY27E 营收 +160%、$939亿长协锁定、HBF 新品类、2030 企业级闪存 TAM 1.2ZB</td></tr>
-    <tr><td>技术面</td><td>10%</td><td class="up">62</td><td>站回全部均线+MACD 零上金叉，但 RSI6 78.9 超买、贴布林上轨、60日仍 -7.5%</td></tr>
-    <tr><td>资金情绪</td><td>10%</td><td class="up">68</td><td>MSCI/纳斯达克100 纳入带来被动买盘；但 6 月高点至 8 月低点曾腰斩（-56%），筹码极不稳定</td></tr>
-    <tr><td>风险</td><td>10%</td><td class="dn2">38</td><td>Beta 4.37、四年周期魔咒、TrendForce 预警 2H27 供需缺口转正、消费端需求反噬已现 → 触发总分上限 65</td></tr>
-    <tr><td>筹码/事件</td><td>5%</td><td class="up">70</td><td>$200亿回购授权（剩余~$155亿）、西数持股基本退出、机构持股 73.7%</td></tr>
-    <tr><td>机构共识</td><td>5%</td><td class="up">75</td><td>24 家覆盖 83% 强买，均值目标价 $2,155；但目标价区间 $1,400-3,050 极宽、8 月出现密集下调</td></tr>
+    <tr><th>维度</th><th>权重</th><th>得分</th><th>较 v1（9/8）</th><th>核心判断</th></tr>
+    <tr><td>基本面</td><td>25%</td><td>84</td><td class="up">82 → 84</td><td>FY26 营收 $202.5 亿（+175%）、归母 $114.3 亿转正、毛利率 71.5%、ROE 91.6%；NBM 长约覆盖深化</td></tr>
+    <tr><td>估值</td><td>25%</td><td>40</td><td class="dn2">45 → 40</td><td>PB 16.67x（3 年 <strong>90.3%</strong> 分位）、PS 约 13x；Morningstar 测算<strong>溢价公允价值 63%</strong></td></tr>
+    <tr><td>成长性</td><td>10%</td><td>80</td><td class="dn2">85 → 80</td><td><strong>HBF 样品时间表推迟</strong>：由"2H26 工程样品"改为"2027 年首批推理样品送样"</td></tr>
+    <tr><td>技术面</td><td>10%</td><td>70</td><td class="up">62 → 70</td><td>站上全部均线，9/18 放量长阳 +11%；但 RSI 72.3 偏高、贴布林上轨</td></tr>
+    <tr><td>资金情绪</td><td>10%</td><td>70</td><td class="up">68 → 70</td><td>Vanguard + BlackRock 增持合计至 14%+；Jane Street 持股 5.47% 为第二大单一持仓</td></tr>
+    <tr><td>风险</td><td>10%</td><td>36</td><td class="dn2">38 → 36</td><td>Beta 4.37；NAND 合约价二阶导骤降至 +15%；仅不到 20% 合约带财务担保 → <strong>触发总分上限 65</strong></td></tr>
+    <tr><td>筹码/事件</td><td>5%</td><td>72</td><td class="up">70 → 72</td><td>$200 亿回购（剩余约 $155 亿）、超额现金 100% 返还框架；<span class="up">CFO 减持 $157 万</span></td></tr>
+    <tr><td>机构共识</td><td>5%</td><td>76</td><td class="up">75 → 76</td><td>16-25 家覆盖，87.5% 买入；均价 $2,125-2,183，区间 $1,400-3,050（极宽）</td></tr>
   </table>
-  <div class="sig sig-warn"><strong>核心判断：</strong>这是本轮 AI 存储行情里基本面最"暴烈"的标的，也是周期属性最纯的标的。FY27 一致预期 EPS $180-234 对应前瞻 PE 仅 7-10 倍，看似极便宜——但 NAND 合约价二阶导已放缓（Q2 +70~75% → Q3 +17~20%），正常化口径下 PE 远高于此。长协（NBM）模式确实在平滑周期，但也封顶了涨价空间。当前位置（$1,740）处于中性目标区间下沿，向上弹性需要 FY27Q1 财报与 HBF 兑现来验证，向下风险来自 2H27 供给拐点。<strong>操作建议：不追高。持有者可继续持有、$1,800 以上分批兑现；空仓者等待回调至 $1,200-1,500（200日均线/8月平台）或财报验证后再介入。</strong></div>
+  <div class="assume"><strong>硬约束校验：</strong>基本面+估值 = 124（≥120，未触发）；<strong>风险 36 &lt; 45 → 总分上限 65 生效</strong>。加权原始分 64.0，未触及上限，总分 64。</div>
 </div>
 
-<!-- 行情快照 -->
 <div class="card">
-  <h2>一、行情快照（2026-09-04 收盘）</h2>
-  <div class="kv">
-    <div class="item"><div class="lbl">最新价</div><div class="val">$1,740.00</div><div class="sub">9/4 单日 +11.90%，放量 3 连涨</div></div>
-    <div class="item"><div class="lbl">总市值</div><div class="val">$2,547.7亿</div><div class="sub">总股本 ~1.49亿股</div></div>
-    <div class="item"><div class="lbl">PE(TTM)</div><div class="val">22.28x</div><div class="sub">上市以来分位 68.7%</div></div>
-    <div class="item"><div class="lbl">PB(LF)</div><div class="val">16.19x</div><div class="sub">上市以来分位 89.3% ⚠</div></div>
-    <div class="item"><div class="lbl">PS(TTM)</div><div class="val">12.58x</div><div class="sub">NAND 行业景气顶部</div></div>
-    <div class="item"><div class="lbl">52周区间</div><div class="val">$69.6-2,354</div><div class="sub">YTD +633%（极端行情）</div></div>
-    <div class="item"><div class="lbl">Beta(1Y)</div><div class="val">4.37</div><div class="sub">1年最大回撤 -56.5%</div></div>
-    <div class="item"><div class="lbl">股息率</div><div class="val">0%</div><div class="sub">不分红，$200亿回购</div></div>
-  </div>
-  <h3>关键估值口径辨析（周期股必读）</h3>
-  <table>
-    <tr><th>口径</th><th>EPS 假设</th><th>隐含 PE（现价 $1,740）</th><th>解读</th></tr>
-    <tr><td>PE(TTM)（Wind）</td><td>FY26 实际 $76.7</td><td>22.3x</td><td>含全年爬坡过程，中性参考</td></tr>
-    <tr><td>前瞻 PE（公司指引）</td><td>FY27 全年指引 ~$180</td><td class="dn2">~9.7x</td><td>按周期顶部盈利定价——"假便宜"典型</td></tr>
-    <tr><td>前瞻 PE（美银 FY27E）</td><td>$233.85</td><td class="dn2">~7.4x</td><td>最乐观情景：NAND 涨价全年持续</td></tr>
-    <tr><td>正常化 PE（本报告估算）</td><td>周期中段 $100-150</td><td class="up">11.6-17.4x</td><td>若 2H27 供给拐点兑现的真实估值</td></tr>
-  </table>
-  <div class="sig sig-warn"><strong>分位提示：</strong>Wind 的"上市以来"分位窗口仅约 1.6 年（2025-02 拆分上市），且全程处于超级周期内——PB 89% 分位是相对"周期内自我比较"，不代表横跨多轮周期的水位。Wind 预测 PE 23.8x 为过时口径（未反映 FY26Q4 盈利暴增），已用最新指引修正。另：市场对 80%+ 毛利率可持续性存疑（8/6 财报后单日 -8%、8/13 投资者日后 +15%），波动本身就是估值分歧的体现。</div>
-  <div style="margin:16px 0"><canvas id="priceChart" height="110"></canvas><span class="small">周线收盘价（2025-09 至 2026-09，前复权）：12 个月内 +24 倍后腰斩再反弹，Beta 4.37 的具象化</span></div>
+  <h2>核心判断：涨得越猛，安全边际越薄</h2>
+  <div class="sig sig-bull"><strong>涨价周期的利润兑现是真的：</strong>FY26 全年营收 $202.5 亿（+175%）、归母净利 $114.3 亿（上年 -$16.4 亿）、ROE 91.6%、经营现金流 $116.7 亿。NBM 长约已与 8 家客户签署 10 份合约（含 3 家美国超大规模云厂商），加权平均期限超 4 年，最低收入承诺 <strong>$939 亿</strong>。</div>
+  <div class="sig sig-warn"><strong>但本次更新出现两个新的负面变化：</strong>① <strong>HBF 时间表推迟</strong>——v1 报告记录的是"工程样品 2H26、2027 量产"，最新管理层口径已改为"仍处商业化前期，首批推理样品预计 <strong>2027 年</strong>送样"。第二增长曲线的兑现期后移一年；② <strong>NAND 合约价二阶导大幅放缓</strong>——TrendForce 口径 Q1 +60%、Q2 +75%、<strong>Q3 仅 +15%</strong>，涨价引擎已明显降速。</div>
+  <div class="sig sig-bear"><strong>估值是决定性问题：</strong>股价三日内再涨 17.9% 至 $1,791.82，PB 升至 16.67x（3 年 90.3% 分位）。Morningstar 测算其相对公允价值溢价约 63%。<strong>本框架维持"不追高"判断，三情景中性区间 $1,800-2,200 的下沿已几乎被现价触及。</strong></div>
 </div>
 
-<!-- 利润表 -->
+<!-- ============ 一、行情快照 ============ -->
+<div class="card">
+  <h2>一、行情快照（2026-09-18 收盘）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新价</div><div class="val">$1,791.82</div><div class="sub">9/18 单日 +10.99%</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val">$2,623.6 亿</div><div class="sub">总股本 1.464 亿股</div></div>
+    <div class="item"><div class="lbl">PE(TTM)</div><div class="val">22.95x</div><div class="sub">上市以来 69.8% 分位（窗口仅 1.6 年）</div></div>
+    <div class="item"><div class="lbl">PB(LF)</div><div class="val">16.67x</div><div class="sub">3 年分位 <strong>90.3%</strong> · 历史高位</div></div>
+    <div class="item"><div class="lbl">PS(TTM)</div><div class="val">约 13.0x</div><div class="sub">NAND 行业景气顶部区间</div></div>
+    <div class="item"><div class="lbl">52 周区间</div><div class="val">$93.5 - $2,354</div><div class="sub">距高点 -23.9%</div></div>
+    <div class="item"><div class="lbl">YTD</div><div class="val">+654.8%</div><div class="sub">250 日 +1,653%</div></div>
+    <div class="item"><div class="lbl">区间涨跌幅</div><div class="val">5日 +9.7%</div><div class="sub">20日 +12.0% · 60日 <span class="dn2">-6.4%</span> · 120日 +191.0%</div></div>
+    <div class="item"><div class="lbl">换手率</div><div class="val">12.15%</div><div class="sub">极高换手，筹码不稳定</div></div>
+    <div class="item"><div class="lbl">下次财报</div><div class="val">2026-10 下旬</div><div class="sub">FY27Q1 · 指引营收 $103-108 亿</div></div>
+  </div>
+
+  <div class="assume"><strong>分位口径提示：</strong>Wind 的"3 年分位"对 SNDK 实际只有约 1.6 年样本（2025-02 拆分上市），且全程处于超级周期内——<strong>PB 90.3% 分位是"周期内自我比较"，不代表横跨多轮周期的真实水位</strong>。真正的跨周期参照应看绝对水平：PB 16.67x 意味着市场为每 1 美元账面净资产支付 16.7 美元，这在 NAND 行业历史上从未持续过。</div>
+
+  <h3>利率环境的根本性变化 <span class="new-badge">本次新增</span></h3>
+  <div class="sig sig-bear"><strong>9/17 美联储加息 25bp 至 3.75%-4.00%</strong>（三年多来首次），10Y 美债一度破 5%，布伦特原油本月涨约 20%。SNDK 的 <strong>Beta 4.37</strong> 意味着宏观逆风时回撤被极端放大——过去 12 个月已演示过 <strong>-56.5%</strong> 的最大回撤。</div>
+</div>
+
+<!-- ============ 二、利润表 ============ -->
 <div class="card">
   <h2>二、利润表趋势（单季，GAAP，亿美元）</h2>
-  <div class="assume"><strong>口径说明：</strong>Wind 返回的"单季"营收/净利为财年初至今累计值，单季值=当期累计−上期累计，已倒推；毛利率为 Wind 单季口径。SNDK 财年 6 月底截止，FY26Q4 = 2026年4-7月。美元金额 = 亿美元。</div>
+  <p style="font-size:13px;color:#666">SNDK 财年 6 月底截止，FY26Q4 = 2026 年 4-6 月，财报 8/6 公布。Wind 最新入库为 FY26 全年数据，<strong>FY27Q1 财报预计 10 月下旬</strong>。单季数据为累计值倒推。</p>
   <table>
-    <tr><th>季度</th><th>营收</th><th>环比</th><th>同比</th><th>GAAP毛利率</th><th>归母净利</th><th>备注</th></tr>
+    <tr><th>季度</th><th>营收</th><th>环比</th><th>同比</th><th>GAAP 毛利率</th><th>归母净利</th><th>备注</th></tr>
     <tr><td>FY25Q1</td><td>18.83</td><td>—</td><td>—</td><td>38.6%</td><td>2.11</td><td>拆分后首季</td></tr>
-    <tr><td>FY25Q2</td><td>18.76</td><td class="dn2">-0.4%</td><td>—</td><td>32.3%</td><td>1.04</td><td></td></tr>
-    <tr><td>FY25Q3</td><td>16.95</td><td class="dn2">-9.7%</td><td>—</td><td>22.5%</td><td class="dn2">-19.33</td><td>含 18.3亿美元商誉减值</td></tr>
-    <tr><td>FY25Q4</td><td>19.01</td><td>+12.2%</td><td>—</td><td>26.2%</td><td class="dn2">-0.23</td><td>FY25 全年亏 16.41亿</td></tr>
-    <tr><td>FY26Q1</td><td>23.08</td><td>+21.4%</td><td class="up">+22.6%</td><td>29.8%</td><td>1.12</td><td>涨价启动</td></tr>
-    <tr><td>FY26Q2</td><td>30.25</td><td>+31.1%</td><td class="up">+61.3%</td><td>50.9%</td><td>8.03</td><td>NAND 合约价 Q2 +70~75%</td></tr>
-    <tr><td>FY26Q3</td><td>59.50</td><td class="up">+96.7%</td><td class="up">+251%</td><td>78.4%</td><td class="up">36.15</td><td>环比翻倍</td></tr>
-    <tr><td>FY26Q4</td><td class="up">89.65</td><td class="up">+50.7%</td><td class="up">+372%</td><td class="up">~84.6%*</td><td class="up">69.03</td><td>超指引上限（8.25亿）</td></tr>
+    <tr><td>FY25Q2</td><td>18.76</td><td>-0.4%</td><td>—</td><td>32.3%</td><td>1.04</td><td>—</td></tr>
+    <tr><td>FY25Q3</td><td>16.95</td><td>-9.7%</td><td>—</td><td>22.5%</td><td class="dn2">-19.33</td><td>含 18.3 亿美元商誉减值</td></tr>
+    <tr><td>FY25Q4</td><td>19.01</td><td>+12.2%</td><td>—</td><td>26.2%</td><td class="dn2">-0.23</td><td>FY25 全年亏 16.41 亿</td></tr>
+    <tr><td>FY26Q1</td><td>23.08</td><td>+21.4%</td><td>+22.6%</td><td>29.8%</td><td>1.12</td><td>涨价启动</td></tr>
+    <tr><td>FY26Q2</td><td>30.25</td><td>+31.1%</td><td>+61.3%</td><td>50.9%</td><td>8.03</td><td>NAND 合约价 Q2 +70~75%</td></tr>
+    <tr><td>FY26Q3</td><td>59.50</td><td class="up">+96.7%</td><td class="up">+251%</td><td>78.4%</td><td>36.15</td><td>环比翻倍</td></tr>
+    <tr><td>FY26Q4</td><td>89.65</td><td class="up">+50.7%</td><td class="up">+372%</td><td>~84.6%*</td><td>69.03</td><td>超指引上限</td></tr>
   </table>
-  <span class="small">* Q4 毛利率为公司电话会 non-GAAP 口径 84.6%（上季 78.4%）；GAAP 全年综合 71.5%。</span>
-  <h3>FY2026 全年：营收 $202.5亿（+175%）、归母 $114.3亿（上年 -16.4亿）、EPS $76.7</h3>
-  <h3>利润损耗链（FY26Q4）</h3>
-  <table>
-    <tr><th>环节</th><th>金额（亿美元）</th><th>利润率</th><th>说明</th></tr>
-    <tr><td>营业收入</td><td>89.65</td><td>—</td><td>指引 77.5-82.5，超上限</td></tr>
-    <tr><td>毛利</td><td>~75.8</td><td>84.6%</td><td>涨价贡献环比增长的 ~2/3，出货 ~1/3</td></tr>
-    <tr><td>营业利润</td><td>70.37</td><td>78.5%</td><td>费用率极低（~7%）</td></tr>
-    <tr><td>归母净利润</td><td>69.03</td><td>77.0%</td><td>税率极低/含一次性税项收益 [口径待Q4明细核实]</td></tr>
-  </table>
-  <div class="sig sig-bull"><strong>增长质量拆解：</strong>管理层明确本季营收环比 +51% 中，约 1/3 来自位元出货增长、2/3 来自 NAND 涨价——利润弹性主要由价格周期贡献，而非需求同步扩张。全行业营业利润率已到历史极值区（三星存储 ~75%、海力士 76.3%、美光 80.4%、铠侠 80%），SNDK 的 78.5% 并无个体超额优势，周期均值回归风险是全行业的。</div>
-</div>
+  <p style="font-size:12px;color:#888">* Q4 毛利率为公司电话会 non-GAAP 口径 84.6%；GAAP 全年综合 71.5%。</p>
 
-<!-- ROE 杜邦 -->
-<div class="card">
-  <h2>三、ROE 杜邦拆解</h2>
-  <div class="dupont-grid">
-    <div class="dupont-box"><div class="title">净利率（FY26）</div><div class="num">56.5%</div><div class="detail">上年 -22.3% → 主驱动，周期弹性</div></div>
-    <div class="dupont-box"><div class="title">资产周转率（FY26）</div><div class="num">~1.57x</div><div class="detail">营收 202.5 / 平均总资产 ~129</div></div>
-    <div class="dupont-box"><div class="title">权益乘数</div><div class="num">~1.27x</div><div class="detail">资产负债率 21.4%，持续去杠杆</div></div>
+  <h3>FY2026 全年（Wind 最新入库）</h3>
+  <div class="kv">
+    <div class="item"><div class="lbl">营业收入</div><div class="val">$202.48 亿</div><div class="sub">+175% YoY</div></div>
+    <div class="item"><div class="lbl">归母净利润</div><div class="val">$114.33 亿</div><div class="sub">上年 -$16.41 亿</div></div>
+    <div class="item"><div class="lbl">销售毛利率</div><div class="val">71.47%</div><div class="sub">周期中段约 30-40%</div></div>
+    <div class="item"><div class="lbl">每股收益</div><div class="val">$77.78</div><div class="sub">基本 EPS</div></div>
+    <div class="item"><div class="lbl">ROE</div><div class="val">91.64%</div><div class="sub">净利率驱动型周期顶部</div></div>
+    <div class="item"><div class="lbl">经营现金流</div><div class="val">$116.71 亿</div><div class="sub">随提价快速兑现</div></div>
+    <div class="item"><div class="lbl">总资产</div><div class="val">$225.07 亿</div><div class="sub">较 FY26Q2 的 $130 亿增长 73%</div></div>
+    <div class="item"><div class="lbl">资产负债率</div><div class="val">30.08%</div><div class="sub"><span class="up">较 Q2 的 21.4% 上升 8.7pp</span></div></div>
   </div>
-  <p style="text-align:center;font-size:13px">ROE(FY26) ≈ <strong>92%</strong>（归母 114.3亿 ÷ 平均净资产 ~124.6亿）· FY25 为负 · <span class="arrow">←</span> 典型的净利率驱动型周期顶部 ROE</p>
-  <div class="sig sig-warn"><strong>ROIC 与商业模式：</strong>SNDK 闪存晶圆产能通过与铠侠合资的 Flash Ventures 持有，自身报表资本开支极低（FY26Q2 仅 $0.89亿），大额产能投入体现为 JV 出资与 165亿美元长协担保——报表口径 ROIC 极高，但"真实资本强度"藏在表外。正常化口径下（周期中段净利率 30-40%），ROE 仍有 30-45%，显著高于 WACC（~10-12%），这是 NBM 模式下值得给溢价的部分；但 16.2x PB 隐含的是"ROE 长期维持 60%+"的定价，安全边际不足。</div>
+
+  <div class="sig sig-warn"><strong>增长质量拆解（v1 判断在本轮被证实）：</strong>管理层在财报电话会明确披露，FY26Q4 营收环比 +51% 中<strong>仅约 1/3 来自位元出货增长、约 2/3 来自 NAND 涨价</strong>。利润弹性主要由价格周期贡献，而非需求同步扩张。全行业营业利润率均已到历史极值区（美光 80.4%、铠侠 80%、海力士 76.3%、三星约 75%）——<strong>SNDK 的 78.5% 并无个体超额优势</strong>。</div>
+  <div class="sig sig-warn"><strong>资产负债表一处新变化需留意：</strong>资产负债率从 FY26Q2 的 21.4% 升至 FY26 年末的 <strong>30.08%</strong>。总资产同期从 $130 亿增至 $225 亿（+73%）。这一扩张主要由盈利累积与营运资本（应收/应付）放大驱动，但与 v1 报告"持续去杠杆"的表述已有出入，需在 FY27Q1 财报中核实构成。</div>
 </div>
 
-<!-- 现金流 -->
+<!-- ============ 三、ROE ============ -->
+<div class="card">
+  <h2>三、ROE 杜邦拆解与 ROIC</h2>
+  <div class="dupont-grid">
+    <div class="dupont-box"><div class="title">净利率（FY26）</div><div class="num">56.5%</div><div class="detail">上年 -22.3%<br>主驱动，周期弹性</div></div>
+    <div class="dupont-box"><div class="title">资产周转率</div><div class="num">~1.57x</div><div class="detail">营收 202.5 / 平均总资产 ~129<br>（FY26Q2 口径）</div></div>
+    <div class="dupont-box"><div class="title">权益乘数</div><div class="num">~1.27x</div><div class="detail">低杠杆结构</div></div>
+  </div>
+  <div style="text-align:center;font-size:15px;color:#0d47a1;font-weight:700;margin:10px 0">= ROE 91.6%（净利率驱动型周期顶部 ROE）</div>
+
+  <h3>ROIC 与商业模式的特殊性</h3>
+  <p style="font-size:13px">SNDK 的闪存晶圆产能通过与铠侠合资的 Flash Ventures 持有，<strong>自身报表资本开支极低</strong>（FY26Q2 仅 $0.89 亿），大额产能投入体现为 JV 出资与 $165 亿长协担保——<strong>报表口径 ROIC 极高，但"真实资本强度"藏在表外</strong>。正常化口径下（周期中段净利率 30-40%），ROE 仍有 30-45%，显著高于 WACC（约 10-12%），这是 NBM 模式下值得给溢价的部分。</p>
+  <div class="sig sig-warn"><strong>但 16.67x PB 隐含的是"ROE 长期维持 60%+"的定价。</strong>按 PB = PE × ROE 拆解：若给合理 PE 12x、正常化 ROE 45% → 合理 PB 5.4x，对应股价约 $580；即使给 ROE 60% → 合理 PB 7.2x，对应约 $773。<strong>现价 $1,791.82 对应的是"ROE 长期高于 90%"的假设</strong>——这是把周期顶部当常态在定价。</div>
+</div>
+
+<!-- ============ 四、现金流 ============ -->
 <div class="card">
   <h2>四、现金流独立分析</h2>
   <table>
-    <tr><th>报告期</th><th>经营现金流（亿美元）</th><th>资本开支（亿美元）</th><th>简单 FCF</th><th>说明</th></tr>
-    <tr><td>FY25Q4</td><td>0.84</td><td>—</td><td>—</td><td>周期底部，现金近乎打平</td></tr>
-    <tr><td>FY26Q1</td><td>4.88</td><td>—</td><td>—</td><td>回款改善</td></tr>
-    <tr><td>FY26Q2</td><td class="up">15.07</td><td>0.89</td><td class="up">~14.2</td><td>Wind 最新入库期</td></tr>
-    <tr><td>FY26Q3-Q4</td><td>[缺失]</td><td>[缺失]</td><td>[缺失]</td><td>Wind 未入库，按 GM 轨迹推断 OCF 或达 25-40亿/季 [推断]</td></tr>
+    <tr><th>报告期</th><th>经营现金流（亿美元）</th><th>资本开支</th><th>说明</th></tr>
+    <tr><td>FY25Q4</td><td>0.84</td><td>—</td><td>周期底部，现金近乎打平</td></tr>
+    <tr><td>FY26Q1</td><td>4.88</td><td>—</td><td>回款改善</td></tr>
+    <tr><td>FY26Q2</td><td>15.07</td><td>0.89</td><td>报表资本开支极低（产能靠 JV）</td></tr>
+    <tr><td>FY26 全年</td><td><strong>116.71</strong></td><td>[明细待补]</td><td>Wind 最新入库</td></tr>
   </table>
-  <div class="sig sig-bull"><strong>现金特征：</strong>①经营现金流随提价快速兑现（预收+长协预付款模式）；②报表资本开支极低（产能靠 JV）；③有息负债从 FY25Q4 的 18.49亿 降至 FY26Q2 的 6.03亿——半年去杠杆 2/3，Q2 货币资金 15.39亿 已超过有息负债。投资者日给出 FY28-30 调整后 FCF 利润率 ~50%、超额现金 100% 返还（优先回购）的框架——若兑现，这是 NAND 行业史上从未有过的股东回报强度。</div>
+  <p style="font-size:13px"><strong>现金特征：</strong>① 经营现金流随提价快速兑现（预收 + 长协预付款模式）；② 报表资本开支极低；③ 投资者日给出 <strong>FY28-30 调整后 FCF 利润率约 50%、超额现金 100% 返还（优先回购）</strong>的框架——若兑现，这是 NAND 行业史上从未有过的股东回报强度。</p>
+  <div class="sig sig-warn"><strong>但"回购托底"的成色需要打折看待：</strong>$200 亿回购授权对应约 $2,624 亿市值，规模仅占 7.6%；且回购的执行节奏通常顺周期（股价高时买得少）。真正的托底力量应来自长协现金流，而非回购本身。</div>
 </div>
 
-<!-- 资产负债表 -->
+<!-- ============ 五、业务拆解 ============ -->
 <div class="card">
-  <h2>五、资产负债表关键指标（FY26Q2，Wind 最新入库期）</h2>
-  <div class="kv">
-    <div class="item"><div class="lbl">总资产</div><div class="val">$130.0亿</div><div class="sub">Q4 净资产按市值/PB 反推 ~$157亿</div></div>
-    <div class="item"><div class="lbl">货币资金</div><div class="val">$15.4亿</div><div class="sub">＞有息负债 6.03亿</div></div>
-    <div class="item"><div class="lbl">存货</div><div class="val">$19.7亿</div><div class="sub">约 2 个月营收，涨价周期存货是利润</div></div>
-    <div class="item"><div class="lbl">资产负债率</div><div class="val">21.4%</div><div class="sub">FY25Q4 为 29.0%，快速改善</div></div>
-    <div class="item"><div class="lbl">流动比率 / 速动</div><div class="val">3.11 / 1.92</div><div class="sub">流动性充裕</div></div>
-    <div class="item"><div class="lbl">商誉</div><div class="val">已减值出清</div><div class="sub">FY25Q3 计提 18.3亿美元</div></div>
-  </div>
-  <div class="sig sig-bull"><strong>资产负债表结论：</strong>周期底部最危险的时点已过——商誉一次性出清、有息负债压降 2/3、净现金状态。当前资产负债表不仅能扛住下一轮下行，还支撑 $155亿剩余回购额度。这是与上一轮 NAND 周期（铠侠/西数巨亏）最本质的区别。</div>
-</div>
-
-<!-- 业务拆解 -->
-<div class="card">
-  <h2>六、业务拆解与竞争护城河（五层框架）</h2>
+  <h2>五、业务拆解与竞争护城河</h2>
   <h3>第一层：板块拆解（FY26Q4）</h3>
   <table>
-    <tr><th>板块</th><th>营收（亿美元）</th><th>占比</th><th>环比</th><th>同比</th><th>生命周期定位</th><th>点评</th></tr>
-    <tr><td>Edge（边缘/客户端）</td><td>54.32</td><td>60.6%</td><td class="up">+48%</td><td class="up">+392%</td><td>📊成熟 → AI 外溢拉动</td><td>最大板块，本轮涨价主力；客户端 SSD 受益 AI PC/推理端侧化</td></tr>
-    <tr><td>Datacenter（企业级）</td><td>29.77</td><td>33.2%</td><td class="up">+103%</td><td>—</td><td>🚀核心增长引擎</td><td>eSSD 高容量化+大客户直供；2030 企业级闪存 TAM 1.2ZB</td></tr>
-    <tr><td>Consumer（消费零售）</td><td>5.56</td><td>6.2%</td><td class="dn2">-32%</td><td class="dn2">-5%</td><td>📉衰退/价格反噬先行指标</td><td>大幅低于市场预期 8.74亿——终端对涨价的承受力已到极限</td></tr>
+    <tr><th>板块</th><th>营收（亿美元）</th><th>占比</th><th>环比</th><th>定位</th></tr>
+    <tr><td>Edge（边缘/客户端）</td><td>54.32</td><td>60.6%</td><td>+48%</td><td>📊 成熟 → AI 外溢拉动</td></tr>
+    <tr><td>Datacenter（企业级）</td><td>29.77</td><td>33.2%</td><td class="up">+103%</td><td>🚀 核心增长引擎</td></tr>
+    <tr><td>Consumer（消费零售）</td><td>5.56</td><td>6.2%</td><td class="dn2">-32%</td><td>📉 衰退 / 价格反噬先行指标</td></tr>
   </table>
+  <div class="sig sig-bear"><strong>消费板块是周期见顶的"矿井金丝雀"：</strong>营收环比 -32%、同比 -5%，大幅低于市场预期的 8.74 亿。这说明<strong>终端对涨价的承受力已经到极限</strong>。PC 厂商因内存成本攀升被迫提价，Q3 出货量预计环比下滑逾 10%；手机客户削减生产计划后对涨价的抵触明显增强。</div>
+
   <h3>第二层：竞争格局与护城河</h3>
   <table>
-    <tr><th>维度</th><th>评估</th><th>依据</th></tr>
-    <tr><td>市场地位</td><td><span class="tag-neutral">份额下滑</span></td><td>NAND 份额 13%→11%（2Q26），YMTC 从 9% 升至 14%——国产替代在真实抢份额</td></tr>
-    <tr><td>技术壁垒</td><td><span class="tag-bull">强</span></td><td>与铠侠联合研发 BiCS 8 代（CMOS 直连 bonded）；HBF 标准联合发起者（FMS 2026，6 个月从宣布到标准落地）</td></tr>
-    <tr><td>客户粘性</td><td><span class="tag-bull">强</span></td><td>NBM 长协：8 家超大规模客户，最低收入承诺 $939亿（≈FY26 营收 4.6 倍），加权期限 &gt;4 年，$165亿金融担保</td></tr>
-    <tr><td>成本优势</td><td><span class="tag-neutral">中</span></td><td>与铠侠 JV 双向产能协同+良率领先；但行业 OPM 集体 75%+ 时个体成本优势不再稀缺</td></tr>
-    <tr><td>网络效应</td><td><span class="tag-bear">无</span></td><td>硬件制造属性</td></tr>
-    <tr><td>客户集中度</td><td><span class="tag-bear">高（警示）</span></td><td>8 大 NBM 客户均为超大规模云/AI 巨头，前 5 大客户占比远超 40% 警戒线</td></tr>
+    <tr><th>维度</th><th>评级</th><th>依据</th></tr>
+    <tr><td>市场地位</td><td class="dn2">份额下滑（弱）</td><td>NAND 份额 13% → 11%（2Q26）；YMTC 从 9% 升至 <strong>14%</strong>——国产替代在真实抢份额</td></tr>
+    <tr><td>技术壁垒</td><td>强</td><td>与铠侠联合研发 BiCS 8（CMOS 直连 bonded）；HBF 标准联合发起者</td></tr>
+    <tr><td>客户粘性</td><td>强</td><td>NBM 长协：8 家超大规模客户、10 份合约、最低收入承诺 $939 亿（≈FY26 营收 4.6 倍）、加权期限 &gt;4 年</td></tr>
+    <tr><td>成本优势</td><td>中</td><td>与铠侠 JV 双向产能协同 + 良率领先；但行业 OPM 集体 75%+ 时个体成本优势不再稀缺</td></tr>
+    <tr><td>网络效应</td><td>无</td><td>硬件制造属性</td></tr>
+    <tr><td>客户集中度</td><td class="dn2">高（警示）</td><td>前 5 大客户占比远超 40% 警戒线；且<strong>仅不到 20% 的合约带财务担保</strong>（Morningstar）</td></tr>
   </table>
-  <h3>第三层：技术代际（NAND 硬件标的必做）</h3>
+
+  <h3>第三层：技术代际 —— HBF 时间表推迟 <span class="new-badge">重要变化</span></h3>
   <table>
-    <tr><th>代际</th><th>状态</th><th>影响</th></tr>
-    <tr><td>BiCS 8 / CMOS 直连</td><td>量产爬坡中</td><td>当前主力，218层级+高容量 eSSD 的成本与性能基础</td></tr>
-    <tr><td>HBF（高带宽闪存）</td><td>标准已立（2026-08），工程样品 2H26，量产 2027</td><td>填补 HBM（快但贵、容量小）与 SSD（大但慢）之间的吞吐断层；8/16 层堆叠、最高 512GB、带宽近 3TB/s——AI 推理侧潜在新 TAM</td></tr>
-    <tr><td>产能</td><td>与铠侠共同数十亿美元扩建日本四日市等晶圆产能</td><td>供给增加是 2027-2028 行业供需逆转的伏笔</td></tr>
+    <tr><th>代际</th><th>v1 报告口径（9/8）</th><th>最新口径（9/19）</th><th>影响</th></tr>
+    <tr><td>BiCS 8 / CMOS 直连</td><td>量产爬坡中</td><td>量产爬坡中（未变）</td><td>当前主力，218 层级</td></tr>
+    <tr><td><strong>HBF（高带宽闪存）</strong></td><td>标准已立，<strong>工程样品 2H26</strong>，量产 2027</td><td class="dn2">仍处商业化前期，<strong>首批推理样品预计 2027 年送样</strong></td><td class="dn2"><strong>第二增长曲线兑现期后移约 1 年</strong></td></tr>
+    <tr><td>产能扩建</td><td>与铠侠共同扩建日本四日市</td><td>未变</td><td>供给增加是 2027-2028 供需逆转的伏笔</td></tr>
   </table>
-  <div class="sig sig-warn"><strong>NBM 双刃剑：</strong>长协覆盖 FY27 ~50%、FY28 ~2/3 的位元出货——锁住了量的下限，也框住了价的上限（固定价+浮动价带帽）。据伯恩斯坦，7 月部分长协客户采购价已快速逼近协议上限，意味着"市场价继续涨也涨不到 SNDK 头上"的时刻在临近。NBM 能否打破 NAND 四年周期魔咒，是本报告估值分歧的核心变量。</div>
+  <div class="sig sig-warn"><strong>HBF 的真实状态（管理层自己的表述）：</strong>研发费用已全数列支，但<strong>相关营收、新增资本支出及生产效益尚未纳入现行 FY2028-2030 营运模型</strong>。华兴资本引述管理层称 HBF 针对推理与 KV-Cache 工作负载，目标是"接近 HBM 的读取带宽 + 8-16 倍容量"。这意味着：<strong>HBF 仍是期权，不是现金流。</strong>从标准到商业化还有相当距离，而市场此前已部分将其定价。</div>
+
+  <h3>NBM 长协：双刃剑的真实边界</h3>
+  <div class="sig sig-bull"><strong>正面：</strong>FY27 约 50%、FY28 约 2/3 的位元出货已被锁定；加权平均期限 &gt;4 年；高盛测算底价机制可支持大部分业务在<strong>下行情景下长期实现约 80% 毛利率</strong>——盈利可见性大幅提高，这是 SNDK 区别于历史 NAND 周期（铠侠/西数巨亏）的最本质差异。</div>
+  <div class="sig sig-bear"><strong>负面：</strong>协议定价分固定价与浮动价两部分，<strong>浮动价设置明确上限</strong>。据伯恩斯坦，部分长协客户 7 月采购价已快速逼近协议上限——意味着"市场价继续涨也涨不到 SNDK 头上"的时刻在临近。长协锁住了量的下限，也框住了价的上限。</div>
 </div>
 
-<!-- 估值 -->
+<!-- ============ 六、估值 ============ -->
 <div class="card">
-  <h2>七、估值分析（单一业务线 · 强周期 → PB-ROE + PEG 双主锚）</h2>
-  <div class="assume"><strong>Step 8.0 公司类型判断：</strong>单一业务线（NAND 闪存 &gt;90%）+ 强周期（存储合约价季度波幅 20-75%）→ 周期股估值框架：PB-ROE + 正常化 PE 双主锚，禁用当期 EPS 的低 PE 逻辑。</div>
-  <h3>Bottom-up FY27E 路径</h3>
+  <h2>六、估值分析（单一业务线 · 强周期 → PB-ROE + 正常化 PE 双主锚）</h2>
+  <p style="font-size:13px;color:#666"><strong>Step 8.0 类型判断：</strong>NAND 闪存业务占比 &gt;90%（单一业务线）+ 强周期（合约价季度波幅 20-75%）→ 采用 PB-ROE + 正常化 PE 双主锚，<strong>禁用当期 EPS 的低 PE 逻辑</strong>。</p>
+
+  <h3>关键估值口径辨析（周期股必读）</h3>
   <table>
-    <tr><th>指标</th><th>FY27Q1（公司指引）</th><th>FY27E（美银）</th><th>逻辑</th></tr>
-    <tr><td>营收</td><td>$103-108亿</td><td>$526亿（+160%）</td><td>Q1 后涨价二阶导放缓，假设 H2 环比个位数</td></tr>
-    <tr><td>毛利率</td><td>83-85%</td><td>~80%+</td><td>公司明示毛利率进入平台期</td></tr>
-    <tr><td>EPS（non-GAAP）</td><td>$44-46</td><td>$233.85（美银）/ ~$180（公司口径）</td><td>美银与公司口径差 30%，本身就是分歧</td></tr>
+    <tr><th>口径</th><th>EPS 假设</th><th>隐含 PE @ $1,791.82</th><th>解读</th></tr>
+    <tr><td>PE(TTM)</td><td>FY26 实际 $77.78</td><td>23.0x</td><td>含全年爬坡过程，中性参考</td></tr>
+    <tr><td>前瞻 PE（公司指引口径）</td><td>FY27 约 $180</td><td class="up">10.0x</td><td>按周期顶部盈利定价——"假便宜"典型</td></tr>
+    <tr><td>前瞻 PE（高盛 FY27E）</td><td>$231.84</td><td class="up">7.7x</td><td>最乐观情景：涨价全年持续</td></tr>
+    <tr><td>前瞻 PE（高盛 FY28E）</td><td>$284.98</td><td class="up">6.3x</td><td>要求 FY28 收入达 $710 亿（+34%）</td></tr>
+    <tr style="font-weight:700"><td>正常化 PE（本报告）</td><td>周期中段 $90-150</td><td>12-20x</td><td>若 2H27 供给拐点兑现的真实估值</td></tr>
   </table>
-  <h3>锚一：PB-ROE</h3>
-  <div class="sig sig-bear">当前 PB 16.2x 对应周期顶部 ROE ~92%——PB/ROE 看似仅 0.18，但正常化 ROE（NBM 保底营收 $23.5亿/年×正常化净利率 35-45%）约 35-50%。给 NBM 模式溢价后合理 PB 6-10x，对应市值 $940-1,570亿、股价 <strong>$630-1,050</strong>——这是"周期均值回归"情景的估值底。当前 PB 隐含 ROE 长期 &gt;60% 的定价，即市场在为"周期已被长协消灭"付费。</div>
-  <h3>锚二：正常化 PE / PEG</h3>
-  <div class="sig sig-warn">正常化 EPS 三种取法：① NBM 保底收入口径（营收 $235亿/年保底 × 净利率 35-45%）→ EPS $55-70；② 周期中段（NAND 价格从顶部回落 30-40% 但高于成本曲线）→ EPS $100-150；③ 框架兑现口径（FY28-30 OPM 75% 指引）→ EPS $280-320。取 ①② 的混合区间 $90-150、给 10-12x（成长溢价）→ 中枢 $1,050-1,800。</div>
-  <h3>锚三：DCF 交叉验证（简版）</h3>
-  <div class="assume"><strong>假设：</strong>WACC 11%；FY27E FCF ~$260亿（FCF margin 50% 框架前段）；此后 5 年增长 8%→终值增长 3%；敏感性：若 FY28 FCF 腰斩（周期回落），终值折现股价显著下修。中性产出 ~$1,600-1,900 [模型估算]。</div>
-  <h3>三情景目标价</h3>
+  <div class="assume"><strong>PE 的"假便宜"陷阱：</strong>前瞻 PE 7.7-10x 看似极低，但分母是周期顶部 EPS。<strong>与美光 6.4x 的情况完全一样</strong>——存储股在盈利峰值时 PE 最低，这不是便宜，是周期特征。真正的问题是：FY27 的 $231.84 EPS 能否兑现，以及兑现后市场愿意给多少倍。</div>
+
+  <h3>锚一：PB-ROE（权重 50%）</h3>
+  <table>
+    <tr><th>情景</th><th>正常化 ROE</th><th>合理 PB</th><th>每股净资产</th><th>隐含股价</th></tr>
+    <tr><td>悲观（周期均值回归）</td><td>25%</td><td>3.0x</td><td>$107.5</td><td class="dn2">$323</td></tr>
+    <tr><td>中性（长协平滑周期）</td><td>45%</td><td>5.4x</td><td>$107.5</td><td><strong>$581</strong></td></tr>
+    <tr><td>乐观（周期被长协驯服）</td><td>60%</td><td>7.2x</td><td>$107.5</td><td class="up">$774</td></tr>
+  </table>
+  <div class="sig sig-bear"><strong>PB-ROE 给出的数字是残酷的：</strong>即使按"长协驯服周期、正常化 ROE 45%"的中性假设，合理 PB 也只有 5.4x，对应股价 $581——<strong>仅为现价的 32%</strong>。要让现价 $1,791.82 成立，需要 PB 维持在 16.67x，即市场必须相信 ROE 长期高于 90%。这不是估值分歧，这是对"周期是否还存在"的押注。</div>
+
+  <h3>锚二：正常化 PE / 三情景目标价（权重 50%）</h3>
+  <p style="font-size:13px">正常化 EPS 三种取法：① NBM 保底收入口径（保底营收 $235 亿/年 × 净利率 35-45%）→ EPS $55-70；② 周期中段（NAND 价格从顶部回落 30-40%）→ EPS $90-150；③ 框架兑现口径（FY28-30 OPM 75% 指引）→ EPS $280-320。</p>
+  <p style="font-size:13px">取 ①② 的混合区间、给 10-12x 成长溢价 → 中枢 $1,050-1,800。叠加长协溢价的乐观情形（取 ③）→ $2,800-3,000。</p>
+
+  <h3>三情景目标价（综合考虑）</h3>
   <div class="scenario-grid">
-    <div class="scen scen-bear"><div class="slbl">悲观（概率 ~25%）</div><div class="sval">$900-1,050</div><div class="schg">较现价 -40%~-45%</div><div class="schg" style="text-align:left;font-size:12px;margin-top:6px">2H27 供需缺口转正（TrendForce）、长协价格帽锁死、消费反噬扩大；正常化 EPS $90-110 × 9-10x</div></div>
-    <div class="scen scen-base"><div class="slbl">中性（概率 ~50%）</div><div class="sval">$1,800-2,200</div><div class="schg">较现价 +3%~+26%</div><div class="schg" style="text-align:left;font-size:12px;margin-top:6px">FY27 EPS $180-230 兑现，市场按 8-10x 顶部 PE 定价；NBM 平滑+回购支撑；一致预期均值 $2,155</div></div>
-    <div class="scen scen-bull"><div class="slbl">乐观（概率 ~25%）</div><div class="sval">$2,800-3,000</div><div class="schg">较现价 +61%~+72%</div><div class="schg" style="text-align:left;font-size:12px;margin-top:6px">供紧延续至 2028、HBF 2027 量产兑现新 TAM；FY28 EPS $250-300 × 10-12x（Bernstein $3,000）</div></div>
+    <div class="scen scen-bear"><div class="slbl">悲观（概率 ~25%）</div><div class="sval">$950-1,100</div><div class="schg dn2">-39% ~ -47%</div><div class="small">2H27 供需缺口转正、长协价格帽锁死、消费反噬扩大</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（概率 ~50%）</div><div class="sval">$1,800-2,200</div><div class="schg up">+0.5% ~ +23%</div><div class="small">FY27 EPS $180-230 兑现，市场按 8-10x 顶部 PE 定价</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观（概率 ~25%）</div><div class="sval">$2,800-3,000</div><div class="schg up">+56% ~ +67%</div><div class="small">供紧延续至 2028 + HBF 2027 量产兑现新 TAM</div></div>
   </div>
+
   <h3>估值锚定对比表</h3>
   <table>
     <tr><th>指标</th><th>FY27E</th><th>华尔街共识</th><th>历史中枢</th><th>同业均值</th></tr>
-    <tr><td>营收</td><td>$526亿 (+160%)</td><td>$480-530亿</td><td>—</td><td>—</td></tr>
-    <tr><td>毛利率 (non-GAAP)</td><td>~80-85%</td><td>~83%</td><td>周期中段 ~30-40%</td><td>行业 OPM 75-80%（顶部）</td></tr>
-    <tr><td>EPS</td><td>$180-234</td><td>~$200</td><td>正常化 $100-150</td><td>—</td></tr>
-    <tr><td>Forward PE</td><td class="dn2">7.4-9.7x</td><td>~8.7x</td><td>正常化口径 11.6-17.4x</td><td>美光 ~9x（顶部口径）</td></tr>
-    <tr><td>PB / PS / EV-EBITDA</td><td colspan="4">PB 16.2x（89% 分位）· PS 12.6x · EV/EBITDA 极低但为周期顶部值，均需按正常化口径重估 [EV 分母待明细]</td></tr>
+    <tr><td>营收</td><td>$526 亿（+160%）</td><td>高盛 $531.5 亿</td><td>—</td><td>—</td></tr>
+    <tr><td>毛利率（non-GAAP）</td><td>~80-85%</td><td>~83%</td><td>周期中段 ~30-40%</td><td>行业 OPM 75-80%（顶部）</td></tr>
+    <tr><td>EPS</td><td>$180-234</td><td>高盛 $231.84</td><td>正常化 $90-150</td><td>—</td></tr>
+    <tr><td>Forward PE</td><td>7.7-10.0x</td><td>~8.7x</td><td>正常化口径 12-20x</td><td>美光 ~6.4x（顶部口径）</td></tr>
+    <tr><td>PB</td><td>16.67x（90.3% 分位）</td><td>—</td><td>正常化 3-6x</td><td>—</td></tr>
+    <tr><td>目标价中枢</td><td><strong>$1,800-2,200</strong></td><td>均价 $2,125-2,183</td><td>—</td><td>区间 $1,400-3,050</td></tr>
   </table>
-  <div class="sig sig-warn"><strong>估值结论：</strong>三方法交集：中性情景价值中枢 $1,600-2,000，当前 $1,740 处于其中——既没有显著低估，也没有泡沫化到不可理喻。真正的赔率在"周期是否被长协驯服"这个叙事上：信（乐观情景）有 60%+ 空间，不信（悲观情景）有 40%+ 回撤。风险回报对称，缺乏安全边际。</div>
+  <div class="sig sig-warn"><strong>估值结论：</strong>三方法交集——中性情景价值中枢 $1,800-2,200，现价 $1,791.82 刚好落在<strong>中枢下沿</strong>。既没有显著低估，也没有泡沫化到不可理喻。<strong>真正的赔率押注在"周期是否已被长协驯服"这个叙事上</strong>：信（乐观情景）有 56%+ 空间，不信（悲观情景）有 39%+ 回撤。风险回报大致对称，但缺乏安全边际。</div>
 </div>
 
-<!-- 技术面 -->
+<!-- ============ 七、技术面 ============ -->
 <div class="card">
-  <h2>八、技术面辅助（日线，截至 2026-09-04）</h2>
+  <h2>七、技术面辅助（日线，截至 2026-09-18）</h2>
   <div class="tech-grid">
-    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">DIF 31.1<br>DEA 11.6</div><span class="tag-bull">零上金叉</span></div>
-    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">K72.3 D56.6<br>J103.7</div><span class="tag-bull">金叉 / J超买</span></div>
-    <div class="tech-item"><div class="name">RSI(6/12)</div><div class="val">78.9 / 63.8</div><span class="tag-overbought">短线超买</span></div>
-    <div class="tech-item"><div class="name">CCI(14)</div><div class="val">172.7</div><span class="tag-overbought">偏高</span></div>
-    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">1794 / 1475 / 1156</div><span class="tag-neutral">贴上轨</span></div>
+    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">37.84</div><div class="small">零轴上方，多头</div></div>
+    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">51.28</div><div class="small">中性偏多</div></div>
+    <div class="tech-item"><div class="name">RSI</div><div class="val">72.32</div><div class="sub"><span class="tag-overbought">偏高</span></div></div>
+    <div class="tech-item"><div class="name">CCI(14)</div><div class="val">91.87</div><div class="small">偏强</div></div>
+    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">上轨区</div><div class="small">上轨 $1,795.5</div></div>
   </div>
+
+  <h3>均线结构</h3>
   <table>
     <tr><th>均线</th><th>MA5</th><th>MA10</th><th>MA20</th><th>MA60</th><th>MA120</th><th>MA250</th></tr>
-    <tr><td>数值</td><td>1590</td><td>1540</td><td>1530</td><td>1635</td><td>1392</td><td>834</td></tr>
-    <tr><td>现价 1740 相对位置</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td></tr>
+    <tr><td>数值</td><td>$1,601.8</td><td>$1,657.7</td><td>$1,591.4</td><td>$1,578.1</td><td>$1,463.7</td><td>$889.8</td></tr>
+    <tr><td>现价 $1,791.82</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td><td class="up">上方</td></tr>
   </table>
-  <div class="sig sig-bull"><strong>形态：</strong>7/31 当周 $998 见底 → 8/6 财报日 -8% → 8/13 投资者日 +15% → 8/31 MSCI 纳入 → 9/4 +11.9% 三连涨收复全部均线。20日 +40.6%，但 60日仍 -7.5%——V 型修复进行时。9/4 换手 11.3% 放量长阳，短线动能强。</div>
-  <div class="sig sig-warn"><strong>关键价位：</strong>支撑 $1,475（布林中轨/前期平台）→ $1,200（8月低点区）→ $1,000（7月底部）；压力 $1,794（布林上轨）→ $1,861 → $2,000 整数关 → $2,354（历史高点）。<span class="tag-overbought">RSI6 78.9 + J 103.7，短线追高的赔率很差。</span></div>
+
+  <h3>近三日行情复盘 <span class="new-badge">本次新增</span></h3>
+  <table>
+    <tr><th>日期</th><th>收盘价</th><th>涨跌幅</th><th>驱动</th></tr>
+    <tr><td>9/16</td><td>$1,519.97</td><td class="dn2">-0.71%</td><td>美联储决议前观望</td></tr>
+    <tr><td>9/17</td><td>$1,614.39</td><td class="up">+6.21%</td><td>费半 +3.14%，存储板块集体走强（美光 +5.5%、SK 海力士 ADR +4.64%）</td></tr>
+    <tr><td>9/18</td><td><strong>$1,791.82</strong></td><td class="up">+10.99%</td><td>存储板块连续第二日强势 + 券商发布 HBF 长期潜力报告（华兴资本引述管理层）</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>关键价位：</strong>下方支撑 <strong>$1,600（布林中轨/MA5/MA20 密集区）→ $1,463（MA120）→ $1,200（8 月低点区）→ $1,000（7 月底部）</strong>；上方压力 <strong>$1,795（布林上轨，现价已触及）→ $2,000 整数关 → $2,354（历史高点）</strong>。<strong>RSI 72.3 + 贴布林上轨，短线追高的赔率很差。</strong></div>
 </div>
 
-<!-- 资金筹码 -->
+<!-- ============ 八、资金面 ============ -->
 <div class="card">
-  <h2>九、资金面与筹码</h2>
+  <h2>八、资金面与筹码</h2>
   <table>
     <tr><th>项目</th><th>数据</th><th>解读</th></tr>
-    <tr><td>机构持股比例</td><td>73.7%</td><td>高机构化，波动放大器</td></tr>
-    <tr><td>前五大股东</td><td>Vanguard 7.38% / BlackRock 5.92% / FMR 5.28% / Jane Street 4.97% / 西数 0.70%</td><td>母公司西数已基本退出（拆分时 ~19%→0.7%），抛压出清</td></tr>
-    <tr><td>指数纳入</td><td>MSCI 全球指数（8/31 生效）、纳斯达克100 纳入推进中</td><td>被动资金持续流入，历史上公告后数日平均 3-4% 超额</td></tr>
-    <tr><td>分析师评级</td><td>24 家覆盖：20 强买 / 1 买 / 3 持有（ABR 1.29）；买入占比 81%</td><td>共识极多，但 8 月出现密集下调（Citi 2500→2100、WF 1620→1400、Mizuho 1900→1875）</td></tr>
-    <tr><td>目标价分布</td><td>均值 $2,155-2,264，区间 $1,400-3,050</td><td>极宽区间=巨大分歧；最高 Bernstein $3,000，最低 WF $1,400</td></tr>
-    <tr><td>回购</td><td>$200亿授权（≈市值 8%），剩余 ~$155亿</td><td>超额现金 100% 返还承诺，托底信号</td></tr>
-    <tr><td>做空数据</td><td>[缺失]</td><td>Wind 未覆盖，待 Finviz/Yahoo 补充</td></tr>
+    <tr><td>机构持股比例</td><td>73.7%</td><td>高机构化，同时是波动放大器</td></tr>
+    <tr><td>前五大股东</td><td>Vanguard / BlackRock / FMR / Jane Street 4.97% / 西数 0.70%</td><td>母公司西数已基本退出（拆分时约 19% → 0.7%），抛压出清</td></tr>
+    <tr><td>Vanguard + BlackRock</td><td class="up">增持后合计超 14%</td><td>9 月投资者日后回调期间加仓</td></tr>
+    <tr><td>Jane Street（量化）</td><td>持股 5.47%（741 万股，约 $90 亿）</td><td><strong>8/25 披露增持 540%</strong>，跃升为其第二大单一股票持仓（仅次于 SPY）</td></tr>
+    <tr><td>CFO 减持</td><td class="dn2">减持 $157 万</td><td>发生在投资者日指引不及预期引发盘后 -5% 之后，值得注意的信号</td></tr>
+    <tr><td>指数纳入</td><td>MSCI 全球指数（8/31 生效）；纳斯达克 100 纳入推进中</td><td>被动资金持续流入</td></tr>
+    <tr><td>分析师评级</td><td>16-25 家覆盖：<strong>87.5% 买入</strong>，12.5% 持有，0 卖出</td><td>共识极多</td></tr>
+    <tr><td>目标价分布</td><td>均价 $2,125-2,183；区间 <strong>$1,400 - $3,050</strong></td><td>极宽区间 = 巨大分歧</td></tr>
   </table>
-  <div class="sig sig-warn"><strong>8 月的关键剧本：</strong>8/6 财报超预期但股价 -8%（指引不及市场不断上调的预期）→ 8/13 投资者日（长协+回购框架）单日 +15% → 月末 MSCI 纳入。资金行为说明：市场对"业绩好"已钝化，只对"可持续性证据"付费。</div>
+
+  <h3>卖方观点分歧图谱 <span class="new-badge">本次新增</span></h3>
+  <table>
+    <tr><th>机构</th><th>评级</th><th>目标价</th><th>核心逻辑</th></tr>
+    <tr><td>Bernstein</td><td>跑赢大盘</td><td class="up">$3,000</td><td>自 7 月维持；认为长协"比以往更强"，并看好 Astra/AI 训练算子自动化带来的新需求</td></tr>
+    <tr><td>Barclays</td><td>增持（5 月上调）</td><td class="up">$2,300</td><td>由 $1,200 上调；"存储板块进入由长期合约、供应收紧与前所未有的定价能见度驱动的新阶段"</td></tr>
+    <tr><td>Goldman Sachs</td><td>买入</td><td class="up">$2,200</td><td>9/10 维持；<strong>底价机制支持下行情景可实现约 80% 毛利率</strong>；看好 HBF + KV Cache 分层卸载至 eSSD</td></tr>
+    <tr><td>Citi</td><td>—</td><td class="dn2">$2,100（下调）</td><td>由 $2,500 下调</td></tr>
+    <tr><td>Mizuho</td><td>—</td><td class="dn2">$1,875（下调）</td><td>由 $1,900 下调</td></tr>
+    <tr><td>Wells Fargo</td><td>—</td><td class="dn2">$1,400（最低）</td><td>由 $1,620 下调——对周期持续性最悲观</td></tr>
+    <tr><td>Morningstar</td><td>—</td><td>公允价值测算</td><td><strong>价格溢价公允价值约 63%</strong>；警示 2028-2029 年 YMTC 与 JV 产能洪峰</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>分歧的形态值得注意：</strong>8 月出现"密集下调"（Citi $2,500→$2,100、Mizuho $1,900→$1,875、WF $1,620→$1,400），随后股价却在 9 月三日内上涨 17.9%。<strong>目标价下修与股价上涨同向背离</strong>——这与腾讯案例中"卖方评级背离"的形态类似，但方向相反：此处是卖方小步下修、股价快速上行。这种背离通常不可持续，收敛方向取决于 10 月财报。</div>
 </div>
 
-<!-- 跟踪指标 -->
+<!-- ============ 九、跟踪指标 ============ -->
 <div class="card">
-  <h2>十、关键跟踪指标与催化剂日历</h2>
+  <h2>九、关键跟踪指标与催化剂日历</h2>
   <h3>基本面验证仪表盘</h3>
   <table>
     <tr><th>指标</th><th>当前值</th><th>警惕阈值</th><th>信号含义</th></tr>
-    <tr><td>NAND 合约价环比</td><td>Q3 +17~20%（伯恩斯坦实测）</td><td>&lt;10% 或转负</td><td>周期二阶导，最核心先行指标</td></tr>
+    <tr><td>NAND 合约价环比</td><td>Q1 +60% → Q2 +75% → <strong>Q3 +15%</strong></td><td>转负</td><td>周期二阶导，最核心先行指标（已在放缓）</td></tr>
     <tr><td>长协执行价 vs 协议上限</td><td>部分客户已逼近上限</td><td>大范围触帽</td><td>涨价传导失效的确认信号</td></tr>
-    <tr><td>消费板块营收环比</td><td class="dn2">-32%</td><td>继续双位数下滑</td><td>需求摧毁的先行指标</td></tr>
+    <tr><td>消费板块营收环比</td><td class="dn2">-32%</td><td>继续双位数下滑</td><td>需求摧毁的先行指标（已亮红灯）</td></tr>
     <tr><td>YMTC 全球份额</td><td>14%（同比 +5pct）</td><td>&gt;18%</td><td>国产替代侵蚀定价权</td></tr>
     <tr><td>长协覆盖率</td><td>FY27 ~50% / FY28 ~2/3</td><td>新增签约停滞</td><td>NBM 模式成色的直接度量</td></tr>
-    <tr><td>HBF 里程碑</td><td>标准已立，ES 2H26</td><td>样品延期</td><td>第二增长曲线可信度</td></tr>
+    <tr><td>带财务担保合约占比</td><td class="dn2">不足 20%</td><td>—</td><td>长协"保底"的实际强度打折</td></tr>
+    <tr><td>HBF 里程碑</td><td class="dn2">首批推理样品推迟至 2027</td><td>再延期</td><td>第二增长曲线可信度下修</td></tr>
+    <tr><td>资产负债率</td><td>30.08%（Q2 为 21.4%）</td><td>继续上升</td><td>需核实营运资本扩张性质</td></tr>
   </table>
+
   <h3>催化剂日历</h3>
   <table>
     <tr><th>时间</th><th>事件</th><th>方向</th><th>置信度</th></tr>
-    <tr><td>2026-10 月初</td><td>FY27Q1 财报（指引营收 $103-108亿 / EPS $44-46）</td><td>超预期→利好；不及→剧烈波动</td><td>高</td></tr>
-    <tr><td>2026 Q4</td><td>HBF 工程样品交付</td><td>利好（若如期）</td><td>中</td></tr>
-    <tr><td>2026 Q4-2027</td><td>纳斯达克100 正式纳入</td><td>利好（被动买盘）</td><td>中高</td></tr>
-    <tr><td>2027 全年</td><td>HBF 量产 + 铠侠新产能爬坡</td><td>双刃：增量 TAM vs 供给释放</td><td>低</td></tr>
+    <tr><td><strong>2026 年 10 月下旬</strong></td><td><strong>FY27Q1 财报</strong>（指引营收 $103-108 亿 / non-GAAP EPS $44-46）</td><td>超预期→利好；不及→剧烈波动</td><td>高</td></tr>
+    <tr><td>2026 Q4</td><td>投资者日后的首份完整季度验证（毛利率平台期是否成立）</td><td>中性偏空</td><td>中</td></tr>
+    <tr><td>2026 Q4 - 2027</td><td>纳斯达克 100 正式纳入</td><td>利好（被动买盘）</td><td>中高</td></tr>
+    <tr><td>2027 全年</td><td>HBF 首批推理样品送样（已推迟）</td><td>利好（若如期）</td><td>中</td></tr>
     <tr><td>2027 H2</td><td>TrendForce 预警 NAND 供需缺口转正</td><td class="dn2">利空（周期拐点）</td><td>中</td></tr>
+    <tr><td>2028-2029</td><td>YMTC 与 JV 新产能集中投产</td><td class="dn2">利空（供给洪峰）</td><td>中低</td></tr>
   </table>
 </div>
 
-<!-- 风险 -->
+<!-- ============ 十、风险 ============ -->
 <div class="card">
-  <h2>十一、风险提示（三层）</h2>
+  <h2>十、风险提示（三层）</h2>
   <h3>宏观层</h3>
   <ol>
-    <li><strong>利率与风偏（触发条件：10Y 美债利率再度上行 / AI capex 叙事降温）——严重程度：中高。</strong>9/4 大涨的部分推手恰是 Waller 鸽派言论压低收益率；高 Beta（4.37）意味着宏观逆风时回撤被极端放大（1 年内已演示过 -56.5%）。</li>
-    <li><strong>地缘/国产替代（触发条件：中国云厂商联合抵制涨价、YMTC 份额 &gt;18%）——严重程度：中高。</strong>中国是 NAND 最大买方市场之一，已有头部云厂商拒绝 Q3 提价、转向国产方案。</li>
+    <li><strong>利率环境逆转（严重程度：高 · 本次新增）</strong>——触发条件：美联储继续加息（9/17 已加息 25bp 至 3.75-4.00%）/ 10Y 美债站稳 5% 以上。<strong>Beta 4.37</strong> 意味着 SNDK 是高利率环境下最脆弱的资产类型之一（1 年内已演示 -56.5% 回撤）。</li>
+    <li><strong>地缘与国产替代（严重程度：中高）</strong>——触发条件：中国云厂商联合抵制涨价、YMTC 份额 &gt;18%。中国是全球 NAND 最大买方市场之一，已有头部云厂商拒绝 Q3 提价、转向国产方案。</li>
   </ol>
   <h3>行业层</h3>
-  <ol start="3">
-    <li><strong>NAND 四年周期魔咒（触发条件：TrendForce 2H27 缺口转正 + SK海力士 383亿美元新厂 2031 年前投产）——严重程度：高。</strong>供给端扩产已启动，需求端手机 -15~20%、笔电 -10% 的价格反噬已现。</li>
-    <li><strong>长协价格帽（触发条件：长协客户采购价大面积触帽）——严重程度：中高。</strong>"锁量"的另一面是"锁价"，市场价再涨也传导不到报表。</li>
+  <ol>
+    <li><strong>NAND 四年周期魔咒（严重程度：高）</strong>——触发条件：TrendForce 2H27 缺口转正 + SK 海力士 $383 亿新厂（2031 年前投产）。价格上行正面临"双重天花板"：需求端 PC/手机抵触形成负反馈，供给端长协价格上限被触及。</li>
+    <li><strong>涨价二阶导已明显放缓（严重程度：高 · 本次上调）</strong>——NAND 合约价 Q1 +60% → Q2 +75% → <strong>Q3 仅 +15%</strong>，TrendForce 称为"明显放缓"。当前 84.6% 的毛利率建立在涨价基础上，节奏放缓意味着利润增速的拐点先于价格的拐点。</li>
+    <li><strong>长协价格帽（严重程度：中高）</strong>——"锁量"的另一面是"锁价"，市场价再涨也传导不到报表。</li>
   </ol>
   <h3>公司层</h3>
-  <ol start="5">
-    <li><strong>客户集中度（触发条件：任一超级大客户砍单/转单）——严重程度：高。</strong>8 家 NBM 客户贡献过半出货。</li>
-    <li><strong>份额流失（触发条件：NAND 份额跌破 10%）——严重程度：中。</strong>13%→11%，YMTC 14% 且升。</li>
-    <li><strong>盈利对价格的超高弹性（触发条件：ASP 环比转负）——严重程度：高。</strong>本季增长的 2/3 来自涨价，反过来跌价时利润弹性同样剧烈。</li>
+  <ol>
+    <li><strong>客户集中度（严重程度：高）</strong>——8 家 NBM 客户贡献过半出货；且<strong>不足 20% 的合约带财务担保</strong>，长协的"保底"成色需打折。</li>
+    <li><strong>份额流失（严重程度：中）</strong>——NAND 份额 13% → 11%，YMTC 14% 且仍在上升。</li>
+    <li><strong>盈利对价格的超高弹性（严重程度：高）</strong>——本季增长约 2/3 来自涨价，反向跌价时利润弹性同样剧烈。</li>
+    <li><strong>HBF 兑现风险（严重程度：中 · 本次上调）</strong>——样品时间已从 2H26 推迟至 2027，且未纳入 FY28-30 营运模型，存在再度延期的可能。</li>
+    <li><strong>内部人减持信号（严重程度：中低 · 本次新增）</strong>——CFO 减持 $157 万，发生在投资者日后股价回调期间。</li>
   </ol>
+
   <h3>敏感性测算</h3>
   <table>
     <tr><th>情景</th><th>核心变量假设</th><th>对 FY28E EPS 影响</th><th>对应估值</th></tr>
-    <tr><td>悲观</td><td>NAND ASP 自顶部 -30%~-40%，长协兜底 $23.5亿/季营收</td><td>回落至 ~$90-120（-50%以上）</td><td>$900-1,050（9-10x）</td></tr>
-    <tr><td>中性</td><td>ASP 平台期小幅波动，长协履约正常</td><td>~$150-180</td><td>$1,800-2,200（10-12x）</td></tr>
-    <tr><td>乐观</td><td>供紧延续至 2028 + HBF 贡献增量</td><td>~$250-300</td><td>$2,800-3,000（10-12x）</td></tr>
+    <tr><td>悲观</td><td>NAND ASP 自顶部回落 30-40%，长协兜底 $23.5 亿/季营收</td><td>回落至 $90-120（-50% 以上）</td><td class="dn2">$950-1,100（9-10x）</td></tr>
+    <tr><td>中性</td><td>ASP 平台期小幅波动，长协履约正常</td><td>$150-180</td><td>$1,800-2,200（10-12x）</td></tr>
+    <tr><td>乐观</td><td>供紧延续至 2028 + HBF 贡献增量</td><td>$250-300</td><td class="up">$2,800-3,000（10-12x）</td></tr>
   </table>
-  <p style="font-size:12px;color:#888;margin-top:10px">免责声明：本报告仅供研究参考，不构成个人投资建议。数据来源：Wind（截至 2026-09-04）、公司披露与公开新闻（智通财经、时代财经、Benzinga、TipRanks、Zacks、TrendForce 转引等）；标注 [缺失]/[推断]/[模型估算] 处为数据缺口或作者估算。</p>
 </div>
 
-<div class="footer">Sandisk (SNDK.O) 深度诊断报告 v1.0 · 诊断时间 2026-09-08 · 12 步框架 · 数据截至 2026-09-04 美股收盘<br>框架：Brad Stock Analysis · 生成：WorkBuddy</div>
+<div class="card">
+  <h2>本次更新的核心结论</h2>
+  <div class="sig sig-bull"><strong>维持看好的部分（未变）：</strong>NBM 长协对周期波动的平滑作用是真实的（8 家客户、10 份合约、$939 亿最低收入承诺、加权期限 &gt;4 年）；高盛测算底价机制支持下行情景仍可实现约 80% 毛利率；投资者日的 FCF 50% + 超额现金 100% 返还框架，是 NAND 行业史上最强股东回报设计。</div>
+  <div class="sig sig-warn"><strong>需要修正的部分（变了）：</strong>① <strong>HBF 时间表推迟一年</strong>——从"2H26 工程样品"到"2027 年首批推理样品"，第二增长曲线的可信度与兑现期都需重估；② <strong>NAND 涨价二阶导骤降</strong>（Q2 +75% → Q3 +15%），而现价的利润弹性高度依赖涨价；③ <strong>资产负债率从 21.4% 升至 30.08%</strong>，与"持续去杠杆"的表述出现出入；④ <strong>估值分位进一步走高</strong>（PB 90.3%），Morningstar 提示溢价公允价值 63%。</div>
+  <div class="sig sig-bear"><strong>操作含义：</strong>评级维持 <strong>"等待 / 不追高"</strong>。现价 $1,791.82 处于中性区间下沿，RSI 72.3 + 贴布林上轨，短线赔率差。持有者可继续持有，$2,000 以上分批兑现；空仓者等待回调至 <strong>$1,500-1,600</strong>（布林中轨/MA20/MA60 密集区）或 10 月财报验证后再介入。下行保护来自长协现金流，但不来自估值。</div>
 </div>
 
-<script>
-const ctx=document.getElementById('priceChart');
-const labels=["9/5","9/12","9/19","9/26","10/3","10/10","10/17","10/24","10/31","11/7","11/14","11/21","11/28","12/5","12/12","12/19","12/26","1/2","1/9","1/16","1/23","1/30","2/6","2/13","2/20","2/27","3/6","3/13","3/20","3/27","4/2","4/10","4/17","4/24","5/1","5/8","5/15","5/22","5/29","6/5","6/12","6/18","6/26","7/2","7/10","7/17","7/24","7/31","8/7","8/14","8/21","8/28","9/4"];
-const closes=[68.55,86.13,102.21,97.12,128.41,116.91,140.16,186.16,199.33,239.48,254.16,200.27,223.28,228.47,206.18,237.61,250.05,275.24,377.41,413.62,473.83,576.25,597.95,626.56,649.97,635.36,527.33,661.62,709.71,615.83,701.59,851.77,920.99,989.90,1187.00,1562.34,1407.61,1478.69,1694.98,1559.32,1980.10,2184.75,2090.71,1745.00,1915.92,1354.82,1436.56,1214.83,1212.21,1641.11,1596.08,1484.98,1740.00];
-new Chart(ctx,{type:'line',data:{labels:labels,datasets:[{label:'SNDK 周线收盘 ($)',data:closes,borderColor:'#1565c0',backgroundColor:'rgba(21,101,192,.08)',fill:true,tension:.25,pointRadius:0,borderWidth:2}]},options:{responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' $'+c.parsed.y.toFixed(2)}}},scales:{y:{ticks:{callback:v=>'$'+v}},x:{ticks:{maxTicksLimit:14}}}}});
-</script>
+<div class="footer">
+  诊断时间：2026-09-21 17:30 (GMT+8) · 版本：v2（重新分析）· 上一版：v1 2026-09-08<br>
+  框架：Brad Stock Analysis 12 步个股深度诊断 · 数据来源：Wind（截至 2026-09-18 收盘）、公司披露与电话会、高盛/伯恩斯坦/巴克莱/华兴资本/TrendForce/Morningstar、智通财经/时代财经转载<br>
+  ⚠ 本报告仅供研究参考，不构成个人投资建议。标注 [缺失]/[推断] 处为数据缺口或作者估算。
+</div>
+
+</div>
 </body>
 </html>
