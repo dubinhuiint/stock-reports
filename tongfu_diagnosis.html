@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>通富微电(002156.SZ) 深度诊断报告 2026-09-07</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+.header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.85}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
+.price{font-size:52px;font-weight:800}
+.chg{font-size:20px;padding:4px 12px;border-radius:8px}
+.chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+.chg.up{background:rgba(198,40,40,.2);color:#c62828}
+.card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h2{font-size:18px;color:#0d47a1;border-bottom:2px solid #e3f2fd;padding-bottom:10px;margin-bottom:16px}
+.card h3{font-size:15px;color:#1565c0;margin:20px 0 8px}
+.card h4{font-size:14px;color:#555;margin:12px 0 6px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
+.kv .lbl{font-size:11px;color:#888}
+.kv .val{font-size:20px;font-weight:700;color:#0d47a1}
+.kv .sub{font-size:11px;color:#555;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#e3f2fd;color:#0d47a1;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+tr:hover td{background:#f8f9fc}
+.up{color:#c62828}.dn2{color:#00c853}
+.sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
+.sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
+.vcard{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:12px;padding:24px;margin-bottom:16px}
+.vcard h2{font-size:20px;color:#0d47a1;margin-bottom:12px}
+.vcard .score{font-size:60px;font-weight:800;color:#1565c0;text-align:center;margin:10px 0}
+.tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
+.tech-item .name{font-size:12px;color:#888}
+.tech-item .val{font-size:20px;font-weight:700;color:#0d47a1}
+.tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bear{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-neutral{border:1px solid #ff8f00;color:#ff8f00;padding:1px 8px;border-radius:10px;display:inline-block}
+.assume{background:#fff8e1;border-left:3px solid #ffc107;padding:8px 12px;margin:12px 0;font-size:12px;border-radius:0 6px 6px 0}
+.assume strong{color:#f57c00}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.scen{border-radius:8px;padding:14px;text-align:center}
+.scen-bear{background:#e8f5e9}.scen-base{background:#e3f2fd}.scen-bull{background:#fce4ec}
+.scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}
+.scen .schg{font-size:12px}
+.footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
+ol li{padding:5px 0;font-size:14px}
+.small{font-size:11px;color:#999;display:block}
+.dupont-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.dupont-box{background:#f8f9fc;border-radius:10px;padding:16px;text-align:center}
+.dupont-box .title{font-size:12px;color:#888}
+.dupont-box .num{font-size:24px;font-weight:800;color:#0d47a1;margin:6px 0}
+.dupont-box .detail{font-size:11px;color:#555}
+.arrow{font-size:20px;color:#1565c0;font-weight:bold}
+.new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
+@media print{body{background:white;padding:0}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>通富微电（002156.SZ）深度诊断报告 <span class="new-badge">NEW</span></h1>
+  <div class="meta">报告版本 v1.0 ｜ 诊断时间 2026-09-07 ｜ 数据截至 2026-09-07 收盘 ｜ 数据来源：Wind、公司公告、公开新闻、券商研报</div>
+  <div class="price-row">
+    <span class="price">¥59.15</span>
+    <span class="chg up">+4.01%</span>
+    <span class="meta" style="font-size:14px;opacity:.9">总市值 898 亿 ｜ 52周区间 31.07 – 84.70 ｜ 距52周高点 -30.2%</span>
+  </div>
+</div>
+
+<!-- ============ 1. 综合诊断评分 ============ -->
+<div class="vcard">
+  <h2>① 综合诊断评分</h2>
+  <div class="score">64<span style="font-size:24px;color:#555"> / 100</span></div>
+  <p style="text-align:center;font-size:15px;color:#c62828;font-weight:700">评级：观望 / 等待（偏贵区间顶部，主业强劲但估值已计入较多预期）</p>
+  <table>
+    <tr><th>维度</th><th>权重</th><th>得分</th><th>核心依据</th></tr>
+    <tr><td>基本面</td><td>25%</td><td class="up">75</td><td>营收加速（+17%→+23%）、毛利率上行、扣非+78%；但 ROIC 5.2% 仍低于 WACC，扩产期 FCF 为负</td></tr>
+    <tr><td>估值</td><td>25%</td><td>58</td><td>PE(TTM) 35.6x（3年分位 0.2%）被公允价值收益拉低；扣非 TTM PE ≈77x；PB 5.33x 处 3 年 88% / 5 年 93% 分位</td></tr>
+    <tr><td>成长性</td><td>10%</td><td class="up">82</td><td>2026E 归母 +79%、2028E +25%；AMD 数据中心 +107% 直接传导；AI+存储+车载+国产四条曲线</td></tr>
+    <tr><td>技术面</td><td>10%</td><td>55</td><td>自 84.7 高点回撤 30%；KDJ/CCI 超卖回升，但 MACD 零轴下、MA10/20/60 全数压制，反弹未确认趋势</td></tr>
+    <tr><td>资金情绪</td><td>10%</td><td>60</td><td>近 5 日主力净流出 13.9 亿；近 60 日仍净流入 74.5 亿；42.2 亿定增落地获 18 家机构认购</td></tr>
+    <tr><td>风险</td><td>10%</td><td class="dn2">45</td><td>AMD 单一客户 49%、前五大 69.5%；有息负债 209 亿、速动 0.53；公允价值收益不可持续；Beta 最高 2.85</td></tr>
+    <tr><td>筹码/事件</td><td>5%</td><td>65</td><td>定增价 55.38 元形成成本锚；大基金持股稳定；股东户数 56.1 万偏高</td></tr>
+    <tr><td>机构共识</td><td>5%</td><td class="up">75</td><td>花旗「买入 TP 80 元」、国信「优于大市」，Wind 综合目标价 83 元（+40%）；8-9 月覆盖机构全部买入/增持</td></tr>
+  </table>
+  <div class="sig sig-warn"><b>硬性约束检查：</b>基本面+估值 = 133 ≥ 120 ✓；风险 = 45（未触发 &lt;45 总分上限 65 的约束）✓</div>
+  <div class="sig sig-bull"><b>核心判断：</b>通富微电正处「AMD AI 算力放量 + 存储上行 + 国产化」三重共振的盈利兑现期，Q2'26 营收/利润创单季历史新高，主业（扣非）+82% 增长扎实。但市场已经给了很高的账面定价：PB 5.33x 处于 5 年 93% 分位，剔除公允价值收益后的真实 PE（扣非 TTM ≈77x、2026E 前瞻 ≈41x）并不便宜。股价自 7 月中旬 84.7 元高点已回撤 30%，短线超卖但中期趋势转弱。<b>当前 64 分落在「等待」区间顶部：持有的等反弹减仓，空仓的不追，优先等待 PB 回落或扣非盈利继续上修带来的估值再平衡。</b></div>
+</div>
+
+<!-- ============ 2. 行情快照 ============ -->
+<div class="card">
+  <h2>② 行情快照（2026-09-07 收盘）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新价 / 涨跌幅</div><div class="val up">59.15 / +4.01%</div><div class="sub">成交额 38.9 亿 ｜ 换手率 4.37%</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val">897.7 亿</div><div class="sub">总股本 15.18 亿股（全流通）</div></div>
+    <div class="item"><div class="lbl">PE(TTM)</div><div class="val">35.6x</div><div class="sub">3年分位 <b class="dn2">0.2%</b> ｜ 5年分位 23.4%（失真，见下）</div></div>
+    <div class="item"><div class="lbl">PB(LF)</div><div class="val">5.33x</div><div class="sub">3年分位 <b class="up">87.7%</b> ｜ 5年分位 <b class="up">92.6%</b></div></div>
+    <div class="item"><div class="lbl">PE(LYR) / 扣非TTM PE</div><div class="val">73.7x / ≈77x</div><div class="sub">LYR 基于 FY2025 归母 12.18 亿</div></div>
+    <div class="item"><div class="lbl">52周区间</div><div class="val">31.07 – 84.70</div><div class="sub">YTD +57.1% ｜ 250日 +98.1%</div></div>
+    <div class="item"><div class="lbl">Beta / 年化波动率</div><div class="val">1.53 / 55.7%</div><div class="sub">近1年 Beta 2.85、波动率 65.6%、最大回撤 -38.2%</div></div>
+    <div class="item"><div class="lbl">股息率</div><div class="val">0.21%</div><div class="sub">FY2025 派息 0.126 元/股（1.91 亿）</div></div>
+    <div class="item"><div class="lbl">机构一致目标价</div><div class="val">83.00 元</div><div class="sub">隐含空间 +40%（Wind 一致口径）</div></div>
+    <div class="item"><div class="lbl">下次财报</div><div class="val">2026年三季报</div><div class="sub">预计 10 月下旬披露</div></div>
+  </div>
+  <div class="sig sig-warn"><b>估值分位解读（周期股特别提示）：</b>PE 与 PB 分位严重背离是典型的周期上行特征——盈利暴增把 PE 压到历史最低分位，而股价上涨把 PB 推到历史最高分位。按 Brad 框架，周期股<b> PB 分位更可靠</b>：当前 PB 5.33x 已是 5 年 93% 分位，说明市场对「盈利持续兑现」的定价非常充分，PE 低分位不构成「便宜」的证据。更真实的锚是扣非口径：TTM 扣非净利 ≈11.7 亿，对应扣非 PE ≈77x；即使按一致预期 2026E 归母 21.8 亿（含投资收益），前瞻 PE 仍达 41x。</div>
+</div>
+
+<!-- ============ 3. 利润表趋势 ============ -->
+<div class="card">
+  <h2>③ 利润表趋势（单季口径）</h2>
+  <table>
+    <tr><th>季度</th><th>营收(亿)</th><th>营收 YoY</th><th>营收 QoQ</th><th>归母净利(亿)</th><th>归母 YoY</th><th>扣非净利(亿)</th><th>扣非 YoY</th><th>毛利率</th></tr>
+    <tr><td>25Q1</td><td>60.92</td><td>—</td><td>—</td><td>1.01</td><td>—</td><td>1.04</td><td>—</td><td>13.20%</td></tr>
+    <tr><td>25Q2</td><td>69.46</td><td>—</td><td>+14.0%</td><td>3.11</td><td>—</td><td>3.16</td><td>—</td><td>16.12%</td></tr>
+    <tr><td>25Q3</td><td>70.78</td><td>—</td><td>+1.9%</td><td>4.48</td><td>—</td><td>[缺]</td><td>—</td><td>16.18%</td></tr>
+    <tr><td>25Q4</td><td>78.05</td><td>—</td><td>+10.3%</td><td>3.58</td><td>—</td><td>[缺]</td><td>—</td><td>[缺]</td></tr>
+    <tr><td>26Q1</td><td>74.82</td><td class="up">+22.8%</td><td>-4.1%</td><td>3.29</td><td class="up">+224.6%</td><td>1.72</td><td class="up">+64.8%</td><td>13.31%</td></tr>
+    <tr><td><b>26Q2</b></td><td><b>85.59</b></td><td class="up"><b>+23.2%</b></td><td class="up"><b>+14.4%</b></td><td><b>13.88</b></td><td class="up"><b>+346.6%</b></td><td><b>5.76</b></td><td class="up"><b>+82%</b></td><td><b>17.31%</b></td></tr>
+  </table>
+  <p class="small">注：单季扣非 25Q3/Q4 Wind 未单列（FY2025 全年扣非 8.41 亿，H1 合计 4.20 亿，下半年合计 4.21 亿）。26Q1 毛利率按 Q2 环比 +4.0pct 反推。来源：Wind 单季序列、公司 2026 半年报、中财网</p>
+  <h3>利润损耗链拆解（2026H1：营业利润 → 归母净利润）</h3>
+  <table>
+    <tr><th>项目</th><th>金额(亿)</th><th>说明</th></tr>
+    <tr><td>毛利</td><td>24.79</td><td>毛利率 15.45%（同比 +0.73pct；Q2 单季 17.31%）</td></tr>
+    <tr><td>− 研发费用</td><td>-8.25</td><td>同比 +9.25%，研发强度 5.1%</td></tr>
+    <tr><td>− 财务费用</td><td>-3.50</td><td>有息负债 209 亿的利息负担，重资产封测厂的刚性损耗</td></tr>
+    <tr><td>− 资产减值损失</td><td>-0.68</td><td>—</td></tr>
+    <tr><td>+ 金融资产公允价值变动</td><td class="up">+11.45</td><td><b>核心变量：</b>产业投资收益（供应链上下游股权布局），属非经常性</td></tr>
+    <tr><td>= 归母净利润</td><td><b>17.17</b></td><td>其中扣非 7.47 亿 + 非经常性 9.70 亿</td></tr>
+  </table>
+  <div class="sig sig-warn"><b>盈利质量提示：</b>H1 归母 17.17 亿中 9.70 亿来自非经常性损益（公允价值变动 11.45 亿），<b>该部分不具备可持续性</b>。真正反映主业的是扣非 7.47 亿（+77.8%）——增速亮眼但绝对体量仍小，扣非净利率仅 4.66%。Q2 扣非 5.76 亿/毛利率 17.31% 是本轮周期最好的单季主业答卷，Q3 能否守住 17%+ 毛利率是关键验证点。Adjusted EBITDA（H1 剔除公允价值收益）≈34.9 亿，EBITDA 率 21.7%。</div>
+  <div style="height:280px;margin:16px 0"><canvas id="chartQ"></canvas></div>
+</div>
+
+<!-- ============ 4. ROE 杜邦 ============ -->
+<div class="card">
+  <h2>④ ROE 杜邦拆解</h2>
+  <table>
+    <tr><th>报告期</th><th>加权ROE</th><th>销售净利率</th><th>总资产周转率</th><th>权益乘数</th><th>ROIC</th><th>资产负债率</th></tr>
+    <tr><td>FY2023</td><td>1.22%</td><td>0.97%</td><td>0.632次</td><td>2.37</td><td>2.52%</td><td>57.87%</td></tr>
+    <tr><td>FY2024</td><td>4.75%</td><td>3.31%</td><td>0.644次</td><td>2.50</td><td>3.81%</td><td>60.06%</td></tr>
+    <tr><td>FY2025</td><td>8.08%</td><td>4.93%</td><td>0.645次</td><td>2.76</td><td>5.16%</td><td>63.73%</td></tr>
+    <tr><td><b>2026H1</b></td><td class="up"><b>10.54%</b></td><td>11.06%<span class="small">（扣非口径 4.66%）</span></td><td>0.325次(半年)</td><td>2.79</td><td>5.19%(半年)</td><td>64.14%</td></tr>
+  </table>
+  <div class="dupont-grid">
+    <div class="dupont-box"><div class="title">净利率驱动</div><div class="num">0.97% → 11.06%</div><div class="detail">ROE 改善的第一引擎：产能利用率提升 + 中高端产品占比上升；但 26H1 净利率含 11.45 亿公允价值收益，扣非净利率 4.66%</div></div>
+    <div class="dupont-box"><div class="title">周转率</div><div class="num">0.63 → 0.65次</div><div class="detail">基本走平：收入增长被同步的资产扩张（在建工程 45.6 亿）抵消，重资产属性决定周转率难有弹性</div></div>
+    <div class="dupont-box"><div class="title">杠杆</div><div class="num">2.37 → 2.79</div><div class="detail">权益乘数持续抬升，资产负债率 64.1%、有息负债 209 亿——ROE 有「借钱贡献」的成分</div></div>
+  </div>
+  <div class="sig sig-warn"><b>ROIC vs ROE 的差距是本报告最重要的基本面警告：</b>ROE 已从 1.2% 修复到 10.5%（半年），但 ROIC 只有 5.2%（年化约 8-10% 区间估计），仍处于「接近但不超过」WACC（半导体封测行业合理 WACC 8-9%）的临界带。这意味着：利润改善主要来自周期贝塔（产能利用率）+杠杆，而非资本回报率的质变。ROE 数字漂亮，但每一元新投入资本的回报还没跑赢资本成本——扩产（51.99 亿半年资本开支）的回报兑现需要 1-2 年验证。同业对比：通富 ROE 修复斜率显著快于长电（H1 归母 8.45 亿）与华天（8.13 亿），规模效应与 AMD 绑定是差异主因。</div>
+</div>
+
+<!-- ============ 5. 现金流 ============ -->
+<div class="card">
+  <h2>⑤ 现金流独立分析</h2>
+  <table>
+    <tr><th>报告期</th><th>经营现金流(亿)</th><th>资本开支(亿)</th><th>自由现金流(亿)</th><th>FCF利润率</th><th>净现比</th><th>EBITDA(亿) / EBITDA率</th></tr>
+    <tr><td>FY2023</td><td>42.93</td><td>51.25</td><td class="dn2">-8.32</td><td>-3.7%</td><td>19.9</td><td>43.48 / 19.5%</td></tr>
+    <tr><td>FY2024</td><td>38.77</td><td>45.54</td><td class="dn2">-6.77</td><td>-2.8%</td><td>4.90</td><td>47.33 / 19.8%</td></tr>
+    <tr><td>FY2025</td><td>69.66</td><td>62.11</td><td class="up">+7.54</td><td>+2.7%</td><td>5.06</td><td>56.97 / 20.4%</td></tr>
+    <tr><td><b>2026H1</b></td><td>29.33</td><td class="up">51.99</td><td class="dn2"><b>-22.66</b></td><td>-14.1%</td><td>1.65</td><td>46.30 / 28.9%<span class="small">（剔除公允价值收益 ≈34.9 / 21.7%）</span></td></tr>
+  </table>
+  <div class="sig sig-warn"><b>解读：</b>FY2025 是近三年唯一 FCF 转正的年份，但 2026 公司重新进入扩产高峰——H1 资本开支 51.99 亿（同比 +70.5%），FCF 再度大幅转负 22.7 亿。这本身不是坏事（AI 算力/存储/车载产能卡位优先于短期现金流），但它决定了：<b>① 42.2 亿定增是必要的，股权摊薄（约 5%）已经发生；② 未来 2-3 年 FCF 难以转正，估值只能建立在盈利而非现金流上；③ 若下游需求不及预期，高资本开支 + 高杠杆（净资产负债率 1.96）的组合会迅速放大风险。</b>经营现金流质量本身健康（净现比 1.65，利润的现金含量高）。</div>
+</div>
+
+<!-- ============ 6. 资产负债表 ============ -->
+<div class="card">
+  <h2>⑥ 资产负债表关键指标（2026-06-30）</h2>
+  <table>
+    <tr><th>科目</th><th>金额(亿)</th><th>占提示</th><th>科目</th><th>金额(亿)</th><th>占提示</th></tr>
+    <tr><td>总资产</td><td>515.27</td><td>—</td><td>资产负债率</td><td>64.14%</td><td>同业偏高水平</td></tr>
+    <tr><td>货币资金</td><td>48.21</td><td>现金短债覆盖偏弱</td><td>短期借款</td><td>35.80</td><td>货币资金可覆盖</td></tr>
+    <tr><td>交易性金融资产</td><td>7.73</td><td>—</td><td>长期借款</td><td>89.79</td><td>扩产配套</td></tr>
+    <tr><td>应收账款</td><td>53.45</td><td>占H1营收33%</td><td>应付债券</td><td>3.00</td><td>—</td></tr>
+    <tr><td>存货</td><td>50.09</td><td>占H1营收31%</td><td><b>有息负债合计</b></td><td><b>209.01</b></td><td>有息负债率 40.6%</td></tr>
+    <tr><td>固定资产+在建工程</td><td>~284</td><td>在建 45.55 亿持续投放</td><td>速动比率 / 流动比率</td><td>0.53 / 0.76</td><td>流动性偏紧</td></tr>
+    <tr><td>商誉</td><td>11.05</td><td>占归母净资产 6.6%，可控</td><td>归母净资产</td><td>168.42</td><td>定增后还将增厚 ~42 亿</td></tr>
+  </table>
+  <div class="sig sig-bear"><b>资产负债表是「重资产 + 中高杠杆」组合：</b>209 亿有息负债对应 48 亿货币资金，速动比率 0.53，财务弹性一般；好在 42.2 亿定增资金已到账（净额 42.09 亿，发行价 55.38 元/股），短期偿债与扩产弹药同步补强。商誉 11 亿来自 AMD 苏州/槟城收购，与核心业务绑定深，减值风险可控。</div>
+</div>
+
+<!-- ============ 7. 业务拆解与护城河 ============ -->
+<div class="card">
+  <h2>⑦ 业务拆解与竞争护城河</h2>
+  <h3>第一层：业务板块拆解（收入结构：集成电路封测 97.8% + 模具材料 2.2%）</h3>
+  <table>
+    <tr><th>业务线</th><th>2026H1 表现</th><th>生命周期</th><th>关键事实</th></tr>
+    <tr><td><b>AMD 绑定封测（苏州+槟城）</b></td><td>合计营收 96.6 亿，双厂均创历史新高</td><td>🚀 核心增长引擎</td><td>占 AMD 相关产品封测 80%+；AMD Q2'26 营收 115.4 亿美元(+50%)，数据中心 +107%；单一大客户占通富收入 48.98%；境外营收 101.7 亿(+13.1%，占 63.4%)</td></tr>
+    <tr><td><b>国产算力/先进封装</b></td><td>Chiplet、2D+ 堆叠切入 AI 推理芯片</td><td>🚀 核心增长引擎</td><td>5nm Chiplet 良率接近满产，3nm 多芯片封装 2025 年通过工艺验证；Bumping/晶圆测试产线投产；受益国产 AI 芯片供应链再分配</td></tr>
+    <tr><td><b>存储封测</b></td><td>存储景气上行，营收较快增长</td><td>📊 成长加速中</td><td>定增第一投向（募资 8 亿，新增年产能 84.96 万片）；高堆叠 LPDDR、rNand 方案完成开发；对接长江存储产业链</td></tr>
+    <tr><td><b>车载电子</b></td><td>收入高双位数增长</td><td>📊 成长业务</td><td>车载 MCU、功率器件、座舱主控、底盘域控；就近配套头部车企与 Tier1；定增投向 10.55 亿（四大项目中最大）</td></tr>
+    <tr><td><b>PMIC/SiP/显示驱动（国产模拟）</b></td><td>PMIC 圆片级封装、SiP 需求旺盛；显示驱动产值两位数增长</td><td>📊 成长业务</td><td>模拟芯片国产化窗口，绑定国内电源管理头部客户；薄 Die Hybrid SiP、光电合封(CPO)通过可靠性验证</td></tr>
+  </table>
+  <p class="small">境内收入 2026H1 达 58.71 亿（+45.2%），国产客户收入增速显著快于境外（+13.1%）——「去 AMD 单点依赖」的结构性转型已在发生，但境外占比仍 63.4%。</p>
+  <h3>第二层：竞争格局与护城河</h3>
+  <table>
+    <tr><th>公司</th><th>全球OSAT排名</th><th>市值(亿)</th><th>PE(TTM)</th><th>PB</th><th>26H1营收YoY</th><th>26H1归母(亿)</th><th>毛利率</th></tr>
+    <tr><td><b>通富微电</b></td><td>第4（份额8.0%）</td><td>898</td><td class="up"><b>35.6x（同业最低）</b></td><td>5.33</td><td>+23.0%</td><td class="up"><b>17.17（同业最高）</b></td><td>15.45%</td></tr>
+    <tr><td>长电科技</td><td>第3</td><td>1,235</td><td>63.7x</td><td>4.27</td><td>+5.0%</td><td>8.45</td><td>15.15%</td></tr>
+    <tr><td>华天科技</td><td>第6</td><td>535</td><td>41.2x</td><td>2.81</td><td>+35.1%</td><td>8.13</td><td>14.34%</td></tr>
+    <tr><td>甬矽电子</td><td>新锐</td><td>276</td><td>304x</td><td>7.20</td><td>+20.0%</td><td>0.39</td><td>16.74%</td></tr>
+  </table>
+  <p class="small">行业格局：全球 OSAT CR3（日月光/安靠/长电）约 45%，HHI 中等偏高；中国大陆第一为长电、第二为通富。来源：芯思想研究院、Wind（2026-09-07）</p>
+  <table>
+    <tr><th>护城河维度</th><th>评级</th><th>依据</th></tr>
+    <tr><td>技术壁垒</td><td class="up"><b>强</b></td><td>5nm Chiplet 良率接近满产、3nm 多芯片封装工艺验证通过、大尺寸 FC-BGA 量产；专利授权 800+；先进封装是摩尔定律放缓后的产业级技术壁垒</td></tr>
+    <tr><td>客户粘性</td><td class="up"><b>强（双刃剑）</b></td><td>与 AMD「合资+合作」模式（2016 年 3.71 亿美元收购两厂 85% 股权、AMD 反持 15%），股权+订单双重绑定，转换成本极高——但也是单点依赖的来源</td></tr>
+    <tr><td>成本优势</td><td><b>中</b></td><td>规模效应（全球第四）+ 大陆工程师红利；毛利率 15.5% 与长电持平、高于华天，但显著低于日月光（~30%+），高端占比仍在爬坡</td></tr>
+    <tr><td>网络效应</td><td><b>无</b></td><td>制造业属性，无平台型网络效应</td></tr>
+  </table>
+  <h3>第三层：技术代际与市场容量（半导体硬件类必做）</h3>
+  <table>
+    <tr><th>维度</th><th>现状与展望</th></tr>
+    <tr><td>当前主力代际</td><td>FC-BGA 大尺寸 + 5nm Chiplet 已量产（承接 AMD MI/EPYC 系列）；Bumping/晶圆级封装量产</td></tr>
+    <tr><td>下一代代际</td><td>3nm 多芯片封装通过工艺验证（2025）→ 量产爬坡期；2nm 节点前瞻布局；2.5D/3D、CPO 光电合封、玻璃基板（概念标签）为 2027+ 方向</td></tr>
+    <tr><td>代际迁移影响</td><td>先进封装 ASP 与毛利率显著高于传统封装；Q2 毛利率 17.31%（环比 +4.0pct）即为高端占比提升的直接证据；产能切换伴随折旧上升（H1 D&A 22.6 亿），毛利率中枢上移速度取决于高端放量节奏</td></tr>
+    <tr><td>TAM</td><td>全球封测市场 ~800 亿美元级，先进封装增速 10-15%+；2026H1 全球半导体营收 7020 亿美元（WSTS，同比翻倍）——AI 驱动的封测价值量重估是本轮周期的产业基础</td></tr>
+  </table>
+  <div class="sig sig-bull"><b>综合护城河评估：中强。</b>「AMD 深度绑定 + 先进封装代际卡位 + 国产化三重叙事」构成国内封测板块最强的组合之一；但单一大客户 49% 的收入集中度是护城河的反面，必须作为核心风险定价。</div>
+</div>
+
+<!-- ============ 8. 估值分析 ============ -->
+<div class="card">
+  <h2>⑧ 估值分析</h2>
+  <h4>Step 8.0 公司类型判断</h4>
+  <div class="sig sig-warn">单一业务线（封测 97.8%）+ 强周期属性（半导体封测，盈利与产能利用率强相关）→ 按 Brad 框架采用 <b>PEG + PB-ROE 双主锚 + EV/EBITDA 交叉验证</b>；周期股须用正常化盈利，警惕「盈利顶部 PE 最低」的假便宜。</div>
+  <h4>Step 8.1 Bottom-up 营收/利润路径（结合一致预期）</h4>
+  <table>
+    <tr><th>指标</th><th>FY2025A</th><th>FY2026E</th><th>FY2027E</th><th>FY2028E</th><th>一致预期来源</th></tr>
+    <tr><td>营业收入(亿)</td><td>279.21</td><td>345.40 (+23.7%)</td><td>409.80 (+18.7%)</td><td>472.82 (+15.4%)</td><td>Wind 28家/22家一致预期</td></tr>
+    <tr><td>归母净利润(亿)</td><td>12.18</td><td>21.79 (+78.8%)</td><td>24.14 (+10.8%)</td><td>30.24 (+25.3%)</td><td>同上</td></tr>
+    <tr><td>EPS(元)</td><td>0.80</td><td>1.44</td><td>1.59</td><td>1.99</td><td>注：未含本次定增摊薄</td></tr>
+    <tr><td>Forward PE</td><td>73.7x</td><td>41.2x</td><td>37.2x</td><td>29.7x</td><td>基于当前市值 897.7 亿</td></tr>
+  </table>
+  <div class="assume"><strong>关键假设：</strong>① AMD 数据中心维持高增长但 2027 增速自然回落（2027E 净利增速仅 +10.8% 是共识的主要分歧点）；② 扣非口径 2026E 约 14-15 亿（H1 已 7.47 亿），归母口径含产业投资收益；③ 定增 42.2 亿摊薄约 5% 未完全反映在一致预期 EPS 中；④ 存储募投项目 2027 年起贡献产能。</div>
+  <h3>估值锚定对比表</h3>
+  <table>
+    <tr><th>指标</th><th>当前</th><th>历史中枢/分位</th><th>同业均值</th><th>解读</th></tr>
+    <tr><td>PE(TTM)</td><td>35.6x</td><td>3年分位 0.2%（失真低）</td><td>~136x（4家，含甬矽异常值）</td><td>公允价值收益 11.45 亿压低分母</td></tr>
+    <tr><td>扣非 PE(TTM)</td><td>≈77x</td><td>—</td><td>—</td><td>真实主业的贵</td></tr>
+    <tr><td>Forward PE(2026E)</td><td>41.2x</td><td>—</td><td>长电 ~58x / 华天 ~34x（按各自预期）</td><td>介于两者之间</td></tr>
+    <tr><td>PB(LF)</td><td>5.33x</td><td class="up">3年分位 88% / 5年分位 93%</td><td>4.76x（长电4.27/华天2.81/甬矽7.20）</td><td><b>贵</b>：高于同业均值与自身历史</td></tr>
+    <tr><td>EV/EBITDA(TTM)</td><td>≈16x</td><td>—</td><td>—</td><td>EV≈1051 亿（含 209 亿有息负债）；TTM 调整后 EBITDA ≈67 亿（自算估算）</td></tr>
+    <tr><td>PEG</td><td>0.5（2026E 增速79%）</td><td>—</td><td>—</td><td>正常化增速（15-20%）口径下 PEG ≈ 2.1-2.7 → <b>不便宜</b></td></tr>
+    <tr><td>PB-ROE</td><td>PB 5.33x / ROE(年化) ~15-20%</td><td>—</td><td>—</td><td>ROE 回升通道成立，PB 高位有基本面支撑；但 ROIC 5.2% 尚未说服力十足</td></tr>
+  </table>
+  <div class="sig sig-bear"><b>估值结论：</b>PB-ROE 框架下，ROE 上行通道（1.2%→10.5% 半年）确实支撑高 PB，这是多头逻辑的合理内核；但 PB 5.33x 已处 5 年 93% 分位 + 扣非 PE 77x + 正常化 PEG &gt;2，三者共同指向「周期上行期的乐观定价」，安全边际不足。机构一致目标价 83 元（+40%）提供了上行参照，但外资口径（Investing.com 4 家分析师平均 TP 55.4 元，低于现价）与内资（花旗 80 / Wind 综合 83）存在显著分歧——<b>分歧本质是对 AMD 高增长持续性的定价差异</b>，这正是本报告认为「等待优于追高」的核心原因。</div>
+  <h3>三情景目标价（12 个月）</h3>
+  <div class="scenario-grid">
+    <div class="scen scen-bear"><div class="slbl">悲观（概率 25%）</div><div class="sval dn2">≈45 元</div><div class="schg">-24%｜AMD 增速降档+存储景气回落，PB 回归 4.0x（3年均值附近）或 2026E 扣非 12亿×40x</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（概率 50%）</div><div class="sval">58 – 65 元</div><div class="schg">0~+10%｜一致预期兑现：2026E 归母 22亿×42x ≈ 61 元；当前价 59.15 已在区间内</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观（概率 25%）</div><div class="sval up">76 – 83 元</div><div class="schg">+29~+40%｜Q3/Q4 扣非毛利率守住 17%+，2027E 上修至 26亿+，市场给 45x+，对应机构目标 80-83 元</div></div>
+  </div>
+  <p class="small">估值方法交集：中性情形下现价基本合理定价，向上弹性依赖业绩持续超预期而非估值扩张（PB 已近历史顶部）。</p>
+</div>
+
+<!-- ============ 9. 技术面 ============ -->
+<div class="card">
+  <h2>⑨ 技术面辅助（2026-09-07）</h2>
+  <div class="tech-grid">
+    <div class="tech-item"><div class="name">KDJ (9,3,3)</div><div class="val">19.5/21.5/15.5</div><span class="tag-oversold">超卖回升</span></div>
+    <div class="tech-item"><div class="name">MACD (12,26,9)</div><div class="val">-1.52/-1.13</div><span class="tag-bear">零轴下·绿柱收窄</span></div>
+    <div class="tech-item"><div class="name">RSI (6/12)</div><div class="val">40.7 / 43.4</div><span class="tag-neutral">中性偏弱</span></div>
+    <div class="tech-item"><div class="name">BOLL (20,2)</div><div class="val">54.0/61.8/69.6</div><span class="tag-neutral">中下轨间</span></div>
+    <div class="tech-item"><div class="name">CCI (14)</div><div class="val">-107.6</div><span class="tag-oversold">超卖区回升</span></div>
+  </div>
+  <table>
+    <tr><th>均线</th><th>MA5</th><th>MA10</th><th>MA20</th><th>MA60</th></tr>
+    <tr><td>数值(元)</td><td>59.33</td><td>61.08</td><td>62.64</td><td>66.27</td></tr>
+    <tr><td>价格相对位置</td><td class="up">略上方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td></tr>
+  </table>
+  <div class="sig sig-warn"><b>技术面综合：</b>7 月 15 日天量见顶 84.70 元后进入调整，最大回撤约 -34%（84.7 → 55.9 低点），当前 59.15 处于反弹后的整理位。多头信号：KDJ 低位（K 值从 14.7 回升至 19.5，接近金叉）、CCI 超卖回升、今日放量 +4% 站回 MA5；空头信号：MACD 零轴下方且 DIF 仍在 DEA 之下、价格被 MA10/20/60 全数压制、60 日主力资金虽为净流入但近 5 日加速流出。<b>结论：短线超卖反弹窗口，但中期下降趋势未反转；上方第一压力 61.1-62.6（MA10/MA20），更强压力 66.3（MA60）；下方支撑 55.9-54.0（8 月低点/BOLL 下轨），跌破 54 则打开回踩 51（定增前平台）的空间。</b>定增价 55.38 元是重要的心理/成本支撑锚。</div>
+</div>
+
+<!-- ============ 10. 资金面与筹码 ============ -->
+<div class="card">
+  <h2>⑩ 资金面与筹码分析</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">当日主力净流入</div><div class="val up">+0.61 亿</div><div class="sub">放量反弹日回流</div></div>
+    <div class="item"><div class="lbl">近5日主力净流入</div><div class="val dn2">-13.85 亿</div><div class="sub">占比 -1.50%，调整期流出</div></div>
+    <div class="item"><div class="lbl">近20日主力净流入</div><div class="val dn2">-11.20 亿</div><div class="sub">占比 -1.57%</div></div>
+    <div class="item"><div class="lbl">近60日主力净流入</div><div class="val up">+74.47 亿</div><div class="sub">占比 +4.37%，6-7 月主升浪大举建仓</div></div>
+    <div class="item"><div class="lbl">机构持股比例</div><div class="val">34.74%</div><div class="sub">公募重仓+大基金+外资</div></div>
+    <div class="item"><div class="lbl">股东户数</div><div class="val">56.13 万</div><div class="sub">2026Q2 末，筹码分散度偏高</div></div>
+  </div>
+  <h3>前十大股东（最新报告期）</h3>
+  <table>
+    <tr><th>#</th><th>股东</th><th>持股比例</th><th>性质</th></tr>
+    <tr><td>1</td><td>南通华达微电子集团</td><td>18.80%</td><td>控股股东</td></tr>
+    <tr><td>2</td><td>国家集成电路产业投资基金（一期）</td><td>5.00%</td><td>国家队</td></tr>
+    <tr><td>3</td><td>香港中央结算（陆股通）</td><td>3.89%</td><td>北向资金</td></tr>
+    <tr><td>4</td><td>苏州工业园区产业投资基金</td><td>1.00%</td><td>地方国资</td></tr>
+    <tr><td>5-10</td><td>华夏国证半导体芯片ETF、永赢半导体、大基金二期、交银施罗德、瑞众人寿、国联安半导体ETF</td><td>合计 ~2.4%</td><td>公募/险资/国家队</td></tr>
+  </table>
+  <div class="sig sig-bull"><b>筹码面要点：</b>① 42.2 亿定增以 55.38 元/股落地，获配 18 家机构（产业资本、公募、地方政府基金、境外机构、保险资管），形成明确的机构成本锚（现价仅高出定增价 6.8%）；② 大基金一期持股 5% 稳定，大基金二期进入前十大，国家队背书明确；③ 主动偏股基金最新 39 只持有（环比 +7 只），基金持股比例 1.24% 环比提升——机构在调整中逆势加仓；④ 近 60 日主力净流入 74.5 亿后近 20 日转为净流出 11.2 亿，属于「获利了结+高位换手」，筹码正从短线资金向定增机构与长线基金转移。<b>解禁时间表：Wind 未返回未来 12 个月明确解禁记录 [缺失]，定增股份锁定期 6 个月（约 2027 年 3 月到期）需跟踪。</b></div>
+</div>
+
+<!-- ============ 11. 跟踪指标与催化剂 ============ -->
+<div class="card">
+  <h2>⑪ 关键跟踪指标与催化剂日历</h2>
+  <h3>基本面验证指标</h3>
+  <table>
+    <tr><th>指标</th><th>当前值</th><th>关注阈值</th><th>信号含义</th></tr>
+    <tr><td>单季毛利率</td><td>17.31% (Q2'26)</td><td>≥17% 守住 = 多头 / &lt;15% = 空头</td><td>高端封装占比与产能利用率的直接读数</td></tr>
+    <tr><td>扣非净利增速</td><td>+82% (Q2'26)</td><td>Q3 扣非 ≥5.5 亿</td><td>主业真实增长，剔除非经常性干扰</td></tr>
+    <tr><td>AMD 数据中心增速</td><td>+107% (AMD Q2'26)</td><td>&gt;50% = 高景气 / 转负 = 周期见顶</td><td>48.98% 收入敞口的核心变量</td></tr>
+    <tr><td>境内收入增速</td><td>+45.2% (26H1)</td><td>维持 &gt;30%</td><td>「去 AMD 化」结构转型进度</td></tr>
+    <tr><td>ROIC</td><td>5.2% (年化~8-10%)</td><td>持续 &gt;9%（跑赢 WACC）</td><td>扩产回报兑现，ROE 质量升级</td></tr>
+    <tr><td>FCF</td><td>-22.7 亿 (26H1)</td><td>2027 年收窄至 -10 亿内</td><td>扩产期暂看投入，2027 起需回收</td></tr>
+  </table>
+  <h3>催化剂日历</h3>
+  <table>
+    <tr><th>时间</th><th>事件</th><th>影响方向</th><th>置信度</th></tr>
+    <tr><td>2026-10 下旬</td><td>三季报（Q3 扣非与毛利率验证）</td><td class="up">关键双向</td><td>高</td></tr>
+    <tr><td>2026-10 月</td><td>AMD Q3 财报（数据中心增速）</td><td class="up">双向传导</td><td>高</td></tr>
+    <tr><td>2026 Q4</td><td>存储价格周期（DDR5/HBM 涨价传导）</td><td class="up">利好</td><td>中</td></tr>
+    <tr><td>2026Q4-2027</td><td>定增四大募投项目产能爬坡（存储 84.96 万片/年）</td><td class="up">利好(中期)</td><td>中</td></tr>
+    <tr><td>2027-03 前后</td><td>定增限售股解禁（55.38 元成本，锁 6 个月）</td><td class="dn2">潜在压力</td><td>高</td></tr>
+    <tr><td>持续跟踪</td><td>国产 AI 芯片订单落地（Chiplet/2D+ 导入推理芯片）</td><td class="up">利好</td><td>中</td></tr>
+    <tr><td>风险事件</td><td>美对华出口管制升级波及 AMD 订单流向</td><td class="dn2">利空</td><td>低-中</td></tr>
+  </table>
+</div>
+
+<!-- ============ 12. 风险提示 ============ -->
+<div class="card">
+  <h2>⑫ 风险提示（三层风险）</h2>
+  <h3>宏观层</h3>
+  <ol>
+    <li><b>R1 地缘政治/出口管制（严重度：高）</b>：AMD 为美企，若美方进一步收紧对华半导体限制或 AMD 出口许可受限，通富 49% 的单一大客户收入面临直接冲击；反向风险：国产替代加速反而利好国内订单。触发条件：美国 BIS 新规、AMD 财报中对华业务指引。</li>
+    <li><b>R2 汇率（严重度：中）</b>：境外收入占 63.4%，人民币升值侵蚀美元计价订单的折算毛利。</li>
+  </ol>
+  <h3>行业层</h3>
+  <ol>
+    <li><b>R3 AI 资本开支周期回落（严重度：高）</b>：本轮盈利暴增高度依赖 AMD 数据中心 +107%，若 2027 年北美云厂商 capex 降速，封测产能利用率与毛利率将双杀。触发条件：AMD 数据中心增速 &lt;30%、存储价格转跌。</li>
+    <li><b>R4 封测价格竞争（严重度：中）</b>：日月光/长电在 2.5D/3D 先进封装上同样激进扩产，先进封装毛利率溢价可能被竞争稀释。</li>
+  </ol>
+  <h3>公司层</h3>
+  <ol>
+    <li><b>R5 客户集中度（严重度：高）</b>：单一客户 48.98%、前五大 69.5%（2023-2025 年为 72.6%/69.0%/69.5%），公司定增报告书已明示该风险。</li>
+    <li><b>R6 高杠杆+扩产失速（严重度：中高）</b>：有息负债 209 亿、速动比率 0.53、FCF -22.7 亿；若募投项目投产后需求不足，折旧（H1 D&A 22.6 亿）将进一步压缩利润。</li>
+    <li><b>R7 盈利质量（严重度：中）</b>：H1 归母的 57% 来自公允价值变动收益，市场若按扣非口径重定价，估值锚将从 35x PE 跳升至 77x。</li>
+    <li><b>R8 定增解禁摊薄（严重度：中）</b>：约 7622 万股（42.2 亿/55.38 元）2027 年 3 月前后解禁。</li>
+  </ol>
+  <h3>敏感性测算</h3>
+  <table>
+    <tr><th>核心变量</th><th>悲观情景</th><th>中性</th><th>乐观情景</th></tr>
+    <tr><td>AMD 相关收入增速（H2'26）</td><td>+10%（-30pct）→ H2 营收增速降至 ~8%，全年归母回落至 ~19 亿，目标价下修至 45-50 元</td><td>+50% → 一致预期兑现，对应 58-65 元</td><td>+100% 持续 → 2026E 上修至 24 亿+，对应 76-83 元</td></tr>
+    <tr><td>毛利率（Q3'26）</td><td>15%（环比 -2.3pct）→ 单季扣非 ~4 亿</td><td>17% 持平</td><td>18.5%（高端占比再升）→ 扣非 6.5 亿+</td></tr>
+    <tr><td>公允价值收益（H2'26）</td><td>归零 → 全年归母仅 ~21 亿（与一致预期持平但结构转扣非）</td><td>部分兑现</td><td>继续增厚（市场定价分化源）</td></tr>
+  </table>
+  <div class="sig sig-warn"><b>免责声明：本报告仅供研究参考，不构成个人投资建议。</b></div>
+</div>
+
+<div class="footer">
+  通富微电（002156.SZ）深度诊断报告 v1.0 ｜ 诊断时间：2026-09-07 ｜ 数据来源：Wind（行情/财务/估值分位/股东，口径截至 2026-09-07 收盘）、公司 2026 年半年度报告及定增发行情况报告书、证券时报/经济参考报/中财网/长江商报、国信证券研报（2026-09-03）、花旗研报（2026-08）、Wind 一致预期（28 家机构）<br>
+  Brad 12 步深度诊断框架 ｜ 单季数据由累计值倒推 ｜ [缺失] 项均已标注 ｜ 本报告不构成投资建议
+</div>
+
+</div>
+<script>
+const ctx = document.getElementById('chartQ');
+if (ctx) {
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['25Q1','25Q2','25Q3','25Q4','26Q1','26Q2'],
+      datasets: [
+        { label: '单季营收(亿)', data: [60.92,69.46,70.78,78.05,74.82,85.59], backgroundColor:'#1565c0', yAxisID:'y', borderRadius:4 },
+        { label: '归母净利(亿)', data: [1.01,3.11,4.48,3.58,3.29,13.88], backgroundColor:'#c62828', yAxisID:'y1', borderRadius:4 },
+        { label: '扣非净利(亿)', data: [1.04,3.16,null,null,1.72,5.76], backgroundColor:'#ff8f00', yAxisID:'y1', borderRadius:4 }
+      ]
+    },
+    options: {
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{ legend:{labels:{font:{size:11}}} },
+      scales:{
+        y:{ position:'left', title:{display:true,text:'营收(亿)'}, grid:{color:'#f0f0f0'} },
+        y1:{ position:'right', title:{display:true,text:'净利(亿)'}, grid:{drawOnChartArea:false} }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
