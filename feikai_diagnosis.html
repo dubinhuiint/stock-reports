@@ -55,15 +55,9 @@ tr:hover td{background:#f8f9fc}
 .footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
 ol li{padding:5px 0;font-size:14px}
 .small{font-size:11px;color:#999;display:block}
-.dupont-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
-.dupont-box{background:#f8f9fc;border-radius:10px;padding:16px;text-align:center}
-.dupont-box .title{font-size:12px;color:#888}
-.dupont-box .num{font-size:24px;font-weight:800;color:#0d47a1;margin:6px 0}
-.dupont-box .detail{font-size:11px;color:#555}
-.arrow{font-size:20px;color:#1565c0;font-weight:bold}
 .new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
 .chart-wrap{position:relative;height:300px;margin:16px 0}
-@media(max-width:640px){.tech-grid{grid-template-columns:repeat(2,1fr)}.scenario-grid,.dupont-grid{grid-template-columns:1fr}.price{font-size:38px}}
+@media(max-width:640px){.tech-grid{grid-template-columns:repeat(2,1fr)}.scenario-grid{grid-template-columns:1fr}.price{font-size:38px}}
 @media print{body{background:white;padding:0}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
 </style>
 </head>
@@ -172,23 +166,18 @@ ol li{padding:5px 0;font-size:14px}
   <div class="assume"><strong>口径：</strong>EBITDA 采用 Wind 反推法累计值。EBITDA Margin 从 2024 年 18.2% → 2025 年 22.6%，两年提升 8 个百分点，是公司盈利能力改善最直观的证据——这一改善同时来自产品结构升级（高毛利显示材料占比提升）与规模效应（折旧摊销占总收入比重下降）。2026H1 的 26.1% 与 2025H1 的 26.3% 基本持平，主因是 Q2 营收增速放缓，规模效应暂时停滞。</div>
 </div>
 
-<!-- ④ ROE 杜邦拆解 -->
+<!-- ④ ROE -->
 <div class="card">
-  <h2>④ ROE 杜邦拆解与 ROIC</h2>
+  <h2>④ ROE 与 ROIC</h2>
   <table>
-    <tr><th>期间</th><th>ROE</th><th>净利率</th><th>总资产周转率</th><th>权益乘数</th></tr>
-    <tr><td>2024 全年</td><td>6.27%</td><td>9.34%</td><td>0.447</td><td>1.585</td></tr>
-    <tr><td>2025 全年</td><td>8.74%</td><td>12.63%</td><td>0.475</td><td>1.388</td></tr>
-    <tr><td>2025H1</td><td>4.87%</td><td>15.41%</td><td>0.215</td><td>1.377</td></tr>
-    <tr style="background:#e3f2fd"><td><strong>2026H1</strong></td><td><strong>5.27%</strong></td><td><strong>16.34%</strong></td><td><strong>0.243</strong></td><td><strong>1.332</strong></td></tr>
-    <tr><td>2026H1 年化</td><td>≈10.5%</td><td>16.34%</td><td>0.486</td><td>1.332</td></tr>
+    <tr><th>期间</th><th>ROE</th></tr>
+    <tr><td>2024 全年</td><td>6.27%</td></tr>
+    <tr><td>2025 全年</td><td>8.74%</td></tr>
+    <tr><td>2025H1</td><td>4.87%</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>2026H1</strong></td><td><strong>5.27%</strong></td></tr>
+    <tr><td>2026H1 年化</td><td>≈10.5%</td></tr>
   </table>
-  <div class="dupont-grid">
-    <div class="dupont-box"><div class="title">净利率（盈利能力）</div><div class="num">16.34%</div><div class="detail">2025H1 15.41% → <span class="up">+0.93pct</span><br><span class="small">最核心的 ROE 驱动项</span></div></div>
-    <div class="dupont-box"><div class="title">总资产周转率（运营效率）</div><div class="num">0.243</div><div class="detail">2025H1 0.215 → <span class="up">+0.028</span><br><span class="small">仍在低位，重资产扩张期</span></div></div>
-    <div class="dupont-box"><div class="title">权益乘数（财务杠杆）</div><div class="num">1.332</div><div class="detail">2025H1 1.377 → <span class="dn2">-0.045</span><br><span class="small">杠杆在下降，非杠杆驱动</span></div></div>
-  </div>
-  <div class="sig sig-bull"><strong>ROE 改善的质量判断（最优类型）：</strong>ROE 从 2024 年 6.27% 提升至 2026H1 年化约 10.5%，驱动力分解为——净利率贡献 +9.6%（盈利能力）、周转率贡献 +3.1%（运营效率）、权益乘数贡献 <span class="dn2">-1.5%</span>（去杠杆）。<strong>这是一个纯粹由盈利能力和效率驱动的 ROE 改善，而非靠加杠杆堆出来的，质量最优。</strong>更关键的是周转率仍仅 0.486（年化），系在建工程与募投项目尚未转固产生收入所致——一旦 3 万吨半导体材料、1 万吨先进封装材料等产能达产，周转率提升将带来 ROE 的二次跃升。</div>
+  <div class="sig sig-bull"><strong>ROE 改善的质量判断（最优类型）：</strong>ROE 从 2024 年 6.27% 提升至 2026H1 年化约 10.5%，<strong>驱动力来自盈利能力的持续提升，且同期财务杠杆在主动下降——并非靠加杠杆堆出来的，质量最优。</strong>更关键的是资产效率仍处低位，系在建工程与募投项目尚未转固产生收入所致——一旦 3 万吨半导体材料、1 万吨先进封装材料等产能达产，效率提升将带来 ROE 的二次跃升。</div>
 
   <h3>ROIC（投入资本回报率）</h3>
   <table>
