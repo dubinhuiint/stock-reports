@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sandisk (SNDK) 深度诊断报告 v2 | 2026-09-21</title>
+<title>Sandisk (SNDK) 深度诊断报告 v3 | 2026-09-23</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
@@ -63,7 +63,7 @@ ol li{padding:5px 0;font-size:14px}
 
 <div class="header">
   <h1>Sandisk Corporation (SNDK.O) 深度诊断报告</h1>
-  <div class="meta">v2 · 更新版 | 报告日期 2026-09-21 | 数据截至 2026-09-18 美股收盘 | 框架：Brad Stock Analysis 12 步</div>
+  <div class="meta">v3 · 估值框架重构 | 报告日期 2026-09-21 · v3 重构 2026-09-23 | 数据截至 2026-09-18 美股收盘 | 框架：Brad Stock Analysis 12 步</div>
   <div class="meta">数据来源：Wind（行情/财务/估值分位）· 公司披露与电话会 · 高盛/伯恩斯坦/巴克莱/华兴资本 · TrendForce · Morningstar</div>
   <div class="price-row">
     <div class="price">$1,791.82</div>
@@ -141,7 +141,7 @@ ol li{padding:5px 0;font-size:14px}
   <div class="kv">
     <div class="item"><div class="lbl">营业收入</div><div class="val">$202.48 亿</div><div class="sub">+175% YoY</div></div>
     <div class="item"><div class="lbl">归母净利润</div><div class="val">$114.33 亿</div><div class="sub">上年 -$16.41 亿</div></div>
-    <div class="item"><div class="lbl">销售毛利率</div><div class="val">71.47%</div><div class="sub">周期中段约 30-40%</div></div>
+    <div class="item"><div class="lbl">销售毛利率（GAAP）</div><div class="val">71.47%</div><div class="sub">营业利润率 61.58% · 周期中段毛利率约 30-40%</div></div>
     <div class="item"><div class="lbl">每股收益</div><div class="val">$77.78</div><div class="sub">基本 EPS</div></div>
     <div class="item"><div class="lbl">ROE</div><div class="val">91.64%</div><div class="sub">净利率驱动型周期顶部</div></div>
     <div class="item"><div class="lbl">经营现金流</div><div class="val">$116.71 亿</div><div class="sub">随提价快速兑现</div></div>
@@ -149,7 +149,7 @@ ol li{padding:5px 0;font-size:14px}
     <div class="item"><div class="lbl">资产负债率</div><div class="val">30.08%</div><div class="sub"><span class="up">较 Q2 的 21.4% 上升 8.7pp</span></div></div>
   </div>
 
-  <div class="sig sig-warn"><strong>增长质量拆解（v1 判断在本轮被证实）：</strong>管理层在财报电话会明确披露，FY26Q4 营收环比 +51% 中<strong>仅约 1/3 来自位元出货增长、约 2/3 来自 NAND 涨价</strong>。利润弹性主要由价格周期贡献，而非需求同步扩张。全行业营业利润率均已到历史极值区（美光 80.4%、铠侠 80%、海力士 76.3%、三星约 75%）——<strong>SNDK 的 78.5% 并无个体超额优势</strong>。</div>
+  <div class="sig sig-warn"><strong>增长质量拆解（v1 判断在本轮被证实）：</strong>管理层在财报电话会明确披露，FY26Q4 营收环比 +51% 中<strong>仅约 1/3 来自位元出货增长、约 2/3 来自 NAND 涨价</strong>。利润弹性主要由价格周期贡献，而非需求同步扩张。全行业营业利润率均已到历史极值区（美光 80.4%、铠侠 80%、海力士 76.3%、三星约 75%，均为各家最新季度口径）——<strong>SNDK 的 78.5% 系 FY26Q4 non-GAAP 营业利润率；其 GAAP 全年营业利润率为 61.6%、全年毛利率 71.5%（Wind），并无个体超额优势</strong>。</div>
   <div class="sig sig-warn"><strong>资产负债表一处新变化需留意：</strong>资产负债率从 FY26Q2 的 21.4% 升至 FY26 年末的 <strong>30.08%</strong>。总资产同期从 $130 亿增至 $225 亿（+73%）。这一扩张主要由盈利累积与营运资本（应收/应付）放大驱动，但与 v1 报告"持续去杠杆"的表述已有出入，需在 FY27Q1 财报中核实构成。</div>
 </div>
 
@@ -405,24 +405,26 @@ ol li{padding:5px 0;font-size:14px}
 
   <h3>敏感性测算</h3>
   <table>
-    <tr><th>情景</th><th>核心变量假设</th><th>对 FY28E EPS 影响</th><th>对应估值</th></tr>
+    <tr><th>情景</th><th>核心变量假设</th><th>该情景下 FY28E EPS</th><th>对应估值（四锚加权中枢）</th></tr>
     <tr><td>悲观</td><td>NAND ASP 自顶部回落 30-40%，长协兜底 $23.5 亿/季营收</td><td>回落至 $90-120（-50% 以上）</td><td class="dn2">$550-800（四锚下沿）</td></tr>
     <tr><td>中性</td><td>ASP 平台期小幅波动，长协履约正常</td><td>$150-180</td><td>$950-1,300（四锚加权 ~$1,025）</td></tr>
     <tr><td>乐观</td><td>供紧延续至 2028 + HBF 贡献增量</td><td>$250-300</td><td class="up">$1,700-2,400（周期驯服 + 倍数扩张）</td></tr>
   </table>
+  <p style="font-size:12px;color:#888">注：「对应估值」为该情景下的<strong>四锚加权中枢</strong>，<strong>不按 EPS × 单一 PE 倍数推导</strong>——正常化 PE 锚仅占 30% 权重，且其 10-12x 假设本身已隐含「盈利仍在成长期」（v3 已因此降权）。若单看 PE 锚：中性 EPS $150-180 × 10-12x = $1,500-2,160；加权后落到 $950-1,300，是因为 FCF 收益率（~$750）与调整后 PB-ROE（~$880）两锚独立指向更低的区间。</p>
 </div>
 
 <div class="card">
   <h2>本次更新的核心结论</h2>
   <div class="sig sig-bull"><strong>维持看好的部分（未变）：</strong>NBM 长协对周期波动的平滑作用是真实的（8 家客户、10 份合约、$939 亿最低收入承诺、加权期限 &gt;4 年）；高盛测算底价机制支持下行情景仍可实现约 80% 毛利率；投资者日的 FCF 50% + 超额现金 100% 返还框架，是 NAND 行业史上最强股东回报设计。</div>
   <div class="sig sig-warn"><strong>需要修正的部分（变了）：</strong>① <strong>HBF 时间表推迟一年</strong>——从"2H26 工程样品"到"2027 年首批推理样品"，第二增长曲线的可信度与兑现期都需重估；② <strong>NAND 涨价二阶导骤降</strong>（Q2 +75% → Q3 +15%），而现价的利润弹性高度依赖涨价；③ <strong>资产负债率从 21.4% 升至 30.08%</strong>，与"持续去杠杆"的表述出现出入；④ <strong>估值分位进一步走高</strong>（PB 90.3%），Morningstar 提示溢价公允价值 63%。</div>
-  <div class="sig sig-bear"><strong>操作含义（v3 下修估值中枢后）：</strong>评级维持 <strong>"等待 / 不追高"</strong>，但性质变了——现价 $1,791.82 已高于四锚中性上限 +38%，<strong>不再是"赔率对称的等待"，而是"高估区的观望/回避追高"</strong>。持有者建议<strong>逢高分批兑现</strong>（$1,500-1,600 以上即可开始，而非此前的 $2,000）；空仓者不建议在现价介入，等待 <strong>$1,000-1,200</strong>（四锚加权中枢区）或 10 月财报验证长协履约后再评估。下行保护来自长协现金流，但不来自估值。</div>
+  <div class="sig sig-bear"><strong>操作含义（v3 下修估值中枢后）：</strong>评级维持 <strong>"等待 / 不追高"</strong>，但性质变了——现价 $1,791.82 已高于四锚中性上限 +38%，<strong>不再是"赔率对称的等待"，而是"高估区的观望/回避追高"</strong>。持有者建议<strong>逢高分批兑现</strong>（$1,500-1,600 以上即可开始，而非此前的 $2,000）；空仓者不建议在现价介入，等待 <strong>$1,000-1,200</strong>（四锚加权中枢区）或 10 月财报验证长协履约后再评估。长协现金流保护的是<strong>盈利下限</strong>，不构成<strong>估值下限</strong>——四锚中给出中枢最低的恰恰是现金流口径（FCF 锚 ~$750），说明现价已把长协的确定性提前定价完毕。</div>
 </div>
 
 <div class="footer">
   诊断时间：2026-09-21 17:30 (GMT+8) · 版本：v3（估值框架重构）· 上一版：v2 2026-09-21 / v1 2026-09-08<br>
   <span style="font-size:11px;color:#888">v2 修订（9/22）：第六节 PB-ROE 锚后新增"表外结构口径拆解"——fab 在铠侠账上、SNDK 表内 JV 资产不足 $20 亿、最大损失敞口 $29.67 亿；PB 同业对比口径修正为 fab-less 框架。</span><br>
   <span style="font-size:11px;color:#888"><strong>v3 重构（9/23）：</strong>第六节估值框架由"PB-ROE + 正常化 PE 双主锚"重构为<strong>四锚加权（FCF 收益率 30% + EV/EBITDA 20% + 正常化 PE 30% + 调整后 PB-ROE 20%）</strong>——因表外 JV 结构使账面 B 不含 fab、表观 ROE 虚高，主锚切换为不依赖资产负债表结构的现金流口径；PB-ROE 改用"调整后 B = 账面 + 表外义务资本化 ≈ $195/股"版本。三情景目标价全面下修：中性 $1,800-2,200 → <strong>$950-1,300</strong>、悲观 $950-1,100 → $550-800、乐观 $2,800-3,000 → $1,700-2,400；结论由"现价刚落中枢下沿、风险回报对称"改为"现价高于中性上限 +38%、已透支中性情景"；评分 64 → 62（估值维度 40 → 30）。</span><br>
+  <span style="font-size:11px;color:#888"><strong>v3 修订（9/23 深夜，审计驱动）：</strong>① title/header 版本标注由 v2 同步为 v3（页脚原已为 v3）；② 敏感性表「对应估值」列补口径说明——系四锚加权中枢、非 EPS × 单一倍数推导；③ 利润表节补 GAAP 营业利润率 61.58%，并标注 78.5% 为 FY26Q4 non-GAAP 营业利润率，消除与 71.47% GAAP 毛利率的口径冲突；④ 操作含义末句「下行保护来自长协现金流」改写为「保护盈利下限、不构成估值下限」——原表述与 FCF 锚（四锚最低 ~$750）自相矛盾，系 v2 遗留。</span><br>
   框架：Brad Stock Analysis 12 步个股深度诊断 · 数据来源：Wind（截至 2026-09-18 收盘）、公司披露与电话会、高盛/伯恩斯坦/巴克莱/华兴资本/TrendForce/Morningstar、智通财经/时代财经转载<br>
   ⚠ 本报告仅供研究参考，不构成个人投资建议。标注 [缺失]/[推断] 处为数据缺口或作者估算。
 </div>
