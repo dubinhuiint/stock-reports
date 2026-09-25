@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英特尔 (INTC.O) 深度诊断报告 v1.1 · 2026-09-22</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+.header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.85}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px;flex-wrap:wrap}
+.price{font-size:52px;font-weight:800}
+.chg{font-size:20px;padding:4px 12px;border-radius:8px}
+.chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+.chg.up{background:rgba(198,40,40,.2);color:#c62828}
+.card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h2{font-size:18px;color:#0d47a1;border-bottom:2px solid #e3f2fd;padding-bottom:10px;margin-bottom:16px}
+.card h3{font-size:15px;color:#1565c0;margin:20px 0 8px}
+.card h4{font-size:14px;color:#555;margin:12px 0 6px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
+.kv .lbl{font-size:11px;color:#888}
+.kv .val{font-size:20px;font-weight:700;color:#0d47a1}
+.kv .sub{font-size:11px;color:#555;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#e3f2fd;color:#0d47a1;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+tr:hover td{background:#f8f9fc}
+.up{color:#c62828}.dn2{color:#00c853}
+.sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
+.sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
+.vcard{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:12px;padding:24px;margin-bottom:16px}
+.vcard h2{font-size:20px;color:#0d47a1;margin-bottom:12px}
+.vcard .score{font-size:60px;font-weight:800;color:#1565c0;text-align:center;margin:10px 0}
+.tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
+.tech-item .name{font-size:12px;color:#888}
+.tech-item .val{font-size:20px;font-weight:700;color:#0d47a1}
+.tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bear{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-neutral{border:1px solid #ff8f00;color:#ff8f00;padding:1px 8px;border-radius:10px;display:inline-block}
+.assume{background:#fff8e1;border-left:3px solid #ffc107;padding:8px 12px;margin:12px 0;font-size:12px;color:#77642a;border-radius:0 6px 6px 0}
+.dim-row{display:flex;align-items:center;gap:10px;margin:6px 0}
+.dim-name{width:90px;font-size:13px;color:#555;text-align:right}
+.dim-bar{flex:1;background:#f0f0f0;border-radius:6px;height:18px;position:relative}
+.dim-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#1565c0,#42a5f5)}
+.dim-score{width:36px;font-size:13px;font-weight:700;color:#0d47a1}
+.dim-w{width:44px;font-size:11px;color:#aaa}
+.scen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+.scen{border-radius:10px;padding:16px;text-align:center}
+.scen-bear{background:#e8f5e9}
+.scen-base{background:#e3f2fd}
+.scen-bull{background:#ffebee}
+.slbl{font-size:12px;color:#666;margin-bottom:6px}
+.sval{font-size:26px;font-weight:800;color:#0d47a1}
+.schg{font-size:13px;margin-top:4px;font-weight:600}
+.footer{background:white;border-radius:12px;padding:20px 28px;font-size:12px;color:#888;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.footer p{margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>英特尔 Intel (INTC.O) 深度诊断报告</h1>
+  <div class="meta">v1.1 · 2026-09-22（9/25 修订） · 数据截至 2026-09-21 美股收盘 · Wind金融数据 + 10-Q/财报电话会 + 卖方研报 · Brad 股票分析框架（12 模块）</div>
+  <div class="price-row">
+    <span class="price">$121.78</span>
+    <span class="chg up">+12.14%（9/21）</span>
+    <span style="font-size:13px;opacity:.9">市值 $6,143 亿 · YTD +230% · 52周区间 $28.82–142.35 · 距52周高点 -14.5%</span>
+  </div>
+</div>
+
+<!-- 00 结论速览 -->
+<div class="card">
+  <h2>零、核心结论（一句话）</h2>
+  <div class="sig sig-warn">
+    <strong>基本面拐点是真的，但价格已经跑到基本面前面。</strong>Q2 营收 +25%（15 年最快）、DCAI +59%、毛利率逐季抬升、Non-GAAP 连续两季盈利——运营反转确认；但 PB 7.31x（3年分位 100%）、远期 PE ~72x、现价已超卖方目标均价 $116，<strong>市场把"2027 代工盈亏平衡 + 14A 外部客户"两大尚未兑现的期权提前计了价</strong>。GAAP 巨亏（Q2 -$110 亿）主要是 CHIPS 法案托管股份按市值重估的非现金会计科目——<strong>股价越涨、账面亏得越多</strong>的反身性结构，须用 Non-GAAP 口径看经营。
+  </div>
+  <p style="font-size:13px">综合评分 <strong>60/100 · 观望</strong>（风险维度触发硬约束）。操作含义：<strong>空仓者不追高</strong>（RSI 84、20日 +35%），回调至 <strong>$95–105</strong>（BOLL 中轨/8月末平台）分批；右侧确认三条件=14A PDK 1.0 按期 + <strong>首个重大外部代工客户签约</strong> + 代工亏损收窄至 $19 亿内。</p>
+</div>
+
+<!-- 01 行情快照 -->
+<div class="card">
+  <h2>一、行情快照（2026-09-21 收盘）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新收盘价</div><div class="val">$121.78</div><div class="sub">9/21 单日 +12.14%</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val">$6,143 亿</div><div class="sub">总股本 ~50.4 亿股</div></div>
+    <div class="item"><div class="lbl">52 周区间</div><div class="val">$28.82–142.35</div><div class="sub">现价距高点 -14.5%、距低点 +323%</div></div>
+    <div class="item"><div class="lbl">YTD / 20日 / 60日</div><div class="val">+230% / +35.2% / -8.4%</div><div class="sub">6/30 见顶 $142 后最大回撤 -43%，9 月 V 型修复</div></div>
+    <div class="item"><div class="lbl">PE(TTM) / 市净率 / 市销率</div><div class="val">亏损 / 7.31x / 11.22x</div><div class="sub">PB 3年分位 100%、PS 分位 97%</div></div>
+    <div class="item"><div class="lbl">Beta / 年化波动率 / 最大回撤</div><div class="val">2.67 / 74.6% / -41.9%</div><div class="sub">过去1年，风险显著高于大盘</div></div>
+    <div class="item"><div class="lbl">股息</div><div class="val">已暂停</div><div class="sub">2024Q4 起停派，现金优先保代工资本开支</div></div>
+    <div class="item"><div class="lbl">下一财报</div><div class="val">Q3 FY26 · 10 月下旬</div><div class="sub">指引：营收 $158–168 亿、GAAP EPS $0.31、Non-GAAP $0.38</div></div>
+  </div>
+  <p style="font-size:12px;color:#888;margin-top:10px">9/21 大涨三重催化：① Meta AI 智能体 Muse 走红点燃 CPU 板块行情（费半 +4.29%，AMD +9.95% 破万亿、Arm +17%）；② SK 海力士与英特尔洽谈租用/合资俄亥俄晶圆厂（探索性）；③ Tigress 目标价上调至 $145 + Barclays 上调评级。宏观配合：油价回落、10Y 美债收益率跌破 5%。</p>
+</div>
+
+<!-- 02 综合评分 -->
+<div class="vcard">
+  <h2>二、综合评分：60 / 100 · 观望</h2>
+  <div class="score">60</div>
+  <div class="dim-row"><div class="dim-name">基本面 25%</div><div class="dim-bar"><div class="dim-fill" style="width:72%"></div></div><div class="dim-score">72</div><div class="dim-w">权重25%</div></div>
+  <div class="dim-row"><div class="dim-name">估值 25%</div><div class="dim-bar"><div class="dim-fill" style="width:28%"></div></div><div class="dim-score">28</div><div class="dim-w">权重25%</div></div>
+  <div class="dim-row"><div class="dim-name">成长性 15%</div><div class="dim-bar"><div class="dim-fill" style="width:78%"></div></div><div class="dim-score">78</div><div class="dim-w">权重15%</div></div>
+  <div class="dim-row"><div class="dim-name">风险 15%</div><div class="dim-bar"><div class="dim-fill" style="width:35%"></div></div><div class="dim-score">35</div><div class="dim-w">权重15%</div></div>
+  <div class="dim-row"><div class="dim-name">技术面 10%</div><div class="dim-bar"><div class="dim-fill" style="width:60%"></div></div><div class="dim-score">60</div><div class="dim-w">权重10%</div></div>
+  <div class="dim-row"><div class="dim-name">资金情绪 10%</div><div class="dim-bar"><div class="dim-fill" style="width:62%"></div></div><div class="dim-score">62</div><div class="dim-w">权重10%</div></div>
+  <div class="dim-row"><div class="dim-name">筹码 5%</div><div class="dim-bar"><div class="dim-fill" style="width:55%"></div></div><div class="dim-score">55</div><div class="dim-w">权重5%</div></div>
+  <div class="dim-row"><div class="dim-name">机构共识 5%</div><div class="dim-bar"><div class="dim-fill" style="width:52%"></div></div><div class="dim-score">52</div><div class="dim-w">权重5%</div></div>
+  <div class="assume">⚠ 评分说明：风险维度 35 &lt; 45 触发硬约束（总分上限 65）。基本面 72 = 拐点确认但代工年化亏损 $80 亿+；估值 28 = PB/PS 历史极值 + 现价超卖方均价；成长 78 = 供不应求 + 制程里程碑密集。评分口径：≥85 买入、75–84 增持、65–74 持有、50–64 观望。</div>
+</div>
+
+<!-- 03 利润表 -->
+<div class="card">
+  <h2>三、利润表：GAAP 与 Non-GAAP 双口径（单位：亿美元）</h2>
+  <h3>单季营收与利润（⚠ Wind 美股"单季"列为财年初至今累计口径风险已排查：本表数值与公司财报逐项核对一致）</h3>
+  <table>
+    <tr><th>报告期</th><th>营收</th><th>YoY</th><th>毛利率(GAAP)</th><th>GAAP净利</th><th>Non-GAAP净利</th><th>Non-GAAP EPS</th></tr>
+    <tr><td>FY25Q1</td><td>126.67</td><td class="dn2">-0.4%</td><td>36.9%</td><td class="dn2">-8.21</td><td>—</td><td>—</td></tr>
+    <tr><td>FY25Q2</td><td>128.59</td><td class="dn2">-1.9%</td><td>27.5%</td><td class="dn2">-29.18</td><td>—</td><td>—</td></tr>
+    <tr><td>FY25Q3</td><td>136.53</td><td>+4.1%</td><td>38.2%</td><td class="up">+40.63*</td><td>—</td><td>0.23</td></tr>
+    <tr><td>FY25Q4</td><td>136.74</td><td>-4.1%</td><td>36.1%</td><td class="dn2">-5.91</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>FY26Q1</strong></td><td>135.77</td><td class="up">+7.2%</td><td>39.4%</td><td class="dn2">-37.28**</td><td class="up">~15</td><td>~0.30</td></tr>
+    <tr><td><strong>FY26Q2</strong></td><td><strong>161.28</strong></td><td class="up"><strong>+25.4%</strong></td><td class="up"><strong>40.4%</strong></td><td class="dn2">-110.33**</td><td class="up">22</td><td class="up"><strong>0.42</strong></td></tr>
+  </table>
+  <p style="font-size:12px;color:#666">* FY25Q3 正收益含一次性项目；** GAAP 巨亏构成见下方桥接。</p>
+  <h3>GAAP ↔ Non-GAAP 桥接分析（Q2 FY26，本报告核心更正项）</h3>
+  <div class="sig sig-bear">
+    <strong>Q2 GAAP 净亏 $110 亿 ≠ 经营恶化</strong>。构成：CHIPS 法案"Secure Enclave"协议下托管予美国政府的股份（<strong>未释放 1.43 亿股</strong>）按市值重估产生 <strong>$125 亿非现金损失</strong>——股价上涨 → 托管负债升值 → 记为亏损，<strong>无现金流出</strong>。剔除后 Non-GAAP 净利 +$22 亿、EPS $0.42（超预期 93%）。Q1 同理：GAAP -$37 亿 = 商誉减值 $39 亿 + 托管重估 $11 亿，Non-GAAP +$15 亿。
+  </div>
+  <div class="sig sig-warn">
+    <strong>反身性警示：</strong>这是"股价越涨、GAAP 亏越多"的会计结构（1H26 托管重估合计 $136 亿）。管理层指引 Q3 GAAP EPS 转正（$0.31）——意味着托管重估压力暂歇或被经营利润覆盖。<strong>投资判断必须用 Non-GAAP：经营已连续两季盈利且逐季改善。</strong>
+  </div>
+  <h3>增长质量</h3>
+  <p style="font-size:13px">Q2 营收 +25.4% 为<strong>15 年来最快增速</strong>，且环比加速（Q1 +7.2%）。毛利率 GAAP 口径 Q1 39.4% → Q2 40.4%，Non-GAAP 41.8%（同比 +12.1pct），Q3 指引 41%——逐季抬升。管理层口径"当前供给仅能满足客户约 50% 需求"（陈立武，9/15 AI Infrastructure Summit），<strong>约束在供给不在需求</strong>。</p>
+</div>
+
+<!-- 04 分部 -->
+<div class="card">
+  <h2>四、分业务线：产品在赚钱、代工在烧钱（Q2 FY26）</h2>
+  <table>
+    <tr><th>分部</th><th>营收</th><th>YoY</th><th>营业利润</th><th>关键动态</th></tr>
+    <tr><td><strong>DCAI 数据中心与AI</strong></td><td>$62.6 亿</td><td class="up"><strong>+59%</strong></td><td>~$25 亿（~40% margin）</td><td>Xeon 新平台放量于 AI 服务器；供不应求；利润同比约 +4 倍</td></tr>
+    <tr><td><strong>CCPG 客户计算与物理AI</strong></td><td>$89 亿</td><td class="up">+13%</td><td>~$23 亿</td><td>量平价升：ASP +27%（AI PC 高配占比提升），"价值而非出货"驱动</td></tr>
+    <tr><td><strong>Intel Foundry 代工</strong></td><td>$57.7 亿</td><td class="up">+31%</td><td class="dn2"><strong>-$20.9 亿</strong></td><td>亏损收窄（Q1 -$24 亿、YoY -$32 亿）；外部收入仅 $2.93 亿（占 5%）</td></tr>
+  </table>
+  <p style="font-size:13px"><strong>产品合计（DCAI+CCPG+物理AI）营业利润 ~$48 亿、利润率 ~32%——产品在养代工。</strong>代工年化亏损仍超 $80 亿，公司指引 <strong>2027 年盈亏平衡</strong>。</p>
+  <h3>制程路线图（拐点的技术底座）</h3>
+  <table>
+    <tr><th>节点</th><th>状态</th><th>要点</th></tr>
+    <tr><td><strong>18A</strong></td><td class="up">已量产（Panther Lake）</td><td>产出 QoQ +50%、超内部目标 25%、良率超预期；18A-P 已入风险生产；High-NA EUV 累计加工晶圆 &gt;100 万片</td></tr>
+    <tr><td><strong>14A</strong></td><td>开发提前</td><td>缺陷密度与晶体管性能<strong>领先 18A 同期进度</strong>；PDK 0.5 完成、PDK 0.9 按计划 10 月交付、PDK 1.0 目标 2027Q1；内部产品 2H27 风险生产、<strong>2028 量产</strong></td></tr>
+  </table>
+  <h3>客户与战略合作（外部代工收入是期权、不是现金流）</h3>
+  <div class="sig sig-bull"><strong>已披露：</strong>微软（18A）、特斯拉、博通、Fortinet；Google Cloud 合作；<strong>英伟达 $50 亿入股 + 共同开发</strong>数据中心与 PC 芯片（Xeon 6 当选 DGX Rubin 平台主机 CPU）；软银 $20 亿（~2%）；定制芯片业务目标 $40 亿 run-rate。</div>
+  <div class="sig sig-bear"><strong>必须泼的冷水（10-Q 原文口径）：</strong>"截至目前<strong>没有任何节点获得重大外部客户</strong>（no node has secured a significant external customer）"，14A 扩产规模与节奏"由内部路线图需求与潜在重大外部客户的设计win共同决定"。SK 海力士俄亥俄合作仅为<strong>探索性洽谈</strong>；Terafab（SpaceX+Tesla 支持，一期 $550 亿/累计 $1,200 亿）尚无合同约束。<strong>外部代工收入规模化最早 2028 年。</strong></div>
+</div>
+
+<!-- 05 ROE 与资产负债 -->
+<div class="card">
+  <h2>五、ROE 与资产负债表</h2>
+  <h3>ROE 拆解（GAAP 口径失真，看趋势）</h3>
+  <p style="font-size:13px">GAAP ROE 连续为负（Q2 -31.5% 半年化）——但其中 ~$125 亿是托管重估非现金项；剔除后经营性 ROE 转正路径：毛利率抬升（29.7%→41.8% Non-GAAP）+ 资产周转企稳（总资产 $2,024 亿同比微降）。<strong>结论：净利率修复是唯一驱动，杠杆与周转贡献中性。</strong>ROE 的"真实化"取决于代工亏损归零（2027 目标）。</p>
+  <h3>资产负债表（Q2 FY26 末，亿美元）</h3>
+  <div class="kv">
+    <div class="item"><div class="lbl">总资产</div><div class="val">2,024</div><div class="sub">环比 -1.4%</div></div>
+    <div class="item"><div class="lbl">股东权益</div><div class="val">1,031</div><div class="sub">环比 -218 亿（托管负债重估拖累）</div></div>
+    <div class="item"><div class="lbl">现金+短期投资</div><div class="val">297</div><div class="sub">6月末；Q3 首个含 $200 亿增发资金的季度</div></div>
+    <div class="item"><div class="lbl">长期债务</div><div class="val">485</div><div class="sub">净债务 ~$188 亿</div></div>
+    <div class="item"><div class="lbl">存货</div><div class="val">125</div><div class="sub">环比 +0.5%，随 18A 产出爬坡</div></div>
+    <div class="item"><div class="lbl">每股净资产</div><div class="val">~$20.5</div><div class="sub">PB 7.31x 的分母（含会计扭曲）</div></div>
+  </div>
+  <h3>现金流：资本开支进入冲刺期</h3>
+  <table>
+    <tr><th>指标</th><th>Q1 FY26</th><th>Q2 FY26</th><th>含义</th></tr>
+    <tr><td>经营现金流</td><td>$11.0 亿*</td><td class="up">$70.1 亿</td><td>Q2 大幅改善（*Q1 为 Wind 累计口径倒推，含营运资本波动）</td></tr>
+    <tr><td>毛资本开支</td><td colspan="2" style="text-align:center">H1 合计 ~$76 亿</td><td>全年指引 &gt;$200 亿 → <strong>H2 每季须 &gt;$60 亿</strong></td></tr>
+    <tr><td>调整后 FCF</td><td colspan="2" style="text-align:center">-$84.2 亿</td><td>含 4 月 $142 亿回购 Apollo 爱尔兰 SCIP 权益（$65 亿贷款已再融资为固定利率票据）</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>资本消耗强度是未来 18 个月的主旋律：</strong>2026 capex 上调至 &gt;$200 亿、2027 "显著更高"（Melius 估算或再增 $200 亿+）；本年 3 月以 $95/股增发 $200 亿（2.42 亿股、稀释 ~3.5%）。CFO 明示<strong>增发选项保留</strong>——稀释风险在桌面上。</div>
+</div>
+
+<!-- 06 估值 -->
+<div class="card">
+  <h2>六、估值三部法（SOTP 50% + 远期PE 25% + 成长锚 25%）</h2>
+  <h3>方法一：SOTP 分部估值（主锚）</h3>
+  <table>
+    <tr><th>分部</th><th>中性假设</th><th>中性估值</th><th>每股</th></tr>
+    <tr><td>产品业务（CCPG+DCAI）</td><td>2027E 部门净利 ~$155 亿 × 20x</td><td>~$3,100 亿</td><td>~$62</td></tr>
+    <tr><td>Intel Foundry</td><td>美国产能重置成本 + 政策期权（2027 盈亏平衡、外部收入 $12 亿/年）</td><td>~$1,100 亿</td><td>~$22</td></tr>
+    <tr><td>Mobileye 股权（~88%）</td><td>市值口径</td><td>~$110 亿</td><td>~$2</td></tr>
+    <tr><td>净债务</td><td>现金 $297 亿 - 债务 $485 亿</td><td>-$188 亿</td><td>-$4</td></tr>
+    <tr><td><strong>SOTP 合计</strong></td><td></td><td><strong>~$4,420 亿</strong></td><td><strong>~$82</strong></td></tr>
+  </table>
+  <div class="assume">⚠ SOTP 假设声明：产品分部 PE 20x 参考成熟半导体设计公司中枢并计入 DCAI 高增溢价；代工 $1,100 亿是"重置成本+政策期权"拍定的区间中值（Melius 给 $80+/股、悲观者给近 0），<strong>这是三法中主观性最强的一项</strong>；Mobileye 用当前市值。悲观=产品 14x×$110 亿 + 代工 $400 亿；乐观=产品 26x×$170 亿 + 代工 $2,000 亿（Terafab/SK 海力士兑现）。</div>
+  <h3>方法二：远期 PE（2027E Non-GAAP EPS $1.70 一致预期）</h3>
+  <p style="font-size:13px">现价对应 2027E PE ≈ <strong>71.6x</strong>（$121.78 ÷ $1.70）。代工盈亏平衡兑现将使 2028E EPS 有上修空间，但当前一致预期尚未包含重大外部客户收入——<strong>分子分母都悬置</strong>。给 40x（悲观，增长降档）/ 55x（中性）/ 75x（乐观，外部客户落地）。</p>
+  <h3>方法三：成长锚（PEG 变体）</h3>
+  <p style="font-size:13px">Non-GAAP EPS 轨迹：2025 ~$0.55（复原）→ 2026E ~$1.50 → 2028E ~$2.60（CAGR ~31%）。按 2028E $2.60 × 50x（代工期权溢价，PEG≈1.6）= $130（2028 年中）÷ 1.12² 贴现 ≈ <strong>$104</strong>。区间 $55（增长降档+贴现 15%）/ $95 / $125。</p>
+  <h3>三情景加权（SOTP 50% + PE 25% + 成长锚 25%）</h3>
+  <div class="scen-grid">
+    <div class="scen scen-bear">
+      <div class="slbl">悲观（外部客户跳票+capex 失控）</div>
+      <div class="sval">$55</div>
+      <div class="schg dn2">-55% vs 现价</div>
+      <div style="font-size:11px">SOTP 48 / PE 68 / 成长 55</div>
+    </div>
+    <div class="scen scen-base">
+      <div class="slbl">中性（2027 代工盈亏平衡、外部客户 2028）</div>
+      <div class="sval">$88</div>
+      <div class="schg dn2">-28% vs 现价</div>
+      <div style="font-size:11px">SOTP 82 / PE 94 / 成长 95</div>
+    </div>
+    <div class="scen scen-bull">
+      <div class="slbl">乐观（14A 大客户落地+Terafab）</div>
+      <div class="sval">$136</div>
+      <div class="schg up">+12% vs 现价</div>
+      <div style="font-size:11px">SOTP 145 / PE 128 / 成长 125</div>
+    </div>
+  </div>
+  <div class="sig sig-bear"><strong>估值结论：</strong>现价 $121.78 较自估中性 $88 <strong>溢价 38%</strong>，较卖方一致目标价 $116.37 <strong>溢价 4.6%</strong>——已处于"乐观情景的入场券"区间。卖方分布印证分歧：Melius $200（SOTP 产品+代工各 $80+）vs Mizuho $92（9/4 下调）。<strong>当前价格买入的是"期权"，不是"盈利"。</strong></div>
+</div>
+
+<!-- 07 技术面 -->
+<div class="card">
+  <h2>七、技术面（2026-09-21）</h2>
+  <div class="tech-grid">
+    <div class="tech-item"><div class="name">RSI（14日）</div><div class="val">84.1</div><span class="tag-overbought">超买</span></div>
+    <div class="tech-item"><div class="name">KDJ（J值）</div><div class="val">81.2</div><span class="tag-overbought">超买区</span></div>
+    <div class="tech-item"><div class="name">MACD</div><div class="val">+3.69</div><span class="tag-bull">零轴上多</span></div>
+    <div class="tech-item"><div class="name">BOLL 中轨</div><div class="val">$97.18</div><span class="tag-neutral">偏离 +25%</span></div>
+    <div class="tech-item"><div class="name">20日涨幅</div><div class="val">+35.2%</div><span class="tag-overbought">过热</span></div>
+  </div>
+  <table>
+    <tr><th>关键价位</th><th>数值</th><th>性质</th></tr>
+    <tr><td>52周高点（6/30）</td><td>$142.35</td><td>前高压力；7–8 月曾自此回撤 43%</td></tr>
+    <tr><td>9/21 跳空缺口</td><td>$114.9–116.5</td><td>短期支撑</td></tr>
+    <tr><td>BOLL 中轨 / 8月末平台</td><td>$95–100</td><td><strong>分批介入区</strong></td></tr>
+    <tr><td>9/1–9/3 低点</td><td>$85.6–87.5</td><td>止损参考</td></tr>
+  </table>
+  <p style="font-size:13px"><strong>结构：</strong>4–6 月主升（$41→$142）→ 7–8 月回撤 43%（$81.88，8/29）→ 9 月 V 型修复并连破缺口。<strong>趋势多头未破坏（MACD 零上、站上全部短期均线），但短期极度超买</strong>：RSI 84 + 20日 +35% + 距中轨 +25%，历史上此组合下 1–2 周内出现 8–15% 回踩概率高。Beta 2.67 + 年化波动率 74.6%，仓位管理比方向判断更重要。</p>
+</div>
+
+<!-- 08 资金面与筹码 -->
+<div class="card">
+  <h2>八、资金面与筹码结构</h2>
+  <table>
+    <tr><th>主体</th><th>持仓/行为</th><th>含义</th></tr>
+    <tr><td>美国政府</td><td>~10% 股权（2025/8）+ Secure Enclave 托管 1.43 亿股未释放</td><td>政策背书 vs 托管负债悬顶（MTM 会计源）+ 潜在稀释</td></tr>
+    <tr><td>英伟达</td><td>$50 亿入股 + 产品级共同开发</td><td>竞争对手入股：产品协同与生态绑定，非财务投资者</td></tr>
+    <tr><td>软银</td><td>$20 亿（~2%，2025/8）</td><td>信心票</td></tr>
+    <tr><td>公开市场</td><td>3 月 $95/股 增发 $200 亿（2.42 亿股）；CFO 保留再增发选项</td><td>稀释风险常态化；筹码持续扩容</td></tr>
+    <tr><td>卖方机构</td><td>43–53 家覆盖：15 买 / 32 持 / 2 卖；PT 均价 $116.4（$75–200）</td><td><strong>现价已超均价</strong>；9 月上调潮（Barclays/UBS/Citi/RBC/Pivotal/Northland）vs Mizuho 下调</td></tr>
+  </table>
+  <p style="font-size:13px">9/21 成交额 $232 亿（今年以来天量级别），板块贝塔驱动明显（费半 +4.29%）。<strong>情绪指标：CEO"只能满足 50% 需求、向大客户道歉"的稀缺叙事 + Muse 智能体爆款 → 典型的"叙事—资金"正反馈中段</strong>；此阶段价格对利好敏感、对利空更敏感（估值已无缓冲）。</p>
+</div>
+
+<!-- 09 追踪 -->
+<div class="card">
+  <h2>九、建议追踪的指标与事件</h2>
+  <table>
+    <tr><th>时间</th><th>事件/指标</th><th>看什么</th></tr>
+    <tr><td><strong>10 月下旬</strong></td><td>Q3 FY26 财报</td><td>①营收 $158–168 亿兑现度；②Non-GAAP EPS $0.38、GAAP $0.31 转正；③<strong>代工亏损是否收窄至 $19 亿内、归因是良率还是费用</strong>（Q3 前瞻的关键证伪点：若亏损 &gt;$24 亿且归因高成本 18A 晶圆占比，乐观叙事证伪）；④DCAI 增速能否维持 ~50%+</td></tr>
+    <tr><td><strong>10 月 / 2027Q1</strong></td><td>14A PDK 0.9 / 1.0</td><td>按期交付 = 制程信誉；10-Q 措辞从"dictated by"变为"secured"是<strong>最重要单一信号</strong></td></tr>
+    <tr><td>2026H2–2027</td><td>SK 海力士俄亥俄合作</td><td>租赁/合资若落地 → 产能利用率+外部收入双击；仅洽谈则无定价权</td></tr>
+    <tr><td>2027 年 1 月</td><td>2027 capex 指引</td><td>"显著更高"的具体数字；FCF 深度与再增发概率</td></tr>
+    <tr><td>持续</td><td>托管股份释放节奏</td><td>143 万→亿股级释放伴随股价波动的 MTM 反身性；GAAP 报表噪音源</td></tr>
+    <tr><td>持续</td><td>CPU 涨价（传闻 ~10%）与 DCAI</td><td>供不应求向 ASP 的传导；AI 智能体（Muse 类）对服务器 CPU 需求的实证</td></tr>
+  </table>
+</div>
+
+<!-- 10 风险 -->
+<div class="card">
+  <h2>十、风险提示（按杀伤力排序）</h2>
+  <table>
+    <tr><th>风险</th><th>说明</th><th>量级</th></tr>
+    <tr><td><strong>1. 估值风险（当前最大）</strong></td><td>PB 7.31x（3年100%分位）、远期 PE ~72x；价格已超卖方均价——<strong>任何 execution 滑坡都会被双倍惩罚</strong>（Q3 财报、PDK 跳票、客户谈判破裂均可能触发 -30% 级回撤，7–8 月 -43% 已演示过一次）</td><td>高</td></tr>
+    <tr><td><strong>2. 外部客户悬置</strong></td><td>代工 95% 收入来自内部转移定价；10-Q 明示"无重大外部客户"；14A 量产 2028——<strong>期权可能到期归零</strong></td><td>高</td></tr>
+    <tr><td><strong>3. 资本消耗+稀释</strong></td><td>2026 capex &gt;$200 亿、2027 更高；调整后 FCF -$84 亿；CFO 保留增发选项；托管 1.43 亿股 + 政府 ~10%</td><td>中高</td></tr>
+    <tr><td><strong>4. 竞争格局</strong></td><td>服务器 CPU 面临 AMD（已破万亿市值）+ Arm 阵营夹击；代工对决台积电（2nm 良率领先）；18A 高成本晶圆占比上升短期压毛利</td><td>中高</td></tr>
+    <tr><td><strong>5. 宏观与利率</strong></td><td>9/17 美联储加息 25bp 至 3.75–4.00% 后鹰派、10Y ~5%——高久期亏损成长股估值承压；Beta 2.67 放大一切波动</td><td>中</td></tr>
+    <tr><td><strong>6. 地缘</strong></td><td>美中科技管制反复（对华数据中心 CPU 出口许可、Terafab 地缘溢价的不确定性）</td><td>中</td></tr>
+  </table>
+</div>
+
+<!-- 11 操作建议 -->
+<div class="card">
+  <h2>十一、操作建议（散户视角）</h2>
+  <div class="sig sig-bear"><strong>空仓者：不追高。</strong>RSI 84 + 20日 +35% + 现价超卖方均价，追高赔率差。分批介入区 <strong>$95–105</strong>（BOLL 中轨 $97 + 8 月末平台），止损 $85（9 月初低点）；仓位 ≤ 组合 3%（Beta 2.67 的高波动标的）。</div>
+  <div class="sig sig-bull"><strong>持有者：持有，但别加仓。</strong>基本面拐点+叙事仍在发酵期，趋势多头未破；用 $95–100 作为移动止盈线。若 Q3 财报"代工亏损归因于良率改善"且 DCAI 增速维持，可继续持有至 $142 前高测试。</div>
+  <div class="sig sig-warn"><strong>右侧加仓三条件（缺一不加）：</strong>① Q3 财报代工亏损 &lt;$19 亿且归因良率/单位成本改善；② 14A PDK 1.0 按期（2027Q1）且 10-Q 措辞升级；③ SK 海力士或任一超大规模客户代工协议<strong>签约</strong>而非"洽谈"。三者齐备前，任何上涨都按"期权价格波动"对待。</div>
+  <p style="font-size:13px;margin-top:8px"><strong>一句话定位：英特尔 2026 年是"困境反转的戴维斯双击上半场已经走完"，$122 的价格里装着 $88 的基本面 + $34 的期权溢价。赚基本面的钱（回调分批），不为期权溢价付全价（不追高）。</strong></p>
+</div>
+
+<div class="footer">
+  <p><strong>免责声明：</strong>本报告基于 2026-09-21 收盘公开数据（Wind、公司财报/10-Q、卖方研报、财经媒体）整理，仅供个人研究参考，不构成投资建议。估值含大量主观假设（已用 ⚠ 标注），GAAP 与 Non-GAAP 差异极大（托管股份按市值重估），请以公司披露为准。投资有风险，入市需谨慎。</p>
+  <p><strong>诊断时间：</strong>2026-09-22（v1.0 首版） · 2026-09-25（v1.1 修订：移除杜邦表述、术语统一为「12 模块」；数据、估值与评分均未改动） · 数据来源：Wind 金融数据(INTC.O) + 公司 Q2 FY26 财报与电话会 + MarketBeat/Investing 一致预期 + 财经媒体 · Brad 股票分析框架（12 模块）</p>
+  <p><strong>方法说明：</strong>美股不折价；GAAP+Non-GAAP 双口径 + 桥接分析（托管 MTM $125 亿为核心差异项）；估值三法按 SOTP 50% + PE 25% + 成长锚 25% 加权；评分 8 维度加权、风险 35&lt;45 触发上限约束。</p>
+</div>
+
+</div>
+</body>
+</html>

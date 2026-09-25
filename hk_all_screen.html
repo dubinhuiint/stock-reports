@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全港股价值筛选报告 · ROE&gt;10% × PEG&lt;1 × 半导体/AI优先</title>
+<style>
+  :root { --blue:#1a5fb4; --blue2:#2e86de; --bg:#f5f7fa; --card:#fff; --text:#2c3e50; --muted:#7f8c8d; --red:#e74c3c; --green:#27ae60; --amber:#f39c12; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.6; }
+  .container { max-width:1240px; margin:0 auto; }
+  .header { background:linear-gradient(135deg,#1a5fb4,#2e86de); color:#fff; border-radius:12px; padding:28px 32px; margin-bottom:20px; }
+  .header h1 { font-size:24px; margin-bottom:8px; }
+  .header .sub { font-size:14px; opacity:.92; }
+  .badges { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
+  .badge { background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35); padding:4px 12px; border-radius:20px; font-size:13px; }
+  .card { background:var(--card); border-radius:12px; padding:22px 26px; margin-bottom:20px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+  .card h2 { font-size:18px; color:var(--blue); margin-bottom:14px; border-left:4px solid var(--blue2); padding-left:10px; }
+  .card h3 { font-size:15px; margin:14px 0 8px; }
+  .conclusion { background:#eef5ff; border:1px solid #cfe0f7; border-radius:10px; padding:16px 20px; margin-bottom:14px; }
+  .tag { display:inline-block; background:var(--blue); color:#fff; font-size:12px; padding:2px 10px; border-radius:12px; margin-right:8px; }
+  table { width:100%; border-collapse:collapse; font-size:13.5px; }
+  th { background:var(--blue); color:#fff; padding:9px 10px; text-align:center; font-weight:600; white-space:nowrap; }
+  td { padding:8px 10px; border-bottom:1px solid #eef1f5; text-align:center; }
+  tr:nth-child(even) td { background:#fafbfd; }
+  tr:hover td { background:#f0f5fc; }
+  .num { font-variant-numeric:tabular-nums; }
+  .pass { color:var(--green); font-weight:700; }
+  .fail { color:var(--red); font-weight:700; }
+  .warn { color:var(--amber); font-weight:700; }
+  .tag-ai { background:#e8f5e9; color:#1b5e20; border-radius:10px; padding:1px 8px; font-size:12px; white-space:nowrap; }
+  .tag-semi { background:#fff3e0; color:#e65100; border-radius:10px; padding:1px 8px; font-size:12px; white-space:nowrap; }
+  .tag-top { background:#ffebee; color:#b71c1c; border-radius:10px; padding:1px 8px; font-size:12px; font-weight:600; }
+  .rank-star { color:var(--amber); }
+  .foot { font-size:12px; color:var(--muted); margin-top:8px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media (max-width:800px){ .grid2{grid-template-columns:1fr;} body{padding:12px;} }
+  .funnel { display:flex; align-items:stretch; justify-content:space-between; gap:10px; margin:14px 0; }
+  .funnel-step { flex:1; background:#f0f5fc; border-radius:10px; padding:14px; text-align:center; border:1px solid #d8e4f5; }
+  .funnel-step .n { font-size:26px; font-weight:800; color:var(--blue); }
+  .funnel-step .l { font-size:12px; color:var(--muted); margin-top:4px; }
+  .funnel-arrow { align-self:center; font-size:22px; color:var(--blue2); }
+  .note { font-size:13px; color:var(--muted); background:#f8f9fa; border-radius:8px; padding:10px 14px; margin-top:10px; }
+  .hl { background:#fff8e1; padding:1px 4px; border-radius:4px; font-weight:600; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>全港股价值筛选报告（放开恒生科技 → 全市场）</h1>
+    <div class="sub">筛选标准：过去3年 ROE 均 &gt; 10% ｜ 2026年 PEG &lt; 1 ｜ 优先半导体 / AI 应用标的 ｜ 数据截至 2026-08-06</div>
+    <div class="badges">
+      <span class="badge">范围：全部港股（约2600只）</span>
+      <span class="badge">粗筛池：市值&gt;100亿 · 最新ROE&gt;10% · PE 0~30（119只）</span>
+      <span class="badge">3年ROE逐只验证：136只</span>
+      <span class="badge">补验：2026年新上市A+H科技龙头（中际旭创/澜起）</span>
+      <span class="badge">数据源：腾讯自选股 + 券商研报盈利预测</span>
+    </div>
+  </div>
+
+  <!-- 核心结论 -->
+  <div class="card">
+    <h2>一、核心结论</h2>
+    <div class="conclusion">
+      <span class="tag">总达标</span>
+      <b>15 只</b>通过「3年ROE均&gt;10% + 2026年PEG&lt;1」双条件，其中 <b>9 只与半导体/AI/科技硬件直接相关</b>，
+      比恒生科技内（仅联想1只）显著扩容。核心标的包括：
+      <b>中际旭创</b>（AI光模块全球龙头）、<b>华勤技术</b>（AI硬件ODM/超节点）、<b>飞速创新</b>（AI高速铜缆）、<b>联想集团</b>（AI服务器）、
+      <b>高伟电子</b>（AI光学）、<b>赤子城科技</b>（AI社交出海）、<b>九方智投</b>（AI投顾）、<b>伟仕佳杰</b>（AI服务器分销）、<b>创科实业</b>（AIDC基建工具）。
+    </div>
+    <div class="conclusion" style="background:#fff8e1;border-color:#f0d9a8;">
+      <span class="tag" style="background:var(--amber)">本次修订 v2</span>
+      <b>系统性补验 2026 年新上市的 A+H 科技龙头</b>（2026H1 共 24 家 A+H 上市，含募资榜 TOP10）：
+      <b>中际旭创（03308.HK）</b>与 <b>华勤技术（03296.HK）</b>入选达标名单；
+      <b>胜宏科技（02476.HK）</b>PEG 0.50 达标但 2023 年 ROE 差 0.84pct、<b>领益智造（01688.HK）</b>2024 年 ROE 差 0.86pct，均列入"接近达标"；
+      <b>澜起/兆易/豪威/大族数控/芯碁微装/壁仞/曦智</b>因 2023-2024 年 ROE 低谷或亏损未达标。
+      初版遗漏系选股数据源未收录新上市 H 股，现已通过新股名单交叉核对修正。
+    </div>
+    <div class="conclusion" style="background:#fff8e1;border-color:#f0d9a8;">
+      <span class="tag" style="background:var(--amber)">半导体缺口</span>
+      <b>纯半导体标的依然全部出局</b>：中芯国际 ROE 2.4~4.6%、华虹 0.9~6%、ASMPT 2.2~5.6%、上海复旦 2025年骤降至3.9%，
+      均远低于10%门槛（行业周期低谷+折旧高峰）。与半导体强相关的达标标的是产业链环节：
+      <b>中际旭创</b>（光模块，全球市占率21%）、<b>飞速创新</b>（算力高速互连）与<b>伟仕佳杰</b>（AI服务器分销）。
+    </div>
+  </div>
+
+  <!-- 筛选漏斗 -->
+  <div class="card">
+    <h2>二、筛选漏斗</h2>
+    <div class="funnel">
+      <div class="funnel-step"><div class="n">~2600</div><div class="l">全部港股</div></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="n">119</div><div class="l">最新ROE&gt;10%<br>PE 0~30 · 市值&gt;100亿</div></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="n">78</div><div class="l">3年ROE逐只验证<br>均&gt;10%</div></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="n">15</div><div class="l">2026年PEG&lt;1<br>(研报盈利预测)</div></div>
+      <div class="funnel-arrow">→</div>
+      <div class="funnel-step"><div class="n">9</div><div class="l">半导体/AI/科技<br>相关</div></div>
+    </div>
+    <div class="note">说明：3年ROE采用各财年加权ROE（12月财年=2023/2024/2025；3月财年取最近3个完整财年）。PEG = TTM PE ÷ 2026E净利增速（增速取自最新券商研报一致盈利预测）。</div>
+  </div>
+
+  <!-- 科技/AI达标股 -->
+  <div class="card">
+    <h2>三、✅ 半导体/AI/科技相关达标股（7只 · 重点）</h2>
+    <table>
+      <tr>
+        <th>股票</th><th>代码</th><th>赛道</th><th>ROE'23</th><th>ROE'24</th><th>ROE'25</th>
+        <th>PE(TTM)</th><th>2026E增速*</th><th>PEG</th><th>简评</th>
+      </tr>
+      <tr>
+        <td><b>中际旭创</b> <span class="rank-star">★</span></td><td>03308.HK</td>
+        <td><span class="tag-semi">AI光模块</span></td>
+        <td class="num pass">17.4</td><td class="num pass">30.7</td><td class="num pass">44.6</td>
+        <td class="num">79.5x</td><td class="num">+110%~200%</td><td class="num pass">0.4~0.7</td>
+        <td style="text-align:left;font-size:12.5px;">全球光模块龙头(市占率21%)，1.6T放量，2026Q1净利57亿(+262%)，8/6上市首周+17%</td>
+      </tr>
+      <tr>
+        <td><b>华勤技术</b></td><td>03296.HK</td>
+        <td><span class="tag-ai">AI硬件ODM</span><span class="tag-semi">超节点</span></td>
+        <td class="num pass">16.2</td><td class="num pass">13.4</td><td class="num pass">17.1</td>
+        <td class="num">21.5x</td><td class="num">+35%</td><td class="num pass">0.61</td>
+        <td style="text-align:left;font-size:12.5px;">全球ODM龙头，国产超节点+交换机双轮驱动，2026E净利59.3亿，2026H1预告+53~61%</td>
+      </tr>
+      <tr>
+        <td><b>飞速创新</b></td><td>03355.HK</td>
+        <td><span class="tag-semi">AI算力互连</span></td>
+        <td class="num pass">25.7</td><td class="num pass">17.9</td><td class="num pass">26.7</td>
+        <td class="num">21.0x</td><td class="num">+40%</td><td class="num pass">0.53</td>
+        <td style="text-align:left;font-size:12.5px;">AI高速铜缆/连接器，算力基建核心受益，研报首次覆盖买入</td>
+      </tr>
+      <tr>
+        <td><b>联想集团</b></td><td>00992.HK</td>
+        <td><span class="tag-ai">AI服务器</span><span class="tag-ai">AIPC</span></td>
+        <td class="num pass">18.1</td><td class="num pass">23.7</td><td class="num pass">28.0</td>
+        <td class="num">21.5x</td><td class="num">+26~40%</td><td class="num pass">0.65</td>
+        <td style="text-align:left;font-size:12.5px;">AI服务器放量+盈利能力提升，YTD+190%需注意高位</td>
+      </tr>
+      <tr>
+        <td><b>高伟电子</b></td><td>01415.HK</td>
+        <td><span class="tag-ai">AI光学</span><span class="tag-ai">苹果链</span></td>
+        <td class="num pass">12.1</td><td class="num pass">25.6</td><td class="num pass">31.7</td>
+        <td class="num">12.8x</td><td class="num">+30%</td><td class="num pass">0.43</td>
+        <td style="text-align:left;font-size:12.5px;">H1'26净利+27~40%，AI眼镜/潜望镜模组放量</td>
+      </tr>
+      <tr>
+        <td><b>赤子城科技</b></td><td>09911.HK</td>
+        <td><span class="tag-ai">AI社交出海</span></td>
+        <td class="num pass">55.8</td><td class="num pass">35.8</td><td class="num pass">47.5</td>
+        <td class="num">11.3x</td><td class="num">+35%</td><td class="num pass">0.32</td>
+        <td style="text-align:left;font-size:12.5px;">AI+出海社交龙头，ROE极高，2026E净利12.2亿</td>
+      </tr>
+      <tr>
+        <td><b>九方智投控股</b></td><td>09636.HK</td>
+        <td><span class="tag-ai">AI投顾</span></td>
+        <td class="num pass">18.6</td><td class="num pass">17.3</td><td class="num pass">40.7</td>
+        <td class="num">13.1x</td><td class="num">+38%</td><td class="num pass">0.34</td>
+        <td style="text-align:left;font-size:12.5px;">AI金融信息服务，2026E净利9.7亿，PE 12.3x</td>
+      </tr>
+      <tr>
+        <td><b>伟仕佳杰</b></td><td>00856.HK</td>
+        <td><span class="tag-ai">IT分销</span><span class="tag-semi">AI硬件渠道</span></td>
+        <td class="num pass">11.6</td><td class="num pass">12.5</td><td class="num pass">14.4</td>
+        <td class="num">10.8x</td><td class="num">+25%</td><td class="num pass">0.43</td>
+        <td style="text-align:left;font-size:12.5px;">东南亚IT分销+存储涨价利润弹性，2026E净利16.9亿港元</td>
+      </tr>
+      <tr>
+        <td><b>创科实业</b></td><td>00669.HK</td>
+        <td><span class="tag-semi">AIDC基建</span><span class="tag-ai">电动工具</span></td>
+        <td class="num pass">17.8</td><td class="num pass">18.5</td><td class="num pass">18.0</td>
+        <td class="num">25.9x</td><td class="num">+38%</td><td class="num pass">0.68</td>
+        <td style="text-align:left;font-size:12.5px;">Milwaukee绑定AIDC基建高景气，上调2026E至16.5亿美元</td>
+      </tr>
+    </table>
+    <p class="foot">*2026E增速 = 券商研报最新盈利预测隐含增速（如飞速创新=中邮证券2026E净利7.99亿 vs 2025约5.7亿；联想=申万/长江FY2027口径）。PEG = TTM PE ÷ 2026E增速。</p>
+  </div>
+
+  <!-- 全量达标 -->
+  <div class="card">
+    <h2>四、✅ 全部达标股（13只）</h2>
+    <table>
+      <tr>
+        <th>股票</th><th>代码</th><th>行业</th><th>ROE'23</th><th>ROE'24</th><th>ROE'25</th>
+        <th>PE</th><th>2026E增速</th><th>PEG</th><th>市值(亿HKD)</th>
+      </tr>
+      <tr><td>中际旭创</td><td>03308</td><td><span class="tag-semi">AI光模块</span></td><td class="num pass">17.4</td><td class="num pass">30.7</td><td class="num pass">44.6</td><td class="num">79.5</td><td class="num">+110~200%</td><td class="num pass">0.4-0.7</td><td class="num">13464</td></tr>
+      <tr><td>华勤技术</td><td>03296</td><td><span class="tag-ai">AI硬件ODM</span></td><td class="num pass">16.2</td><td class="num pass">13.4</td><td class="num pass">17.1</td><td class="num">21.5</td><td class="num">+35%</td><td class="num pass">0.61</td><td class="num">1048</td></tr>
+      <tr><td>飞速创新</td><td>03355</td><td><span class="tag-semi">AI算力互连</span></td><td class="num pass">25.7</td><td class="num pass">17.9</td><td class="num pass">26.7</td><td class="num">21.0</td><td class="num">+40%</td><td class="num pass">0.53</td><td class="num">145</td></tr>
+      <tr><td>联想集团</td><td>00992</td><td><span class="tag-ai">AI服务器</span></td><td class="num pass">18.1</td><td class="num pass">23.7</td><td class="num pass">28.0</td><td class="num">21.5</td><td class="num">+26~40%</td><td class="num pass">0.65</td><td class="num">3218</td></tr>
+      <tr><td>高伟电子</td><td>01415</td><td><span class="tag-ai">AI光学</span></td><td class="num pass">12.1</td><td class="num pass">25.6</td><td class="num pass">31.7</td><td class="num">12.8</td><td class="num">+30%</td><td class="num pass">0.43</td><td class="num">196</td></tr>
+      <tr><td>赤子城科技</td><td>09911</td><td><span class="tag-ai">AI社交</span></td><td class="num pass">55.8</td><td class="num pass">35.8</td><td class="num pass">47.5</td><td class="num">11.3</td><td class="num">+35%</td><td class="num pass">0.32</td><td class="num">117</td></tr>
+      <tr><td>九方智投控股</td><td>09636</td><td><span class="tag-ai">AI投顾</span></td><td class="num pass">18.6</td><td class="num pass">17.3</td><td class="num pass">40.7</td><td class="num">13.1</td><td class="num">+38%</td><td class="num pass">0.34</td><td class="num">134</td></tr>
+      <tr><td>伟仕佳杰</td><td>00856</td><td><span class="tag-ai">IT分销</span></td><td class="num pass">11.6</td><td class="num pass">12.5</td><td class="num pass">14.4</td><td class="num">10.8</td><td class="num">+25%</td><td class="num pass">0.43</td><td class="num">146</td></tr>
+      <tr><td>创科实业</td><td>00669</td><td><span class="tag-semi">AIDC工具</span></td><td class="num pass">17.8</td><td class="num pass">18.5</td><td class="num pass">18.0</td><td class="num">25.9</td><td class="num">+38%</td><td class="num pass">0.68</td><td class="num">2656</td></tr>
+      <tr><td>紫金矿业</td><td>02899</td><td>铜金周期</td><td class="num pass">21.4</td><td class="num pass">25.7</td><td class="num pass">32.2</td><td class="num">13.4</td><td class="num">+58~72%</td><td class="num pass">0.21</td><td class="num">9387</td></tr>
+      <tr><td>中国宏桥</td><td>01378</td><td>铝</td><td class="num pass">12.9</td><td class="num pass">22.1</td><td class="num pass">19.0</td><td class="num">9.2</td><td class="num">+30%</td><td class="num pass">0.31</td><td class="num">2313</td></tr>
+      <tr><td>老铺黄金</td><td>06181</td><td>黄金珠宝</td><td class="num pass">34.7</td><td class="num pass">53.9</td><td class="num pass">65.3</td><td class="num">11.5</td><td class="num">+33%</td><td class="num pass">0.35</td><td class="num">621</td></tr>
+      <tr><td>海丰国际</td><td>01308</td><td>集运</td><td class="num pass">26.2</td><td class="num pass">47.5</td><td class="num pass">50.2</td><td class="num">11.0</td><td class="num">+21%</td><td class="num pass">0.52</td><td class="num">1044</td></tr>
+      <tr><td>东鹏饮料</td><td>09980</td><td>饮料</td><td class="num pass">35.6</td><td class="num pass">47.0</td><td class="num pass">52.2</td><td class="num">14.9</td><td class="num">+20%</td><td class="num pass">0.74</td><td class="num">841</td></tr>
+      <tr><td>周大福</td><td>01929</td><td>黄金珠宝</td><td class="num pass">22.4</td><td class="num pass">22.7</td><td class="num pass">31.4</td><td class="num">13.5</td><td class="num">+17%</td><td class="num pass">0.79</td><td class="num">1215</td></tr>
+    </table>
+    <p class="foot">PEG按2026E净利增速计算；增速来源：中邮/申万/长江/国信/中信建投/招商/光大等券商最新研报。</p>
+  </div>
+
+  <!-- 接近未达标 -->
+  <div class="card">
+    <h2>五、⚠️ 接近但未达标（值得关注）</h2>
+    <table>
+      <tr><th>股票</th><th>代码</th><th>ROE'23-25</th><th>PE</th><th>PEG</th><th>未达标原因</th></tr>
+      <tr><td>宁德时代</td><td>03750</td><td class="num">24.5/23.2/25.0</td><td class="num">29.7x</td><td class="num warn">1.10</td><td>ROE与增速均优（2026E +26%），但PE接近30x，PEG差0.1</td></tr>
+      <tr><td>澜起科技</td><td>06809</td><td class="num warn">4.5/12.9/18.6</td><td class="num">110.0x</td><td class="num fail">2.6</td><td>内存接口芯片全球龙头（AI运力核心），但2023年ROE 4.45%低谷不达标；2026H1净利预告+64~81%已充分定价</td></tr>
+      <tr><td>胜宏科技</td><td>02476</td><td class="num warn">9.2/13.8/34.1</td><td class="num">42.8x</td><td class="num pass">0.50</td><td>AI算力PCB全球龙头（英伟达链），2026E净利79.7亿(+85%)，PEG 0.50达标；仅2023年ROE 9.16%差0.84pct，放宽即入选</td></tr>
+      <tr><td>领益智造</td><td>01688</td><td class="num warn">11.4/9.1/10.6</td><td class="num">21.4x</td><td class="num">-</td><td>AI终端精密功能件全球第一，2024年ROE 9.14%差0.86pct</td></tr>
+      <tr><td>康耐特光学</td><td>02276</td><td class="num">25.6/28.4/26.0</td><td class="num">28.5x</td><td class="num warn">1.19</td><td>AI眼镜纯正标的（Meta/苹果链），估值偏高</td></tr>
+      <tr><td>美图公司</td><td>01357</td><td class="num warn">9.5/17.5/11.0</td><td class="num">33.2x</td><td class="num">-</td><td>AI应用纯正标的，2023年ROE 9.5%差0.5pct；2026E经调净利+23%</td></tr>
+      <tr><td>中国黄金国际</td><td>02099</td><td class="num warn">-1.4/3.6/23.0</td><td class="num">16.9x</td><td class="num">0.27</td><td>2026E增速+62%极优，但前两年ROE为负（矿山爬坡）</td></tr>
+      <tr><td>泡泡玛特</td><td>09992</td><td class="num">14.6/33.6/78.1</td><td class="num">14.8x</td><td class="num fail">2.5</td><td>ROE王者但2026E增速降至6%（高基数），PEG不达标</td></tr>
+      <tr><td>三生制药</td><td>01530</td><td class="num">11.4/14.0/40.1</td><td class="num">4.6x</td><td class="num fail">无效</td><td>2025年ROE 40%含一次性收益，2026E净利回落，PEG失真</td></tr>
+    </table>
+  </div>
+
+  <!-- 半导体专题 -->
+  <div class="card">
+    <h2>六、🔍 半导体专题：为什么"纯半导体"全部出局？</h2>
+    <table>
+      <tr><th>股票</th><th>代码</th><th>ROE'23</th><th>ROE'24</th><th>ROE'25</th><th>PE</th><th>PB</th><th>出局原因</th></tr>
+      <tr><td>中芯国际</td><td>00981</td><td class="num fail">4.6</td><td class="num fail">2.4</td><td class="num fail">3.3</td><td class="num">102.8x</td><td class="num">3.30</td><td>ROE&lt;5%，折旧高峰+成熟制程价格战；PE失真</td></tr>
+      <tr><td>华虹宏力</td><td>01347</td><td class="num fail">6.0</td><td class="num fail">0.9</td><td class="num fail">0.9</td><td class="num">420.7x</td><td class="num">4.50</td><td>ROE&lt;1%，行业周期低谷</td></tr>
+      <tr><td>ASMPT</td><td>00522</td><td class="num fail">4.6</td><td class="num fail">2.2</td><td class="num fail">5.6</td><td class="num">-</td><td class="num">-</td><td>半导体封装设备，ROE&lt;6%</td></tr>
+      <tr><td>上海复旦</td><td>01385</td><td class="num pass">14.5</td><td class="num pass">10.1</td><td class="num fail">3.9</td><td class="num">-</td><td class="num">-</td><td>2025年ROE骤降（产品价格竞争）</td></tr>
+      <tr><td>澜起科技</td><td>06809</td><td class="num fail">4.5</td><td class="num pass">12.9</td><td class="num pass">18.6</td><td class="num">110.0x</td><td class="num">13.61</td><td>内存接口芯片全球龙头，2023年低谷ROE 4.45%不达标，估值高</td></tr>
+      <tr><td>兆易创新</td><td>03986</td><td class="num fail">1.1</td><td class="num fail">6.9</td><td class="num warn">9.4</td><td class="num">106.6x</td><td class="num">12.12</td><td>NOR Flash龙头，2023-24年存储周期低谷ROE&lt;7%，2025年回升中</td></tr>
+      <tr><td>豪威集团</td><td>00501</td><td class="num fail">2.8</td><td class="num pass">14.4</td><td class="num pass">15.6</td><td class="num">23.3x</td><td class="num">2.68</td><td>CIS图像传感器龙头，2023年低谷ROE 2.8%</td></tr>
+      <tr><td>大族数控</td><td>03200</td><td class="num fail">2.6</td><td class="num fail">6.1</td><td class="num pass">14.9</td><td class="num">43.0x</td><td class="num">3.95</td><td>PCB专用设备龙头，2023-24年低迷，2025年回升</td></tr>
+      <tr><td>芯碁微装</td><td>09630</td><td class="num pass">11.6</td><td class="num fail">7.8</td><td class="num pass">13.4</td><td class="num">127.3x</td><td class="num">8.48</td><td>PCB直写光刻设备，2024年ROE 7.8%不达标，估值极高</td></tr>
+      <tr><td>壁仞科技</td><td>06082</td><td class="num fail">亏损</td><td class="num fail">亏损</td><td class="num fail">亏损</td><td class="num">-</td><td class="num">-</td><td>国产GPU，尚未盈利（18C上市）</td></tr>
+      <tr><td>曦智科技-P</td><td>01879</td><td class="num fail">亏损</td><td class="num fail">亏损</td><td class="num fail">亏损</td><td class="num">-</td><td class="num">-</td><td>光子计算芯片，尚未盈利</td></tr>
+    </table>
+    <div class="note">
+      <b>结论</b>：当前港股半导体处于"周期低谷+资本开支高峰"阶段，ROE普遍3~6%，与"ROE&gt;10%的成熟盈利型"筛选框架天然冲突。
+      若看好国产替代周期反转，应采用<b>PB分位+产能利用率+景气拐点</b>的困境反转型框架另行评估（如中芯国际PB 3.3x、华虹PB 4.5x均处于历史区间）。
+      本轮筛选框架下，与半导体相关的达标标的集中在<b>产业链配套</b>：飞速创新（算力互连）、伟仕佳杰（服务器分销）。
+    </div>
+  </div>
+
+  <!-- 方法论 -->
+  <div class="card">
+    <h2>七、方法论与风险提示</h2>
+    <p style="font-size:13.5px;">
+      <b>筛选口径</b>：① 初筛用条件选股（最新加权ROE&gt;10%、PE 0~30、市值&gt;100亿港元）得到119只粗筛池；
+      ② 逐只拉取近10期财报，提取最近3个完整财年的加权ROE，要求均&gt;10%（136只验证）；
+      ③ 对ROE达标的78只，拉取最新券商研报提取2026年净利预测，PEG = TTM PE ÷ 2026E净利增速，要求&lt;1；
+      ④ 行业标签按主营业务人工判定；
+      ⑤ <b>补验 2026 年新上市的 A+H 科技龙头</b>（2026H1 共 24 家 A+H 上市，逐一核查募资榜 TOP10 及 18C 特专科技新股），
+      避免选股数据源对新上市 H 股的覆盖缺失——本轮已补入中际旭创、华勤技术，并核实胜宏/领益/澜起/兆易/豪威/大族数控/芯碁/壁仞/曦智等 9 家未达标原因。
+    </p>
+    <p style="font-size:13.5px;margin-top:8px;">
+      <b>重要提醒</b>：① 盈利预测来自券商主观假设，存在下调风险；② 小市值标的（飞速创新/赤子城/九方智投/高伟电子/伟仕佳杰等，
+      市值100-200亿）流动性弱于大盘股，需结合仓位管理；③ 联想、紫金等近期涨幅已大（联想YTD+191%），
+      低PEG中已含部分预期；④ 本报告为数据筛选结果，不构成投资建议。
+    </p>
+    <p class="foot" style="margin-top:10px;">生成时间：2026-08-06 ｜ 数据来源：腾讯自选股（行情/财务）、券商研报（盈利预测：中邮/申万宏源/长江/国信/中信建投/招商/光大/华源/银河等）｜ 恒生科技成分股名单来自恒生指数官网（2026年6月季检）</p>
+  </div>
+
+</div>
+</body>
+</html>

@@ -43,6 +43,12 @@ h1{font-size:28px;color:#1a237e;margin-bottom:8px}
 .tag-hold{background:#f39c1215;color:#f39c12}
 .tag-new{background:#1a237e15;color:#1a237e}
 
+.doc-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.doc-item{background:#fafbfc;border:1px solid #eef0f4;border-radius:10px;padding:10px 12px;text-align:left}
+.doc-item a{color:#1a237e;font-weight:600;font-size:14px;text-decoration:none;line-height:1.3}
+.doc-item a:hover{text-decoration:underline}
+.doc-item .meta{display:block;font-size:11px;color:#888;margin-top:4px;line-height:1.4}
+
 .empty-hint{grid-column:1/-1;text-align:center;padding:20px;color:#bbb;font-size:13px;font-style:italic;border:2px dashed #ddd;border-radius:10px;background:#fafbfc}
 .empty-hint-watch{color:#1a237e80;border-color:#1a237e30;background:#e3f2fd30}
 
@@ -65,7 +71,7 @@ h1{font-size:28px;color:#1a237e;margin-bottom:8px}
 <body>
 <div class="container">
   <h1>Brad 的股票分析报告</h1>
-  <p class="subtitle">基本面为主，技术面辅助 | 成长股 &amp; 周期股专项研究 | 行情已刷新至 2026-09-25</p>
+  <p class="subtitle">基本面为主，技术面辅助 | 成长股 &amp; 周期股专项研究 | 个股行情已刷新至 2026-09-25</p>
 
   <section class="section">
     <div class="section-header">
@@ -88,6 +94,23 @@ h1{font-size:28px;color:#1a237e;margin-bottom:8px}
       <div class="section-meta"><span class="count-pill" id="others-count">0 只</span></div>
     </div>
     <ul id="others" class="stock-list dropzone" data-group="others"></ul>
+  </section>
+
+  <section class="section">
+    <div class="section-header">
+      <div class="section-title"><span>📊 筛选报告</span><span class="badge">时点筛选 · 非个股诊断</span></div>
+      <div class="section-meta"><span class="count-pill">2 份</span></div>
+    </div>
+    <ul class="doc-list">
+      <li class="doc-item">
+        <a href="hk_all_screen.html">全港股价值筛选 · ROE&gt;10% × PEG&lt;1</a>
+        <span class="meta">2026-08-06 | 港股全市场 ~2,600 只 → 粗筛 119 只 → 3 年 ROE 达标 78 只 → <b>双条件达标 15 只</b>（含 9 只半导体/AI/科技硬件链）<span class="tag tag-new">筛选</span></span>
+      </li>
+      <li class="doc-item">
+        <a href="hstech_screen.html">恒生科技成分股筛选 · ROE&gt;10% × PEG&lt;1</a>
+        <span class="meta">2026-08-06 | 恒生科技 30/30 成分股 → 3 年 ROE 达标 9 只 → <b>双条件达标仅联想集团 1 只</b><span class="tag tag-new">筛选</span></span>
+      </li>
+    </ul>
   </section>
 
   <p class="footer-hint">
@@ -119,6 +142,7 @@ const STOCKS = [
   {id:"feikai",   name:"飞凯材料",            code:"300398.SZ", url:"feikai_diagnosis.html",            date:"2026-09-15", market:"A股", industry:"半导体材料",       tag:"hold", tagText:"持有·69分"},
   {id:"mu",       name:"Micron",             code:"MU",       url:"mu_diagnosis.html",                date:"2026-09-21", market:"美股", industry:"AI内存超级周期",  tag:"hold", tagText:"持有·9/30财报前夜76分"},
   {id:"sndk",     name:"Sandisk",            code:"SNDK",     url:"sndk_diagnosis.html",              date:"2026-09-25", market:"美股", industry:"NAND闪存·AI存储", tag:"hold", tagText:"持有·三锚加权中枢$2,177·65分"},
+  {id:"intc",     name:"英特尔",              code:"INTC",     url:"intc_diagnosis.html",              date:"2026-09-22", market:"美股", industry:"IDM·代工转型",    tag:"hold", tagText:"观望·60分"},
   {id:"montage",  name:"澜起科技",            code:"6809.HK",  url:"montage_diagnosis.html",           date:"2026-08-17", market:"港股", industry:"内存互连芯片",    tag:"hold", tagText:"观望·CXL弹性大"},
   {id:"huaqin",   name:"华勤技术",            code:"03296.HK", url:"huaqin_diagnosis.html",            date:"2026-08-17", market:"港股", industry:"AI服务器ODM",     tag:"hold", tagText:"次新股·波动大"},
   {id:"lenovo",   name:"联想集团",            code:"00992.HK", url:"lenovo_diagnosis.html",            date:"2026-08-17", market:"港股", industry:"AI服务器",        tag:"hold", tagText:"重估中·YTD+270%"},
