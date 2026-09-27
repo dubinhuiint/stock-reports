@@ -3,41 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>特变电工(600089) 深度诊断报告 v2.1 增量更新</title>
+<title>特变电工(600089) 深度诊断报告 v3.2</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
 .container{max-width:1000px;margin:0 auto}
-.header{background:linear-gradient(135deg,#1a237e,#283593);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+.header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
 .header h1{font-size:28px;margin-bottom:4px}
 .header .meta{font-size:13px;opacity:.85}
 .price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px;flex-wrap:wrap}
 .price{font-size:52px;font-weight:800}
 .chg{font-size:20px;padding:4px 12px;border-radius:8px}
 .chg.dn{background:rgba(0,200,83,.2);color:#00c853}
-.chg.up{background:rgba(198,40,40,.15);color:#c62828}
+.chg.up{background:rgba(198,40,40,.2);color:#c62828}
 .card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
-.card h2{font-size:18px;color:#1a237e;border-bottom:2px solid #e8eaf6;padding-bottom:10px;margin-bottom:16px}
-.card h3{font-size:15px;color:#3949ab;margin:20px 0 8px}
+.card h2{font-size:18px;color:#0d47a1;border-bottom:2px solid #e3f2fd;padding-bottom:10px;margin-bottom:16px}
+.card h3{font-size:15px;color:#1565c0;margin:20px 0 8px}
+.card h4{font-size:14px;color:#555;margin:12px 0 6px}
 .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
 .kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
 .kv .lbl{font-size:11px;color:#888}
-.kv .val{font-size:20px;font-weight:700;color:#1a237e}
+.kv .val{font-size:20px;font-weight:700;color:#0d47a1}
 .kv .sub{font-size:11px;color:#555;margin-top:2px}
 table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
-th{background:#e8eaf6;color:#1a237e;padding:8px 10px;text-align:left;font-weight:600}
+th{background:#e3f2fd;color:#0d47a1;padding:8px 10px;text-align:left;font-weight:600}
 td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
 tr:hover td{background:#f8f9fc}
 .up{color:#c62828}.dn2{color:#00c853}
 .sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
 .sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
-.vcard{background:linear-gradient(135deg,#e8eaf6,#c5cae9);border-radius:12px;padding:24px;margin-bottom:16px}
-.vcard h2{font-size:20px;color:#1a237e;margin-bottom:12px}
-.vcard .score{font-size:60px;font-weight:800;color:#3949ab;text-align:center;margin:10px 0}
+.vcard{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:12px;padding:24px;margin-bottom:16px}
+.vcard h2{font-size:20px;color:#0d47a1;margin-bottom:12px}
+.vcard .score{font-size:60px;font-weight:800;color:#1565c0;text-align:center;margin:10px 0}
 .tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
 .tech-item .name{font-size:12px;color:#888}
-.tech-item .val{font-size:16px;font-weight:700;color:#1a237e}
+.tech-item .val{font-size:15px;font-weight:700;color:#0d47a1}
 .tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
 .tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
 .tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
@@ -47,14 +48,19 @@ tr:hover td{background:#f8f9fc}
 .assume strong{color:#f57c00}
 .scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .scen{border-radius:8px;padding:14px;text-align:center}
-.scen-bear{background:#e8f5e9}.scen-base{background:#e8eaf6}.scen-bull{background:#fce4ec}
+.scen-bear{background:#e8f5e9}.scen-base{background:#e3f2fd}.scen-bull{background:#fce4ec}
 .scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}
 .scen .schg{font-size:12px}
 .footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
 ol li{padding:5px 0;font-size:14px}
 .small{font-size:11px;color:#999;display:block}
+.new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
 .delta-up{background:#fce4ec}.delta-dn{background:#e8f5e9}.delta-flat{background:#f8f9fc}
-@media print{body{padding:0;background:white}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
+.moat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:10px 0}
+.moat{border-radius:8px;padding:12px;text-align:center;background:#f8f9fc}
+.moat .mname{font-size:12px;color:#666}
+.moat .mval{font-size:14px;font-weight:700;color:#0d47a1;margin-top:4px}
+@media print{body{background:white;padding:0}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
 </style>
 </head>
 <body>
@@ -62,168 +68,454 @@ ol li{padding:5px 0;font-size:14px}
 
 <div class="header">
   <h1>特变电工 <span style="font-weight:400;font-size:18px">600089 · A股主板</span></h1>
-  <div class="meta">深度诊断报告 v2.1（增量更新版，基于 v2.0/2026-09-07） · 2026-09-11 盘中 · Wind + 公开新闻 + 外资观点编译 · Brad 股票分析框架</div>
+  <div class="meta">深度诊断报告 v3.2（完整 12 模块重建，前序 v2.1/2026-09-11） · 数据截至 2026-09-24 收盘 · Wind + 公司公告 + 卖方研报 + 公开新闻 · Brad 股票分析框架</div>
   <div class="price-row">
-    <span class="price">18.50</span>
-    <span class="chg dn">-2.68%</span>
-    <span style="font-size:13px;opacity:.9">9/11 盘中 · 市值 935亿 · PE(TTM) 17.6 · PB 1.32 · YTD -15.4%</span>
+    <span class="price">17.60</span>
+    <span class="chg dn">-2.71%</span>
+    <span style="font-size:13px;opacity:.9">9/24 收盘 · 市值 889 亿 · PE(TTM) 16.7 · PB 1.26 · YTD -19.5%</span>
   </div>
 </div>
 
-<!-- 变化摘要 -->
+<!-- ===== 变化摘要 ===== -->
 <div class="card">
-  <h2>₀ v2.0 → v2.1 变化摘要（重新分析结论先行）</h2>
-  <p style="font-size:13px;margin-bottom:10px">9/7 至今 4 个交易日：<strong>核心逻辑未变，边际信号一正一负相抵，维持 61 分观望。</strong>变化点如下：</p>
+  <h2>₀ v2.1 → v3.2 变化摘要（结论先行）</h2>
+  <p style="font-size:13px;margin-bottom:10px">本次为 <strong>结构 + 数据双重建</strong>：报告由 v2.1 的 7 段增量结构改为完整 12 模块；数据由 9/11 刷新至 9/24，并纳入 8/21 中报、8/26 业绩说明会、9/15 机构调研记录。结论：<strong>评分 61 → 58，评级维持「观望」，但性质由"合理定价、无安全边际"转为"估值分位被误读 + 资金筹码双双恶化"。</strong></p>
   <table>
-    <tr><th width="130">维度</th><th width="60">方向</th><th>v2.1 更新内容</th></tr>
-    <tr class="delta-up"><td>技术面</td><td class="up">改善 ↑</td><td><strong>MACD 零轴下金叉、红柱初现（9/7 时绿柱收窄）；KDJ K 值 22.6→49.6 大幅回升</strong>；9/8-9/10 反弹至 19.01 一度逼近 MA20，但 9/11 板块性回调又跌回全部均线下方——底部信号增强，右侧仍未确认</td></tr>
-    <tr class="delta-dn"><td>多晶硅</td><td class="dn2">转弱 ↓</td><td>期货主力 8 月 +12% 后回落（9/7 单日 -1.89%）；<strong>现货报价开始松动</strong>（SMM 区间下探 36 元/kg）；库存 31.3 万吨未去化（环比 +0.4）；9 月产量环比增至 ~12 万吨（部分复产）；"反内卷"预期降温——<strong>v2.0 的"拐点脆弱"判断被数据确认且边际恶化</strong></td></tr>
-    <tr class="delta-dn"><td>资金面</td><td class="dn2">转弱 ↓</td><td><strong>融资余额连续 3 日净偿还</strong>（累计 -0.91亿，余额降至 49.92亿）——杠杆资金离场；光伏/新能源 ETF 净流出（特变为重仓股）；主力 20 日净流出 8.18亿（Wind 口径，与 v2.0 腾讯口径 -18.89亿 数量级不同，v2.1 起统一用 Wind 口径）</td></tr>
-    <tr class="delta-up"><td>煤炭</td><td class="up">新增催化 ↑</td><td>申万宏源 9/8 研报：<strong>疆煤产消量有望大幅增长</strong>（中吉乌铁路+疆煤外运），点名关注特变电工——煤炭从"纯拖累"变为"政策期权"</td></tr>
-    <tr class="delta-flat"><td>外资观点</td><td><span class="tag-neutral">新增强化</span></td><td>新增外资专节（见下）：大摩 31 元/高盛 27.8 元，但<strong>目标价轨迹从年初 32-40 元持续下修</strong>，且全部基于中报前盈利口径——外资下修与内资一致预期下修是同一枚硬币的两面</td></tr>
-    <tr class="delta-flat"><td>估值框架</td><td>维持</td><td>4 天内无新分部财务数据，三法（SOTP/PEG/PB）悲观 15.0 / 中性 18.5 / 乐观 22.6 元维持不变；现价 18.50 与中性锚<strong>从 +2% 溢价变为基本持平</strong></td></tr>
-    <tr class="delta-flat"><td>今日下跌定性</td><td><span class="tag-neutral">非个股</span></td><td>9/11 -2.68% 为板块性回调：上证 -1.79%、电网设备板块 -1.84%、特高压板块 -1.92%，特变与板块同步，无公司特有利空</td></tr>
+    <tr><th width="110">维度</th><th width="70">方向</th><th>v3.2 更新内容</th></tr>
+    <tr class="delta-dn"><td><strong>中报落地</strong></td><td><span class="tag-neutral">分化</span></td><td>H1 营收 565.5 亿（+17.0%）创同期新高，但归母 25.52 亿（<strong>-19.8%</strong>）；Q2 单季营收 316 亿创历史新高、归母仅 7.38 亿（同比 <strong>-53.4%</strong>）。管理层明确：公允价值变动 + 减值合计<strong>同比减少利润 13.9 亿</strong>，"剔除这些非经营因素，半年度利润增长"——扣非仅 -4.1%，主业韧性未破</td></tr>
+    <tr class="delta-dn"><td><strong>估值分位<br>（重要纠正）</strong></td><td class="dn2">纠正 ↓</td><td>v2.1 称"PB 1.32 处历史低位区间"。按 <strong>3 年窗口</strong>核查：PE 16.7x 分位 <strong>62.4%</strong>、PB 1.26x 分位 <strong>59.9%</strong>（均为中位偏上）；只有 <strong>1 年窗口</strong>才是低位（PE 6.7% / PB 0%）。3 年 PB 区间 0.87–2.41x——<strong>"历史低位"是窗口口径造成的误导，本版纠正</strong></td></tr>
+    <tr class="delta-up"><td>结构改善</td><td class="up">改善 ↑</td><td>新能源板块毛利率 <strong>0.59%（FY25 全年）→ 9.73%（H1）</strong>（+13.29pct）；铝电子新材料 9.66% → <strong>18.14%</strong>（氧化铝一线投产）；黄金收入 <strong>+130%</strong>、毛利率 57.6%</td></tr>
+    <tr class="delta-flat"><td>订单 vs 招标</td><td><span class="tag-neutral">新增分歧</span></td><td>输变电国内签约 372.85 亿（<strong>+36.4%</strong>）、国际 16.18 亿美元（+44%）、待执行订单 &gt;400 亿；<strong>但国网主网第 5 批招标同比转负</strong>（变压器 -7%、组合电器 -20%，前 5 批累计 -3% / -13%）——接单强、招标弱，节奏逐批走弱</td></tr>
+    <tr class="delta-dn"><td>技术面</td><td class="dn2">恶化 ↓</td><td>v2.1 的"MACD 零下金叉 + KDJ 回升"<strong>已失效</strong>：MACD 转死叉、KDJ K 值由 49.6 跌回 17.4、J 由 74.0 跌至 9.7；<strong>8 月 18.3–18.5 双底已破</strong>（9/24 最低 17.55），全部均线构成压制</td></tr>
+    <tr class="delta-dn"><td>筹码</td><td class="dn2">恶化 ↓</td><td>股东户数 <strong>51.2 万（25Q4）→ 85.3 万（26Q1）→ 83.3 万（26Q2）</strong>，筹码显著分散；主动偏股基金由 23 只降至 <strong>8 只</strong>、持股比例 0.12%（-0.22pct）</td></tr>
+    <tr class="delta-flat"><td>一致预期</td><td>维持</td><td>13 家一致预期 2026E 归母 <strong>63.19 亿（EPS 1.25）仍未下修</strong>；本报告自估约 <strong>48 亿（EPS 0.95）</strong>。下修风险依旧悬置在前方——与 v2.1 判断一致</td></tr>
+    <tr><td>估值口径</td><td>修正 ↻</td><td>三锚口径边界补全：SOTP 改为「分部 + 集团净额 + 非经营性资产」分列口径、加回非经营性金融资产 44.87 亿（17.3 → <strong>18.2 元</strong>）；2026E 中性归母按<strong>已实现的 Q3 公允价值损失 -4.0 亿</strong>下修（52 → 48 亿）；加权中枢 18.2 → <strong>18.3 元</strong>。评分维持 58</td></tr>
   </table>
 </div>
 
-<!-- 综合评分 -->
+<!-- ===== 模块 1 ===== -->
 <div class="vcard">
-  <h2>综合诊断评分（v2.1）</h2>
-  <div class="score">61<span style="font-size:24px;color:#888"> /100</span></div>
-  <p style="text-align:center;color:#ff8f00;font-weight:700">观望 —— 与 v2.0 持平：逻辑有、价格平、资金弱；底部信号增强但多晶硅拐点证伪风险上升</p>
+  <h2>模块 1 · 综合诊断评分（v3.2）</h2>
+  <div class="score">58<span style="font-size:24px;color:#888"> /100</span></div>
+  <p style="text-align:center;color:#ff8f00;font-weight:700">观望（50–64）—— 主业没坏、价格不便宜；估值分位与资金筹码双双转弱，等预期出清</p>
   <table>
-    <tr><th>维度</th><th>权重</th><th>v2.1</th><th>v2.0</th><th>变化依据</th></tr>
-    <tr><td>基本面</td><td>25%</td><td class="up">66</td><td>66</td><td>无新财报数据，维持"扣非韧性+订单高增"判断</td></tr>
-    <tr><td>估值</td><td>25%</td><td class="up">63</td><td>62</td><td>现价较中性锚由 +2% 溢价转为持平微折让；PB 1.32（原 1.35）</td></tr>
-    <tr><td>成长性</td><td>10%</td><td class="up">73</td><td>72</td><td>新增疆煤外运/中吉乌铁路催化（申万 9/8）</td></tr>
-    <tr><td>技术面</td><td>10%</td><td class="up">52</td><td>45</td><td>MACD 金叉红柱+KDJ 回升+8月双底夯实；但均线仍空头、今日回落</td></tr>
-    <tr><td>资金面</td><td>10%</td><td class="dn2">40</td><td>42</td><td>融资连续 3 日净偿还、ETF 流出、板块资金退潮</td></tr>
-    <tr><td>风险</td><td>10%</td><td class="dn2">53</td><td>55</td><td>多晶硅报价松动+复产+库存不去化，"反内卷"预期降温</td></tr>
-    <tr><td>筹码/事件</td><td>5%</td><td class="up">68</td><td>68</td><td>不变：无解禁、分红连续、订单/投产催化密集</td></tr>
-    <tr><td>机构共识</td><td>5%</td><td class="dn2">64</td><td>65</td><td>一致预期 63.99 亿仍未下修；外资目标价下修进行中</td></tr>
-    <tr style="background:#e8eaf6"><td><strong>加权总分</strong></td><td>100%</td><td><strong>61</strong></td><td><strong>61</strong></td><td><strong>观望（50-64）· 硬约束检查：基本面+估值 129≥120 ✓ / 风险 53≥45 ✓</strong></td></tr>
+    <tr><th>维度</th><th>权重</th><th>v3.2</th><th>v2.1</th><th>变化依据</th></tr>
+    <tr><td>基本面</td><td>25%</td><td>64</td><td>66</td><td>扣非韧性 + 经营现金流净现比 2.07 为正面；但 ROE 加权年化 7.2%（2025 为 8.75%）下滑、应收账款 232.6 亿（+19.2%）快于营收 +17.0%、减值扩大至 8.90 亿</td></tr>
+    <tr><td>估值</td><td>25%</td><td>62</td><td>63</td><td>三法中枢 18.3 元 vs 现价 17.60（-3.6%）；但 3 年分位修正为中位偏上（PE 62.4% / PB 59.9%），"历史低位"叙事不成立</td></tr>
+    <tr><td>成长性</td><td>10%</td><td>72</td><td>73</td><td>输变电订单 +36.4% / +44%、待执行 &gt;400 亿、煤制气 2027 中期提前投产为正面；国网招标逐批转弱、2026 全年归母为负增长</td></tr>
+    <tr><td>技术面</td><td>10%</td><td class="dn2">40</td><td>52</td><td>MACD 转死叉、KDJ 回落至超卖、8 月双底 18.3–18.5 告破、均线全空头排列；仅 RSI6 20.8 / CCI -119 显示短线超卖</td></tr>
+    <tr><td>资金面</td><td>10%</td><td class="dn2">38</td><td>40</td><td>主力当日 -1.69 亿 / 20 日 -8.56 亿 / 60 日 -10.60 亿；本周主力 -4.06 亿、散户 +3.99 亿；近 3 月融资净流出 9.02 亿</td></tr>
+    <tr><td>风险</td><td>10%</td><td class="dn2">52</td><td>53</td><td>多晶硅 10 月开工降至 35%（减产预期强化，正面）vs 库存升至 31.9 万吨、资产负债率 56.94%、可转债摊薄预期、招标转弱（负面）</td></tr>
+    <tr><td>筹码/事件</td><td>5%</td><td class="dn2">62</td><td>68</td><td>股东户数由 51.2 万增至 83.3 万（筹码分散）；可转债在推（潜在摊薄）；无解禁、分红连续为中性</td></tr>
+    <tr><td>机构共识</td><td>5%</td><td class="dn2">62</td><td>64</td><td>目标均价 26.67 元（+51%）看似空间大，但建立在未下修的 2026E 63.19 亿之上；基金持仓降至 0.12%</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>加权总分</strong></td><td>100%</td><td><strong>58</strong></td><td><strong>61</strong></td><td><strong>观望（50–64）· 硬约束：基本面+估值 126 ≥ 120 ✓ ／ 风险 52 ≥ 45 ✓（无触发）</strong></td></tr>
   </table>
-  <div class="sig sig-warn"><strong>核心判断（v2.1 重申并微调）：</strong>输变电成长逻辑（订单+36%/出海+44%、"十五五"电网投资）完好，18.50 元与三法中性 18.5 元持平、PB 1.32 处历史低位区间——"合理定价、无安全边际"不变。相比 v2.0 的两处边际变化：<strong>正面的</strong>是 MACD 金叉+疆煤催化让"左侧磨底"的证据链更完整；<strong>负面的</strong>是多晶硅"反内卷"从预期走向降温（期货回落+报价松动+复产），周期期权的时间价值在衰减。当前最大的悬而未决仍是：<strong>①多晶硅拐点验证（库存去化）；②一致预期 2026E 归母 64 亿 vs 自估 49 亿的下修落地</strong>——下修过程中股价可能二次承压。</div>
+  <div class="sig sig-warn"><strong>核心判断（v3.2）：</strong>输变电的成长叙事<strong>没有破裂</strong>——H1 国内签约 +36.4%、国际 +44%、待执行订单 &gt;400 亿、变压器产能满产、柔直换流阀累计中标 &gt;14 亿；多晶硅的周期期权也在边际改善（10 月行业开工降至 35%、现货 4.30 万元/吨企稳、新能源板块毛利率转正至 9.73%）。<br>
+  但<strong>三件事同时指向"现在的价格没有安全边际"</strong>：① <strong>估值分位被 v2.1 误读</strong>——3 年窗口下 PB 1.26x 处 59.9% 分位，不是"历史低位"，"低估值"这一持有理由的核心支点被抽掉；② <strong>技术与筹码双破</strong>——8 月双底告破、全部均线空头、股东户数较一年前增加 63%、机构在减不在加；③ <strong>一致预期 63.19 亿仍未下修</strong>，而 H1 实际仅完成 25.52 亿，下修过程本身就是股价压力（参考阳光电源 8–9 月路径）。<br>
+  <strong>结论：逻辑仓介入区应从 v2.1 的"17–18 元"下移至 16.5–17.5 元（PB 1.18–1.25x），加仓区 15.8–16.0 元（52 周低点 15.81）。趋势仓等右侧三条件，当前三缺三。</strong></div>
 </div>
 
-<!-- 行情快照 -->
+<!-- ===== 模块 2 ===== -->
 <div class="card">
-  <h2>一、行情快照（2026-09-11 盘中）</h2>
+  <h2>模块 2 · 行情快照（2026-09-24 收盘）</h2>
   <div class="kv">
-    <div class="item"><div class="lbl">最新价</div><div class="val">18.50</div><div class="sub">盘中 -2.68% · 板块性回调</div></div>
-    <div class="item"><div class="lbl">总市值</div><div class="val">935亿</div><div class="sub">较 v2.0（957亿）-2.3%</div></div>
-    <div class="item"><div class="lbl">PE(TTM)</div><div class="val">17.6x</div><div class="sub">TTM 归母 53.2亿</div></div>
-    <div class="item"><div class="lbl">PB</div><div class="val">1.32</div><div class="sub">每股净资产 14.71元 · 历史低位区间</div></div>
-    <div class="item"><div class="lbl">股息率</div><div class="val">1.93%</div><div class="sub">2025 年度 0.36元/股 · 分红率 30.35%</div></div>
-    <div class="item"><div class="lbl">52周范围</div><div class="val">14.22-32.74</div><div class="sub">距高点 -43.5%（Wind 前复权口径）</div></div>
-    <div class="item"><div class="lbl">年初至今</div><div class="val dn2">-15.4%</div><div class="sub">20日 -8.9% · 60日 -17.1%（Wind）</div></div>
-    <div class="item"><div class="lbl">主力资金(Wind)</div><div class="val dn2">5日 -2.5亿</div><div class="sub">20日 -8.2亿 / 60日 -11.9亿</div></div>
+    <div class="item"><div class="lbl">最新价</div><div class="val">17.60</div><div class="sub">-2.71% · 9/25 中秋休市</div></div>
+    <div class="item"><div class="lbl">总市值 / 流通市值</div><div class="val">889.3亿</div><div class="sub">全流通 · 总股本 50.53 亿股</div></div>
+    <div class="item"><div class="lbl">PE(TTM)</div><div class="val">16.71x</div><div class="sub"><span class="tag-neutral">3年分位 62.4%</span> 1年分位 6.7%</div></div>
+    <div class="item"><div class="lbl">PE(LYR)</div><div class="val">14.94x</div><div class="sub">按 2025 归母 59.54 亿</div></div>
+    <div class="item"><div class="lbl">PE(预测)</div><div class="val">13.00x</div><div class="sub">隐含 2026E 归母 68.4 亿</div></div>
+    <div class="item"><div class="lbl">PB(LF)</div><div class="val">1.26x</div><div class="sub"><span class="tag-neutral">3年分位 59.9%</span> 1年分位 0%</div></div>
+    <div class="item"><div class="lbl">每股净资产</div><div class="val">14.02元</div><div class="sub">Wind 口径（已剔除永续债 47 亿）</div></div>
+    <div class="item"><div class="lbl">股息率(TTM)</div><div class="val">2.03%</div><div class="sub">每股 0.36 元 · 分红率约 30%</div></div>
+    <div class="item"><div class="lbl">52 周区间</div><div class="val">15.81–32.74</div><div class="sub">距高点 -46.2% · 距低点 +11.3%</div></div>
+    <div class="item"><div class="lbl">年初至今</div><div class="val dn2">-19.47%</div><div class="sub">20日 -9.09% · 60日 -18.04%</div></div>
+    <div class="item"><div class="lbl">Beta(1年) / 波动率</div><div class="val">1.91 / 55.1%</div><div class="sub">最大回撤 -45.4% · Sharpe 0.03</div></div>
+    <div class="item"><div class="lbl">下次财报</div><div class="val">10月下旬</div><div class="sub">2026 年三季报</div></div>
   </div>
-  <div class="assume"><strong>口径说明：</strong>v2.0 资金数据来自腾讯（60 日主力 -64.37 亿），Wind 主力口径显著更小（-11.90 亿），两者算法不同不可直接对比。<strong>v2.1 起资金数据统一切换为 Wind 口径</strong>，后续版本可横向比较。v2.0 的 60 日 -64.37 亿结论方向一致（大幅流出），仅幅度口径不同。</div>
+  <div class="assume"><strong>估值分位口径说明（本版新增）：</strong>Wind 同时提供 1 年与 3 年分位，两者<strong>方向相反</strong>——PE 1 年 6.7% / 3 年 62.4%，PB 1 年 0% / 3 年 59.9%。原因是过去 12 个月估值单边下移，故 1 年口径必创新低；而 2023–2024 年 PB 曾低至 0.8714x（2025-04-07），3 年高点 2.4071x（2026-03-05）。<strong>本报告以后者（3 年）为主判据</strong>，因 1 年口径在单边行情下恒等于"最低"，不具区分度。⚠ <strong>反向保留意见</strong>：2023–2024 年的低 PB 对应的是输变电订单远弱于当下的基本面，静态分位比较存在"基本面已变"的偏差——故不能简单反推"1.26x 应回到 0.87x"。</div>
 </div>
 
-<!-- 增量动态 -->
+<!-- ===== 模块 3 ===== -->
 <div class="card">
-  <h2>二、增量动态时间线（9/7 → 9/11）<span style="display:inline-block;background:#1a237e;color:#fff;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px">v2.1 NEW</span></h2>
+  <h2>模块 3 · 利润表趋势（单季口径，累计值倒推）</h2>
+  <h3>3.1 单季核心指标</h3>
   <table>
-    <tr><th width="90">日期</th><th>事件</th><th width="150">影响</th></tr>
-    <tr class="delta-dn"><td><strong>09-11</strong></td><td>盘中 -2.68% 报 18.50：上证 -1.79%、电网设备板块 -1.84%、特高压 -1.92%——<strong>板块性回调，无公司利空</strong>；融资余额连续 3 日净偿还（余额 49.92亿，占流通市值 5.2%）</td><td class="dn2">大盘/板块退潮，资金弱</td></tr>
-    <tr class="delta-up"><td><strong>09-08</strong></td><td><strong>申万宏源研报：疆煤产消量有望大幅增长</strong>（新疆煤炭储量丰富、成本低，中吉乌铁路沿线物流枢纽建设），点名建议关注特变电工、兖矿能源——疆煤外运+煤化工需求为煤炭板块新增政策期权</td><td class="up">煤炭逻辑新增正面催化</td></tr>
-    <tr class="delta-dn"><td><strong>09-07/08</strong></td><td><strong>多晶硅数据更新（华泰期货/广发期货/SMM）：</strong>N型复投料 40,650 元/吨企稳但"报价过高成交较少"、部分厂商小幅降价（SMM 区间 36-42.6 元/kg）；库存 31.3 万吨（环比 +0.4）未去化；期货主力 8 月 +12.09% 后 9/7 回落 -1.89% 至 37,065；9 月产量约 12 万吨（部分复产，环比增）；"反内卷"预期降温，策略建议区间震荡对待</td><td class="dn2">v2.0"拐点脆弱"判断被确认且边际恶化</td></tr>
-    <tr class="delta-up"><td><strong>09-08/09/10</strong></td><td>股价 18.94 → 19.01 三日反弹（+0.37%），9/9 盘中一度逼近 MA20（19.50）未站稳；光伏/新能源 ETF 份额连续减少（特变为重仓股）</td><td>反弹乏力，量能不足</td></tr>
-    <tr class="delta-flat"><td><strong>09-08/09</strong></td><td>市场深度估值文章（EPV 法失效结论）与外资观点编译广泛流传：共识"观望/合理定价"；一致预期 2026E 归母 63.99 亿（13 家，+7.46%）<strong>仍未下修</strong>，综合目标价 23.83 元</td><td>预期下修悬而未决</td></tr>
+    <tr><th>单季</th><th>营收(亿)</th><th>毛利率</th><th>归母(亿)</th><th>扣非(亿)</th><th>净利率</th><th>少数股东<br>占净利比</th></tr>
+    <tr><td>FY25 Q1</td><td>233.57</td><td>20.59%</td><td>16.00</td><td>[缺失]</td><td>7.10%</td><td>3.4%</td></tr>
+    <tr><td>FY25 Q2</td><td>249.94</td><td>16.59%</td><td>15.84</td><td>[缺失]</td><td>6.99%</td><td>9.4%</td></tr>
+    <tr><td>FY25 Q3</td><td>245.66</td><td>17.78%</td><td>23.00</td><td>[缺失]</td><td>9.48%</td><td>1.2%</td></tr>
+    <tr><td>FY25 Q4</td><td>243.09</td><td>20.41%</td><td>4.70</td><td>[缺失]</td><td>1.10%</td><td>43.2%</td></tr>
+    <tr><td>FY26 Q1</td><td>249.46</td><td class="up">21.12%</td><td class="up">18.15</td><td>14.61</td><td class="up">8.58%</td><td>15.2%</td></tr>
+    <tr style="background:#fff8e1"><td><strong>FY26 Q2</strong></td><td><strong>316.09</strong></td><td class="dn2">17.15%</td><td class="dn2">7.38</td><td>12.13</td><td class="dn2">2.72%</td><td>14.3%</td></tr>
   </table>
-</div>
+  <div class="sig sig-warn"><strong>Q2 单季是最关键的异常点：</strong>营收 316.09 亿（同比 +26.5%、环比 +26.7%）为<strong>单季历史新高</strong>，但归母仅 7.38 亿（同比 -53.4%、环比 -59.4%）、净利率跌至 <strong>2.72%</strong>。而 <strong>扣非 12.13 亿、同比仅 -4.5%</strong>——即 Q2 非经常性损益为 <strong>-4.75 亿</strong>（Q1 为 +3.54 亿），归母与扣非的差额就是全部解释。营收创新高但毛利率回落 3.97pct（21.12% → 17.15%），主因是低毛利的电线电缆（毛利率 8.80%）与新能源工程收入占比跃升，属<strong>结构性稀释而非价格崩塌</strong>。⚠ Q4 FY25 少数股东占净利比高达 43.2%——系当季净利仅 2.67 亿而少数股东（新特能源等）分配刚性所致，说明<strong>母公司口径的盈利波动远大于并表口径</strong>。</div>
 
-<!-- 外资观点 -->
-<div class="card">
-  <h2>三、外资大行观点专节（v2.1 新增）</h2>
-  <div class="assume"><strong>来源说明：</strong>特变电工为 A 股标的，外资行不公开发布中文研报，以下为公开渠道流传的机构观点编译整理（珩观天下等二手编译源+头条转载），<strong>目标价与评级可能滞后或失真，仅供交叉参考，已按可信度降权处理。</strong></div>
-  <h3>1. 目标价轨迹：一场持续 9 个月的下修</h3>
+  <h3>3.2 利润损耗链（H1 FY26，营业利润 → 归母）</h3>
   <table>
-    <tr><th>机构</th><th>评级</th><th>目标价（时点）</th><th>核心逻辑</th></tr>
-    <tr><td>摩根士丹利</td><td class="up">增持</td><td><strong>31.0 元</strong>（2026 年内最新）<br><span class="small">此前 38.5 元（年初）→ 32.8 元（5月）→ 31.0 元</span></td><td>电网投资共振×输变电放量：特高压+柔直技术体系全球领先、国内外电网投资共振；⚠ 其 2026E 归母 83.5 亿为<strong>中报前口径，明显偏高</strong></td></tr>
-    <tr class="delta-flat"><td>高盛</td><td><span class="tag-neutral">买入/中性摇摆</span></td><td><strong>27.8 元</strong>（最新）<br><span class="small">此前 40.2 → 35.5 → 34.5 → 27.8 元，下修最深</span></td><td>认可输变电高端化与海外订单，<strong>核心担忧：硅料价格回升不及预期、特高压工程推进延迟、煤价拖累</strong>——三只减法项全部命中当前现实</td></tr>
-    <tr><td>瑞银 UBS</td><td><span class="tag-neutral">中性</span></td><td>26.5-35.2 元（2026-04 起，口径波动大）</td><td>认可龙头地位，但<strong>提示多晶硅高库存、煤价波动、输变电竞争加剧</strong>，认为估值已反映利好——外资行中最审慎</td></tr>
-    <tr><td>花旗</td><td class="up">买入（4月）</td><td>36.0 元（2026-04，较早未更新）</td><td>资源禀赋+高端装备突破，估值修复空间（时点较早，参考价值下降）</td></tr>
-    <tr style="background:#e8eaf6"><td><strong>综合</strong></td><td colspan="3"><strong>综合目标价 23.83 元（vs 现价 18.50，+29%）</strong>——但该口径基于 2026E 归母 64 亿（中报前），若按自估 49 亿重算，隐含空间大幅缩水</td></tr>
+    <tr><th>科目</th><th>H1 FY26(亿)</th><th>H1 FY25(亿)</th><th>同比变化</th><th>说明</th></tr>
+    <tr><td>营业收入</td><td>565.55</td><td>483.51</td><td class="up">+82.04</td><td>+16.97%</td></tr>
+    <tr><td>营业成本</td><td>458.66</td><td>393.98</td><td>+64.68</td><td>+16.4%，慢于收入 → 毛利率 +0.38pct</td></tr>
+    <tr><td><strong>毛利</strong></td><td><strong>106.89</strong></td><td><strong>89.53</strong></td><td class="up">+17.36</td><td>毛利率 18.90% vs 18.52%</td></tr>
+    <tr><td>税金及附加</td><td>-10.81</td><td>-7.71</td><td>+3.10</td><td>资源税等随煤炭结构变化</td></tr>
+    <tr><td>销售 / 管理 / 研发费用</td><td>-42.65</td><td>-38.32</td><td>+4.33</td><td>费率 7.54% vs 7.92%，管控有效</td></tr>
+    <tr><td>财务费用</td><td>-8.72</td><td>-7.31</td><td>+1.41</td><td>利息费用 7.31 亿（同比 -0.43 亿）</td></tr>
+    <tr class="delta-up"><td>其他收益</td><td>+3.78</td><td>+3.89</td><td>-0.11</td><td>政府补助</td></tr>
+    <tr class="delta-up"><td>投资收益</td><td>+4.84</td><td>+2.12</td><td class="up">+2.72</td><td>含联营企业 0.24 亿；摊余成本金融资产终止确认 -0.63 亿</td></tr>
+    <tr class="delta-dn"><td><strong>公允价值变动损益</strong></td><td class="dn2"><strong>-3.97</strong></td><td class="up"><strong>+3.11</strong></td><td class="dn2">-7.08</td><td><strong>主因华电新能跌价</strong>（账面 25.02 → 18.97 亿）；南网能源逆势上涨（5.20 → 6.02 亿）部分对冲；非流动金融资产合计 -4.08 亿</td></tr>
+    <tr class="delta-dn"><td><strong>信用减值损失</strong></td><td class="dn2"><strong>-3.15</strong></td><td class="up"><strong>+0.98</strong></td><td class="dn2">-4.13</td><td>应收账款规模增长 + EPC 结算周期拉长</td></tr>
+    <tr class="delta-dn"><td><strong>资产减值损失</strong></td><td class="dn2"><strong>-5.76</strong></td><td class="dn2"><strong>-3.05</strong></td><td class="dn2">-2.70</td><td><strong>多晶硅存货跌价准备 4.16 亿</strong></td></tr>
+    <tr><td>资产处置收益</td><td>+0.14</td><td>+0.11</td><td>+0.03</td><td>—</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>营业利润</strong></td><td><strong>40.18</strong></td><td><strong>43.84</strong></td><td class="dn2">-3.66</td><td>-8.3%</td></tr>
+    <tr><td>营业外收支净额</td><td>-0.57</td><td>+0.39</td><td>-0.96</td><td>—</td></tr>
+    <tr><td><strong>利润总额</strong></td><td><strong>39.61</strong></td><td><strong>44.23</strong></td><td class="dn2">-4.62</td><td>—</td></tr>
+    <tr><td>所得税费用</td><td>-9.60</td><td>-10.18</td><td>-0.58</td><td><strong>有效税率 24.2%</strong>（利润总额口径）</td></tr>
+    <tr><td><strong>净利润</strong></td><td><strong>30.02</strong></td><td><strong>34.05</strong></td><td class="dn2">-4.03</td><td>-11.8%</td></tr>
+    <tr><td>少数股东损益</td><td>-4.49</td><td>-2.21</td><td>+2.28</td><td>占净利 15.0% vs 6.5%（新特能源 / 天池能源）</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>归母净利润</strong></td><td><strong>25.52</strong></td><td><strong>31.84</strong></td><td class="dn2">-6.32</td><td><strong>-19.84%</strong> · EPS 0.5084 元（去年同期 0.6342）</td></tr>
   </table>
-  <div class="sig sig-warn"><strong>2. 我如何使用外资观点（分歧即信息）：</strong><br>
-  ① <strong>高盛的三只"减法项"（硅料回升不及预期、特高压节奏、煤价）是 9 月以来兑现度最高的判断</strong>——硅料"反内卷"降温、库存不去化，全部命中。这是我下调风险分的主要外部依据；<br>
-  ② <strong>大摩 83.5 亿 vs 自估 49 亿的 35 亿差距</strong>，本质上就是"一致预期下修风险"的量化表达——外资内部分歧（31 vs 27.8）远小于内资一致预期与现实的分歧；<br>
-  ③ <strong>外资目标价下修轨迹（38.5→31.0）与股价（32.9→18.5）同步</strong>，说明卖方是追随者而非领先者——不要把 +29% 的综合目标价空间当作安全边际，它大概率随下修收敛；<br>
-  ④ 买方信号：主动偏股基金最新持仓 8 只基金/605 万股，<strong>环比减持 1,119 万股（-0.22pct）</strong>——机构在减不在加，与融资净偿还互相印证。</div>
+  <div class="sig sig-bull"><strong>损耗链的读法：</strong>营业利润只降 3.66 亿，归母却降 6.32 亿，多出的 2.66 亿来自 ①<b>少数股东损益多分走 2.28 亿</b>（新特能源盈利修复 = 少数股东先分）②<b>营业外支出增加 0.96 亿</b>。而营业利润的 3.66 亿降幅中，<strong>公允价值 -7.08 亿 + 信用减值 -4.13 亿 + 资产减值 -2.70 亿 = -13.91 亿</strong>，被<strong>毛利 +17.36 亿、投资收益 +2.72 亿、费用管控</strong>对冲——<strong>管理层"同比减少利润 13.9 亿、剔除后主业增长"的说法，与利润表逐行核对完全吻合，可以采信</strong>。</div>
+
+  <h3>3.3 Adjusted EBITDA（剔除非现金 / 非经营性项目）</h3>
+  <table>
+    <tr><th>项目</th><th>H1 FY26(亿)</th><th>计算口径</th></tr>
+    <tr><td>净利润</td><td>30.02</td><td>—</td></tr>
+    <tr><td>+ 所得税费用</td><td>+9.60</td><td>—</td></tr>
+    <tr><td>+ 利息费用</td><td>+7.31</td><td>财务费用中的利息支出</td></tr>
+    <tr><td>+ 折旧与摊销</td><td>+34.33</td><td>固定资产折旧 31.08 + 无形摊销 4.11 + 使用权 0.17 + 长期待摊 0.76（含油气折耗）</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>EBITDA</strong></td><td><strong>81.26</strong></td><td>EBITDA Margin <strong>14.37%</strong></td></tr>
+    <tr><td>+ 回加公允价值变动损益</td><td>+3.97</td><td>非经营性</td></tr>
+    <tr><td>+ 回加信用 + 资产减值损失</td><td>+8.90</td><td>非现金</td></tr>
+    <tr><td>− 剔除投资收益</td><td>-4.84</td><td>非经营性</td></tr>
+    <tr><td>− 剔除资产处置收益</td><td>-0.14</td><td>非经常性</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>Adjusted EBITDA</strong></td><td><strong>89.15</strong></td><td>Adjusted EBITDA Margin <strong>15.77%</strong></td></tr>
+  </table>
+  <div class="assume"><strong>为什么 Adjusted EBITDA 比 EBITDA 高 7.89 亿：</strong>回加了 3.97 亿公允价值损失与 8.90 亿减值（再扣掉 4.84 亿投资收益与 0.14 亿处置收益）。<strong>这个差值本身就是"当期业绩被非经营因素压低的金额"</strong>——若全年按同幅度回加，2026E 归母约 52 亿 + 非经营拖累全年化约 10–14 亿。⚠ 但需注意：减值中多晶硅存货跌价 <strong>4.16 亿"后期随着价格上涨或销售可能冲回或转回"（管理层原话）</strong>，属可逆项；而公允价值损失取决于华电新能/南网能源股价，不可控。</div>
 </div>
 
-<!-- 估值 -->
+<!-- ===== 模块 4 ===== -->
 <div class="card">
-  <h2>四、估值更新（三法框架维持，锚定不变）</h2>
-  <p style="font-size:13px">4 天内无新分部财务数据（下一批为 10 月底三季报），SOTP/PEG/PB 假设与 v2.0 完全一致：<strong>SOTP 中性 19.0 元（输变电 37亿×18x + 煤炭 10×7x + 多晶硅权益净资产 0.5x + 黄金新材料 11×14x + 发电 2×10x）</strong>、PEG 中性 16.2 元（自估 26E EPS 0.95 × PEG 1.0）、PB 锚中性 19.9 元（1.35x）。三法加权（50/25/25）：</p>
+  <h2>模块 4 · ROE 与 ROIC</h2>
+  <table>
+    <tr><th>指标</th><th>FY25 全年</th><th>H1 FY26</th><th>H1 年化</th><th>判断</th></tr>
+    <tr><td>ROE（加权）</td><td>8.75%</td><td>3.58%</td><td class="dn2">≈ 7.2%</td><td class="dn2">下滑 1.6pct</td></tr>
+    <tr><td>归母净利率</td><td>6.17%</td><td>4.51%</td><td>—</td><td class="dn2">下滑（Q2 单季仅 2.33%）</td></tr>
+    <tr><td>总资产周转率（年化）</td><td>0.451</td><td>—</td><td>≈ 0.463</td><td>基本持平（收入增长被资产扩张吸收）</td></tr>
+    <tr><td>资产负债率（期末）</td><td>55.60%</td><td>56.94%</td><td>—</td><td class="dn2">杠杆小幅抬升</td></tr>
+    <tr><td><strong>ROIC（年化）</strong></td><td>—</td><td>—</td><td><strong>5.47%</strong></td><td class="dn2">低于 WACC</td></tr>
+    <tr><td><strong>WACC（正常化 β 口径）</strong></td><td colspan="3"><strong>7.5% – 8.5%</strong></td><td class="dn2">ROIC &lt; WACC</td></tr>
+  </table>
+  <div class="assume"><strong>ROIC 与 WACC 的算法与口径（务必看）</strong><br>
+  · <strong>ROIC</strong> = EBIT×(1−t) ÷ 投入资本。EBIT = 营业利润 40.18 + 利息费用 7.31 = 47.49 亿；t = 24.2%；年化后分子 36.09×2 = 72.18 亿。投入资本 = 有息债务 570.15 + 归母权益 755.60 + 少数股东权益 322.26 − 货币资金 328.22 = <strong>1,319.79 亿</strong>。⇒ ROIC = 72.18 ÷ 1,319.79 = <strong>5.47%</strong>。<br>
+  · <strong>WACC</strong>：rf 取中国 10 年国债 ≈ 2.0%，ERP 5.5%。⚠ <strong>β 必须分口径</strong>——Wind 给出的「过去 1 年 β」= <strong>1.91</strong>（受 2025–2026 大幅波动放大，属<b>展示用 β</b>），若直接代入得 r_e = 12.5%，会把 ROIC/WACC 对照推到极端；本报告改用<b>跨周期正常化 β ≈ 1.2–1.4</b>（参考电网设备行业 β），得 <strong>r_e = 8.6%–9.7%</strong>。债务成本按 3.5%×(1−24.2%) = 2.65%，E/(D+E) 取市值口径 61%。⇒ <strong>WACC ≈ 7.5%–8.5%</strong>。<br>
+  · 两种 β 都要看，别混用：<strong>展示风险用 1.91（波动大、回撤 -45.4% 是真的），算资本成本用 ~1.3。</strong></div>
+  <div class="sig sig-warn"><strong>本模块最重要的一个结论：</strong>正常化 ROE ≈ <strong>8.7%</strong>（2025 实际）/ 年化当前 ≈ 7.2%，与 WACC（7.5%–8.5%）<strong>基本相等</strong>。按 PB = (ROE − g) / (r − g)（g 取永续 3%），当 ROE ≈ r 时 <strong>合理 PB ≈ 1.0x 附近</strong>；只有当市场预期 ROE 将显著回升（输变电订单兑现 + 多晶硅周期反转），PB 才配得上 1.2x 以上。<strong>⇒ 现价 1.26x PB 不是"便宜"，而更接近"已把 ROE 回升预期计入了价格"。</strong>这与模块 2 的 3 年分位 59.9% 互相印证，是本版把"低估值"从持有理由中移除的第二条依据。</div>
+</div>
+
+<!-- ===== 模块 5 ===== -->
+<div class="card">
+  <h2>模块 5 · 现金流独立分析</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">经营活动现金流（H1）</div><div class="val up">+62.20亿</div><div class="sub">同比 +34.1%（去年同期 46.37 亿）</div></div>
+    <div class="item"><div class="lbl">投资活动现金流（H1）</div><div class="val dn2">-114.69亿</div><div class="sub">在建工程大额投入</div></div>
+    <div class="item"><div class="lbl">筹资活动现金流（H1）</div><div class="val">+128.91亿</div><div class="sub">净融资补足投资缺口</div></div>
+    <div class="item"><div class="lbl">资本开支（购建固定/无形）</div><div class="val">120.98亿</div><div class="sub">占营收 21.4%</div></div>
+    <div class="item"><div class="lbl">自由现金流（FCF）</div><div class="val dn2">-58.78亿</div><div class="sub">62.20 − 120.98</div></div>
+    <div class="item"><div class="lbl">净利润现金含量</div><div class="val up">2.07x</div><div class="sub">62.20 ÷ 30.02（管理层口径 2.07 一致）</div></div>
+    <div class="item"><div class="lbl">销售回款 / 营收</div><div class="val">1.14x</div><div class="sub">646.65 ÷ 565.55</div></div>
+    <div class="item"><div class="lbl">EBITDA Margin</div><div class="val">14.37%</div><div class="sub">Adjusted 15.77%</div></div>
+  </div>
+  <div class="sig sig-bull"><strong>现金流的正面：</strong>经营现金流 +62.20 亿（+34.1%）明显快于净利润（-11.8%），净现比 2.07x，销售回款 / 营收 1.14x——<strong>收入质量没有问题</strong>，折旧摊销 34.33 亿 + 减值 8.90 亿回加是主要来源。</div>
+  <div class="sig sig-bear"><strong>现金流的负面：</strong>FCF = <strong>-58.78 亿</strong>，capex 120.98 亿（占营收 21.4%）投向氧化铝、煤制气、新能源电站、几内亚水电站；缺口靠<strong>筹资净流入 128.91 亿</strong>补足——这正是有息债务由 499.33 亿（FY25）升至 570.15 亿（H1）的原因。<strong>自由现金流为负 + 依赖债务融资 = 可转债与负债率上行是结构性的，不是一次性的。</strong></div>
+  <div class="assume"><strong>在建工程进度（H1 FY26 账面价值，亿元）：</strong>准东 20 亿方/年煤制天然气 <strong>57.26</strong>（较期初 27.81 大幅推进）· XTNY 准东 2GW 风电 43.72 · 几内亚阿玛利亚水电站 23.58 · 将一矿剥离 17.22 · 氧化铝（240 万吨/年）9.77（较期初 36.38 <strong>大幅转固</strong>）· 多晶硅零星技改 8.45。在建工程合计 <strong>214.49 亿</strong>（Wind 口径 208.56 亿，差异在科目口径）。</div>
+</div>
+
+<!-- ===== 模块 6 ===== -->
+<div class="card">
+  <h2>模块 6 · 资产负债表关键指标</h2>
+  <table>
+    <tr><th>项目</th><th>H1 FY26(亿)</th><th>FY25(亿)</th><th>变动</th><th>解读</th></tr>
+    <tr><td>总资产</td><td>2,502.90</td><td>2,271.50</td><td class="up">+10.2%</td><td>扩表速度快于收入</td></tr>
+    <tr><td>货币资金</td><td>328.22</td><td>256.88</td><td class="up">+27.8%</td><td>筹资到位，铺垫在建项目</td></tr>
+    <tr><td class="dn2">应收账款</td><td class="dn2">232.61</td><td>195.15</td><td class="dn2">+19.2%</td><td><strong>⚠ 快于营收 +17.0%</strong>，EPC 结算周期拉长</td></tr>
+    <tr><td>存货</td><td>211.71</td><td>213.88</td><td>-1.0%</td><td>多晶硅控产，已计提跌价 4.16 亿</td></tr>
+    <tr><td class="up">合同负债</td><td class="up">89.33</td><td>75.24</td><td class="up">+18.7%</td><td><strong>✓ 订单已签未交付，正面领先信号</strong></td></tr>
+    <tr><td>固定资产</td><td>904.50</td><td>912.26</td><td>-0.9%</td><td>转入与折旧大致相抵</td></tr>
+    <tr><td>在建工程</td><td>214.49</td><td>183.63</td><td class="up">+16.8%</td><td>未来两年产能释放</td></tr>
+    <tr><td>商誉</td><td>5.63</td><td>—</td><td>—</td><td>占总资产 0.22%，<strong>无减值风险</strong></td></tr>
+    <tr><td class="dn2">其他非流动金融资产</td><td class="dn2">44.87</td><td>49.77</td><td class="dn2">-9.8%</td><td>财务性股权投资，以公允价值计量且变动计入当期损益（<strong>构成见下</strong>）</td></tr>
+    <tr><td>归母股东权益</td><td>755.60</td><td>743.92</td><td>+1.6%</td><td>含<strong>其他权益工具（永续债）47 亿</strong></td></tr>
+    <tr><td>少数股东权益</td><td>322.26</td><td>—</td><td>—</td><td>占权益总额 29.9%，主要来自天池能源 / 新特能源</td></tr>
+    <tr><td class="dn2">有息债务（带息债务）</td><td class="dn2">570.15</td><td>499.33</td><td class="dn2">+14.2%</td><td>短借 28.05 + 长借 457.29 + 应付债券 5.20 + 一年内到期 66.47</td></tr>
+    <tr><td>净有息负债</td><td>241.93</td><td>242.45</td><td>持平</td><td>570.15 − 328.22</td></tr>
+    <tr><td class="dn2">资产负债率</td><td class="dn2">56.94%</td><td>55.60%</td><td class="dn2">+1.34pct</td><td><strong>⚠ 逼近管理层自设的"严格管控"上限</strong></td></tr>
+    <tr><td>流动比率 / 速动比率</td><td>1.211 / 0.964</td><td>—</td><td>—</td><td>速动比率 &lt; 1，短期偿付偏紧</td></tr>
+  </table>
+  <div class="assume"><strong>其他非流动金融资产 44.87 亿的构成（2026-06-30 账面值，单位：亿元）</strong><br>
+  <strong>[权益工具投资 44.45]</strong> · <strong>华电新能（600930.SH）18.97</strong>（期初 25.02）——持 3.978 亿股、<strong>占总股本 0.95%</strong>，H1 股价 6.22 → 4.74 元（<span class="dn2">-23.8%</span>）<br>
+  · <strong>南网能源（003035.SZ）6.02</strong>（期初 5.20）——持 1.0349 亿股、<strong>占总股本 2.73%</strong>，H1 股价 4.56 → 5.80 元（<span class="up">+27.2%</span>，逆势对冲）<br>
+  · 南网双碳绿能（广州）私募股权投资基金 6.97（持平）· 首钢智新电磁材料（迁安）4.28（持平）· 中国华电集团产融控股 3.21（持平）· 南网战新产业投资基金等 4.99<br>
+  <strong>[衍生金融资产 0.42]</strong> 远期外汇合约<br>
+  <strong>⇒ 华电新能 + 南网能源合计仅约 25.0 亿（占该科目 56%），却是 H1 公允价值损益的全部来源，且方向相反：华电新能跌价贡献 -6.05 亿、南网能源上涨回补 +0.82 亿。</strong>两笔均为<strong>财务性股权投资</strong>（不参与经营、不进合并范围）。</div>
+  <div class="sig sig-warn"><strong>资产负债表的两条主线：</strong>① <strong>好的</strong>——合同负债 +18.7%、商誉可忽略、净有息负债持平（货币资金增长对冲了借款增长）；② <strong>需盯的</strong>——应收账款增速（+19.2%）持续快于营收（+17.0%），叠加信用减值 -3.15 亿，这是"规模换利润"模式的固有代价；有息债务 +14.2%、资产负债率 +1.34pct 至 56.94%，且公司在推可转债——<strong>未来 12 个月融资端是压力而非助力</strong>。</div>
+</div>
+
+<!-- ===== 模块 7 ===== -->
+<div class="card">
+  <h2>模块 7 · 业务拆解与竞争护城河（五层框架第 1–3 层）</h2>
+  <h3>7.1 第一层：业务板块拆解（H1 FY26）</h3>
+  <table>
+    <tr><th>板块</th><th>收入(亿)</th><th>占比</th><th>同比</th><th>毛利率</th><th>毛利率变动</th><th>生命周期</th></tr>
+    <tr><td><strong>电气设备</strong>（变压器/电抗器）</td><td>149.68</td><td>26.5%</td><td class="up">+11.98%</td><td>19.55%</td><td class="up">+0.43pct</td><td>🚀 核心增长引擎</td></tr>
+    <tr><td><strong>电线电缆</strong></td><td>108.41</td><td>19.2%</td><td class="up">+38.23%</td><td class="dn2">8.80%</td><td class="up">+1.11pct</td><td>🚀（含并购贡献）</td></tr>
+    <tr><td><strong>新能源产品及工程</strong>（多晶硅等）</td><td>95.45</td><td>16.9%</td><td class="up">+51.15%</td><td class="up">9.73%</td><td class="up">+13.29pct</td><td>📉 周期底部（改善中）</td></tr>
+    <tr><td><strong>煤炭业务</strong></td><td>79.02</td><td>14.0%</td><td class="dn2">-10.53%</td><td>25.65%</td><td class="dn2">-3.73pct</td><td>📊 成熟承压</td></tr>
+    <tr><td><strong>铝电子新材料及合金</strong></td><td>35.09</td><td>6.2%</td><td>—</td><td class="up">18.14%</td><td class="up">（FY25 9.66%）</td><td>🚀 氧化铝投产</td></tr>
+    <tr><td><strong>输变电成套工程</strong></td><td>29.69</td><td>5.3%</td><td class="up">+27.40%</td><td>9.91%</td><td class="dn2">（FY25 15.90%）</td><td>📊 国际工程</td></tr>
+    <tr><td><strong>发电业务</strong></td><td>28.61</td><td>5.1%</td><td class="dn2">-17.39%</td><td class="up">41.49%</td><td class="dn2">-6.53pct</td><td>📉 136 号文冲击</td></tr>
+    <tr><td><strong>黄金</strong></td><td>17.63</td><td>3.1%</td><td class="up">+130.11%</td><td class="up">57.64%</td><td class="up">+2.88pct</td><td>🚀 金价高位</td></tr>
+    <tr><td>其他 / 物流贸易</td><td>21.97</td><td>3.9%</td><td>—</td><td>—</td><td>—</td><td>📊</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>合计</strong></td><td><strong>565.55</strong></td><td>100%</td><td class="up"><strong>+16.97%</strong></td><td><strong>18.90%</strong></td><td class="up">+0.38pct</td><td>—</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>收入结构的关键变化：</strong>低毛利板块（电线电缆 8.80%、成套工程 9.91%、新能源 9.73%）合计收入占比由 FY25 的 35% 升至 <strong>41.4%</strong>，而高毛利的煤炭（25.65%）、发电（41.49%）占比由 24.8% 降至 19.1%。<strong>这是"营收创新高但净利率跌至 2.72%"的结构性原因——是收入组合变化，不是定价能力恶化。</strong>⚠ 需注意：新能源板块毛利率由 FY25 的 0.59% 升至 9.73%（+13.29pct）是<strong>全表最大的单项改善</strong>，多晶硅 H1 收入 38.88 亿（管理层口径）、销售均价同比上涨、叠加成本管控；而煤炭毛利率的 -3.73pct 与调研中"准东煤价承压"一致。</div>
+
+  <h3>7.2 第二层：竞争格局与护城河</h3>
+  <div class="moat-grid">
+    <div class="moat"><div class="mname">技术壁垒</div><div class="mval">强</div></div>
+    <div class="moat"><div class="mname">客户粘性</div><div class="mval">中强</div></div>
+    <div class="moat"><div class="mname">成本优势</div><div class="mval">中</div></div>
+    <div class="moat"><div class="mname">网络效应</div><div class="mval">弱</div></div>
+  </div>
+  <table>
+    <tr><th>维度</th><th>事实依据</th></tr>
+    <tr><td><strong>市场地位</strong></td><td>超高压/特高压交直流输变电、大型水火电关键设备研制行业领先；变压器产能约 <strong>5 亿 kVA/年</strong>，H1 产量 3 亿 kVA，<strong>满产</strong>。主要竞争对手：中国电气装备集团、ABB、西门子（变压器）；上上电缆、远东智慧能源、宝胜、汉缆（线缆）</td></tr>
+    <tr><td><strong>技术突破（H1 新增）</strong></td><td>国内首台 220kV 三相油浸式空心限流电抗器发运 · 行业首台 20MW 海上风电机组专用变压器交付 · <strong>固态变压器样机完成全部试验、进入第三方认证</strong> · 首款构网型 215kW 储能变流升压一体机 · 6.5kV 分体式驱动 IGCT 柔直换流阀组件 + 国产化阀控系统通过国家级鉴定</td></tr>
+    <tr><td><strong>订单验证</strong></td><td>H1 国内签约 <strong>372.85 亿（+36.41%）</strong>；国际产品签约 <strong>16.18 亿美元（+44%）</strong>；<strong>待执行订单 &gt;400 亿</strong>（截至 6 月末）；柔直换流阀 2025–2026 累计中标约 30 亿（说明会口径 >14 亿为 2026 年内签约）</td></tr>
+    <tr><td><strong>供应链地位</strong></td><td>上游：硅钢、铜、铝价波动直接影响成本；自有新疆准东煤矿（<strong>资源储量约 120 亿吨、露天、剥采比低</strong>）+ 几内亚铝土矿 → <strong>原材料自给是真实成本壁垒</strong>。下游：国网 / 南网 / 国央企大客户，资信高但议价强，回款周期长（见应收账款）</td></tr>
+    <tr><td><strong>海外渠道</strong></td><td>出口区域：中东 35–40%、亚洲（不含中东）30%、非洲 10%、欧洲 10%、北美+大洋洲 10%；<strong>海外订单毛利率较国内高 5–10pct</strong>；沙特 7 年框架协议已匹配订单 <strong>9,400 万美元</strong></td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>护城河的诚实评价：</strong>输变电全产业链（变压器+电抗器+线缆+成套+GIL+电力二次）是<strong>真实且当前最值钱的壁垒</strong>，H1 收入 287.78 亿、占营收 50.9%；煤电铝一体化提供了成本护城河；黄金（塔吉克斯坦+几内亚）是高毛利但小体量的期权。<strong>但"四产业协同"的表述要打折</strong>——H1 新能源 +51% 增长、煤炭 -10.5%、发电 -17.4%，三条周期业务方向完全不同，协同更多体现为"平滑"而非"增强"；且市场正是用多晶硅给公司整体打折扣（董秘 9/1 回复投资者时亦承认"短期内对股价表现产生一定影响"）。</div>  <h3>7.3 第三层：技术代际与市场容量（电力设备）</h3>
+  <table>
+    <tr><th>技术方向</th><th>当前状态</th><th>意义</th></tr>
+    <tr><td><strong>柔性直流换流阀</strong></td><td>南网湘黔背靠背、国网鲁苏背靠背项目签约，2025–2026 累计中标约 30 亿</td><td>特高压直流核心装备，国产替代 + 高毛利，是输变电板块的<strong>估值弹性来源</strong></td></tr>
+    <tr><td><strong>固态变压器（SST）</strong></td><td>样机完成全部试验，第三方检测认证中</td><td>数据中心 / 新型配电网的关键器件，若认证通过打开 AIDC 增量市场</td></tr>
+    <tr><td><strong>构网型储能</strong></td><td>215kW 储能变流升压一体机推出，依托输变电+新能源工程能力切入电网侧/沙戈荒基地配套储能</td><td>储能出海是管理层在业绩会明确释放的新方向</td></tr>
+    <tr><td><strong>海上风电变压器</strong></td><td>20MW 机组专用变压器交付</td><td>海风大兆瓦化配套，单价与壁垒高于陆风</td></tr>
+    <tr><td><strong>TAM / 行业空间</strong></td><td>IEA《2026 年电力报告》：2026–2030 全球电力需求年均增速 <strong>3.6%</strong>（过去十年 2.8%）；2030 年全球电力消费 33,600TWh（2025 年 28,200TWh）。H1 我国变压器出口 <strong>51.5 亿美元（+31.3%）</strong>；"十五五"预计新增投产 <strong>15 回特高压直流</strong>通道</td><td>海外本土产能扩张周期长、交付周期拉长 → <strong>缺口长期存在</strong>；国内电网投资为长周期政策驱动</td></tr>
+  </table>
+  <div class="sig sig-bear"><strong>⚠ 与上述景气叙事相反的硬数据（本版新增）：</strong>雪球公开的国网招标统计显示，<strong>主网变电设备第 5 次招标延续弱势，且单次降幅普遍大于前 5 次累计降幅</strong>——本次变压器招标 657 台/套（<strong>同比 -7%</strong>，前 5 次合计 -3%）、组合电器 1,920 台/套（<strong>同比 -20%</strong>，前 5 次合计 -13%）。<strong>意味着招标节奏在年内是逐次走弱的，而非某一轮的偶发低点。</strong>这与公司"订单 +36.4%"的高增长形成正面冲突——合理解释有二：①公司份额在提升（结构性抢单）；②公司订单更多来自国际与数据中心 / 储能等增量市场，而非国网主网。⚠ <strong>本报告不预设结论，将其列为下期财报的核心检验项</strong>（见模块 11）。</div>
+</div>
+
+<!-- ===== 模块 8 ===== -->
+<div class="card">
+  <h2>模块 8 · 估值分析</h2>
+  <h3>8.1 公司类型判断（方法选择的前提）</h3>
+  <table>
+    <tr><th>判断项</th><th>结论</th><th>依据</th></tr>
+    <tr><td>业务线数量</td><td><strong>多业务线</strong></td><td>单一最大板块（电气设备）占营收 26.5%，输变电三类合计 50.9%，煤炭 14.0%——无单一业务 &gt;90%</td></tr>
+    <tr><td>周期属性</td><td><strong>混合型（成长 + 周期）</strong></td><td>输变电为政策驱动的成长业务（订单 +36.4%）；煤炭、多晶硅、发电为强周期；黄金为弱周期高毛利</td></tr>
+    <tr><td>⇒ 方法选择</td><td colspan="2"><strong>SOTP 主锚（权重 50%）+ PEG（25%）+ PB 相对（25%）</strong>。⚠ 本版<strong>不使用 PB-ROE 公式法</strong>——因模块 4 已证明 ROE ≈ WACC、合理 PB ≈ 1.0x，公式法会得出极端值（8–9 元），与同业实际定价脱节；PB 仅以<strong>相对比较</strong>（同业 + 自身历史区间）形式作锚</td></tr>
+  </table>
+
+  <h3>8.2 Bottom-up 盈利预测（自估）</h3>
+  <div class="assume"><strong>基础假设：</strong>①全年营收目标 1,100 亿（管理层指引，H1 完成 51.4%）；②H2 各板块按 H1 毛利年化，并对多晶硅（价格企稳 → 毛利率改善）与煤炭（迎峰度冬 → 价格趋稳）做方向性调整；③所得税率 24.2%、少数股东占比 15%；④ H2 非经营拖累按<strong>已实现值</strong>计入——Q3 华电新能 / 南网能源公允价值损失静态估算 <strong>≈ -4.0 亿</strong>（本版新增，实测值替换原定性假设）；Q4 减值仍按公司惯例保留（5–8 亿）。</div>
+  <table>
+    <tr><th>情景</th><th>H1 实际</th><th>H2 假设归母<br><span class="small">已扣 Q3 非经营 -4.0 亿</span></th><th>2026E 归母</th><th>2026E EPS</th><th>触发条件</th></tr>
+    <tr><td>悲观</td><td rowspan="3" style="vertical-align:middle;text-align:center"><strong>25.52 亿</strong><br><span class="small">已锁定，无假设</span></td><td>12.5 亿</td><td><strong>38.0 亿</strong></td><td>0.75</td><td>多晶硅库存不去化、现货二次探底至 3.5 万元；煤价续跌；国网招标继续走弱；Q4 大额减值 + 公允价值继续拖累</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>中性</strong></td><td>22.5 亿</td><td><strong>48.0 亿</strong></td><td><strong>0.95</strong></td><td>多晶硅 10 月减产落地、价格维持 4.0–4.5 万元；煤价企稳；输变电订单正常交付；H2 减值同比收窄</td></tr>
+    <tr><td>乐观</td><td>33.5 亿</td><td><strong>58.0 亿</strong></td><td>1.15</td><td>多晶硅回升至 5 万元以上、能耗国标加速出清、存货跌价冲回；Q4 特高压招标放量；煤制气提前贡献</td></tr>
+  </table>
+  <div class="sig sig-bear"><strong>⚠ 与一致预期的差距（本报告最重要的定价分歧）：</strong>13 家机构一致预期 2026E 归母 <strong>63.19 亿（EPS 1.25）</strong>，本报告中性自估 <strong>48 亿（EPS 0.95）</strong>，低 <strong>24.1%</strong>（v3.1 口径为低 17.7%，本版因计入 Q3 已实现非经营损失而扩大）。要让 H2 达到 37.7 亿（一致预期隐含值），需环比 H1 增长 <strong>+47.6%</strong>；而 2025 年 H2 归母 27.70 亿、仅为 H1 的 <strong>87%</strong>（历史 H2 并不强于 H1）。<strong>⇒ 一致预期明显未反映 H1 的实际节奏，下修是大概率事件</strong>；下修过程中"低 PE 叙事"会失效（参考阳光电源 8–9 月路径）。⚠ 反向：2027E 一致预期 83.37 亿（EPS 1.65，+31.9%）若仅兑现 70%，即 58 亿，当前股价仍对应 15.3x——<strong>分歧本质是"多晶硅何时反转"，而非"公司是否优秀"</strong>。</div>
+
+  <h3>8.3 三法估值与锚定明细</h3>
+  <table>
+    <tr><th>方法</th><th>权重</th><th>关键输入</th><th>中性结果</th><th>逻辑</th></tr>
+    <tr><td><strong>SOTP</strong>（主锚）</td><td><strong>50%</strong></td><td>正常化分部归母：输变电 32 / 能源 28 / 新能源 6 / 铝电子 6 / 黄金 10 = 82 亿；减集团净额 -22 亿 → 60 亿；<strong>加非经营性金融资产 +44.87 亿</strong>（明细见 <strong>8.3.1</strong>）</td><td><strong>18.2 元</strong><br><span class="small">920.9 亿市值</span></td><td>PE：输变电 18x（同业 20–44x，集团折价）· 能源 9x（陕煤 12.3x，煤炭周期折价）· 新能源 15x（周期中段）· 铝电子 12x · 黄金 15x（山金 24.5x，小体量折价）· 集团费用 12x 资本化</td></tr>
+    <tr><td><strong>PEG</strong></td><td>25%</td><td>2026E EPS 0.95；2026–2028 自估 EPS CAGR ≈ 20%</td><td><strong>17.1 元</strong><br><span class="small">目标 PE 18x</span></td><td>现价对应 2026E PE 18.5x → PEG ≈ 0.93；⚠ 因 2026 本身是负增长年（归母 -12.7%），PEG 用"2026E EPS × 中期增速"近似，已刻意取低于理论 PEG=1 的目标倍数</td></tr>
+    <tr><td><strong>PB 相对</strong></td><td>25%</td><td>BPS 13.94 元（已扣 Q3 公允价值损失 -0.08）；合理 PB 1.40x</td><td><strong>19.5 元</strong></td><td>现价 1.26x 为电网设备同业<strong>最低</strong>（思源 5.96 / 平高 2.17 / 西电 2.60 / 陕煤 2.48 / 通威 1.55 / 山金 4.10）；但自身 3 年分位 59.9% + ROE≈WACC ⇒ 合理 PB 取 1.40x（非历史高点 2.41x）</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>加权中枢</strong></td><td>100%</td><td colspan="2"><strong>18.3 元</strong>（较现价 +3.7%）<br><span class="small">0.5×18.2 + 0.25×17.1 + 0.25×19.5 = 18.25</span></td><td>三锚区间 17.1–19.5 元，<strong>离散度仅 13%</strong>（SNDK 四锚离散度曾达 60%+）——说明本标的估值共识度相对高</td></tr>
+  </table>
+  <h3>8.3.1 SOTP 分部估值推导（本版新增，可独立复现）</h3>
+  <table>
+    <tr><th>项目</th><th>正常化归母<br><span class="small">亿元</span></th><th>倍数</th><th>价值<br><span class="small">亿元</span></th><th>倍数依据</th></tr>
+    <tr><td>输变电</td><td>32</td><td>18x</td><td>576</td><td>同业 20–44x，集团折价</td></tr>
+    <tr><td>能源（煤电铝）</td><td>28</td><td>9x</td><td>252</td><td>陕煤 12.3x，煤炭周期折价</td></tr>
+    <tr><td>新能源（多晶硅）</td><td>6</td><td>15x</td><td>90</td><td>周期中段</td></tr>
+    <tr><td>铝电子新材料</td><td>6</td><td>12x</td><td>72</td><td>同业中枢</td></tr>
+    <tr><td>黄金</td><td>10</td><td>15x</td><td>150</td><td>山金 24.5x，小体量折价</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>分部小计</strong></td><td><strong>82</strong></td><td>—</td><td><strong>1,140</strong></td><td>—</td></tr>
+    <tr><td>减：集团净利息 + 总部费用 + 少数股东权益<br><span class="small">（税后年金化，明确不含金融资产收益）</span></td><td class="dn2">(22)</td><td>12x</td><td class="dn2">(264)</td><td>集团负担按低倍数资本化</td></tr>
+    <tr><td>加：非经营性金融资产<br><span class="small">（2026-06-30 公允价值）</span></td><td>—</td><td>1.0x</td><td>44.87</td><td>财务性股权，按公允价值加回</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>权益价值</strong></td><td><strong>60</strong></td><td>—</td><td><strong>920.9</strong></td><td>÷ 50.53 亿股 = <strong>18.2 元/股</strong></td></tr>
+  </table>
+  <div class="assume"><strong>⚠ 口径前提（本表最关键的一步）：</strong>原「集团财务+总部净额 -22 亿」在 v3.1 及以前<strong>未披露构成</strong>（分部归母 82 亿亦无推导，违反"中枢可独立复现"）。本版把它显式重建为「净利息支出 + 总部费用 + 少数股东权益」三项，<strong>明确不含金融资产投资收益</strong>——因此非经营性金融资产 44.87 亿按公允价值<strong>单独加回</strong>。两条路径<strong>互斥、不得并用</strong>：<br>
+  · <strong>分列法（本版采用）</strong>：集团净额不含金融资产收益 ⇒ 资产加回 ⇒ SOTP = <strong>18.2 元</strong>；<br>
+  · <strong>净额法（v3.1 及以前）</strong>：集团净额已含金融资产收益 ⇒ 不得加回 ⇒ SOTP = <strong>17.3 元</strong>。<br>
+  ⇒ SOTP 主锚的<strong>口径区间为 17.3–18.2 元</strong>，本版取分列法（更透明、可复现）；若改用净额法，加权中枢为 <strong>17.8 元</strong>。⚠ 净有息负债 241.93 亿的<strong>利息</strong>已通过「集团净利息」在流量中扣除，故<strong>不再重复扣减负债本金</strong>。</div>
+  <div class="assume"><strong>估值口径映射表（多锚加权强制披露）：</strong>本报告三锚使用的 EPS/利润口径<strong>彼此不同且必须区分</strong>——<b>SOTP</b> 用「正常化分部归母 60 亿 + 非经营性金融资产 44.87 亿」（FY2027 中枢，含周期反转假设、<strong>不含非经营损益</strong>）；<b>PEG</b> 用「自估 2026E EPS 0.95」（当期口径，含周期底部与 <strong>Q3 已实现非经营损失</strong>）；<b>PB</b> 用「BPS 13.94」（当期账面，已扣 Q3 公允价值损失）。⇒ 三锚混合了"当期"与"正常化"两种口径，这是多业务线 + 混合型周期公司的固有问题。<strong>缓释办法：把权重向 SOTP（正常化口径）倾斜至 50%，并对 PEG 刻意取保守目标倍数。⚠ 局限自知：中枢 18.3 元的可信区间约为 ±1.5 元；若多晶硅持续低于 3.5 万元，SOTP 与 PEG 两锚会同步下移。</strong></div>
+
+  <h3>8.4 同业估值对标</h3>
+  <table>
+    <tr><th>公司</th><th>PE(TTM)</th><th>PB</th><th>H1 FY26 归母(亿)</th><th>H1 毛利率</th><th>对照意义</th></tr>
+    <tr style="background:#fff8e1"><td><strong>特变电工</strong></td><td><strong>16.71</strong></td><td><strong>1.26</strong></td><td>25.52</td><td>18.90%</td><td>—</td></tr>
+    <tr><td>思源电气 002028</td><td>29.51</td><td>5.96</td><td>14.64</td><td>30.46%</td><td>纯输变电，毛利率高 11.6pct → 溢价合理</td></tr>
+    <tr><td>平高电气 600312</td><td>20.21</td><td>2.17</td><td>8.17</td><td>29.75%</td><td>开关设备，最贴近的可比</td></tr>
+    <tr><td>中国西电 601179</td><td>44.30</td><td>2.60</td><td>6.88</td><td>24.54%</td><td>PE 高因盈利基数低</td></tr>
+    <tr><td>陕西煤业 601225</td><td>12.28</td><td>2.48</td><td>112.72</td><td>33.36%</td><td>煤炭龙头，PB 高于特变</td></tr>
+    <tr><td>通威股份 600438</td><td>亏损</td><td>1.55</td><td>-51.19</td><td>-3.07%</td><td><strong>多晶硅拖累的量化参照——巨亏仍有 1.55x PB</strong></td></tr>
+    <tr><td>山东黄金 600547</td><td>24.48</td><td>4.10</td><td>35.43</td><td>24.43%</td><td>黄金高毛利，特变黄金体量小</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>对标结论：</strong>特变 PE / PB 均为电网设备同业最低，这是"多晶硅折价"的量化体现（通威亏损仍有 1.55x PB，特变仅 1.26x）。<strong>折价方向是合理的，但幅度已接近极端</strong>——若把输变电业务单独给 20x（低于平高 20.2x），仅输变电正常化归母 32 亿就值 640 亿，相当于现市值的 72%，而煤炭+黄金+铝电子+新能源几乎"白送"。<strong>这部分是价值的支撑，也是"观望而非卖出"的理由。</strong></div>
+
+  <h3>8.5 三情景目标价与赔率</h3>
   <div class="scenario-grid">
-    <div class="scen scen-bear"><div class="slbl">悲观（硅料二次探底+煤价续跌+招标放缓）</div><div class="sval">15.0 元</div><div class="schg dn2">-19% vs 现价</div><div class="schg" style="font-size:11px;text-align:left;margin-top:6px">PB 1.1x≈16.2 元强支撑带缓冲；多晶硅悲观概率因"反内卷"降温略有上升</div></div>
-    <div class="scen scen-base"><div class="slbl">中性（1100亿收入达成+硅料微利）</div><div class="sval">18.5 元</div><div class="schg">0% vs 现价</div><div class="schg" style="font-size:11px;text-align:left;margin-top:6px">现价 18.50 与中性锚持平；v2.0 时为 +2% 溢价</div></div>
-    <div class="scen scen-bull"><div class="slbl">乐观（硅料反转+特高压加速+煤炭核增）</div><div class="sval">22.6 元</div><div class="schg up">+22% vs 现价</div><div class="schg" style="font-size:11px;text-align:left;margin-top:6px">需多晶硅拐点验证（库存去化至 25 万吨以下）+ Q4 特高压招标放量双击</div></div>
+    <div class="scen scen-bear"><div class="slbl">悲观（概率 30%）</div><div class="sval">13.9 元</div><div class="schg dn2">-21.0%</div><div class="schg" style="font-size:11px;text-align:left;margin-top:6px">多晶硅二次探底 + 煤价续跌 + 招标转弱 + Q4 减值；对应 PB 1.00x、2026E PE 18.5x</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（概率 45%）</div><div class="sval">18.3 元</div><div class="schg up">+3.7%</div><div class="schg" style="font-size:11px;text-align:left;margin-top:6px">多晶硅减产落地、价格 4–4.5 万；煤价企稳；三法加权中枢</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观（概率 25%）</div><div class="sval">23.0 元</div><div class="schg up">+30.7%</div><div class="schg" style="font-size:11px;text-align:left;margin-top:6px">多晶硅回升至 5 万+、能耗国标加速出清、Q4 特高压放量；对应 2026E PE 20.0x（含估值扩张）</div></div>
   </div>
-  <div class="sig sig-warn"><strong>一致预期下修的量化推演（v2.1 强化）：</strong>13 家一致预期 2026E 归母 63.99 亿（EPS 1.27 元）隐含 H2 归母 38.5 亿（vs H1 25.5 亿、H2 需环比 +51%）——与 v2.0 自估全年 ~49 亿相差 15 亿。下修路径参考：若券商中报后统一降至 50-55 亿（EPS 1.0-1.1），PE(TTM) 口径不变下股价锚不动，但"预期 PE"将从 14.6x 升至 18.5x，<strong>低估值叙事失效，股价往往在下修完成前先行承压</strong>（参考阳光电源 8-9 月路径）。外资目标价同步下修是大概率事件：大摩 31 元隐含 2026E 83.5 亿，若下修至 55 亿，目标价理论上降至 ~22 元。</div>
-  <div class="sig sig-bull"><strong>操作含义（与 v2.0 一致，未变）：</strong>逻辑仓（输变电成长+周期期权）17-18 元区间（PB 1.15-1.2x）分批；趋势仓等右侧三条件：①放量站稳 MA20（19.50）②MACD 金叉延续红柱放大 ③主力资金连续 5 日净流入。当前 ①✗ ②✓ ③✗——<strong>三缺二，不追</strong>。</div>
+  <table>
+    <tr><th>情景</th><th>目标价</th><th>概率</th><th>加权贡献</th><th>较现价</th></tr>
+    <tr><td>悲观</td><td>13.9 元</td><td>30%</td><td>4.17</td><td class="dn2">-21.0%</td></tr>
+    <tr><td>中性</td><td>18.3 元</td><td>45%</td><td>8.24</td><td class="up">+3.7%</td></tr>
+    <tr><td>乐观</td><td>23.0 元</td><td>25%</td><td>5.75</td><td class="up">+30.7%</td></tr>
+    <tr style="background:#e3f2fd"><td><strong>概率加权期望值</strong></td><td colspan="2"><strong>18.16 元</strong></td><td><strong>（= 上文之和）</strong></td><td><strong>+3.2%</strong></td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>赔率判断（推荐口径）：</strong>概率加权期望 <strong>18.16 元</strong>，较现价 17.60 元仅 <strong>+3.2%</strong>；但分布高度不对称——<strong>下行 -21.0%（30% 概率）vs 上行 +30.7%（25% 概率）</strong>。<strong>为一个 +3% 的期望去承担 -20% 的尾部，风险收益比不成立。</strong>这正是"观望"而非"买入"的量化依据。<br>
+  <strong>另一种读法（现价隐含概率）</strong>：要让现价 17.60 等于概率加权值，需把悲观概率由 30% <strong>上调</strong>至约 <strong>36%</strong>（乐观由 25% 下调至约 19%）——即<strong>现价隐含的「多晶硅不反转」概率比本报告判断高约 6pct</strong>。<br>⚠ <strong>本版更正</strong>：v3.1 此处写为「现价隐含多晶硅反转概率高于不反转」，属<strong>方向错误</strong>——概率加权值随悲观概率上升而<strong>下降</strong>，故低于加权期望的价格对应<strong>更高</strong>（而非更低）的悲观概率。<br>两条口径的张力需并存：<strong>概率加权口径</strong>（现价低于本报告期望 ⇒ 市场略偏悲观）与 <strong>PB 口径</strong>（1.26x 已隐含 ROE 回升 ⇒ 市场偏乐观）<strong>结论相反</strong>，说明「市场是否已计入反转」无法由单一方法判定。本报告<strong>不据此改变「观望」结论</strong>——决定性因素是<strong>赔率不对称</strong>（下行 -21% vs 上行 +31%），而非期望值高低。</div>
+  <h3>8.6 估值口径边界说明（本版新增）</h3>
+  <table>
+    <tr><th>锚</th><th>权重</th><th>输入口径</th><th>Q3 大宗商品实价</th><th>三季度非经营性投资收益</th></tr>
+    <tr><td><strong>SOTP</strong>（18.2 元）</td><td><strong>50%</strong></td><td>正常化分部经营归母 60 亿 + 非经营性金融资产 44.87 亿</td><td class="dn2">✗ 未用 Q3 实价（多晶硅 4.30 万），以中周期"价格企稳/回升"假设替代</td><td class="dn2">✗ 完全剔除（公允价值变动、投资收益、减值均排除）</td></tr>
+    <tr><td><strong>PEG</strong>（17.1 元）</td><td>25%</td><td>自估 2026E EPS 0.95</td><td>◐ H2 取"多晶硅 4.0–4.5 万"≈ Q3 实价 4.30 万；方向已含，未按实价重估</td><td>◐ H1 实际 -3.97 亿已含；<strong>Q3 已实现的 -4.0 亿本版已计入</strong></td></tr>
+    <tr><td><strong>PB 相对</strong>（19.5 元）</td><td>25%</td><td>BPS 13.94（已扣 Q3 公允价值损失）</td><td class="dn2">✗ 与价格无关</td><td>◐ 账面含 Q2 末 44.87 亿公允价值，Q3 续跌已通过 BPS 下修反映</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>三句话读完本节：</strong><br>
+  <strong>① 经营性口径</strong>——SOTP 用"正常化经营"口径，把 Q3 的商品实价与全部非经营性损益<strong>一并排除</strong>，这是正确做法（估值不该含一次性项）；代价是 SOTP <strong>不反映当期景气</strong>，它隐含"多晶硅价格将从 4.30 万回升至中周期"的假设。<br>
+  <strong>② 存量侧已补</strong>——非经营性金融资产 44.87 亿（含华电新能 18.97 + 南网能源 6.02 ≈ 25.0 亿）本版已作为<strong>独立行加回</strong> SOTP（+0.89 元/股）；未加回前，SOTP 实际上把该资产按"零"计价。<br>
+  <strong>③ 流量侧已扣</strong>——Q3 已实现的公允价值损失 ≈ <strong>-4.0 亿</strong>（华电 -3.5 / 南网 -0.5）已计入 2026E 情景，中性归母由 52 → <strong>48 亿</strong>、EPS 1.03 → <strong>0.95</strong>。<br>
+  ⇒ <strong>两项修正方向相反、量级相当，加权中枢由 18.2 → 18.3 元（+0.1）。即本报告的估值结论对"是否计入 Q3 实价与非经营性损益"不敏感——这是中枢稳健性的正面证据，也是本次不因口径争议调整评分的依据。</strong></div>
 </div>
 
-<!-- 技术面 -->
+<!-- ===== 模块 9 ===== -->
 <div class="card">
-  <h2>五、技术面更新（9/11 盘中）</h2>
+  <h2>模块 9 · 技术面辅助（2026-09-24）</h2>
   <div class="tech-grid">
-    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">DIF -0.467<br>DEA -0.491<br>柱 +0.049</div><span class="tag-bull">零下金叉<br>红柱初现</span></div>
-    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">K 49.6 · D 37.4<br>J 74.0</div><span class="tag-bull">金叉上行<br>K+27</span></div>
-    <div class="tech-item"><div class="name">RSI(6/12)</div><div class="val">40.6 / 37.6</div><span class="tag-neutral">修复至中性</span></div>
-    <div class="tech-item"><div class="name">CCI(14)</div><div class="val">-4.3</div><span class="tag-neutral">中性</span></div>
-    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">21.93 / 19.91 / 17.90</div><span class="tag-bear">中下轨间</span></div>
+    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">DIF -0.552<br>DEA -0.537<br>柱 ≈ -0.03</div><span class="tag-bear">转死叉<br>由红转绿</span></div>
+    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">K 17.4 · D 21.3<br>J 9.7</div><span class="tag-oversold">低位超卖<br>K 由 49.6 回落</span></div>
+    <div class="tech-item"><div class="name">RSI(6/12)</div><div class="val">20.79 / 26.34</div><span class="tag-oversold">超卖</span></div>
+    <div class="tech-item"><div class="name">CCI(14)</div><div class="val">-119.14</div><span class="tag-oversold">超卖</span></div>
+    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">上 20.02<br>中 18.79<br>下 17.57</div><span class="tag-bear">贴近下轨</span></div>
   </div>
   <table>
     <tr><th>均线</th><th>MA5</th><th>MA10</th><th>MA20</th><th>MA60</th><th>MA120</th><th>MA250</th></tr>
-    <tr><td>数值</td><td>19.04</td><td>19.03</td><td>19.50</td><td>20.52</td><td>23.34</td><td>23.14</td></tr>
-    <tr><td>现价 18.50 相对位置</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td></tr>
+    <tr><td>数值</td><td>18.07</td><td>18.17</td><td>18.60</td><td>19.77</td><td>22.58</td><td>23.28</td></tr>
+    <tr><td>现价 17.60 位置</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td><td class="dn2">下方</td></tr>
   </table>
-  <div class="sig sig-bull"><strong>相比 v2.0 的三处积极变化：</strong>①MACD 从"绿柱收窄"升级为"零下金叉+红柱初现"——4 天前的领先信号开始兑现；②KDJ K 值 22.6→49.6，J 值 31.8→74.0，低位金叉确认；③8 月中旬 18.3-18.5 双底区域再度获得支撑（今日低点 18.45 恰在双底颈线上方）。</div>
-  <div class="sig sig-bear"><strong>未变的部分：</strong>全部均线之下、空头排列未扭转；9/8-9/10 反弹在 MA10/MA20 之间（19.01-19.03）精准受阻回落——<strong>19.0-19.5 一带由前期套牢盘构成实际压力带</strong>。右侧确认条件（放量站稳 MA20 + 主力连续净流入）一个都未满足。</div>
-  <div class="sig sig-warn"><strong>关键位更新：</strong>支撑 18.3-18.5（8月双底，今日 18.45 正在测试）→ 17.90（BOLL 下轨）→ 16.2（PB 1.1x 强支撑带）；压力 19.0-19.5（MA5/10/20 密集套牢区）→ 20.52（MA60）→ 21.93（BOLL 上轨）。<strong>短线观察点：18.3-18.5 双底若放量跌破，技术结构恶化，逻辑仓下沿下移至 17 元。</strong></div>
+  <div class="sig sig-bear"><strong>相比 v2.1 的恶化是全面的：</strong>①v2.1 的"MACD 零下金叉 + 红柱 +0.049"<strong>已翻转为死叉</strong>；②KDJ K 由 49.6 → <strong>17.4</strong>、J 由 74.0 → <strong>9.7</strong>，回落到超卖区；③<strong>8 月 18.3–18.5 双底已破</strong>（9/24 最低 17.55，收 17.60），v2.1 明确写下的"若放量跌破则技术结构恶化"已经发生；④全部六条均线均在现价上方，空头排列完整。</div>
+  <div class="sig sig-warn"><strong>唯一的多头线索是超卖：</strong>RSI6 20.79、CCI -119.14、KDJ J 9.7，三项同步进入超卖区，且现价 17.60 已贴近 BOLL 下轨 17.57。<strong>超卖只提供"反弹概率"，不提供"反转依据"</strong>——需 MACD 重新金叉 + 站回 MA20（18.60）才构成右侧信号。</div>
+  <div class="sig sig-warn"><strong>关键价格节点（v3.2 更新）：</strong>支撑 <strong>17.55</strong>（9/24 低点）→ <strong>17.57</strong>（BOLL 下轨，与前者重合，构成当前唯一有效支撑带）→ <strong>15.81–15.94</strong>（52 周低点）→ 15.5（2025 年低位平台）。压力 <strong>18.07–18.17</strong>（MA5/MA10）→ <strong>18.60</strong>（MA20，右侧第一关）→ <strong>18.79</strong>（BOLL 中轨）→ <strong>19.77</strong>（MA60）。<strong>短线观察点：17.55 若被有效跌破，下一目标即 52 周低点 15.81–15.94，对应 PB 约 1.13x。</strong></div>
 </div>
 
-<!-- 观测点 -->
+<!-- ===== 模块 10 ===== -->
 <div class="card">
-  <h2>六、观测点更新（v2.0 八项 → v2.1 状态核查）</h2>
+  <h2>模块 10 · 资金面与筹码</h2>
   <table>
-    <tr><th>v2.0 观测点</th><th>v2.0 阈值</th><th>v2.1 状态</th><th>结论</th></tr>
-    <tr class="delta-dn"><td>多晶硅价格与库存</td><td>成交放量+库存去化至 25 万吨以下=拐点确认；跌破 3.5 万=恶化</td><td>报价 4.07 万持平但<strong>成交稀少且开始松动</strong>；库存 31.3 万吨（+0.4）未去化；期货回落</td><td class="dn2">未触发确认；边际恶化但未到恶化阈值</td></tr>
-    <tr class="delta-flat"><td>特高压/电网招标</td><td>第四批及后续中标金额、签约增速 30%+</td><td>4 天内无新招标公告；特高压板块 9/11 -1.92% 板块回调</td><td>待观察（Q4 为传统招标旺季）</td></tr>
-    <tr class="delta-flat"><td>煤制气进度</td><td>170 亿投资、35%、2027 年底投产</td><td>无新披露</td><td>维持</td></tr>
-    <tr class="delta-flat"><td>氧化铝爬坡</td><td>两条线满产+镓产出</td><td>无新披露</td><td>维持</td></tr>
-    <tr class="delta-flat"><td>沙特长单交付</td><td>2026H2-2027 交付节奏</td><td>无新披露</td><td>维持</td></tr>
-    <tr class="delta-flat"><td>SST 认证</td><td>认证通过+首单</td><td>无新披露</td><td>维持</td></tr>
-    <tr class="delta-flat"><td>Q3/Q4 公允价值与减值</td><td>华电新能/南网能源企稳=冲回期权</td><td>无新数据；Q4 减值惯例（5-8 亿）仍是归母噪音源</td><td>维持</td></tr>
-    <tr class="delta-dn"><td>一致预期下修幅度</td><td>券商更新至 1.0-1.1 元=预期出清</td><td><strong>13 家仍为 1.27 元（63.99 亿）未动</strong>；外资大摩口径 83.5 亿更高估</td><td class="dn2">下修风险悬置，仍在前面</td></tr>
-    <tr class="delta-up"><td><strong>新增：疆煤外运政策</strong></td><td>——</td><td>申万宏源 9/8 唱多疆煤产消量（中吉乌铁路+煤化工需求）；煤炭核增取决于政策</td><td class="up">新增正向跟踪项：疆煤外运量/铁路运力数据</td></tr>
-    <tr class="delta-dn"><td><strong>新增：融资余额方向</strong></td><td>——</td><td>连续 3 日净偿还（余额 49.92 亿，占流通市值 5.2%→ 降至 5.2%）</td><td class="dn2">杠杆资金离场=资金面弱；转连续净买入为右侧辅助信号</td></tr>
+    <tr><th>维度</th><th>数据</th><th>方向</th></tr>
+    <tr><td>主力资金（Wind 口径）</td><td>当日 <strong>-1.69 亿</strong> · 近 5 日 -1.15 亿 · 近 20 日 <strong>-8.56 亿</strong> · 近 60 日 <strong>-10.60 亿</strong></td><td class="dn2">持续净流出</td></tr>
+    <tr><td>本周资金结构（至 9/24）</td><td>主力 <strong>-4.06 亿</strong> · 游资 +0.07 亿 · <strong>散户 +3.99 亿</strong></td><td class="dn2">主力派发 / 散户接盘</td></tr>
+    <tr><td>融资融券</td><td>近 3 个月融资净流出 <strong>9.02 亿</strong>；融券净流入 55.58 万元；融资余额约 <strong>50 亿</strong>（占流通市值约 5.6%）</td><td class="dn2">杠杆资金离场</td></tr>
+    <tr><td>主动偏股基金</td><td>持仓基金数 <strong>8 只（环比 -15 只）</strong>；持股 605.2 万股；持股比例 <strong>0.12%（-0.22pct）</strong></td><td class="dn2">机构大幅减持</td></tr>
+    <tr><td>机构持股合计</td><td>29.12%（含指数基金被动持仓）</td><td><span class="tag-neutral">中性</span></td></tr>
+    <tr><td>第一大股东</td><td>新疆特变电工集团 <strong>11.5%</strong>；前十大股东合计 29.69%（25 年末）</td><td><span class="tag-neutral">无控制权风险</span></td></tr>
+    <tr><td class="dn2">股东户数</td><td><strong>51.19 万（25Q4）→ 85.31 万（26Q1）→ 83.35 万（26Q2）</strong></td><td class="dn2"><strong>筹码显著分散</strong></td></tr>
+    <tr><td>人均持股</td><td>约 6,062 股/户 ≈ 10.7 万元/户（现价）</td><td class="dn2">散户化</td></tr>
+    <tr><td>机构调研</td><td>16 次（行业排名 66/418）；8 月单次 104 家机构 122 人（含易方达、大成、中银、光大、国信、中信建投等）</td><td><span class="tag-neutral">关注度高但未转化为买入</span></td></tr>
+    <tr><td>解禁 / 减持</td><td><strong>无限售解禁</strong>（全流通 50.53 亿股）；2026 年以来无增发、无配股</td><td class="up">无此项压力</td></tr>
+    <tr><td>分红</td><td>2025 年度 0.36 元/股（分红率约 30%）；<strong>2026 中期不分红</strong>（惯例）</td><td><span class="tag-neutral">中性</span></td></tr>
+    <tr><td>风险指标</td><td>Beta(1年) 1.91 · 年化波动率 55.1% · 最大回撤 <strong>-45.4%</strong> · Sharpe 0.027</td><td class="dn2">高波动、零风险调整收益</td></tr>
   </table>
-  <p style="font-size:12px;color:#888;margin-top:8px"><strong>催化剂日历：</strong>2026 年 10 月底三季报（多晶硅 Q3 扭亏与否+输变电收入确认）· Q4 特高压新一批核准/招标 · 疆煤外运政策细则 · 煤制气里程碑 · SST 认证结果 · 沙特交付公告 · 煤炭核增政策 · 券商一致预期下修落地时点。</p>
+  <div class="sig sig-bear"><strong>资金筹码的结论（本版最弱的一环）：</strong>四条线索<strong>全部指向同一方向</strong>——①主力 60 日净流出 10.60 亿；②机构（主动偏股基金）由 23 只减至 8 只；③杠杆资金近 3 月净流出 9.02 亿；④<strong>股东户数由 51.2 万增至 83.3 万（+63%）</strong>，人均持股对应金额由约 17.4 万元降至 10.7 万元。<strong>典型的"机构派发给散户"结构</strong>，且与 9/11 时 v2.1 观察到的"融资连续净偿还"一脉相承并持续恶化。</div>
+  <div class="assume"><strong>⚠ 数据可靠性提示：</strong>股东户数由 2025 年末 51.19 万跳增至 26Q1 的 85.31 万（+66.7%），幅度异常。该数据为 Wind 单一口径返回，本报告<strong>未能交叉验证</strong>（A 股股东户数需逐季取交易所披露，本次未取得原始公告）。⚠ 若该跳增含口径差异（如统计范围变化），则"筹码分散"的结论需弱化——<strong>已相应限制其对评分的影响（筹码维度仅下调 6 分）</strong>。</div>
 </div>
 
-<!-- 风险 -->
+<!-- ===== 模块 11 ===== -->
 <div class="card">
-  <h2>七、风险提示（v2.1 增量调整）</h2>
-  <ol>
-    <li><strong>多晶硅"反内卷"退坡（风险上调 ↑）：</strong>期货 9/7 回落 -1.89%、现货报价松动（36-42.6 元/kg 区间下沿）、9 月产量环比增至 12 万吨（复产）、库存 31.3 万吨纹丝不动——v2.0 列为第一大风险，4 天后证据链更完整。<strong>若挺价联盟出现实质破裂（某龙头率先降价放量），新特能源重回亏损+新增存货跌价，悲观情景概率上升。</strong></li>
-    <li><strong>一致预期下修（悬置未决）：</strong>内资 13 家 63.99 亿/光大 76 亿/外资大摩 83.5 亿——全部是中报前口径。自估 49 亿意味着一致预期高估 30-70%，下修过程中"低 PE 叙事"失效，股价可能二次承压。<strong>外资目标价（大摩 38.5→31.0、高盛 40.2→27.8）已经走出了下修路径图。</strong></li>
-    <li><strong>煤价与电价（新增正面期权对冲）：</strong>准东竞争+产量下滑仍压制盈利（H1 煤炭 -10.53%），但疆煤外运/中吉乌铁路若落地，煤炭从拖累变期权——风险与期权并存，方向取决于 Q4 政策细则。</li>
-    <li><strong>公允价值波动敞口（维持）：</strong>华电新能/南网能源持仓+外汇远期，单季 ±7 亿噪音，Q3 财报（10 月底）是下一个验证点。</li>
-    <li><strong>应收账款与 Q4 减值（维持）：</strong>应收 232.6 亿（+19.2%）、Q4 减值惯例 5-8 亿。</li>
-    <li><strong>发电业务 136 号文冲击（维持）：</strong>量价齐跌 -17.39%，新疆外送通道不足是结构性约束。</li>
-    <li><strong>技术结构破坏风险（新增）：</strong>18.3-18.5 双底若放量跌破（跌破 17.90 BOLL 下轨确认），6 个月下跌趋势延续，逻辑仓下沿需从 17 元下移。</li>
-  </ol>
-  <p style="font-size:12px;color:#888;margin-top:10px">免责声明：本报告仅供研究参考，不构成个人投资建议。外资观点来自公开编译渠道，可能滞后或失真。数据来源：Wind（2026-09-11 盘中）、华泰/广发/国泰君安期货多晶硅日报、SMM、申万宏源研报转引、腾讯行情、公开新闻与机构观点编译。</p>
+  <h2>模块 11 · 跟踪指标 · 催化剂日历 · 风险与敏感性</h2>
+
+  <h3>11.1 关键跟踪指标（含阈值与信号含义）</h3>
+  <table>
+    <tr><th width="150">指标</th><th>当前值</th><th>阈值 / 判据</th><th>信号</th></tr>
+    <tr class="delta-dn"><td>多晶硅厂家库存</td><td><strong>31.9 万吨</strong>（周环比 +0.9%，仍在累积）</td><td>&lt; 25 万吨 = 去化确认（拐点）</td><td class="dn2">未触发；机构预计 11–12 月才可能看到去化</td></tr>
+    <tr><td>多晶硅行业开工负荷</td><td>9 月 2.7 万吨/周（9 月产量约 12.4 万吨）</td><td><strong>自 10 月起降至 35% 左右</strong>（硅业分会）</td><td class="up">减产预期强化，<strong>执行率是关键</strong></td></tr>
+    <tr><td>N 型复投料价格</td><td>4.30 万元/吨（硅业分会 9/23）· 4.09 万元（SMM）· 期货主力 3.77–3.79 万元</td><td>&gt; 5 万元 = 反转；跌破 3.5 万元 = 恶化</td><td><span class="tag-neutral">区间持稳，期货贴水现货</span></td></tr>
+    <tr class="delta-up"><td>输变电国内签约</td><td>H1 <strong>372.85 亿（+36.41%）</strong></td><td>全年 &gt; 800 亿</td><td class="up">强</td></tr>
+    <tr class="delta-up"><td>输变电待执行订单</td><td><strong>&gt; 400 亿</strong>（6 月末）</td><td>—</td><td class="up">订单储备充足</td></tr>
+    <tr class="delta-dn"><td><strong>国网主网招标（新增）</strong></td><td>第 5 批：变压器 657 台/套（<strong>-7%</strong>）、组合电器 1,920 台/套（<strong>-20%</strong>）</td><td>单次降幅是否收窄 / 转正</td><td class="dn2"><strong>⚠ 逐批走弱，与订单高增冲突</strong></td></tr>
+    <tr class="delta-dn"><td>一致预期 2026E 归母</td><td><strong>63.19 亿（13 家，EPS 1.25）未下修</strong></td><td>下修至 52–56 亿 = 预期出清</td><td class="dn2">下修风险悬置</td></tr>
+    <tr class="delta-dn"><td><strong>公允价值敞口（本版新增）</strong></td><td>华电新能 <strong>3.88 元</strong> · 南网能源 <strong>5.31 元</strong>（9/24 收盘）；Q3 已实现损失 <strong>≈ -4.0 亿</strong>（已计入 2026E）</td><td>华电新能每变动 0.1 元 ≈ 归母 ±0.40 亿；南网能源 ≈ ±0.10 亿</td><td class="dn2">Q3 已拖累；Q4 取决于股价，不可控</td></tr>
+    <tr class="delta-dn"><td>应收账款</td><td>232.61 亿（<strong>+19.2%</strong>）</td><td>增速 &lt; 营收增速（+17.0%）</td><td class="dn2">已连续超越</td></tr>
+    <tr class="delta-dn"><td>资产负债率</td><td><strong>56.94%</strong>（+1.34pct）</td><td>&lt; 57%</td><td class="dn2">⚠ 临界</td></tr>
+    <tr><td>多晶硅库存跌价准备</td><td>H1 计提 <strong>4.16 亿</strong></td><td>价格回升 → 可冲回</td><td class="up">可逆项，H2 潜在正贡献</td></tr>
+    <tr class="delta-up"><td>煤制气项目进度</td><td>设备安装/调试中，<strong>力争 2027 中期建成试生产（较计划提前）</strong>；投产后年贡献利润总额 &gt;10 亿</td><td>投产时点</td><td class="up">中期增长曲线</td></tr>
+    <tr class="delta-up"><td>氧化铝项目</td><td>一条线已投运、一条线调试（防城港 240 万吨/年）</td><td>两线满产 + 镓产出</td><td class="up">铝电子毛利率已从 9.66% → 18.14%</td></tr>
+    <tr class="delta-up"><td>黄金业务</td><td>H1 收入 <strong>+130.11%</strong>、毛利率 57.64%</td><td>金价 + 金精粉销量</td><td class="up">强</td></tr>
+    <tr class="delta-dn"><td>股东户数</td><td>83.35 万（Q1 85.31 万）</td><td>回落 = 筹码重新集中</td><td class="dn2">⚠ 分散（数据待验证）</td></tr>
+    <tr class="delta-dn"><td>融资余额</td><td>约 50 亿，近 3 月净流出 9.02 亿</td><td>转连续净买入 = 右侧辅助</td><td class="dn2">流出</td></tr>
+  </table>
+  <p style="font-size:12px;color:#888;margin-top:8px"><strong>★ 下期财报三项必看（本版新增，用于验证模块 7.3 的"订单 vs 招标"分歧）：</strong>① 输变电国内签约增速能否维持在 +30% 以上（若跌至 +15% 以下 = 份额红利结束）；② 电线电缆（毛利率仅 8.80%）的收入占比是否继续上升（若超过 20% = 结构性稀释持续、净利率难修复）；③ 多晶硅板块是否单季转正（新能源板块毛利率能否站稳 10% 以上）。</p>
+
+  <h3>11.2 催化剂日历</h3>
+  <table>
+    <tr><th>时间</th><th>事件</th><th>方向</th><th>置信度</th></tr>
+    <tr><td><strong>2026 年 10 月下旬</strong></td><td><strong>三季报</strong>：多晶硅 Q3 是否扭亏、输变电收入确认节奏、减值是否收窄</td><td><span class="tag-neutral">双向</span></td><td><strong>高</strong></td></tr>
+    <tr><td>2026 年 11–12 月</td><td>多晶硅库存去化验证（广发/创元期货均指向此窗口）</td><td class="up">利好</td><td>中</td></tr>
+    <tr><td>2026 Q4</td><td>国网特高压新一批核准/招标：长治-南阳、川渝 1000kV 加强、巴丹吉林-四川 ±800kV、若羌-四川 ±800kV、吉林-北京 ±800kV</td><td class="up">利好</td><td>中</td></tr>
+    <tr><td>2026 Q4</td><td>券商一致预期下修落地（若发生，先跌后稳）</td><td class="dn2">利空</td><td><strong>中高</strong></td></tr>
+    <tr><td>不定（在推）</td><td><strong>可转债发行</strong>——已进入推动阶段，构成潜在股本摊薄</td><td class="dn2">利空</td><td>中</td></tr>
+    <tr><td>不定</td><td>固态变压器第三方认证结果 + 数据中心 / 储能增量订单</td><td class="up">利好</td><td>中</td></tr>
+    <tr><td>不定</td><td>沙特 7 年框架协议订单交付（已匹配 9,400 万美元）</td><td class="up">利好</td><td>中</td></tr>
+    <tr><td>2027 年中期</td><td>准东 20 亿方/年煤制气建成试生产（较计划提前）</td><td class="up">利好</td><td>中</td></tr>
+    <tr><td>不定</td><td>煤炭产能核增指标（现核定 7,400 万吨/年）</td><td class="up">利好</td><td>低</td></tr>
+  </table>
+
+  <h3>11.3 三层风险识别</h3>
+  <table>
+    <tr><th width="80">层级</th><th>风险</th><th>触发条件</th><th>严重度</th></tr>
+    <tr><td rowspan="2"><strong>宏观层</strong></td><td>全球利率环境</td><td>9/17 美联储加息、10Y 美债破 5% → 新兴市场估值分母抬升</td><td>中</td></tr>
+    <tr><td>贸易与汇率</td><td>关税政策变化影响海外交付与回款；H1 其他综合收益中现金流量套期 -2.26 亿、外币折算 -0.30 亿</td><td>中</td></tr>
+    <tr><td rowspan="4"><strong>行业层</strong></td><td><strong>多晶硅全行业亏损持续</strong></td><td>库存 31.9 万吨不去化；10 月减产执行不及预期；某龙头率先降价放量 → 挺价联盟破裂</td><td><strong>高</strong></td></tr>
+    <tr><td>煤价二次下行</td><td>疆煤外运通道（临哈/兰新/库格线）落地前运力瓶颈难解，外销比例长期仅 20–25%</td><td>中高</td></tr>
+    <tr><td><strong>电网招标节奏转弱</strong></td><td>国网主网第 5 批同比转负且逐批走弱；若延续，输变电订单高增长不可持续</td><td>中高</td></tr>
+    <tr><td>136 号文电价市场化</td><td>新疆/内蒙/甘肃电站外送通道不足 → 发电收入 -17.4%、毛利率 -6.53pct</td><td>中</td></tr>
+    <tr><td rowspan="4"><strong>公司层</strong></td><td><strong>应收账款与减值</strong></td><td>232.61 亿（+19.2%）、H1 信用减值 -3.15 亿；若 EPC 结算周期进一步拉长，Q4 减值（公司惯例 5–8 亿）可能超预期</td><td><strong>中高</strong></td></tr>
+    <tr><td>公允价值敞口</td><td>华电新能 18.97 亿（持股 0.95%）+ 南网能源 6.02 亿（持股 2.73%）≈ <strong>25.0 亿</strong>（2026-06-30 账面）；H1 公允价值变动 -4.08 亿（华电新能跌价 -6.05 亿为主，南网能源 +0.82 亿对冲）；9 月华电新能续跌（6/30 隐含 4.77 → 9/24 收盘 3.88 元）、南网能源同跌（5.82 → 5.31 元），静态估算 <strong>Q3 已实现公允价值损失 ≈ -4.0 亿元</strong>（华电 -3.5 / 南网 -0.5），<strong>本版已计入 2026E 情景</strong></td><td>中高</td></tr>
+    <tr><td>负债率与可转债</td><td>资产负债率 56.94%、有息债务 570.15 亿；可转债发行将摊薄 EPS</td><td>中</td></tr>
+    <tr><td>资本开支回报不确定</td><td>在建工程 214.49 亿；FCF -58.78 亿；氧化铝一线已投运但煤制气/几内亚水电站要到 2027+ 才见回报</td><td>中</td></tr>
+  </table>
+
+  <h3>11.4 敏感性测算（核心变量量化）</h3>
+  <table>
+    <tr><th>核心变量</th><th>悲观</th><th>中性</th><th>乐观</th><th>对 2026E 归母影响</th></tr>
+    <tr><td><strong>多晶硅价格</strong>（当前 4.3 万元/吨）</td><td>3.5 万元 → 板块亏损扩大</td><td>4.3 万元 → 板块微利</td><td>5.5 万元 → 板块 +8 亿 / 跌价冲回</td><td class="dn2">-6 亿</td></tr>
+    <tr><td><strong>煤炭价格</strong>（±10%）</td><td>-10% → 天池能源利润 -3.4 亿</td><td>持平（迎峰度冬趋稳）</td><td>+10% → +3.4 亿</td><td>±2.8 亿</td></tr>
+    <tr><td><strong>输变电收入</strong>（±10%）</td><td>-10% → 板块归母 -2.1 亿</td><td>+27% 年增（订单交付）</td><td>+10% → +2.1 亿</td><td>±2.1 亿</td></tr>
+    <tr><td><strong>合计区间</strong></td><td colspan="3" style="text-align:center">三项叠加的极端区间</td><td><strong>38 – 58 亿</strong>（对应本报告三情景）</td></tr>
+  </table>
+  <div class="assume"><strong>敏感性读法：</strong>三项变量中，<strong>多晶硅价格的影响是断层的（单变量可造成 ±6 至 +8 亿波动）</strong>，煤价（±2.8 亿）与输变电收入（±2.1 亿）次之。这解释了为什么市场"用多晶硅给公司整体定价"——<strong>它是当前唯一能造成两位数利润波动的变量</strong>。⚠ 另有一条非量化但同样重要的敏感性：<strong>H1 的 8.90 亿减值中，多晶硅存货跌价 4.16 亿是可逆的</strong>，若 Q4 价格回升，可形成"利润 + 现金流双正贡献"，是乐观情景的主要燃料。</div>
+
+  <h3>11.5 结论与操作含义</h3>
+  <div class="sig sig-warn"><strong>评级：观望（维持）｜评分：58/100（v2.1 为 61）｜12 个月三法加权中枢：18.3 元</strong><br>
+  <strong>① 逻辑仓（输变电成长 + 周期期权）：</strong>介入区由 v2.1 的"17–18 元"<strong>下移至 16.5–17.5 元（PB 1.18–1.25x）</strong>，加仓区 <strong>15.8–16.0 元</strong>（52 周低点 15.81–15.94，PB 约 1.13x）。<strong>下调理由不是基本面变差，而是估值分位被纠正（3 年 PB 分位 59.9% 而非"历史低位"）+ ROE ≈ WACC 意味着合理 PB 仅约 1.2–1.4x</strong>——买点需要更厚的折价。<br>
+  <strong>② 趋势仓：右侧三条件——① 放量站稳 MA20（18.60）② MACD 金叉且红柱放大 ③ 主力资金连续 5 日净流入。当前 ①✗ ②✗ ③✗，三缺三，不参与。</strong><br>
+  <strong>③ 减仓/回避信号：</strong>17.55 有效跌破 → 目标 15.81–15.94（52 周低点）；或一致预期下修至 52 亿以下且多晶硅库存不降反升。<br>
+  <strong>④ 加仓触发信号：</strong>多晶硅库存跌破 25 万吨 + 现货站稳 4.5 万元以上 + 三季报显示新能源板块单季转正。<br>
+  <strong>一句话：这是一家好资产被周期业务压制的公司，但你正在以一个"已经把反转计入价格"的价位买它——等预期出清，比现在接刀划算。</strong></div>
 </div>
 
 <div class="footer">
-  <p>特变电工(600089) 深度诊断报告 v2.1（增量更新版） · 诊断时间 2026-09-11 · 基于 v2.0（2026-09-07，见仓库 git 历史）重审 · 本报告为增量更新，完整 12 步框架数据以 v2.0 为基础不再重复</p>
+  <p>特变电工(600089) 深度诊断报告 <strong>v3.2</strong>（完整 12 模块重建） · 诊断时间 2026-09-26 · 数据截至 2026-09-24 收盘 · 前序版本：v2.1（2026-09-11，增量更新版）· v2.0（2026-09-07）· 2026 年 7 月 SOTP 专题报告</p>
+  <p style="margin-top:6px"><strong>v3.2 changelog：</strong>① <strong>补全 SOTP 口径边界</strong>——新增 <strong>8.3.1 分部估值推导表</strong>（原 82 亿分部归母与 -22 亿集团净额此前无推导，违反"中枢可独立复现"）；把原"集团财务+总部净额"显式重建为「净利息 + 总部费用 + 少数股东权益」并<strong>明确不含金融资产收益</strong>，据此将非经营性金融资产 <strong>44.87 亿按公允价值加回</strong>（SOTP 17.3 → <strong>18.2 元</strong>）；同时披露互斥的净额法路径（→17.3 元），给出 SOTP 口径区间 17.3–18.2 元；② <strong>2026E 盈利按已实现的 Q3 非经营损失下修</strong>——华电新能（6/30 隐含 4.77 → 9/24 收盘 3.88 元）与南网能源（5.82 → 5.31 元）静态估算 <strong>Q3 公允价值损失 ≈ -4.0 亿</strong>，原"H2 拖累收窄"定性假设由实测值替换，三情景 2026E 归母 42.0 / 52.0 / 62.0 → <strong>38.0 / 48.0 / 58.0 亿</strong>、EPS 0.83 / 1.03 / 1.23 → <strong>0.75 / 0.95 / 1.15</strong>；③ 传导：PEG 锚 18.5 → <strong>17.1 元</strong>、PB 锚 19.6 → <strong>19.5 元</strong>（BPS 14.02 → 13.94）、<strong>加权中枢 18.2 → 18.3 元</strong>，三情景 14.0 / 18.2 / 23.0 → <strong>13.9 / 18.3 / 23.0 元</strong>，概率加权期望 18.14 → 18.16 元；④ <strong>新增 8.6 估值口径边界说明</strong>（三锚各自"含/不含 Q3 实价与非经营性损益"对照表）；⑤ <strong>修正 v3.1 的概率隐含方向错误</strong>——v3.1 写"现价隐含多晶硅反转概率高于不反转"，方向相反（加权值随悲观概率上升而下降，低于加权期望的价格对应<strong>更高</strong>的悲观概率），本版更正为"现价隐含悲观概率约 36%"，并并列 PB 口径的相反结论；⑥ 模块 11：风险表量化 Q3 公允价值敞口、敏感性合计区间 42–62 → 38–58 亿。<strong>评分维持 58 分（各维度分数未变，仅修订估值行的口径与数值）。</strong></p>
+  <p style="margin-top:6px"><strong>v3.1 changelog：</strong>① <strong>修正公允价值敞口的口径错误</strong>——v3.0 把 44.87 亿（其他非流动金融资产<strong>科目合计</strong>）误表述为"华电新能 + 南网能源合计持有"；经核对 2026 半年报附注，华电新能账面 18.97 亿（持股 0.95%）+ 南网能源 6.02 亿（持股 2.73%）≈ <strong>25.0 亿</strong>，科目内另有双碳绿能基金 6.97 亿、首钢智新电磁材料 4.28 亿、华电产融 3.21 亿、南网战新产业基金等 4.99 亿；② <strong>修正归因</strong>——H1 公允价值损失的唯一来源是<strong>华电新能跌价 -6.05 亿</strong>，南网能源同期<strong>逆势上涨 +0.82 亿</strong>（v3.0 笼统写作"两者股价下跌"）；③ 模块 6 新增"其他非流动金融资产构成"明细表；④ 补充两笔投资的持股路径与来源（华电新能＝2021/12 参与华电福新发展混改增资 10 亿元；南网能源＝2019 年南网综合能源混改发起人股东、净资产折股）。<strong>评分与估值中枢不变（58 分 / 18.2 元）</strong>。</p>
+  <p style="margin-top:6px"><strong>v3.0 changelog：</strong>① 报告结构由 v2.1 的 7 段增量形式重建为完整 11 个分析模块 + 部署，补齐利润表单季趋势与利润损耗链、ROE/ROIC、现金流独立分析、资产负债表、业务五层拆解、技术面、资金筹码；② 数据全量刷新至 2026-09-24，纳入中报（8/21）、业绩说明会（8/26）、机构调研（9/15）；③ <strong>纠正 v2.1 对估值分位的误读</strong>——PB 1.26x 的 3 年分位为 59.9%（非"历史低位"），新增 1 年 vs 3 年双窗口对照；④ 新增 ROE ≈ WACC 分析（合理 PB 约 1.2–1.4x），据此把 PB 从公式法改为相对法；⑤ 估值三法中枢由 v2.1 的 18.5 元调整为 18.2 元，三情景由 15.0 / 18.5 / 22.6 调整为 14.0 / 18.2 / 23.0；⑥ 综合评分 61 → 58（技术面 52→40、筹码 68→62 为主因）；⑦ 操作建议：逻辑仓介入区由 17–18 元下移至 16.5–17.5 元；⑧ 新增"订单 vs 国网招标"分歧的可证伪判据；⑨ 统一术语：全文按当前 11 模块规范表述，页脚旧表述已移除。</p>
   <p style="color:#c62828;font-weight:600;margin-top:6px">⚠ 以上分析仅供参考，不构成任何投资建议。自估与假设已用 ⚠/assume 标注，投资决策请结合自身判断，风险自担。</p>
 </div>
 </div>
