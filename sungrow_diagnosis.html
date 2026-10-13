@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阳光电源 (300274) 深度诊断报告 v6.4 | 2026-10-13</title>
+<meta name="description" content="阳光电源 300274 深度诊断报告 v6.4（2026-10-13）：评分 63 观望 · 三法中枢 86 元 · 现价 80.75 折价 6.1%">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f7fa;color:#333;line-height:1.8;padding:20px}
+.container{max-width:1000px;margin:0 auto}
+.header{background:linear-gradient(135deg,#0d47a1,#1565c0);color:white;padding:36px 40px;border-radius:16px;margin-bottom:24px}
+.header h1{font-size:28px;margin-bottom:4px}
+.header .meta{font-size:13px;opacity:.85}
+.price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
+.price{font-size:52px;font-weight:800}
+.chg{font-size:20px;padding:4px 12px;border-radius:8px}
+.chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+.chg.up{background:rgba(198,40,40,.2);color:#c62828}
+.card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.card h2{font-size:18px;color:#0d47a1;border-bottom:2px solid #e3f2fd;padding-bottom:10px;margin-bottom:16px}
+.card h3{font-size:15px;color:#1565c0;margin:20px 0 8px}
+.card h4{font-size:14px;color:#555;margin:12px 0 6px}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.kv .item{background:#f8f9fc;border-radius:8px;padding:12px 16px}
+.kv .lbl{font-size:11px;color:#888}
+.kv .val{font-size:20px;font-weight:700;color:#0d47a1}
+.kv .sub{font-size:11px;color:#555;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0}
+th{background:#e3f2fd;color:#0d47a1;padding:8px 10px;text-align:left;font-weight:600}
+td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
+tr:hover td{background:#f8f9fc}
+.up{color:#c62828}.dn2{color:#00c853}
+.sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
+.sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
+.vcard{background:linear-gradient(135deg,#e3f2fd,#bbdefb);border-radius:12px;padding:24px;margin-bottom:16px}
+.vcard h2{font-size:20px;color:#0d47a1;margin-bottom:12px}
+.vcard .score{font-size:60px;font-weight:800;color:#1565c0;text-align:center;margin:10px 0}
+.tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
+.tech-item .name{font-size:12px;color:#888}
+.tech-item .val{font-size:20px;font-weight:700;color:#0d47a1}
+.tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bull{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-bear{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
+.tag-neutral{border:1px solid #ff8f00;color:#ff8f00;padding:1px 8px;border-radius:10px;display:inline-block}
+.assume{background:#fff8e1;border-left:3px solid #ffc107;padding:8px 12px;margin:12px 0;font-size:12px;border-radius:0 6px 6px 0}
+.assume strong{color:#f57c00}
+.scenario-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.scen{border-radius:8px;padding:14px;text-align:center}
+.scen-bear{background:#e8f5e9}.scen-base{background:#e3f2fd}.scen-bull{background:#fce4ec}
+.scen .slbl{font-size:12px;color:#666}.scen .sval{font-size:18px;font-weight:700;margin:4px 0}
+.scen .schg{font-size:12px}
+.footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
+ol li{padding:5px 0;font-size:14px}
+.small{font-size:11px;color:#999;display:block}
+.new-badge{background:#c62828;color:white;font-size:10px;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle}
+@media print{body{background:white;padding:0}.card{box-shadow:none;border:1px solid #eee;page-break-inside:avoid}}
+</style>
+.tech-item .sub{font-size:11px;color:#555;margin-top:2px}
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>阳光电源 (300274) 深度诊断报告 v6.4</h1>
+  <div class="meta">2026-10-13 · 数据来源：Wind 金融数据（行情/技术指标/财务，截至 2026-10-13）· 2026 中报与业绩说明会（2026-08-13 交流、2026-08-28 披露）· 公司公告与投资者关系记录 · 卖方研报（高盛 / 摩根大通 / 花旗 / 瑞银 / 野村 / 麦格理 / 国泰海通 / 华创 / 交银 等）· 框架：Brad Stock Analysis 12 模块</div>
+  <div class="price-row">
+    <div class="price">80.75</div>
+    <div class="chg dn">-1.94%</div>
+  </div>
+  <div class="meta" style="margin-top:8px">总市值 1,674 亿 | PE(TTM) 15.24 · PE(2026E) 12.06 | PB 3.43（3 年分位 <strong>7.3%</strong>）| 52 周新低 78.00 · 技术面出现<strong>底部背离</strong></div>
+</div>
+
+<!-- ============ 模块 1 综合诊断评分 ============ -->
+<div class="vcard">
+  <h2>综合诊断评分</h2>
+  <div class="score">63<span style="font-size:24px;color:#666">/100</span></div>
+  <div style="text-align:center;font-size:20px;font-weight:700;color:#0f6e3f;margin-bottom:14px">观望</div>
+  <div class="sig sig-warn"><strong>2026-10-13 更新（评分 61 → 63，价格下移 + 技术修复）：</strong>股价自 9/1 的 89.33 再跌 <strong>-9.6%</strong> 至 80.75，52 周新低刷新至 <strong>78.00</strong>；PB 3 年分位由 8% 降至 <strong>7.3%</strong>、PE 3 年分位由 53% 降至 <strong>40.8%</strong> —— <strong>现价由"高于中性中枢 5%"转为"低于中枢 6.1%"</strong>，安全边际首次转正。技术面出现<strong>底部背离</strong>：MACD 柱由 -5.61 转正 <strong>+1.11（金叉）</strong>、KDJ 的 J 值由 -5.89 回到 <strong>+24.09</strong>、RSI6 由 14.79 升至 42.19，而股价同期创新低。基本面 <strong>无新财报</strong>（最近为 8/28 中报），但订单条线明显改善：9/17 德国 be.storaged <strong>1.6GWh</strong>、10/6 阿尔巴尼亚 130MWh、柬埔寨 215.6MWh 并网、芬兰 600MWh 进入实施，1–9 月公开披露订单 <strong>23 个 / 超 33.26GWh</strong>，公司 10/9 确认"订单充足"。<strong>拖累项未变</strong>：14420 行政令细则未落地、出口退税 2027/1/1 归零、主动偏股基金持仓减少 109 只（-0.50pct）。</div>
+
+  <table>
+    <tr><th width="86">维度</th><th width="52">评分</th><th>核心判断</th></tr>
+    <tr><td>基本面</td><td>73</td><td><strong>不变</strong>。H1 营收 309.12 亿（-28.99%）、归母 52.59 亿（-32.01%）、扣非 42.75 亿（-42.96%）；Q2 单季归母 29.67 亿环比 +29.5%、毛利率 <strong>38.62%</strong> 创阶段新高；经营现金流 37.35 亿仍为正、中期分红 0.64 元/股已实施。扣非降幅远大于归母，非经常损益（金融资产公允价值变动+处置 7.76 亿、政府补助 2.02 亿）占比偏高</td></tr>
+    <tr><td>估值</td><td>70<span style="color:#c62828"> ▲5</span></td><td>PE(TTM) 15.24x（3 年分位 <strong>40.8%</strong>，v6.3 为 53%）· PB 3.43x（3 年分位 <strong>7.3%</strong>，5 年分位 4.4%）。三法重算后中性中枢 <strong>86 元</strong>，<strong>现价 80.75 折价 6.1%</strong>（v6.3 时为溢价 5%）。但低 PB 仍是"盈利中枢下移"的价值陷阱特征，安全边际的绝对值不厚</td></tr>
+    <tr><td>成长性</td><td>70<span style="color:#c62828"> ▲2</span></td><td>储能接棒（H1 发货 25GWh / +28%，全年目标 60–65GWh 未下调）+ AIDC 第二曲线（配储在手 2GWh / 跟踪 10GWh+，SST 已交付客户、Q4 投运、中标之江实验室）。<strong>欧洲需求由 60GWh+ 上调至 74GWh（+50%）</strong>；但美国业务收缩确认、国内光伏装机大幅下滑、EPC 净亏，成长斜率被压</td></tr>
+    <tr><td>技术面</td><td>46<span style="color:#c62828"> ▲12</span></td><td><strong>底部背离</strong>：MACD 零下金叉（柱 +1.11）、KDJ 的 J 值 +24.09（v6.3 为 -5.89）、RSI6 42.19（v6.3 为 14.79）。但价格仍<strong>低于全部均线</strong>（MA250 在 143.23，偏离 -43.6%）、MA5/10/20/60 空头排列未破，反弹尚未转趋势</td></tr>
+    <tr><td>资金情绪</td><td>46<span style="color:#c62828"> ▲1</span></td><td>融资余额降至 <strong>77.15 亿</strong>（10/12，9/14 为 80.16 亿），融券余额仅 0.11 亿（无显著做空）；机构持股 31.01%、陆股通 6.91%。<strong>主动偏股基金 287 只（较上期 -109 只）、持股比例 4.77%（-0.50pct）</strong>——公募在撤退</td></tr>
+    <tr><td>风险</td><td>45</td><td><strong>不变</strong>。14420 行政令细则（120 天内，约 12 月下旬）未落地、"受覆盖外国实体"认定未定；欧洲是否跟进决定是否滑向极端档；出口退税 2027/1/1 归零是<strong>最可量化</strong>的利润冲击；碳酸锂涨价持续压缩储能毛利率</td></tr>
+    <tr><td>筹码/事件</td><td>57<span style="color:#c62828"> ▲2</span></td><td>员工持股计划增持 <strong>721.33 万股</strong>（占流通股 0.45%）；近一年回购 <strong>304.76 万股 / 3.25 亿元</strong>；中期分红 0.64 元/股（13.17 亿）已实施；9/30 仅解禁 27.97 万股（几乎无压力）</td></tr>
+    <tr><td>机构共识</td><td>72<span style="color:#0f6e3f"> ▼1</span></td><td>一致目标价 151.77 → <strong>147.11 元</strong>（10/13）；2026E EPS 一致预期 6.46–6.70。9 月 9 家机构观点 <strong>100% 买入/增持</strong>；但外资分歧极大：高盛<strong>中性 114</strong> vs 摩根大通<strong>买入 140</strong> vs 花旗<strong>买入 160</strong>，野村 120 最悲观</td></tr>
+  </table>
+
+  <div class="sig sig-bear"><strong>硬约束校验：</strong>基本面 73 + 估值 70 = <strong>143</strong>（≥120，未触发第一道上限）；风险 <strong>45</strong>（=45，未触发第二道"&lt;45 → 上限 65"，但已贴着阈值）。<strong>总分 63 为无约束原值</strong>。<br>⚠ 风险维度仅 45 分是本次评分的最大压制项——政策尾部风险未出清前，总分难以进入"持有"档（≥65）。</div>
+</div>
+
+<!-- ============ 模块 2 行情快照 ============ -->
+<div class="card">
+  <h2>一、行情快照（2026-10-13 · Wind 行情快照）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">最新价</div><div class="val">80.75</div><div class="sub">10/13 -1.94% · 盘中最低 78.08</div></div>
+    <div class="item"><div class="lbl">总市值 / 流通市值</div><div class="val">1,674 亿</div><div class="sub">流通 1,282 亿（占 76.6%）</div></div>
+    <div class="item"><div class="lbl">PE(TTM)</div><div class="val">15.24x</div><div class="sub">3 年分位 40.8% · 5 年分位 24.4%</div></div>
+    <div class="item"><div class="lbl">PE(2026E)</div><div class="val">12.06x</div><div class="sub">一致预期 EPS 6.46–6.70</div></div>
+    <div class="item"><div class="lbl">PB(LF)</div><div class="val">3.43x</div><div class="sub">3 年分位 <strong>7.3%</strong> · 5 年分位 4.4%</div></div>
+    <div class="item"><div class="lbl">52 周范围</div><div class="val">78.00–207.35</div><div class="sub">距 52 周高点 -61.1%</div></div>
+    <div class="item"><div class="lbl">股息率</div><div class="val">1.64%</div><div class="sub">中期 0.64 元/股 + 年报 0.69 元/股</div></div>
+    <div class="item"><div class="lbl">总股本</div><div class="val">20.73 亿股</div><div class="sub">流通 A 股 15.87 亿股</div></div>
+  </div>
+
+  <h3>区间涨跌幅（截至 2026-10-13）</h3>
+  <table>
+    <tr><th>区间</th><th>5 日</th><th>20 日</th><th>60 日</th><th>120 日</th><th>250 日</th><th>年初至今</th></tr>
+    <tr><td>涨跌幅</td><td class="dn2">-2.49%</td><td class="dn2">-8.35%</td><td class="dn2">-24.68%</td><td class="dn2">-41.39%</td><td class="dn2">-42.69%</td><td class="dn2">-52.21%</td></tr>
+  </table>
+
+  <div class="sig sig-warn"><strong>估值分位背离度（本次关键观察）：</strong>PE 3 年分位 <strong>40.8%</strong> vs PB 3 年分位 <strong>7.3%</strong>，背离 <strong>33.5pct</strong>。两端成因不同——PE 分位相对高是因为分母（盈利）已从 2025 年高点回落但仍未到底，PB 分位极低是因为分母（净资产）仍在累积（归母净资产由 2025 年末 466.11 亿升至 2026H1 末 <strong>501.40 亿</strong>，+7.6%）。<strong>低 PB 不等于安全：一旦 2027 年出口退税归零 + 美国收缩兑现，盈利下修会继续吃掉账面低估值。</strong></div>
+  <div class="assume"><strong>⚠ 口径声明：</strong>PB 3.43x 取 Wind PB(LF) 口径（与 v6.3 的 3.69x 同源可比）；若按「总市值 1,674 亿 ÷ 2026H1 末归母净资产 501.40 亿」自算，为 <strong>3.34x</strong>。两者差异来自 Wind 的净资产口径（可能含少数股东权益调整），本报告以 Wind 口径为准并列出自算值。PE(TTM) 同源取值 15.24x（Wind 行情快照）/ 15.54x（Wind 财务衍生指标），差异源自分位序列的挂载时点。</div>
+</div>
+
+<!-- ============ 模块 3 利润表趋势 ============ -->
+<div class="card">
+  <h2>二、利润表趋势（单季口径 · 累计值倒推）</h2>
+  <div class="assume"><strong>⚠ 口径：</strong>A 股季报为年初至今累计值，下表已倒推为单季。2025Q4 含低毛利新能源项目集中交付、碳酸锂涨价传导滞后等一次性因素。</div>
+  <table>
+    <tr><th>指标（亿元）</th><th>2026Q2</th><th>2026Q1</th><th>2025Q4</th><th>2025Q3</th><th>2025Q2</th><th>2025Q1</th><th>2024FY</th></tr>
+    <tr><td>营业收入</td><td>153.52</td><td>155.61</td><td>227.82</td><td>228.69</td><td>244.97</td><td>190.36</td><td>778.57</td></tr>
+    <tr><td>营收同比</td><td class="dn2">-37.3%</td><td class="dn2">-18.3%</td><td class="dn2">-18.4%</td><td>+20.8%</td><td>+33.1%</td><td>+50.9%</td><td class="up">+7.8%</td></tr>
+    <tr><td>销售毛利率</td><td><strong>38.62%</strong></td><td>33.26%</td><td>22.95%</td><td>35.87%</td><td>33.75%</td><td>35.13%</td><td>—</td></tr>
+    <tr><td>归母净利润</td><td>29.67</td><td>22.91</td><td>15.80</td><td>41.47</td><td>39.08</td><td>38.26</td><td>110.36</td></tr>
+    <tr><td>归母同比</td><td class="dn2">-24.1%</td><td class="dn2">-40.1%</td><td class="dn2">-54.0%</td><td>+57.0%</td><td>+36.5%</td><td>+82.5%</td><td class="up">+16.8%</td></tr>
+    <tr><td>扣非净利润</td><td>22.4<span class="small">（估）</span></td><td>—</td><td>15.80</td><td>41.47</td><td>39.08</td><td>38.03</td><td>—</td></tr>
+    <tr><td>销售净利率</td><td>19.33%</td><td>14.43%</td><td>6.93%</td><td>18.03%</td><td>16.48%</td><td>19.93%</td><td>—</td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>毛利率验证：</strong>Q2 毛利率 38.62%（环比 +5.35pct、同比 +4.87pct）与"营收 -37% 但毛利率逆势提升"同时成立，说明这轮收入下滑<strong>是主动结构收缩而非价格战</strong>——管理层 8/31 披露国内收入 181→82 亿（-55%，战略放弃亏损项目）、中东 57→11 亿（-91%，沙特高基数回落），两者合计减少约 145 亿，占营收降幅的绝大部分。产品端：逆变器毛利率 42.72%（+6.98pct，海外占比提升）、储能 32.43%（<strong>-7.49pct，碳酸锂成本传导</strong>）。</div>
+
+  <h3>利润损耗链（2026H1 累计，营业利润 → 归母净利润）</h3>
+  <table>
+    <tr><th>环节</th><th>金额（亿元）</th><th>说明</th></tr>
+    <tr><td>营业利润</td><td>63.40</td><td>H1 累计</td></tr>
+    <tr><td>利润总额</td><td>63.41</td><td>营业外收支近乎中性</td></tr>
+    <tr><td>− 所得税</td><td>-11.82</td><td>有效税率 18.6%（2025 全年 15%）</td></tr>
+    <tr><td>= 净利润</td><td>51.59</td><td>—</td></tr>
+    <tr><td>− 少数股东损益</td><td>+1.00</td><td>少数股东亏损，回加</td></tr>
+    <tr><td><strong>= 归母净利润</strong></td><td><strong>52.59</strong></td><td>—</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>两个利润杀手：</strong>① <strong>财务费用 3.68 亿（+239.94%）</strong>——欧元及美元贬值导致的汇兑损失；公司已于 2026/3/31 公告 29 亿美元外汇远期套保对冲，Q2 起生效，故本报告按"套保与汇兑净额≈0"处理（不再单边压经营净利率）。② <strong>有效税率由 15% 升至 18.6%</strong>，部分抹平了毛利率改善。</div>
+  <div class="assume"><strong>⚠ Adjusted EBITDA（估算）：</strong>H1 EBIT ≈ 营业利润 63.40 + 利息费用 1.03 = 64.43 亿；加回折旧摊销（估约 10 亿）得 EBITDA ≈ 74.4 亿，<strong>EBITDA Margin ≈ 24.1%</strong>（H1 营收 309.12 亿），显著高于归母净利率 17.0%。折摊与利息数据未完整披露，此值为估算。</div>
+</div>
+
+<!-- ============ 模块 4 ROE 与 ROIC ============ -->
+<div class="card">
+  <h2>三、ROE 与 ROIC</h2>
+  <table>
+    <tr><th>指标</th><th>2026H1</th><th>FY2025</th><th>说明</th></tr>
+    <tr><td>归母净利润（亿元）</td><td>52.59</td><td>134.61</td><td>—</td></tr>
+    <tr><td>归母净资产（期末，亿元）</td><td>501.40</td><td>466.11</td><td>半年 +7.6%</td></tr>
+    <tr><td>ROE（报告期）</td><td>10.87%</td><td>32.24%</td><td>Wind 口径</td></tr>
+    <tr><td><strong>ROE（TTM，滚动 4 季）</strong></td><td colspan="2"><strong>≈ 22.5%</strong></td><td>TTM 归母 109.85 亿 ÷ 期末归母净资产 501.40 亿</td></tr>
+  </table>
+
+  <h3>ROIC vs WACC</h3>
+  <table>
+    <tr><th>项目</th><th>数值</th><th>说明</th></tr>
+    <tr><td>TTM 营收</td><td>765.64 亿</td><td>2025Q3+Q4+2026Q1+Q2</td></tr>
+    <tr><td>TTM EBIT（估）</td><td>≈ 129 亿</td><td>按 TTM 归母净利率 14.35% ÷ (1−18.6%) 反推 EBIT Margin ≈ 16.9%</td></tr>
+    <tr><td>NOPAT</td><td>≈ 110 亿</td><td>EBIT × (1 − 18.6%)</td></tr>
+    <tr><td>投入资本</td><td>611.71 亿</td><td>带息债务 79.89 + 全部股东权益 531.82</td></tr>
+    <tr><td><strong>ROIC</strong></td><td><strong>≈ 18.0%</strong></td><td>—</td></tr>
+    <tr><td>WACC</td><td>≈ 9.2%</td><td>Ke 10.3%（Rf 2.5% + β1.3×ERP 6%）；Kd 3.0%×(1−15%)；D/(D+E) 13.7%</td></tr>
+    <tr><td><strong>ROIC − WACC</strong></td><td><strong>+8.8pct</strong></td><td><strong>当期仍在创造经济利润</strong></td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>这是与 MRVL 那类"靠预期定价"标的的分野：</strong>阳光电源 ROIC 18.0% 显著高于 WACC 9.2%，2026H1 经营现金流 37.35 亿仍为正、净现金 235 亿。<strong>它的问题不是不赚钱，而是"未来两年赚的钱会不会被政策和退税吃掉"</strong>——这决定了估值该给多少倍，而不是要不要给。</div>
+  <div class="assume"><strong>⚠ 口径声明：</strong>ROIC 为估算值（太阳电源未披露 EBIT 与投入资本明细），NOPAT 由归母净利率反推、投入资本用「带息债务 + 全部股东权益」；若改用「带息债务 + 归母权益」为分母（581.29 亿），ROIC 为 18.9%。两种口径均显著高于 WACC，结论方向不变。ROE(TTM) 用期末净资产而非平均净资产，属摊薄口径，若用平均净资产（483.75 亿）则为 22.7%。</div>
+</div>
+
+<!-- ============ 模块 5 现金流 ============ -->
+<div class="card">
+  <h2>四、现金流独立分析</h2>
+  <table>
+    <tr><th>指标（亿元）</th><th>2026H1</th><th>2026Q1</th><th>2026Q2（倒推）</th><th>FY2025</th></tr>
+    <tr><td>经营活动现金流净额</td><td>37.35</td><td>12.08</td><td>25.27</td><td>169.18</td></tr>
+    <tr><td>资本开支（购建固定/无形）</td><td>11.75</td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td><strong>自由现金流（近似）</strong></td><td><strong>25.60</strong></td><td>—</td><td>—</td><td>—</td></tr>
+    <tr><td>投资活动现金流净额</td><td>+60.64</td><td>+62.17</td><td>-1.53</td><td>-32.71</td></tr>
+    <tr><td>净利润现金含量（OCF/归母）</td><td>71.0%</td><td>52.7%</td><td>85.2%</td><td>125.7%</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>现金流的真实位置：</strong>H1 经营现金流 37.35 亿同比 +8.75%（在营收 -29% 的背景下逆势增长，属亮点）；但相对 FY2025 的 169.18 亿是<strong>断崖式回落</strong>——这正是 v6.1/v6.3 把 DCF 的 FCFF 起始值由 146 亿（≈2025 峰值）下修至 60 亿的直接依据。按 H1 年化（OCF 约 80–90 亿、capex 25–30 亿），<strong>2026 全年 FCFF 约 55–60 亿</strong>，本次复核维持该口径不变。</div>
+  <div class="assume"><strong>⚠ 注意：</strong>H1 投资活动现金流为 <strong>+60.64 亿净流入</strong>（主因理财/交易性金融资产赎回），与经营现金流不同性质；"净利润现金含量"用 OCF/归母衡量，FY2025 的 125.7% 含 2025 年高基数效应，不宜外推。</div>
+</div>
+
+<!-- ============ 模块 6 资产负债表 ============ -->
+<div class="card">
+  <h2>五、资产负债表关键指标（2026H1 末）</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">总资产</div><div class="val">1,270.91 亿</div><div class="sub">2025 年末 1,186.79 亿</div></div>
+    <div class="item"><div class="lbl">总负债</div><div class="val">739.10 亿</div><div class="sub">资产负债率 <strong>58.15%</strong></div></div>
+    <div class="item"><div class="lbl">归母净资产</div><div class="val">501.40 亿</div><div class="sub">少数股东权益 30.42 亿</div></div>
+    <div class="item"><div class="lbl">货币资金</div><div class="val">315.23 亿</div><div class="sub">带息债务 79.89 亿 → 净现金 <strong>235.34 亿</strong></div></div>
+    <div class="item"><div class="lbl">存货</div><div class="val">321.53 亿</div><div class="sub"><span class="up">较年末 +18.0%</span>（272.55 → 321.53）</div></div>
+    <div class="item"><div class="lbl">应收账款</div><div class="val">208.99 亿</div><div class="sub">较年末 -11.1%（234.99 → 208.99）</div></div>
+    <div class="item"><div class="lbl">商誉</div><div class="val">2.97 亿</div><div class="sub">占总资产 0.23%，无减值风险</div></div>
+    <div class="item"><div class="lbl">有息负债率</div><div class="val">6.3%</div><div class="sub">带息债务 79.89 / 总资产 1,270.91</div></div>
+  </div>
+  <div class="sig sig-warn"><strong>存货 +18.0% 是本次值得盯的一处逆风：</strong>营收同期 -29%，存货反而增至 321.53 亿。<strong>两种解释需区分</strong>——① 为 H2 储能集中交付（占全年 60%）备货（正面）；② 产品积压、后续可能计提跌价（负面）。公司 10/9 明确"订单充足、生产经营正常"，本报告倾向解释①，但这是 <strong>Q3 财报必须验证的第一项</strong>：若存货继续升而营收不回升，则解释②成立。应收账款 -11.1% 与营收降幅方向一致，回款质量未恶化。</div>
+</div>
+
+<!-- ============ 模块 7 业务拆解 ============ -->
+<div class="card">
+  <h2>六、业务拆解与竞争护城河（第 1–3 层）</h2>
+
+  <h3>第 1 层 · 收入结构与生命周期定位（2026H1）</h3>
+  <table>
+    <tr><th>业务线</th><th>H1 营收（亿）</th><th>占比</th><th>同比</th><th>毛利率</th><th>生命周期</th></tr>
+    <tr><td><strong>储能系统</strong></td><td>154.56</td><td>50.0%</td><td class="dn2">-13.18%</td><td>32.43%<span class="up">（-7.49pct）</span></td><td>🚀 核心增长引擎（第一大业务）</td></tr>
+    <tr><td>光伏逆变器等</td><td>123.88</td><td>40.1%</td><td class="dn2">-19.17%</td><td>42.72%<span class="up">（+6.98pct）</span></td><td>📊 成熟业务（全球第一，现金牛）</td></tr>
+    <tr><td>新能源投资开发</td><td>12.58</td><td>~4%</td><td class="dn2">-85%</td><td>净亏 3.8 亿</td><td>📉 主动收缩</td></tr>
+    <tr><td>电站发电</td><td>~3</td><td>1.0%</td><td>—</td><td>稳定</td><td>📊 稳定现金流</td></tr>
+    <tr><td><em>AIDC 电源（SST）</em></td><td>尚未形成规模收入</td><td>—</td><td>—</td><td>—</td><td>🌱 期权（2028–2030 商业化）</td></tr>
+  </table>
+  <div class="sig"><strong>收入质量：</strong>海外收入 226.90 亿、占比 <strong>73.4%</strong>（同比 -10.59%），显著优于国内（82.22 亿，-54.71%）。海外高占比既是毛利率改善的主因，<strong>也放大了三重敞口</strong>——汇兑（H1 财务费用 +239.94%）、美国政策（14420 行政令）、欧洲监管（公共资金项目已排除中资 PCS）。</div>
+
+  <h3>第 2 层 · 竞争格局与护城河</h3>
+  <table>
+    <tr><th>护城河类型</th><th>评级</th><th>依据</th></tr>
+    <tr><td>技术壁垒</td><td><span class="tag-bull">强</span></td><td>储能 PowerTitan 3.0（600+Ah 叠片电芯）、行业首个全场景储能变流平台、构网型技术（西藏阿里 60MW/120MWh 全球最大构网型离网项目）；逆变器全球第一；SST 固态变压器已交付</td></tr>
+    <tr><td>客户粘性</td><td><span class="tag-neutral">中</span></td><td>海外 520 家服务网点、100+ 国家；但大储客户为开发商/EPC，项目制、可替换</td></tr>
+    <tr><td>成本优势</td><td><span class="tag-neutral">中</span></td><td>年产能 100GWh 储能智造基地、全球产能布局（印度/泰国 25GW、匈牙利 15GWh、墨西哥 5GWh、埃及 10GWh、波兰 20GW+12.5GWh）；但碳酸锂成本不可控</td></tr>
+    <tr><td>网络效应</td><td><span class="tag-bear">弱</span></td><td>设备制造业，无平台型网络效应</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>护城河的真实约束来自政策而非竞争：</strong>公司因"中资实控"被美国 FCC / 14420 行政令列入受控清单，这是<strong>非技术、非成本维度的排除</strong>——护城河在国界面前失效。管理层应对是"区域多元化 + 本地化产能 + 与海外企业合作零部件/服务/小型系统"。</div>
+
+  <h3>第 3 层 · 技术代际与市场容量</h3>
+  <table>
+    <tr><th>方向</th><th>当前状态</th><th>节奏</th></tr>
+    <tr><td>储能系统</td><td>PowerTitan 2.0 → <strong>3.0</strong>（600+Ah 叠片电芯）</td><td>3.0 已规模交付，合肥 200MW/400MWh 并网</td></tr>
+    <tr><td>逆变器</td><td>新一代 100/110/125kW 组串（SG100/110/125CX-P3）</td><td>已发布</td></tr>
+    <tr><td>AIDC SST</td><td>EnerNeo 系列 10/13.8kV 已交付客户</td><td>Q4 投运 → 2027 小批量 → <strong>2028–2030 规模化</strong></td></tr>
+    <tr><td>SST 35kV</td><td>研发中</td><td>2027H1 完成研发 → 2027 小批量交付</td></tr>
+    <tr><td>800V 生态</td><td>与外部伙伴联合开发</td><td>下一代</td></tr>
+  </table>
+  <div class="sig"><strong>TAM 与订单能见度：</strong>欧洲储能需求 2026 由 60GWh+ 上调至 <strong>74GWh</strong>（+50%），2027 有望破 100GWh；公司 2026 全年储能出货目标 <strong>60–65GWh</strong>（未下调），H2 发货占全年约 60%。AIDC 配储在手订单 2GWh、跟踪 10GWh+；与阿里云共建"绿色 Token 联合创新中心"。<strong>1–9 月公开披露储能订单 23 个、超 33.26GWh</strong>（含德国 be.storaged 1.6GWh、芬兰 Delta Capacity 1GWh 框架、沙特 7.8GWh、阿布扎比 7.5GWh）。</div>
+</div>
+
+<!-- ============ 模块 8 估值 ============ -->
+<div class="card">
+  <h2>七、估值分析（SOTP 主锚 + PEG + DCF）</h2>
+  <div class="sig sig-warn"><strong>Step 8.0 公司类型判断：</strong>按分部收入，储能 50.0% + 逆变器 40.1% 为双主业（<strong>多业务线</strong>，非单一业务）；所属光储行业具有明显周期成长特征（2024 抢装 → 2025 高增 → 2026 退潮），故<strong>主锚用 SOTP、PEG 与 DCF 交叉验证</strong>（与 v6.3 框架一致，本次未变更方法）。
+  <br><strong>本次修正一处 v6.3 的口径不一致：</strong>v6.3 正文测算"锁定后经营净利 92.5 亿"，但 SOTP 分部表实际只用了 86 亿（漏计套保收益 6.5 亿）。v6.4 已统一为 <strong>94.3 亿</strong>并按毛利贡献重新拆分。</div>
+
+  <h3>零、Bottom-up 分部利润测算（2026E）</h3>
+  <div class="assume"><strong>⚠ 方法：</strong>"净利模块法"——1H 用半年报实际值、2H 用预测值，并显式计入「套保与汇兑锁定」与「政府补助」。口径为税后·归母。</div>
+  <table>
+    <tr><th>模块（亿元）</th><th>1H 实际</th><th>2H 预测</th><th>2026E 全年</th><th>说明</th></tr>
+    <tr><td>扣非净利润（含汇兑损失）</td><td>42.75</td><td>~45</td><td>~87.75</td><td>2H 储能放量（H2 发货占全年 60%）对冲逆变器与国内下滑</td></tr>
+    <tr><td>+ 套保收益（对冲汇兑）</td><td>~4.0</td><td>~2.5</td><td>~6.5</td><td>29 亿美元外汇远期，与汇兑损失锁定净额≈0</td></tr>
+    <tr><td>+ 政府补助（非经常部分）</td><td>~1.6</td><td>~2.0</td><td>~3.6</td><td>年底集中确认</td></tr>
+    <tr><td>+ 理财浮盈 / 处置</td><td>~3.8</td><td>~1.0</td><td>~4.8</td><td>交易性金融资产已减持 63%，2H 缩水</td></tr>
+    <tr><td>+ 其他非经常</td><td>~0.4</td><td>~0.5</td><td>~0.9</td><td>一次性，量小</td></tr>
+    <tr><td><strong>归母净利润合计</strong></td><td><strong>52.59</strong></td><td><strong>~51</strong></td><td><strong>≈ 104</strong></td><td><span class="up">vs 一致预期 134.0 亿（50 家）</span></td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>⚠ 最大分歧点：本框架 2026E 归母 104 亿，比一致预期 134 亿低 22%。</strong>差异来源：H1 实际仅 52.59 亿，全年要达 134 亿需要 H2 做到 81.4 亿（同比 +42%）。<strong>本报告的 2H 预测（~51 亿）比一致预期低 37%</strong>，核心理由是：① 碳酸锂成本仍在高位（H1 均价 16.34 万元/吨 vs 去年同期 7.04 万元/吨，翻倍以上），储能毛利率修复幅度受限；② 汇兑损失虽被套保对冲，但净额不产生超额收益；③ 政府补助/理财收益属非经常、不可年化。若 H2 实际显著高于本框架，则 <strong>Q3 财报（预计 10 月下旬）即会证伪本口径</strong>。</div>
+
+  <h3>一、SOTP 分部估值法（主锚）</h3>
+  <div class="assume"><strong>⚠ 假设：</strong>锁定后经营净利 = 扣非 87.75 + 套保 6.5 = <strong>94.3 亿</strong>，按毛利贡献拆分（储能毛利 50.1 亿占 48.6%、逆变器毛利 52.9 亿占 51.4%）→ 储能 45.8 / 逆变器 48.5 亿。PE 倍数按政策风险折价（美国收缩确认 + 出口退税归零 + FCC/欧洲新规）：储能 20x（原 30x）、逆变器 15x（原 25x）、AIDC SST 期权 100 亿（原 200 亿）、政府补助+理财 9.3 亿 × 5x。总股本 20.73 亿股。</div>
+  <table>
+    <tr><th>业务线</th><th>2026E 净利（亿）</th><th>目标 PE</th><th>估值（亿）</th><th>逻辑</th></tr>
+    <tr><td>储能系统</td><td>45.8</td><td>20x</td><td>916</td><td>全球前二 + 海外占 84%，但美国收缩 + 出口退税压制估值</td></tr>
+    <tr><td>光伏逆变器</td><td>48.5</td><td>15x</td><td>728</td><td>全球第一但增速转负 + 国内装机大幅下滑 + FCC</td></tr>
+    <tr><td>新能源投资开发</td><td>0</td><td>8x</td><td>0</td><td>EPC 净亏，按 0 计</td></tr>
+    <tr><td>AIDC SST</td><td>—</td><td>期权</td><td>100</td><td>千亿赛道，但政策 + 商业化不确定性打折</td></tr>
+    <tr><td>政府补助 + 理财</td><td>9.3</td><td>5x</td><td>46</td><td>非经常，不具备成长性，低 PE 折现</td></tr>
+    <tr><td><strong>合计（中性）</strong></td><td>—</td><td>—</td><td><strong>1,790</strong></td><td><strong>对应股价 ≈ 86 元</strong></td></tr>
+  </table>
+  <div class="scenario-grid">
+    <div class="scen scen-bear"><div class="slbl">悲观（储能 14x / 逆变器 10x / AIDC 50 亿）</div><div class="sval" style="color:#00c853">59 元</div><div class="schg">-26.9% vs 现价</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（储能 20x / 逆变器 15x）</div><div class="sval" style="color:#0d47a1">86 元</div><div class="schg">+6.5% vs 现价</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观（储能 25x / 逆变器 20x / AIDC 200 亿）</div><div class="sval" style="color:#c62828">113 元</div><div class="schg">+39.9% vs 现价</div></div>
+  </div>
+
+  <h3>二、PEG 交叉验证（一致预期 + 政策折价）</h3>
+  <table>
+    <tr><th>情景</th><th>2026E EPS</th><th>2027E EPS</th><th>增速</th><th>PEG</th><th>合理 PE</th><th>合理股价</th></tr>
+    <tr><td>悲观</td><td>5.99</td><td>6.65</td><td>11.0%</td><td>1.10</td><td>12x</td><td><strong>72 元</strong></td></tr>
+    <tr><td>中性</td><td>6.46</td><td>7.61</td><td>17.8%</td><td>0.87</td><td>15x</td><td><strong>97 元</strong></td></tr>
+    <tr><td>乐观</td><td>7.10</td><td>9.31</td><td>31.1%</td><td>0.75</td><td>18x</td><td><strong>128 元</strong></td></tr>
+  </table>
+  <div class="sig"><strong>为什么中性不给 20x+：</strong>一致预期 2027E EPS 8.46 元大概率偏高——<strong>出口退税 2027/1/1 归零</strong>机械口径将吞掉约 41 亿税后利润（占 2027E 净利的 23%）。本框架中性和下修 10% 至 7.61 元，增速随之由 31% 降至 17.8%，合理 PE 对应 15x。<strong>这与野村（2027 14x）、高盛（2027 20x）的机构锚点区间一致。</strong></div>
+
+  <h3>三、DCF 交叉验证（维持 v6.3 重校口径）</h3>
+  <div class="assume"><strong>⚠ 假设：</strong>FCFF 起始 60 亿（2026H1 经营现金流 37.35 亿、年化 80–90 亿，减资本开支 25–30 亿）；WACC 9–10%（含政策风险溢价）；永续 g 2–3.5%。<strong>本次复核未修改 FCFF 起始值</strong>——H1 实际数据未偏离 v6.3 的重校基准。</div>
+  <table>
+    <tr><th>情景</th><th>假设</th><th>股权价值</th><th>对应股价</th></tr>
+    <tr><td>悲观</td><td>FCFF 45 亿 · 增速 8% · g 2% · WACC 10%</td><td>715 亿</td><td><strong>34 元</strong></td></tr>
+    <tr><td>中性</td><td>FCFF 60 亿 · 增速 12–15% · g 3%</td><td>1,562 亿</td><td><strong>75 元</strong></td></tr>
+    <tr><td>乐观</td><td>FCFF 75 亿 · 增速 15–18% · g 3.5%</td><td>2,263 亿</td><td><strong>109 元</strong></td></tr>
+  </table>
+
+  <h3>四、三法综合与机构共识</h3>
+  <table>
+    <tr><th></th><th>悲观</th><th>中性</th><th>乐观</th></tr>
+    <tr><td>SOTP（主锚）</td><td>59 元</td><td><strong>86 元</strong></td><td>113 元</td></tr>
+    <tr><td>PEG</td><td>72 元</td><td><strong>97 元</strong></td><td>128 元</td></tr>
+    <tr><td>DCF</td><td>34 元</td><td><strong>75 元</strong></td><td>109 元</td></tr>
+    <tr><td><strong>三法均值</strong></td><td><strong>55 元</strong></td><td><strong>86 元（中枢）</strong></td><td><strong>117 元</strong></td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>估值结论：三法中性中枢 86 元，现价 80.75 折价 6.1%。</strong>这是自 8 月以来安全边际<strong>首次转正</strong>——v6.3（9/1，现价 89.33）时为溢价 5%。概率加权（悲观 25% / 中性 50% / 乐观 25%）期望值 <strong>86.0 元</strong>，高于现价 6.5%。</div>
+  <div class="sig sig-bear"><strong>但赔率结构仍不对称向下：</strong>上行至中性 +6.5%、至乐观 +39.9%；下行至悲观 <strong>-26.9%</strong>（DCF 悲观 34 元更低至 -58%）。换言之，<strong>"温和低估"与"剧烈下行"同时存在</strong>，取决于 14420 行政令细则与欧洲是否跟进。</div>
+  <table>
+    <tr><th>机构共识（2026-10-13）</th><th>数值</th></tr>
+    <tr><td>一致目标价</td><td>147.11 元（vs 现价 +78.6%）</td></tr>
+    <tr><td>一致预期 EPS</td><td>2026E 6.46–6.70 / 2027E 8.46 / 2028E 10.23</td></tr>
+    <tr><td>覆盖机构</td><td>30–50 家；9 月 9 家观点 100% 买入/增持</td></tr>
+    <tr><td>外资分歧（同为 8/31–10/8 发布）</td><td>高盛 <strong>中性 114</strong> · 野村 <strong>120</strong> · 麦格理 买入 118 · 摩根大通 <strong>买入 140</strong>（前值 212）· 瑞银 144（前值 165）· 花旗 <strong>买入 160</strong>（前值 140）</td></tr>
+    <tr><td>内资</td><td>国泰海通 增持 <strong>201.44</strong>（2027 23x）· 华创 强推 130.43 · 交银 155 · 九方智投 买入-A 121.80</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>外资分歧已收敛到"需求周期 vs 地缘约束"：</strong>同一批数字，高盛读"国内光伏拖累 + 毛利率"，给中性 114；摩根大通读"全球储能景气 + 海外份额"，给买入 140；花旗反而上调至 160。<strong>本报告采信"两者都对但价格更重要"的中间立场</strong>——8/31 时现价 97.69（高盛 114 隐含 +16.7%），如今现价 80.75 已比高盛目标价低 29%，<strong>连最悲观的外资目标价都已高于现价</strong>，这是估值端边际改善的直接证据。</div>
+</div>
+
+<!-- ============ 模块 9 技术面 ============ -->
+<div class="card">
+  <h2>八、技术面辅助（2026-10-13 · 前复权）</h2>
+  <div class="tech-grid">
+    <div class="tech-item"><div class="name">KDJ(9,3,3)</div><div class="val">24.09<span style="font-size:12px"> J</span></div><div class="sub">K 24.29 / D 24.38</div></div>
+    <div class="tech-item"><div class="name">MACD(12,26,9)</div><div class="val">+1.11</div><div class="sub">DIF -4.58 / DEA -5.14 · <span class="tag-bull">金叉</span></div></div>
+    <div class="tech-item"><div class="name">RSI</div><div class="val">42.19<span style="font-size:12px"> (6)</span></div><div class="sub">RSI12 35.97 / RSI14 35.45</div></div>
+    <div class="tech-item"><div class="name">CCI(14)</div><div class="val">-73.52</div><div class="sub">未达超卖极值</div></div>
+    <div class="tech-item"><div class="name">BOLL(20,2)</div><div class="val">79.2–89.6</div><div class="sub">中轨 84.4 · 现价贴近下轨</div></div>
+  </div>
+  <table>
+    <tr><th>均线</th><th>MA5</th><th>MA10</th><th>MA20</th><th>MA60</th><th>MA120</th><th>MA250</th></tr>
+    <tr><td>数值</td><td>81.76</td><td>83.76</td><td>84.62</td><td>99.22</td><td>122.84</td><td>143.23</td></tr>
+    <tr><td>现价偏离</td><td class="dn2">-1.2%</td><td class="dn2">-3.6%</td><td class="dn2">-4.6%</td><td class="dn2">-18.6%</td><td class="dn2">-34.3%</td><td class="dn2">-43.6%</td></tr>
+  </table>
+  <div class="sig sig-bull"><strong>底部背离（本次技术面最重要的变化）：</strong>现价 80.75 已创 52 周新低（78.00），但<strong>动量指标全线回升</strong>——MACD 柱由 v6.3 的 -5.61 转正至 +1.11（零下金叉）、KDJ 的 J 值由 -5.89 回到 +24.09、RSI6 由 14.79 升至 42.19。<strong>价格新低 + 指标不新低 = 下跌动能衰竭</strong>，这是 9 月初"极值超卖"之后出现的结构性改善。</div>
+  <div class="sig sig-warn"><strong>但趋势尚未反转：</strong>现价仍在<strong>全部六条均线之下</strong>，MA5/10/20/60 保持空头排列，MA250 在 143.23（偏离 -43.6%）。技术面定级为"<strong>下跌中继的筑底尝试</strong>"而非"趋势反转"——需站回 MA20（84.62）并伴随成交放大，才构成右侧信号。当前换手率 2.34%、成交额 29.6 亿，属缩量横盘特征。</div>
+</div>
+
+<!-- ============ 模块 10 资金面 ============ -->
+<div class="card">
+  <h2>九、资金面与筹码</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">融资余额</div><div class="val">77.15 亿</div><div class="sub">10/12 · 9/14 为 80.16 亿</div></div>
+    <div class="item"><div class="lbl">融券余额</div><div class="val">0.11 亿</div><div class="sub">几乎无做空压力</div></div>
+    <div class="item"><div class="lbl">机构持股</div><div class="val">31.01%</div><div class="sub">—</div></div>
+    <div class="item"><div class="lbl">陆股通持股</div><div class="val">6.91%</div><div class="sub">第二大流通股东</div></div>
+    <div class="item"><div class="lbl">主动偏股基金</div><div class="val">287 只</div><div class="sub"><span class="dn2">较上期 -109 只</span></div></div>
+    <div class="item"><div class="lbl">基金持股比例</div><div class="val">4.77%</div><div class="sub"><span class="dn2">-0.50pct</span></div></div>
+    <div class="item"><div class="lbl">股东户数</div><div class="val">279,457 户</div><div class="sub">中报口径 · 户均 5,681 股</div></div>
+    <div class="item"><div class="lbl">近一年回购</div><div class="val">3.25 亿元</div><div class="sub">304.76 万股</div></div>
+  </div>
+  <h3>前十大流通股东（2026 中报）</h3>
+  <table>
+    <tr><th>名次</th><th>股东</th><th>持股比例</th></tr>
+    <tr><td>1</td><td>曹仁贤（实控人）</td><td>9.94%</td></tr>
+    <tr><td>2</td><td>香港中央结算有限公司（陆股通）</td><td>6.91%</td></tr>
+    <tr><td>3</td><td>易方达创业板 ETF</td><td>1.09%</td></tr>
+    <tr><td>4</td><td>郑桂标</td><td>0.77%</td></tr>
+    <tr><td>5</td><td>麒麟亚洲控股</td><td>0.72%</td></tr>
+    <tr><td>6</td><td>中国人寿－传统普通保险产品</td><td>0.54%</td></tr>
+    <tr><td>7</td><td>聚鸣瑞仪私募证券投资基金</td><td>0.53%</td></tr>
+    <tr><td>8–10</td><td>华安创业板 50 ETF / 员工持股计划 / 华泰柏瑞沪深 300 ETF</td><td>0.50% / 0.45% / 0.42%</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>筹码的两面性：</strong>① <strong>正面</strong>——融券余额仅 0.11 亿（无空头压力）、员工持股计划增持 721 万股、公司回购 3.25 亿、实控人未减持；② <strong>负面</strong>——<strong>主动偏股基金较上期减少 109 只、持股比例 -0.50pct 至 4.77%</strong>，公募在持续减仓；融资余额从 80.16 亿降至 77.15 亿，杠杆资金也在退出。<strong>这是一个"内部人买、机构卖"的分歧格局</strong>——比 v6.3 时"主力持续净流出"的单纯恶化有所改善（减持速度放缓），但方向尚未反转。</div>
+</div>
+
+<!-- ============ 模块 11 跟踪指标 ============ -->
+<div class="card">
+  <h2>十、关键跟踪指标 · 催化剂日历 · 三层风险 · 敏感性</h2>
+
+  <h3>（1）基本面验证仪表盘</h3>
+  <table>
+    <tr><th>指标</th><th>当前值</th><th>阈值 / 观察点</th><th>信号含义</th></tr>
+    <tr><td><strong>Q3 营收</strong></td><td>H1 309.12 亿（-29.0%）</td><td>Q3 单季同比降幅收窄至 &lt;20%</td><td>国内见底的第一验证</td></tr>
+    <tr><td><strong>存货</strong></td><td>321.53 亿（较年末 +18.0%）</td><td>Q3 环比不再上升</td><td>上升 = 备货（正面）或积压（负面），Q3 必须分清</td></tr>
+    <tr><td>储能毛利率</td><td>32.43%（-7.49pct）</td><td>回到 34%+</td><td>碳酸锂传导是否减轻</td></tr>
+    <tr><td>储能发货</td><td>H1 25GWh（+28%）</td><td>全年 60–65GWh 兑现</td><td>H2 需 35–40GWh（占 60%）</td></tr>
+    <tr><td>海外收入占比</td><td>73.4%</td><td>维持 70%+</td><td>美国收缩是否被其他区域补上</td></tr>
+    <tr><td>汇兑损益</td><td>H1 财务费用 +239.94%</td><td>套保对冲后净额趋零</td><td>汇率敞口是否已锁</td></tr>
+    <tr><td>AIDC 订单</td><td>配储 2GWh / 跟踪 10GWh+</td><td>Q4 SST 投运 + 小批量订单</td><td>第二曲线从"概念"转"收入"的起点</td></tr>
+  </table>
+
+  <h3>（2）催化剂日历</h3>
+  <table>
+    <tr><th>时间</th><th>事件</th><th>方向</th><th>置信度</th></tr>
+    <tr><td><strong>2026 年 10 月下旬</strong></td><td>Q3 财报</td><td>双向（最关键）</td><td>高</td></tr>
+    <tr><td>2026 年 12 月下旬</td><td>14420 行政令实施细则（120 天期限）</td><td>双向</td><td>中</td></tr>
+    <tr><td>2027/1/1</td><td>电池/储能出口退税<strong>彻底取消</strong></td><td><span class="dn2">利空（已部分定价）</span></td><td>高</td></tr>
+    <tr><td>2026Q4</td><td>SST 10/13.8kV 投运 + 小批量订单</td><td><span class="up">利好</span></td><td>中高</td></tr>
+    <tr><td>2027H1</td><td>35kV SST 完成研发</td><td><span class="up">利好</span></td><td>中</td></tr>
+    <tr><td>2027/4</td><td>埃及 10GWh 储能工厂投运</td><td><span class="up">利好</span></td><td>中</td></tr>
+    <tr><td>不确定</td><td>欧洲/日韩是否跟进美国式限制</td><td><span class="dn2">利空（尾部）</span></td><td>低</td></tr>
+  </table>
+
+  <h3>（3）三层风险</h3>
+  <h4>宏观层</h4>
+  <table>
+    <tr><th>风险</th><th>触发条件</th><th>严重程度</th></tr>
+    <tr><td>利率与汇率</td><td>美元/欧元继续走弱 → 汇兑损失扩大（已有 29 亿美元套保对冲）</td><td><span class="tag-neutral">中</span></td></tr>
+    <tr><td>贸易政策</td><td>14420 行政令细则明确"受覆盖外国实体"含中资实控的第三国工厂</td><td><span class="tag-bear">高</span></td></tr>
+  </table>
+  <h4>行业层</h4>
+  <table>
+    <tr><th>风险</th><th>触发条件</th><th>严重程度</th></tr>
+    <tr><td>碳酸锂价格</td><td>继续上行（H1 均价同比翻倍）→ 储能毛利率进一步压缩</td><td><span class="tag-bear">高</span></td></tr>
+    <tr><td>出口退税退坡</td><td>2027/1/1 归零，机械口径 -41 亿税后利润（占 2027E 净利 23%）</td><td><span class="tag-bear">高</span></td></tr>
+    <tr><td>欧洲监管跟进</td><td>公共资金限制扩大至商业项目 → 丢失第一大海外市场</td><td><span class="tag-bear">高</span></td></tr>
+    <tr><td>国内光伏需求</td><td>装机同比大幅下滑，短期难扭转</td><td><span class="tag-neutral">中</span></td></tr>
+  </table>
+  <h4>公司层</h4>
+  <table>
+    <tr><th>风险</th><th>触发条件</th><th>严重程度</th></tr>
+    <tr><td>盈利质量</td><td>扣非降幅（-42.96%）持续远大于归母（-32.01%）</td><td><span class="tag-neutral">中</span></td></tr>
+    <tr><td>存货积压</td><td>Q3 存货继续上升而营收不回升</td><td><span class="tag-neutral">中</span></td></tr>
+    <tr><td>AIDC 不及预期</td><td>SST 商业化推迟（管理层指引 2028–2030 才规模交付）</td><td><span class="tag-neutral">中</span>（估值中已只给 100 亿期权价值）</td></tr>
+    <tr><td>公募持续减仓</td><td>主动偏股基金连续第二个季度净减持</td><td><span class="tag-neutral">中</span></td></tr>
+  </table>
+
+  <h3>（4）敏感性测算</h3>
+  <table>
+    <tr><th>核心变量</th><th>变动</th><th>对利润/估值的影响</th></tr>
+    <tr><td>碳酸锂价格</td><td>±10%</td><td>储能毛利率 ∓1.5pct → 净利 ∓7 亿（公司已于 2026/3/13 公告 20 亿保证金 / 100 亿合约的套保）</td></tr>
+    <tr><td>人民币汇率</td><td>±3%</td><td>汇兑损益 ±2–3 亿（29 亿美元远期已锁定大部分）</td></tr>
+    <tr><td>储能出货量</td><td>±10%（55–66GWh）</td><td>营收 ±40–44 亿 → 净利 ±5–6 亿</td></tr>
+    <tr><td>SOTP 储能 PE 倍数</td><td>20x → 14x</td><td>中枢由 86 元降至 <strong>~72 元</strong>（-16%）</td></tr>
+    <tr><td>SOTP 储能 PE 倍数</td><td>20x → 25x</td><td>中枢由 86 元升至 <strong>~97 元</strong>（+13%）</td></tr>
+  </table>
+  <div class="sig sig-warn"><strong>估值对储能 PE 倍数最敏感：</strong>储能分部占 SOTP 估值的 51%，其 PE 由 20x 每变动 1x，对应中枢约 ±1.4 元/股。<strong>SOTP 倍数本身即政策风险的定价函数</strong>——若 14420 细则温和，储能 PE 有望回到 25x → 中枢 97 元；若欧洲跟进，则滑向 14x → 中枢 72 元。</div>
+</div>
+
+<!-- ============ 本次更新结论 ============ -->
+<div class="card">
+  <h2>本次更新的核心结论</h2>
+  <div class="sig sig-bull"><strong>维持不变的部分（4 项）：</strong>
+    <ol>
+      <li><strong>估值框架</strong>——SOTP 主锚 + PEG + DCF，储能 20x / 逆变器 15x 的政策折价倍数。</li>
+      <li><strong>压力档情景判断</strong>——美国业务收缩已是管理层的明确指引，不再是"待研究"。</li>
+      <li><strong>DCF 的 FCFF 起始值 60 亿</strong>——H1 经营现金流 37.35 亿与 v6.3 基准一致，未偏离。</li>
+      <li><strong>出口退税 2027 归零是最可量化的利润冲击</strong>（机械口径 -41 亿税后）。</li>
+    </ol>
+  </div>
+  <div class="sig sig-warn"><strong>需要修正的部分（本次共 6 项）：</strong>
+    <ol>
+      <li><strong>股价与行情快照全面刷新</strong>——89.33 → <strong>80.75</strong>（-9.6%），52 周新低刷新至 78.00；PB 3.69 → 3.43，PE(TTM) 16.86 → 15.24。</li>
+      <li><strong>估值分位重算</strong>——PB 3 年分位 8% → <strong>7.3%</strong>，PE 3 年分位 53% → <strong>40.8%</strong>；新增 5 年分位（PB 4.4% / PE 24.4%），避免单一窗口误导。</li>
+      <li><strong>修正 v6.3 的 SOTP 口径不一致</strong>——v6.3 正文称"锁定后经营净利 92.5 亿"，但分部表实际只用了 86 亿（漏计套保收益 6.5 亿）。v6.4 统一为 94.3 亿并重新拆分，SOTP 中性由 79 元升至 <strong>86 元</strong>。</li>
+      <li><strong>技术面由"极弱"改判为"底部背离"</strong>——MACD 柱 -5.61 → +1.11（金叉）、KDJ J -5.89 → +24.09、RSI6 14.79 → 42.19；对应技术面评分 34 → <strong>46</strong>。</li>
+      <li><strong>补入订单与 AIDC 进展</strong>——9/17 德国 be.storaged 1.6GWh、10/6 阿尔巴尼亚 130MWh、柬埔寨 215.6MWh 并网、芬兰 600MWh；1–9 月公开订单 23 个 / 超 33.26GWh；欧洲需求上调至 74GWh；SST 中标之江实验室、获东阳光 130MW 意向。对应成长性评分 68 → <strong>70</strong>。</li>
+      <li><strong>补入资金面新数据</strong>——主动偏股基金 287 只（较上期 -109 只）、持股比例 4.77%（-0.50pct）；融资余额 77.15 亿（9/14 为 80.16 亿）。</li>
+    </ol>
+  </div>
+
+  <h3>投资结论：估值进入"温和低估"，但政策尾部风险未出清</h3>
+  <div class="sig sig-bull"><strong>价格向下、价值横向——这是本次最核心的错位。</strong>现价 80.75 已低于中性中枢 86 元（折价 6.1%），<strong>连最悲观的外资目标价（高盛 114 元）都已高于现价 41%</strong>；PB 3 年分位 7.3%、5 年分位 4.4%，处于历史极低位。技术面同时出现 MACD 金叉 + KDJ/RSI 底部背离，<strong>是 8 月以来第一次"估值 + 技术"同向改善</strong>。</div>
+  <div class="sig sig-bear"><strong>但三点压制未解除：</strong>① <strong>14420 行政令细则</strong>（约 12 月下旬）未落地，"受覆盖外国实体"的认定范围仍是最大变量；② <strong>出口退税 2027/1/1 归零</strong>将吞掉 2027E 净利的约 23%；③ 本框架 2026E 归母 104 亿比一致预期 134 亿<strong>低 22%</strong>，若 H2 实际落在本框架一侧，则 86 元的中枢也要下修。<strong>下行仍有空间：悲观情景 55 元（-32%）、DCF 悲观 34 元。</strong></div>
+
+  <h3>操作含义</h3>
+  <table>
+    <tr><th>类型</th><th>建议</th></tr>
+    <tr><td>持仓者</td><td>现价已进入"低于中枢"区间，<strong>不必在此位置恐慌减仓</strong>；可持有并在 Q3 财报（10 月下旬）后按实际数据决定加减。若跌破 78（52 周新低）且 Q3 营收未收窄降幅，则重估中枢</td></tr>
+    <tr><td>空仓者（左侧）</td><td><strong>78–82 元（PB 3.2–3.4x）可小仓位分批</strong>——这已给出 6% 的中枢折价与极低的 PB 分位；但仓位建议不超过 <strong>3–5%</strong>（政策尾部风险未出清）</td></tr>
+    <tr><td>空仓者（右侧）</td><td>等两个信号之一：① 站回 MA20（<strong>84.62</strong>）并放量；② Q3 财报确认营收降幅收窄 + 存货不继续上升</td></tr>
+    <tr><td>关键位置</td><td>支撑 <strong>78.00</strong>（52 周新低）/ 76（SOTP 中性下沿）；压力 <strong>84.62</strong>（MA20）/ 86（估值中枢）/ 99.22（MA60）</td></tr>
+  </table>
+  <div class="sig"><strong>一句话：v6.3 说"低 PB 是价值陷阱"，v6.4 的修正是——低 PB 仍是陷阱，但现价已经跌到了陷阱的"安全侧"（低于中枢 6%）。现在的问题不再是"贵不贵"，而是"2027 年的盈利会不会被退税和政策吃掉"。这个答案要等 10 月下旬的 Q3 财报与 12 月的行政令细则。</strong></div>
+</div>
+
+<div class="footer">
+  诊断时间：2026-10-13 · 版本：v6.4（重新分析 · 数据刷新 + 逻辑复核）· 上一版：v6.3 修订2（2026-09-01）<br>
+  框架：Brad Stock Analysis 12 模块个股深度诊断 · 数据来源：Wind 金融数据（行情/技术指标/财务，截至 2026-10-13）· 公司公告与 2026 中报（2026-08-28）· 投资者关系活动记录（2026-08-28 / 09-02）· 卖方研报与外资观点编译（高盛 / 摩根大通 / 花旗 / 瑞银 / 野村 / 麦格理 / 国泰海通 / 华创 / 交银 / 九方智投）<br>
+  <span class="small">本次发布同时将文件由 <code>reports/阳光电源_300274.html</code> 迁移为站内统一命名 <code>sungrow_diagnosis.html</code>（根目录），index.html 条目 url 已同步。</span><br>
+  <span class="small">⚠ 数据口径声明：PE/PB 采用 Wind 口径；PB 3 年/5 年分位为 Wind 提供的历史分位。ROIC、EBITDA、TTM EBIT 为估算值（公司未披露明细），已在对应章节标注。财务预测中的 2026E 归母 104 亿为本框架自下而上测算，与一致预期 134 亿相差 22%，差异原因已在估值章节说明。</span><br>
+  <span class="small">版本变更记录：v6.4（2026-10-13）① 行情/估值/技术/资金四项数据全面刷新（股价 89.33→80.75、PB 分位 8%→7.3%、PE 分位 53%→40.8%）；② <strong>修正 v6.3 SOTP 漏计套保收益 6.5 亿的口径不一致</strong>，SOTP 中性 79→86 元；③ 技术面改判"底部背离"，评分 34→46；④ 补入 9–10 月订单与 AIDC 进展；⑤ 综合评分 <strong>61 → 63</strong>（观望）；⑥ 估值维度 65→70、成长性 68→70、资金面 45→46、筹码 55→57、机构共识 73→72。v6.3 修订2（2026-09-01）营收确收量修正（44→50-55GWh，352→400-440 亿）；估值为 SOTP 79 / PEG 100 / DCF 75，中枢 85，评分 61。</span><br>
+  REPORT_VERSION=v6.4 | REPORT_DATE=2026-10-13 | SCORE=63 | RATING=观望<br>
+  ⚠ 本报告仅供研究参考，不构成个人投资建议。
+</div>
+
+</div>
+</body>
+</html>
