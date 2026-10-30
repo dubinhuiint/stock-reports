@@ -14,7 +14,8 @@
   .price-row{display:flex;align-items:baseline;gap:16px;margin-top:14px}
   .price{font-size:52px;font-weight:800}
   .chg{font-size:20px;padding:4px 12px;border-radius:8px}
-  .chg.dn{background:rgba(0,200,83,.2);color:#00c853}
+  .chg.up{background:rgba(198,40,40,.25);color:#ff8a80}
+  .chg.dn{background:rgba(0,200,83,.2);color:#69f0ae}
 
   .card{background:white;border-radius:12px;padding:28px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
   .card h2{font-size:18px;color:#1a237e;border-bottom:2px solid #e8eaf6;padding-bottom:10px;margin-bottom:16px}
@@ -32,10 +33,12 @@
   td{padding:8px 10px;border-bottom:1px solid #f0f0f0}
   tr:hover td{background:#f8f9fc}
   .up{color:#c62828}.dn2{color:#00c853}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
 
   .badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600}
   .b-buy{background:#c62828;color:#fff}
   .b-n{background:#ff8f00;color:#fff}
+  .b-hold{background:#455a64;color:#fff}
 
   .sig{border-left:4px solid;padding:10px 14px;margin:8px 0;border-radius:0 8px 8px 0;background:#f8f9fc;font-size:13px}
   .sig-bull{border-color:#c62828}.sig-bear{border-color:#00c853}.sig-warn{border-color:#ff8f00}
@@ -46,7 +49,7 @@
   .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
   .tech-item{background:#f8f9fc;border-radius:8px;padding:14px;text-align:center}
   .tech-item .name{font-size:12px;color:#888}
-  .tech-item .val{font-size:22px;font-weight:700;color:#1a237e}
+  .tech-item .val{font-size:19px;font-weight:700;color:#1a237e}
   .tech-item .tag{font-size:12px;margin-top:4px}
   .tag-oversold{border:1px solid #00c853;color:#00c853;padding:1px 8px;border-radius:10px;display:inline-block}
   .tag-overbought{border:1px solid #c62828;color:#c62828;padding:1px 8px;border-radius:10px;display:inline-block}
@@ -62,7 +65,9 @@
   .scen .schg{font-size:12px}
   .footer{text-align:center;color:#aaa;font-size:11px;margin-top:24px}
   ol li{padding:5px 0;font-size:14px}
+  ul li{padding:4px 0;font-size:13px}
   .small{font-size:11px;color:#999;display:block}
+  .hl{background:#fff3cd;padding:0 3px;border-radius:3px}
 </style>
 </head>
 <body>
@@ -70,627 +75,391 @@
 
 <!-- ===== HEADER ===== -->
 <div class="header">
-  <div class="meta">个股深度诊断报告 v5 · 2026-08-28 · Wind金融数据(300760.SZ) + 交易所公告</div>
+  <div class="meta">个股深度诊断报告 v6.0 · 2026-10-29 · Wind金融数据(300760.SZ) + 交易所公告 + 自算指标</div>
   <h1>迈瑞医疗 <span style="font-weight:400;font-size:18px">300760 · 创业板</span></h1>
   <div class="price-row">
-    <span class="price">164.30</span>
-    <span class="chg up">+1.40%</span>
+    <span class="price">179.00</span>
+    <span class="chg up">+2.11%</span>
   </div>
   <div style="margin-top:8px;font-size:13px;opacity:.9">
-总市值 1,989亿（几乎全流通）| PE(TTM) 25.32 · PE(2026E) 23.64 | PB 4.91 | 中报已披露 · Q2营收+10.45%拐点确认
+总市值 2,169亿（几乎全流通）| PE(TTM) 27.58 · PE(2026E) 27.16 | PB 5.35 | 三季报已披露 · Q3 归母 -4.55%
   </div>
 </div>
 
 <!-- ===== 综合评分 ===== -->
 <div class="vcard">
-  <h2>综合诊断评分</h2>
-  <div class="score">75/100</div>
-  <div style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:10px 14px;border-radius:6px;font-size:13px;margin:10px 0">
-  <strong>2026-08-28 中报更新：</strong>营收拐点确认——2026H1 营收 177.47 亿（<strong>+6.0%</strong>），Q2 单季 93.95 亿（<strong>+10.45%</strong>，较 Q1 的 +1.39% 明显加速）；归母净利 47.97 亿（-5.37%）主因<strong>汇兑</strong>（财务费用 3.83 亿 vs 上年同期 -3.36 亿），剔除汇兑净利 <strong>+8.68%</strong>。IVD 毛利率逆势 +1.3pct 验证"以量补价"。综合评分 76→75（基本面/成长性上调，技术面偏热+机构减仓下调）。
+  <h2>综合诊断评分 <span class="badge b-hold" style="font-size:12px;vertical-align:middle">持有</span></h2>
+  <div class="score">67/100</div>
+  <div style="background:#fff8e1;border-left:4px solid #ff8f00;padding:10px 14px;border-radius:6px;font-size:13px;margin:10px 0">
+  <strong>2026-10-29 三季报更新（75 → 67，增持 → 持有）：</strong>表面"净利润 -3.19%"掩盖了真实情况——公告口径含少数股东损益，<strong>归母实际 71.84 亿、同比 -5.10%</strong>；Q3 单季归母 23.87 亿、<strong>-4.55%</strong>，<span class="hl">Q2 的 +1.10% 拐点未在 Q3 延续</span>。三点正面：扣非归母 72.57 亿仅 -2.75%、经营现金流 +14.08%、国际业务 +11.04%。但股价自 6/29 低点已反弹 <strong>+38.4%</strong>，PE(TTM) 3 年分位达 <strong>68%</strong>（旧版误记为 18%，本次修正），三法中枢 153 元、现价溢价 <strong>17.0%</strong>，安全边际消失。
   </div>
   <table>
-    <tr><th width="110">维度</th><th>评分</th><th>核心判断</th></tr>
-    <tr><td>基本面</td><td class="up">82</td><td><strong>中报拐点确认</strong>：H1营收177.47亿(+6.0%)、Q2加速至+10.45%；归母47.97亿(-5.37%)但剔除汇兑+8.68%；汇率中性营收+8.16%；经营现金流48.77亿(+24.35%)</td></tr>
-    <tr><td>估值</td><td>78</td><td>PE(TTM) 25.32x（股价反弹至164.3后回升）· 3年分位约18%；PB 4.91x · 3年分位约6%；H股IPO+集采新政为修复催化，但短期估值吸引力较8/26下降</td></tr>
-    <tr><td>成长性</td><td class="up">74</td><td>三轮驱动兑现：国际94.71亿(+13.67%) + IVD 68.65亿(+9.58%) + 新兴业务31.10亿(+19.59%)；医学影像28.36亿(-5.78%)是唯一短板</td></tr>
-    <tr><td>技术面</td><td>62</td><td>8/28收164.3已<strong>触及BOLL上轨164.24</strong>：MACD 3.188金叉+RSI6 74.66偏热+KDJ-K 87.18——短期偏强但超买，追高性价比低</td></tr>
-    <tr><td>资金面</td><td class="down">48</td><td>⚠️ <strong>机构持续减仓</strong>：主动偏股基金持仓比例降至0.16%(环比-0.68pct)，基金数24家(较上期-21家)，机构调研次数0；与研报全面看多背离</td></tr>
-    <tr><td>筹码/事件</td><td class="up">82</td><td>中报兑现拐点 + 7/14集采新政("优质优价"防范内卷) + H股上市二次递表(5/11，华泰+摩根大通保荐，中报兑现后Q4聆讯概率上升) + 中期分红10派13.30元</td></tr>
-    <tr><td>机构共识</td><td>80</td><td>55家一致预期2026E营收359.22亿(+7.93%)/净利84.26亿(+3.57%)/EPS 6.95（中报前口径）；主流目标价249.50元(+51.9%)；高盛247/瑞银284/大摩210(8/28晚更新)/野村219.36全买入</td></tr>
+    <tr><th width="96">维度</th><th width="56">权重</th><th width="56">评分</th><th>核心判断</th></tr>
+    <tr><td>基本面</td><td>25%</td><td class="dn2" style="font-weight:700">78</td><td><strong>质量仍强、增速失速</strong>：毛利率 61.03%（-0.92pct）、归母 -5.10%；但经营现金流 82.97 亿（+14.08%）、收现比 109.7%、资产负债率 25.67%、ROE 年化 23.4%、净现金 197 亿</td></tr>
+    <tr><td>估值</td><td>25%</td><td class="dn2" style="font-weight:700">62</td><td><strong>PB 便宜、PE 不便宜</strong>：PE(TTM) 27.58x · 3 年分位 <span class="up">68%</span>（1 年 80%）；PB 5.35x · 3 年分位 21%。背离源于利润下滑被动抬升 PE，市场已在为 2027 修复定价</td></tr>
+    <tr><td>成长性</td><td>10%</td><td>66</td><td><strong>结构分化</strong>：国际 143.64 亿(+11.04%，美元 +16.02%)、IVD +7.79%、新兴 +20.52%；但生命信息 -1.27%、医学影像 -6.18%、国内 -1.28%、Q3 营收仅 +2.85%</td></tr>
+    <tr><td>技术面</td><td>10%</td><td>66</td><td>站上全部均线（含年线 171.08）、MACD 零上红柱扩大；但 20 日 +15.14%、RSI12 72.2、逼近 BOLL 上轨 183.25，<strong>KDJ 已高位死叉</strong>（K68.5&lt;D75.5）</td></tr>
+    <tr><td>资金情绪</td><td>10%</td><td>62</td><td><strong>结构性加仓</strong>：主动偏股基金 24 → <span class="up">67 家</span>、持股比 0.16%→0.55%；股东户数 -6.88%；但融资余额 30.04 亿较 10/21 降 5.7%</td></tr>
+    <tr><td>风险</td><td>10%</td><td>60</td><td>商誉 110.30 亿（占归母净资产 26.8%）、IVD 价格统一政策、医院预算收紧、汇兑、H 股摊薄、Q4 高费用季节性</td></tr>
+    <tr><td>筹码/事件</td><td>5%</td><td>76</td><td>第三次中期分红 10 派 13.00 元（全年累计 47.03 亿、派息率 65.46%）、社保 802/113 组合在前十大、H 股目标 2026 年底前获备案</td></tr>
+    <tr><td>机构共识</td><td>5%</td><td>65</td><td>55 家覆盖、9 月 9 家全买入/增持、综合目标价 218 元；但一致预期 EPS 6.98 需 Q4 归母 12.77 亿（2025Q4 仅 5.66 亿）⇒ <strong>判定滞后，不采信</strong></td></tr>
   </table>
+  <div style="font-size:12px;color:#555;margin-top:8px">
+    <strong>加权计算：</strong>78×25% + 62×25% + 66×10% + 66×10% + 62×10% + 60×10% + 76×5% + 65×5% = 19.50 + 15.50 + 6.60 + 6.60 + 6.20 + 6.00 + 3.80 + 3.25 = <strong>67.45 → 67</strong><br>
+    <strong>硬约束检查：</strong>基本面 78 + 估值 62 = 140 ≥ 120（未触发 ≤70 上限）；风险 60 ≥ 45（未触发 ≤65 上限）。五档评级：65-74 → <strong>持有</strong>。
+  </div>
 </div>
 
 <!-- ===== 行情 ===== -->
 <div class="card">
-  <h2>行情快照（2026-08-28 收盘 · 中报后更新）</h2>
+  <h2>行情快照（2026-10-29 收盘 · 三季报当日）</h2>
   <div class="kv">
-    <div class="item"><div class="lbl">最新价</div><div class="val">164.30</div><div class="sub">8/28 · 自6/29低点130.66反弹+25.7%</div></div>
-    <div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">1,989亿</div><div class="sub">几乎全流通（流通股本12.11亿/总12.12亿）</div></div>
-    <div class="item"><div class="lbl">PE(TTM)</div><div class="val" style="font-size:16px">25.32</div><div class="sub">3年分位约18%（Wind口径）</div></div>
-    <div class="item"><div class="lbl">PE(2026E)</div><div class="val" style="font-size:16px">23.64</div><div class="sub">55家一致预期 EPS 6.95</div></div>
-    <div class="item"><div class="lbl">PB</div><div class="val" style="font-size:16px">4.91</div><div class="sub">PB 3年分位约6%（Wind）</div></div>
-    <div class="item"><div class="lbl">52周范围</div><div class="val" style="font-size:16px">130.66 - 252.78</div><div class="sub">距高点-35.0% · 距低点+25.7%</div></div>
-    <div class="item"><div class="lbl">技术位置</div><div class="val" style="font-size:14px;color:#c62828">触及BOLL上轨</div><div class="sub">上164.24/中155.24/下146.23</div></div>
-    <div class="item"><div class="lbl">中期分红</div><div class="val" style="font-size:14px;color:#2e7d32">10派13.30元</div><div class="sub">16.12亿 · 年内累计31.27亿(65.19%)</div></div>
+    <div class="item"><div class="lbl">最新价</div><div class="val">179.00</div><div class="sub">10/29 · 自 6/29 低点 129.33 反弹 +38.4%</div></div>
+    <div class="item"><div class="lbl">总市值</div><div class="val" style="font-size:16px">2,169亿</div><div class="sub">总股本 12.118 亿股 · 流通 12.107 亿股</div></div>
+    <div class="item"><div class="lbl">PE(TTM)</div><div class="val" style="font-size:16px">27.58</div><div class="sub">3 年分位 68.1% · 1 年分位 80.0%</div></div>
+    <div class="item"><div class="lbl">PE(2026E)</div><div class="val" style="font-size:16px">27.16</div><div class="sub">自估 EPS 6.59（一致预期 6.98 未采信）</div></div>
+    <div class="item"><div class="lbl">PB</div><div class="val" style="font-size:16px">5.35</div><div class="sub">3 年分位 20.8% · 用 H1 归母净资产</div></div>
+    <div class="item"><div class="lbl">52 周范围</div><div class="val" style="font-size:15px">129.33 - 223.57</div><div class="sub">距高点 -19.9% · 距低点 +38.4%</div></div>
+    <div class="item"><div class="lbl">2026 年内</div><div class="val" style="font-size:16px;color:#00c853">-7.11%</div><div class="sub">高点 211.23(1/14) · 低点 129.33(6/29)</div></div>
+    <div class="item"><div class="lbl">年内分红</div><div class="val" style="font-size:15px;color:#c62828">47.03亿</div><div class="sub">股息率 2.17% · 派息率 65.46%</div></div>
+  </div>
+  <div class="assume" style="margin-top:14px">
+    <strong>口径声明：</strong>PE(TTM) 27.58x = 179.00 × 12.118 亿 ÷ TTM 归母 78.64 亿（H1 口径，即 10/29 收盘时市场可见的最近四季度）。三季报于 10/29 盘后披露，<strong>纳入 Q3 后 TTM 归母降至 77.50 亿、PE 升至 27.99x</strong>。PB 5.35x 用 2026H1 归母净资产 405.56 亿；用 Q3 末 412.03 亿则为 5.26x。分位为自算：取 2023-10-30 至 2026-10-29 共 727 个交易日，TTM 归母与归母净资产按财报披露日阶梯切换。
   </div>
 </div>
 
+<!-- ===== 最新动态 ===== -->
 <div class="card">
-  <h2>最新动态（2026-07 → 08-28）<span class="badge b-buy" style="background:#c62828;color:#fff;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600">中报已披露</span></h2>
+  <h2>最新动态（2026-09 → 10-29）<span class="badge b-buy">三季报已披露</span></h2>
   <table>
-    <tr><th width="120">日期</th><th>事件</th><th>影响</th></tr>
+    <tr><th width="110">日期</th><th>事件</th><th width="300">影响</th></tr>
     <tr style="background:#e8f5e9">
-      <td><strong>08-28</strong></td>
-      <td><strong>2026中报已披露</strong>：营收177.47亿(+6.0%)、归母47.97亿(-5.37%)、经营现金流48.77亿(+24.35%)</td>
-      <td class="up">✅ <strong>拐点确认</strong>：Q2营收+10.45%加速；剔除汇兑净利+8.68%；IVD毛利率逆势+1.3pct。详见下方深度解读</td>
+      <td><strong>10-29</strong></td>
+      <td><strong>2026 三季报披露</strong>：营收 270.97 亿(+4.89%)、归母 71.84 亿(-5.10%)、扣非归母 72.57 亿(-2.75%)、经营现金流 82.97 亿(+14.08%)</td>
+      <td class="dn2">⚠️ <strong>Q3 归母 -4.55%，拐点未延续</strong>；营收 +2.85% 环比 -0.48%。详见下方深度解读</td>
     </tr>
     <tr style="background:#e3f2fd">
-      <td><strong>08-18</strong></td>
-      <td><strong>董秘在全球医疗峰会解读港股上市战略</strong>——A+H双资本平台为国际并购与全球化扩张提供更灵活的资本工具</td>
-      <td class="up">⭐ 重大长期催化：5月已二次递交H股申请，双平台打开国际化+并购想象空间</td>
-    </tr>
-    <tr style="background:#e3f2fd">
-      <td><strong>07-14</strong></td>
-      <td><strong>国家卫健委三部门发布医用设备集采新政</strong>——规则从"唯低价中标"转向"稳价保质·鼓励创新"，技术参数权重≥30%</td>
-      <td class="up">⭐ 行业政策拐点：不再比拼极致低价，核心比拼质量与服务——迈瑞作为龙头直接受益</td>
+      <td><strong>10-28</strong></td>
+      <td><strong>第三次中期分红</strong>：10 派 13.00 元，合计 15.75 亿（10/28 董事会通过）</td>
+      <td class="up">✅ 年内累计 47.03 亿、派息率 65.46%；累计分红升至 424.14 亿</td>
     </tr>
     <tr>
-      <td>07-30</td>
-      <td>郑州成立医疗科技公司（注册资本500万）</td>
-      <td class="up">区域布局深化，数智化+本地化服务延伸</td>
+      <td><strong>10-19</strong></td>
+      <td><strong>外资券商更新</strong>：目标价 216 → 215 元，重申买入；DCF（WACC 7.5%、g 3.0%）对应 2027E PE 28.1x</td>
+      <td>指引：2026 全年净利与 2025 基本持平（汇兑拖累）；<strong>目标 2026 年底前拿到证监会备案</strong></td>
     </tr>
     <tr>
-      <td>07-15</td>
-      <td><strong>大宗交易：成交167.90元，溢价15%</strong>（3万股，503.7万）</td>
-      <td class="up">机构溢价接盘，边际看多信号</td>
+      <td><strong>09-23</strong></td>
+      <td><strong>机构大宗交易</strong>：机构专用对机构专用 106.05 万股 @156.42 元，合计 1.66 亿</td>
+      <td>中性——机构间换手，非增减持信号</td>
     </tr>
     <tr>
-      <td>06月</td>
-      <td>高盛深度报告：集采降价40-50%背景下，迈瑞以价换量+海外对冲+AI生态绑定</td>
-      <td>结构性逻辑获国际投行认可，但Q1汇兑损失4亿是短期扰动</td>
+      <td><strong>09-11</strong></td>
+      <td><strong>中邮证券</strong>：买入，2026E EPS 7.13；<strong>09-10 华鑫</strong>：买入 6.98；<strong>09-04 中银</strong>：买入 7.10</td>
+      <td>中报后密集覆盖，<strong>均为三季报前口径</strong></td>
+    </tr>
+    <tr>
+      <td><strong>Q3 内</strong></td>
+      <td><strong>产品密集获批</strong>：IVD 10 项试剂 + 8 种设备；生命信息 CPR60/BeneHeart C1A/HyBase V7 等；微创外科 4K 荧光外视镜</td>
+      <td class="up">研发投入 27.40 亿、占营收 10.11%，转化节奏正常</td>
     </tr>
   </table>
-  <div class="sig sig-bull" style="margin-top:10px"><strong>中报前瞻 + 逻辑审视（8/25 更新）：</strong>报告审视后发现三条增量逻辑尚未充分定价：<br>① <strong>政策拐点</strong>（7/14集采新政"稳价保质"）——行业最压制因素（唯低价中标）正在逆转，迈瑞作为品质龙头直接受益，国内拐点确认概率上升；<br>② <strong>港股双平台</strong>（A+H）——为国际并购打开资本工具，全球化从"卖产品"升级为"资本+产品"双轮驱动；<br>③ <strong>商业模式升级</strong>——从"设备周期股"向"设备+耗材+IT+AI"四位一体转型，IVD试剂复购+微创外科耗材+瑞智/瑞影/瑞检AI生态，收入可预测性大幅提升。三条逻辑若在8/29中报中得到验证，存在估值重估空间。</div>
 </div>
 
-<!-- ===== 政策周期 ===== -->
+<!-- ===== 三季报深度解读 ===== -->
 <div class="card">
-  <h2>国内政策周期与传导机制（2020-2026）</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:12px">集采与医疗反腐通过四条路径传导到报表，是理解迈瑞近三年业绩下行的主线。</p>
+  <h2>2026 三季报深度解读（10-29 披露）<span class="badge b-n">核心</span></h2>
 
-  <h3>传导四路径</h3>
-  <ol style="font-size:13px">
-    <li><strong>价格：</strong>集采中标价下调（化学发光试剂降 30-50%）→ 压毛利率</li>
-    <li><strong>招标量：</strong>反腐 → 医院采购冻结 → 设备招标量断崖 → 设备类收入直接缩水</li>
-    <li><strong>现金流：</strong>集采压价 + 医院资金紧张 → 回款变慢 → 应收账款上升</li>
-    <li><strong>结构：</strong>以价换量 + 小厂商出清 → 份额向龙头集中（短期总量萎缩，长期利好龙头）</li>
-  </ol>
-
-  <h3>政策时间线</h3>
+  <h3>一、先厘清口径：公告的"净利润 -3.19%"不是归母</h3>
   <table>
-    <tr><th>阶段</th><th>政策</th><th>对迈瑞影响</th></tr>
-    <tr><td>2020-21</td><td>疫情抗疫设备采购</td><td class="up">监护/呼吸/输注泵爆发，营收高增</td></tr>
-    <tr><td>2021</td><td>耗材集采启动（冠脉支架国采）</td><td>集采预期笼罩，但设备为主直接冲击小</td></tr>
-    <tr><td>2022</td><td>设备集采试点 + 设备更新贴息贷款</td><td>集采扩到设备端，贷款短期对冲需求</td></tr>
-    <tr style="background:#f8f9fc"><td>2023</td><td><strong>医疗反腐风暴</strong></td><td class="dn2">医院采购冻结，设备招标量断崖（关键拐点）</td></tr>
-    <tr style="background:#f8f9fc"><td>2024</td><td><strong>集采全面落地</strong></td><td class="dn2">量价齐跌，营收增速放缓至 +5.1%</td></tr>
-    <tr><td>2025</td><td>集采新政"稳价保质"（7/14）</td><td class="dn2">政策底出现，但全年营收 -9.4% 仍最困难</td></tr>
-    <tr><td>2026</td><td>设备更新周期 + 新政传导</td><td class="up">Q1 营收转正 +1.4%，国内招标回暖</td></tr>
+    <tr><th width="200">指标</th><th class="num">2026 前三季</th><th class="num">2025 前三季</th><th class="num">同比</th><th>说明</th></tr>
+    <tr><td>营业总收入</td><td class="num">270.97 亿</td><td class="num">258.34 亿</td><td class="num up">+4.89%</td><td>汇率中性 +7.38%</td></tr>
+    <tr><td>净利润（含少数股东）</td><td class="num">75.64 亿</td><td class="num">78.14 亿</td><td class="num dn2">-3.19%</td><td>公告摘要引用的就是这个数</td></tr>
+    <tr style="background:#fff8e1"><td><strong>归母净利润</strong></td><td class="num"><strong>71.84 亿</strong></td><td class="num">75.70 亿</td><td class="num dn2"><strong>-5.10%</strong></td><td><strong>真实归属于股东的利润</strong></td></tr>
+    <tr><td>扣非归母净利润</td><td class="num">72.57 亿</td><td class="num">74.62 亿</td><td class="num dn2">-2.75%</td><td>剔除汇兑后 +8.83%（公告口径）</td></tr>
+    <tr><td>少数股东损益</td><td class="num">3.80 亿</td><td class="num">2.44 亿</td><td class="num up">+55.9%</td><td>惠泰医疗等子公司贡献提升</td></tr>
+    <tr><td>毛利率</td><td class="num">61.03%</td><td class="num">61.95%</td><td class="num dn2">-0.92pct</td><td>IVD 价格下行 + 产品结构变化</td></tr>
+    <tr><td>财务费用</td><td class="num">+5.41 亿</td><td class="num">-2.93 亿</td><td class="num dn2">+8.34 亿</td><td><strong>汇兑由收益转损失，是利润下滑第一因</strong></td></tr>
+    <tr><td>基本每股收益</td><td class="num">5.9285 元</td><td class="num">6.2481 元</td><td class="num dn2">-5.11%</td><td>加权平均股本口径</td></tr>
   </table>
-
-  <div class="sig sig-warn" style="margin-top:10px">
-    <strong>核心结论（短空长多）：</strong>集采/反腐短期（2023-2025）造成量价齐跌，但长期通过①以价换量、②小厂商出清（龙头份额集中）、③政策稳价三条机制，利好迈瑞这种成本+品质龙头。<strong>政策底（2025/7）到业绩底（2026Q1）之间约两个季度时滞</strong>——8/29 中报是验证传导是否走通的关键窗口。
-  </div>
-</div>
-
-<!-- ===== 利润表 ===== -->
-<div class="card">
-  <h2>2026 中报深度解读（2026-08-28 披露）<span class="badge b-buy" style="background:#c62828;color:#fff;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:600">NEW</span></h2>
-
-  <h3>① 基本面：营收拐点确认，Q2 明显加速</h3>
-  <table>
-    <tr><th>指标（亿元）</th><th>2026H1</th><th>同比</th><th>2026Q2 单季</th><th>同比</th><th>解读</th></tr>
-    <tr><td>营业收入</td><td><strong>177.47</strong></td><td class="up">+6.0%</td><td>93.95</td><td class="up"><strong>+10.45%</strong></td><td class="up">Q1仅+1.39%→Q2加速至+10.45%，拐点明确</td></tr>
-    <tr><td>归母净利润</td><td>47.97</td><td class="down">-5.37%</td><td>24.67</td><td class="up">+1.10%</td><td>利润下滑主因汇兑，非经营恶化</td></tr>
-    <tr><td>扣非净利润</td><td>47.85</td><td class="down">-3.32%</td><td>—</td><td>—</td><td>降幅远小于表观净利</td></tr>
-    <tr><td>毛利率</td><td>60.83%</td><td class="down">-1.12pct</td><td>—</td><td>—</td><td>集采下仍维持60%+高位</td></tr>
-    <tr><td>经营现金流</td><td><strong>48.77</strong></td><td class="up">+24.35%</td><td>34.96</td><td class="up"><strong>+44%</strong></td><td class="up">现金流质量优于利润，含金量高</td></tr>
-    <tr><td>财务费用</td><td>3.83</td><td class="down">上年-3.36</td><td>—</td><td>—</td><td class="down">汇兑是利润下滑主因（影响约7.2亿）</td></tr>
-  </table>
-  <div class="pos" style="background:#e8f5e9;border-left:4px solid #2e7d32;padding:10px 14px;border-radius:6px;font-size:13px;margin:8px 0">
-  <strong>关键：剔除汇兑后真实经营为正增长。</strong>公司口径——<strong>汇率中性营收 +8.16%</strong>，<strong>剔除汇兑损益后净利同比 +8.68%</strong>。表观净利 -5.37% 主要是欧元/美元贬值导致的汇兑损失（财务费用同比恶化约 7.2 亿），属于账面波动而非经营恶化。
+  <div class="sig sig-warn">
+    <strong>⚠ 口径陷阱：</strong>公告摘要写"净利润 75.64 亿元，同比下降 3.19%"，这是<strong>含少数股东损益的净利润</strong>；而"扣非净利润 76.29 亿元"同口径（扣非归母为 72.57 亿）。归母口径下同比是 <strong>-5.10%</strong>，比表面数字差 1.9 个百分点。差异来源清晰：少数股东损益从 2.44 亿增至 3.80 亿（+55.9%），主要来自惠泰医疗（迈瑞持股约 60%）等微创介入子公司利润占比提升。<strong>归母降幅大于净利润降幅，本质是"赚钱的子公司有一部分不归你"。</strong>
   </div>
 
-  <h3>② 产线拆分：三轮驱动兑现，影像是唯一短板</h3>
+  <h3>二、单季拆解：Q2 的拐点在 Q3 掉了</h3>
   <table>
-    <tr><th>产线（2026H1）</th><th>收入</th><th>同比</th><th>毛利率</th><th>关键亮点</th></tr>
-    <tr><td><strong>体外诊断 IVD</strong></td><td>68.65亿</td><td class="up">+9.58%</td><td>61.06%<br><span style="color:#c62828">(+1.3pct 逆势提升)</span></td><td class="up">免疫+15%以上、国际IVD+20%以上；"以量补价"逻辑兑现</td></tr>
-    <tr><td>生命信息与支持</td><td>48.11亿</td><td class="flat">-0.11%</td><td>58.88%<br>(-1.81pct)</td><td>国际占该产线77%，基本盘稳定</td></tr>
-    <tr><td>医学影像（超声）</td><td>28.36亿</td><td class="down">-5.78%</td><td class="down">跌约6pct</td><td class="down"><strong>唯一短板</strong>；但超高端超声近5亿、+30%</td></tr>
-    <tr><td><strong>新兴业务</strong></td><td>31.10亿</td><td class="up">+19.59%</td><td>65.03%（最高）</td><td class="up">微创外科/微创介入均+25%左右</td></tr>
+    <tr><th>单季（亿元）</th><th class="num">2026Q1</th><th class="num">2026Q2</th><th class="num">2026Q3</th><th class="num">Q3 同比</th><th class="num">Q3 环比</th></tr>
+    <tr><td>营业收入</td><td class="num">83.52</td><td class="num">93.95</td><td class="num">93.50</td><td class="num up">+2.85%</td><td class="num dn2">-0.48%</td></tr>
+    <tr><td>毛利率</td><td class="num">61.87%</td><td class="num">59.91%</td><td class="num">61.39%</td><td class="num dn2">-1.09pct</td><td class="num up">+1.48pct</td></tr>
+    <tr><td>营业利润</td><td class="num">25.24</td><td class="num">30.42</td><td class="num">30.05</td><td class="num dn2">-0.66%</td><td class="num dn2">-1.21%</td></tr>
+    <tr><td>净利润（含少数）</td><td class="num">24.27</td><td class="num">26.20</td><td class="num">25.18</td><td class="num dn2">-2.47%</td><td class="num dn2">-3.90%</td></tr>
+    <tr style="background:#fff8e1"><td><strong>归母净利润</strong></td><td class="num">23.30</td><td class="num">24.67</td><td class="num">23.87</td><td class="num dn2"><strong>-4.55%</strong></td><td class="num dn2">-3.23%</td></tr>
+    <tr><td>归母同比</td><td class="num dn2">-11.37%</td><td class="num up">+1.10%</td><td class="num dn2">-4.55%</td><td colspan="2" style="font-size:11px;color:#999">Q2 的 +1.10% 是年内唯一正值，Q3 重新转负</td></tr>
+    <tr><td>少数股东损益</td><td class="num">0.97</td><td class="num">1.53</td><td class="num">1.30</td><td class="num up">+62.5%</td><td class="num dn2">-15.0%</td></tr>
+    <tr><td>经营现金流净额</td><td class="num">—</td><td class="num">—</td><td class="num">34.20</td><td class="num up">+2.07%</td><td class="num">—</td></tr>
   </table>
-  <p style="font-size:13px;margin:6px 0"><strong>区域结构：</strong>国际 94.71 亿（<span class="up">+13.67%</span>，美元口径 +18.42%），占比 53%；欧洲 +25%（英法意均 +30% 以上）、拉美 +20%、亚太 +17%；国际高端战略客户收入占比升至 20%+，重点战略客户突破近 40 家。<strong>国内 82.76 亿（-1.61%，尚未转正）</strong>——公司指引 2026 全年国内有望正增长，2027 年起进入稳定快速增长。</p>
-
-  <h3>③ MT8000 装机与商业模式验证</h3>
-  <ul style="font-size:13px">
-    <li><strong>MT8000 流水线</strong>：国际上半年装机 12 套（<span class="up">同比翻倍</span>）；国内新增订单 260+ 套</li>
-    <li><strong>瑞检生态</strong>：国内新增装机 350+ 家（约八成三级医院）——AI 生态锁定客户</li>
-    <li><strong>惠泰 PFA</strong>：国内累计 7200 余例，已超 2025 全年——微创介入放量</li>
-    <li><strong>化学发光市占率路径</strong>：2025H1 10% → 2025H2 12% → 2026Q1 13%，"以量补价"持续兑现</li>
-  </ul>
-
-  <h3>④ 投资逻辑重审：哪些被验证，哪些需调整</h3>
-  <table>
-    <tr><th>原逻辑</th><th>中报验证情况</th><th>调整</th></tr>
-    <tr><td>政策拐点（7/14集采新政"稳价保质"）</td><td class="up">✅ 验证：IVD 毛利率逆势 +1.3pct，化学发光市占率升至13%</td><td>维持，逻辑强化</td></tr>
-    <tr><td>商业模式升级（设备+耗材+IT+AI）</td><td class="up">✅ 验证：MT8000 装机加速、瑞检生态350+家、新兴业务+19.59%</td><td>维持，可上调权重</td></tr>
-    <tr><td>港股 A+H 双平台</td><td>⏳ 推进中：5/11 二次递表（华泰+摩根大通），中报兑现后 Q4 聆讯概率上升</td><td>维持，节奏取决于IPO窗口</td></tr>
-    <tr><td>国内业务复苏</td><td class="down">⚠️ 未兑现：H1 国内 -1.61% 仍负增长</td><td><strong>需下调预期</strong>，等Q3/全年验证</td></tr>
-    <tr><td>医学影像触底回升</td><td class="down">❌ 未兑现：-5.78%，毛利率跌6pct，是唯一拖累</td><td><strong>需下调</strong>，超高端放量尚不足以抵消中端下滑</td></tr>
-  </table>
-
-  <h3>⑤ 风险重审与新增提示</h3>
-  <ul style="font-size:13px">
-    <li><strong>⚠️ 新增：机构在持续减仓</strong>——主动偏股基金持仓比例降至 0.16%（环比 -0.68pct），基金数 24 家（较上期 -21 家），机构调研次数为 0。<strong>与"研报全面看多"形成明显背离</strong>，需警惕筹码面压力</li>
-    <li><strong>汇兑波动</strong>——若人民币继续升值，汇兑损失将持续侵蚀表观利润（H1 已影响约 7.2 亿）</li>
-    <li><strong>国内复苏不及预期</strong>——H1 国内 -1.61%，若 Q3 仍不能转正，全年指引存疑</li>
-    <li><strong>医学影像持续拖累</strong>——毛利率跌 6pct，需观察超高端超声能否放量对冲</li>
-    <li><strong>短期技术面偏热</strong>——股价 164.3 已触及 BOLL 上轨，RSI6 74.66、KDJ-K 87.18</li>
-  </ul>
-
-  <h3>⑥ 更新结论与操作建议</h3>
-  <div class="warn" style="background:#fff3e0;border-left:4px solid #ef6c00;padding:12px 16px;border-radius:6px;font-size:13px;margin:8px 0">
-  <p style="margin:0 0 6px"><strong>投资结论：维持看好，拐点已确认，但短期不追高</strong></p>
-  <p style="margin:0 0 6px">中报兑现了最关键的两件事——<strong>营收恢复正增长（+6%）</strong>和<strong>Q2 加速（+10.45%）</strong>，且"剔除汇兑净利 +8.68%"证明经营质量实质改善。IVD 毛利率逆势提升 +1.3pct 验证了"以量补价"和集采新政红利。长期三大逻辑（国际化 + IVD 进口替代 + 新兴业务）均在兑现。</p>
-  <p style="margin:0 0 6px"><strong>但短期需警惕两点</strong>：①股价已从 6/29 低点 130.66 反弹 +25.7% 至 164.3，<strong>触及 BOLL 上轨，技术面偏热</strong>；②<strong>机构在减仓</strong>（基金持仓 0.16% 创新低、调研 0 次），筹码面与研报背离。</p>
-  <p style="margin:6px 0 0"><strong>操作建议：</strong></p>
-  <ul style="margin:4px 0 0 20px">
-    <li><strong>持仓者</strong>：继续持有，中期逻辑未变；可在 175-185（前压力区）部分止盈</li>
-    <li><strong>空仓者</strong>：<strong>不追高</strong>，等回踩至 155 附近（BOLL 中轨）或 146（下轨）分批介入</li>
-    <li><strong>买入区间</strong>：146-158（对应 2026E PE 21-23x）</li>
-    <li><strong>目标价</strong>：机构主流 249.50 元（+53.98%），中期看 200-220（对应 2027E PE 25-28x）</li>
-    <li><strong>止损参考</strong>：跌破 140（BOLL 下轨下方 + 前期平台）</li>
-  </ul>
-  <p style="margin:8px 0 0"><strong>核心关注要点</strong>：①Q3 国内业务能否转正（最关键）；②国际增速能否维持 15%+；③医学影像能否止跌；④H 股上市 Q4 是否聆讯；⑤机构持仓是否止跌回升</p>
+  <div class="sig sig-bear">
+    <strong>Q3 归母少赚 1.14 亿，拆解如下（单位：亿元）：</strong><br>
+    ① 毛利额 56.81 → 57.41，<span class="up">+0.60</span>（营收 +2.59 贡献 +1.62，毛利率 -1.09pct 拖累 -1.02）<br>
+    ② 期间费用 25.47 → 26.76，<span class="dn2">-1.29</span>（销售 +0.30、管理 -0.02、研发 -0.15、<strong>财务 +1.16</strong>）<br>
+    ③ 其他损益（税金及附加、其他收益、减值等）净贡献 <span class="up">+0.49</span> → 营业利润 30.25 → 30.05，<span class="dn2">-0.20</span><br>
+    ④ 营业外收支 -0.40 → -1.26（<span class="dn2">-0.86</span>）→ 利润总额 29.85 → 28.79，<span class="dn2">-1.06</span><br>
+    ⑤ 所得税 4.04 → 3.61（<span class="up">+0.43</span>，税率 13.5% → 12.5%）→ 净利润 25.81 → 25.18（<span class="dn2">-0.63</span>）<br>
+    ⑥ 少数股东损益 0.80 → 1.30（<span class="dn2">-0.50</span>）→ 归母 25.01 → 23.87（<strong>-1.14</strong>）<br>
+    <strong>一句话：Q3 卖得还可以（毛利率环比 +1.48pct），但汇兑再吃 1.15 亿、营业外少 0.86 亿、少数股东多分 0.50 亿，归母就这样被磨掉了。</strong>
   </div>
 
-  <h2>利润表趋势（单季口径）</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:12px">注：2025Q4/Q3/Q2为累计报表反推单季值；2024FY 扣非来自 Wind 数据</p>
+  <h3>三、剔除汇兑后是什么样</h3>
   <table>
-    <tr>
-      <th>指标</th><th>2026Q1</th><th>2025FY</th><th>2025Q4</th><th>2025Q3</th><th>2025Q2</th><th>2025Q1</th><th>2024FY</th>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>营收(亿)</strong></td>
-      <td><strong>83.52</strong><br><span class="small">环比+12% · 同比+1.4%</span></td>
-      <td>332.82<br><span class="small">同比-9.4%</span></td>
-      <td>74.48</td>
-      <td>90.91</td>
-      <td>85.06</td>
-      <td>82.37</td>
-      <td>367.26<br><span class="small">同比+5.1%</span></td>
-    </tr>
-    <tr>
-      <td><strong>营业成本(亿)</strong></td>
-      <td><strong>31.85</strong><br><span class="small">环比-5.7% · 同比+3.2%</span></td>
-      <td>132.08<br><span class="small">同比-2.5%</span></td>
-      <td>33.79</td>
-      <td>34.11</td>
-      <td>33.31</td>
-      <td>30.87</td>
-      <td>135.48<br><span class="small">同比+8.3%</span></td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>毛利率</strong></td>
-      <td><strong>61.9%</strong><br><span class="small">环比+7.2pp · 同比-0.7pp</span></td>
-      <td>60.3%</td>
-      <td>54.6%</td>
-      <td>62.5%</td>
-      <td>60.8%</td>
-      <td>62.5%</td>
-      <td>63.1%</td>
-    </tr>
-    <tr>
-      <td><strong>归母净利(亿)</strong></td>
-      <td><strong>23.30</strong><br><span class="small">环比大幅 · 同比-11.4%</span></td>
-      <td>81.36<br><span class="small">同比-30.3%</span></td>
-      <td>5.66</td>
-      <td>25.01</td>
-      <td>24.40</td>
-      <td>26.29</td>
-      <td>116.68<br><span class="small">同比+0.7%</span></td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>扣非净利(亿)</strong></td>
-      <td><strong>22.96</strong><br><span class="small">同比-9.25%</span></td>
-      <td>80.69</td>
-      <td>6.06</td>
-      <td>25.13</td>
-      <td>24.19</td>
-      <td>25.31</td>
-      <td>—</td>
-    </tr>
-    <tr>
-      <td><strong>非经常损益主因</strong></td>
-      <td colspan="7" style="font-size:12px;color:#555">
-        2026Q1：归母-扣非差额仅 0.34亿（非经常损益极低）。政府补助+1.04亿，资产减值-0.21亿，信用减值-0.10亿，资产处置-0.07亿<br>
-        2025FY：政府补助+5.27亿（同比-35.7%），资产减值-3.36亿，信用减值-1.96亿；全年归母-扣非差额~0.67亿，非经常损益影响很小
-      </td>
-    </tr>
+    <tr><th>口径</th><th class="num">前三季</th><th class="num">Q3 单季</th><th>读法</th></tr>
+    <tr><td>报表归母</td><td class="num dn2">-5.10%</td><td class="num dn2">-4.55%</td><td>市场第一眼看到的数字</td></tr>
+    <tr><td>扣非归母（报表）</td><td class="num dn2">-2.75%</td><td class="num">约 -1.4%</td><td>Q3 扣非归母为推算：26.00 亿（含少数）- 1.30 亿 = 24.70 亿</td></tr>
+    <tr><td>汇率中性营收</td><td class="num up">+7.38%</td><td class="num up">+5.95%</td><td>公告披露</td></tr>
+    <tr><td>剔除汇兑后净利润</td><td class="num up">+6.29%</td><td class="num up">+1.79%</td><td>公告披露</td></tr>
+    <tr><td>剔除汇兑后扣非</td><td class="num up">+8.83%</td><td class="num up">+4.71%</td><td>公告披露</td></tr>
   </table>
-  <div class="sig sig-warn" style="margin-top:12px">
-    <strong>毛利率分析：</strong>2026Q1 毛利率 61.87%，同比降 0.66pp（成本增速+3.2% > 营收+1.4%），<strong>但环比大幅回升 7.23pp</strong>（Q4 仅 54.6%，含年末减值集中计提等季节性因素）。毛利率同比仍承压，但环比已明显改善。
+  <div class="assume">
+    <strong>怎么看这组数字：</strong>公司主动给出"剔除汇兑"口径，方向没错——财务费用同比多支出 8.34 亿，税后约 7.5 亿，确实压掉了大部分降幅。但要注意两点：① <strong>汇兑在迈瑞不是"一次性事件"</strong>，2025 年财务费用为 -2.63 亿（收益）、2024 年 -4.00 亿（收益）、2026 年 +5.41 亿（损失），连续三年方向反复，这本身就是海外收入占比 53% 的<strong>结构性成本</strong>，不宜每年都用"剔除"来讲；② 剔除汇兑后 Q3 扣非 +4.71%，仍低于 Q2 的增速水平，说明<strong>内生增长本身也在减速</strong>，不只是汇兑问题。
   </div>
+
+  <h3>四、区域与产线：国际扛住，国内仍在磨底</h3>
+  <table>
+    <tr><th width="150">分部</th><th class="num">前三季收入</th><th class="num">同比</th><th class="num">占比</th><th>关键信息</th></tr>
+    <tr style="background:#e8f5e9"><td><strong>国际业务</strong></td><td class="num">143.64 亿</td><td class="num up">+11.04%</td><td class="num">53%</td><td>美元口径 +16.02%；欧洲近 +20%（英法德意高增）、拉美 +18%、亚太 +14%</td></tr>
+    <tr style="background:#ffebee"><td><strong>国内业务</strong></td><td class="num">127.33 亿</td><td class="num dn2">-1.28%</td><td class="num">47%</td><td>Q3 环比 Q2 +1.95%；医院预算收紧、设备弱复苏、IVD 量价下行</td></tr>
+    <tr><td>体外诊断 IVD</td><td class="num">105.87 亿</td><td class="num up">+7.79%</td><td class="num">39%</td><td>免疫与凝血双位数；<strong>国际 IVD +20%、国际免疫 &gt;30%</strong></td></tr>
+    <tr><td>生命信息与支持</td><td class="num">73.25 亿</td><td class="num dn2">-1.27%</td><td class="num">27%</td><td>国际收入占比升至 76%；国内设备去库存未完</td></tr>
+    <tr><td>医学影像</td><td class="num">43.00 亿</td><td class="num dn2">-6.18%</td><td class="num">16%</td><td>国际占比升至 68%；超高端超声 A 系列海外上市是后续看点</td></tr>
+    <tr style="background:#e8f5e9"><td><strong>新兴业务</strong></td><td class="num">47.35 亿</td><td class="num up">+20.52%</td><td class="num">17%</td><td>占国内收入 23%；微创外科、微创介入增速均 &gt;20%</td></tr>
+    <tr><td>其他</td><td class="num">1.50 亿</td><td class="num">—</td><td class="num">1%</td><td>拼差项（270.97 - 各产线合计 269.47）</td></tr>
+  </table>
   <div class="sig sig-bull">
-    <strong>积极信号：</strong>（1）Q1通常为淡季（历年约占全年20-23%），83.52亿已是稳健开局；（2）扣非22.96亿环比大幅改善（Q4仅6.06亿含减值集中释放），经营实质好于表观；（3）合同负债+50%预示后续收入确认充足。
+    <strong>结构正在换引擎：</strong>国内 IVD + 新兴业务已占国内收入<strong>近四分之三</strong>，收入结构由"传统设备"切向"试剂+高值耗材"。这是好事——试剂与耗材是重复性收入，抗招标波动能力强。但要清醒：新兴业务 47.35 亿里有相当部分来自惠泰，<strong>归属母公司比例有限</strong>（少数股东损益 +55.9% 就是证据），"新兴业务 +20.52%"不能直接等同于"归母 +20.52%"。
   </div>
 </div>
 
-<!-- ===== ROE 分析 ===== -->
+<!-- ===== 利润表趋势 ===== -->
+<div class="card">
+  <h2>利润表趋势（单季口径 · 累计值倒推）</h2>
+  <table>
+    <tr><th>单季（亿元）</th><th class="num">25Q1</th><th class="num">25Q2</th><th class="num">25Q3</th><th class="num">25Q4</th><th class="num">26Q1</th><th class="num">26Q2</th><th class="num">26Q3</th></tr>
+    <tr><td>营业收入</td><td class="num">82.37</td><td class="num">85.06</td><td class="num">90.91</td><td class="num">74.48</td><td class="num">83.52</td><td class="num">93.95</td><td class="num">93.50</td></tr>
+    <tr><td>营收 YoY</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num up">+1.39%</td><td class="num up">+10.45%</td><td class="num up">+2.85%</td></tr>
+    <tr><td>营业成本</td><td class="num">30.87</td><td class="num">33.31</td><td class="num">34.11</td><td class="num">33.79</td><td class="num">31.85</td><td class="num">37.66</td><td class="num">36.10</td></tr>
+    <tr><td>毛利率</td><td class="num">62.53%</td><td class="num">60.84%</td><td class="num">62.48%</td><td class="num dn2">54.64%</td><td class="num">61.87%</td><td class="num">59.91%</td><td class="num">61.39%</td></tr>
+    <tr><td>销售费用</td><td class="num">11.78</td><td class="num">12.46</td><td class="num">13.11</td><td class="num">14.10</td><td class="num">12.40</td><td class="num">12.76</td><td class="num">13.42</td></tr>
+    <tr><td>管理费用</td><td class="num">3.42</td><td class="num">3.40</td><td class="num">3.65</td><td class="num">5.04</td><td class="num">3.44</td><td class="num">3.52</td><td class="num">3.63</td></tr>
+    <tr><td>研发费用</td><td class="num">7.67</td><td class="num">8.40</td><td class="num">8.28</td><td class="num">11.44</td><td class="num">8.02</td><td class="num">7.68</td><td class="num">8.13</td></tr>
+    <tr><td>财务费用</td><td class="num">-1.62</td><td class="num">-1.73</td><td class="num">0.43</td><td class="num">0.30</td><td class="num dn2">2.41</td><td class="num dn2">1.42</td><td class="num dn2">1.58</td></tr>
+    <tr><td>营业利润</td><td class="num">30.48</td><td class="num">28.74</td><td class="num">30.25</td><td class="num dn2">8.47</td><td class="num">25.24</td><td class="num">30.42</td><td class="num">30.05</td></tr>
+    <tr><td>营业利润率</td><td class="num">37.0%</td><td class="num">33.8%</td><td class="num">33.3%</td><td class="num dn2">11.4%</td><td class="num dn2">30.2%</td><td class="num">32.4%</td><td class="num">32.1%</td></tr>
+    <tr><td>实际税率</td><td class="num">11.8%</td><td class="num">11.3%</td><td class="num">13.5%</td><td class="num">17.5%</td><td class="num up">4.5%</td><td class="num">13.1%</td><td class="num">12.5%</td></tr>
+    <tr style="background:#fff8e1"><td><strong>归母净利润</strong></td><td class="num">26.29</td><td class="num">24.40</td><td class="num">25.01</td><td class="num dn2">5.66</td><td class="num">23.30</td><td class="num">24.67</td><td class="num">23.87</td></tr>
+    <tr><td>归母 YoY</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num dn2">-11.37%</td><td class="num up">+1.10%</td><td class="num dn2">-4.55%</td></tr>
+  </table>
+  <div class="sig sig-warn">
+    <strong>三个必须记住的观察：</strong><br>
+    ① <strong>Q4 是迈瑞的"费用黑洞"，且 2025Q4 尤其异常。</strong>2025Q4 毛利率骤降至 54.64%、研发费用率 15.4%、销售费用率 18.9%，归母仅 5.66 亿（净利率 7.6%）；而 2024Q4 归母为 10.31 亿。也就是说 2025Q4 比 2024Q4 少赚 45%，明显低于常态。<strong>双刃剑：低基数让 2026Q4 同比容易做正，但也说明 Q4 利润高度依赖计提节奏、可预测性极差。</strong>所以任何"全年净利"预测都必须先答一个问题：Q4 准备计提多少？<br>
+    ② <strong>Q3 毛利率环比 +1.48pct 是真改善</strong>（59.91% → 61.39%），说明 IVD 以量补价 + 高毛利新品结构在起作用。但同比仍 -1.09pct，尚未回到 2025Q3 的 62.48%。<br>
+    ③ <strong>税率是隐性缓冲。</strong>2026Q1 实际税率仅 4.5%（研发加计扣除 + 海外低税率收入占比提升），前三季 10.32% vs 2025 年同期 12.22%，这一项贡献约 1.6 亿。可持续性存疑，不宜外推。
+  </div>
+</div>
+
+<!-- ===== ROE ===== -->
 <div class="card">
   <h2>ROE 分析</h2>
-  <h3>ROE 趋势</h3>
-  <table>
-    <tr><th>指标</th><th>2026Q1</th><th>2025FY</th><th>说明</th></tr>
-    <tr style="background:#f8f9fc">
-      <td>加权ROE</td><td><strong>5.96%</strong></td><td><strong>22.00%</strong></td><td class="dn2">Q1同比-1.10pp · FY从峰值~32%回落至22.0%</td>
-    </tr>
-    <tr>
-      <td>归母权益(亿)</td><td>401.10</td><td>380.93</td><td class="up">季末较上年度末+5.29%</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td>EPS × BVPS推算</td><td>1.92 ÷ 31.42<br><span class="small">PE(164.30÷(1.92×4))=21.4x</span></td><td>6.71 ÷ 31.42<br><span class="small">PE(164.30÷6.71)=24.5x</span></td><td>Q1年化ROE≈24.5%（高估，Q1非等比例）</td>
-    </tr>
+  <div class="kv">
+    <div class="item"><div class="lbl">前三季年化 ROE</div><div class="val">23.4%</div><div class="sub">71.84×4/3 ÷ 平均归母权益 408.8 亿</div></div>
+    <div class="item"><div class="lbl">2025 全年 ROE</div><div class="val" style="font-size:17px">22.0%</div><div class="sub">81.36 ÷ 平均权益 369.7 亿</div></div>
+    <div class="item"><div class="lbl">2024 全年 ROE</div><div class="val" style="font-size:17px">33.9%</div><div class="sub">116.68 ÷ 平均权益 344.7 亿</div></div>
+    <div class="item"><div class="lbl">归母净利率</div><div class="val" style="font-size:17px">26.5%</div><div class="sub">71.84 ÷ 270.97（2025 同期 29.3%）</div></div>
+  </div>
+  <table style="margin-top:14px">
+    <tr><th>年份</th><th class="num">归母净利</th><th class="num">期末归母权益</th><th class="num">ROE（平均权益）</th><th>趋势</th></tr>
+    <tr><td>2023</td><td class="num">115.82 亿</td><td class="num">330.85 亿</td><td class="num">—</td><td>高景气尾声</td></tr>
+    <tr><td>2024</td><td class="num">116.68 亿</td><td class="num">358.56 亿</td><td class="num">33.9%</td><td class="up">历史高位</td></tr>
+    <tr><td>2025</td><td class="num">81.36 亿</td><td class="num">380.93 亿</td><td class="num dn2">22.0%</td><td class="dn2">行业调整，-11.9pct</td></tr>
+    <tr><td>2026E</td><td class="num">79.8 亿（自估）</td><td class="num">—</td><td class="num">约 20.0%</td><td>基本企稳</td></tr>
   </table>
-
-
-  <div class="sig sig-warn" style="margin-top:12px">
-    <strong>ROE下行但质量高：</strong>22.00%仍属优秀水平（A股医疗器械中位数~10%）。ROE下降主因是净利下滑（-30%）而非杠杆上升，财务健康度不变。Q1 年化ROE ~24%，若全年恢复至该水平，估值有支撑。但当前 PE(TTM) 25.25x 对 22.0% ROE 基本合理（PB-ROE框架下，合理PB≈ROE/COE≈4-5x，当前PB 5.14x 略高于合理区间上沿）。
+  <div class="assume">
+    <strong>ROE 从 33.9% 掉到 22% 的机理：</strong>不是杠杆变化（资产负债率仅 25.67%、几乎零有息负债），而是<strong>净利率从 31.8% 降到 24.4%</strong>（2025 年）——集采降价 + 高费用投入 + 汇兑。资产周转率反而基本稳定。<strong>这意味着 ROE 的修复只能靠净利率回升，而净利率又受 IVD 价格政策压制，修复节奏注定偏慢。</strong>不必期待 ROE 重回 30% 以上。
   </div>
 </div>
 
 <!-- ===== 现金流 ===== -->
 <div class="card">
-  <h2>现金流独立分析（单季口径）</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:12px">注：2025Q4/Q3/Q2为累计报表反推单季值；全年数据为FY合计（不做环比）</p>
-  <table>
-    <tr><th>指标(亿)</th><th>2026Q1</th><th>环比</th><th>2025Q1</th><th>同比</th><th>2025FY</th></tr>
-    <tr style="background:#f8f9fc">
-      <td>经营现金流净额</td><td><strong>13.81</strong></td><td class="dn2">-51.9%</td><td>14.94</td><td class="dn2">-7.6%</td><td>101.45</td>
-    </tr>
-    <tr>
-      <td>购建固定资产/无形资产</td><td>6.01</td><td class="up">+17.6%</td><td>4.97</td><td class="up">+20.9%</td><td>20.38</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>自由现金流</strong></td><td><strong>7.80</strong></td><td class="dn2">-67.0%</td><td>9.97</td><td class="dn2">-21.8%</td><td>81.07</td>
-    </tr>
-    <tr>
-      <td>FCF/营收</td><td>9.3%</td><td></td><td>12.1%</td><td></td><td>24.4%</td>
-    </tr>
-    <tr>
-      <td>净利润现金含量</td><td>57%</td><td></td><td></td><td></td><td>120%</td>
-    </tr>
+  <h2>现金流独立分析</h2>
+  <div class="kv">
+    <div class="item"><div class="lbl">经营现金流（前三季）</div><div class="val">82.97亿</div><div class="sub">同比 <span class="up">+14.08%</span>，快于营收 +4.89%</div></div>
+    <div class="item"><div class="lbl">资本开支</div><div class="val" style="font-size:17px">15.72亿</div><div class="sub">占营收 5.8%，轻资产特征</div></div>
+    <div class="item"><div class="lbl">自由现金流</div><div class="val">67.25亿</div><div class="sub">OCF - Capex</div></div>
+    <div class="item"><div class="lbl">OCF ÷ 净利润</div><div class="val">109.7%</div><div class="sub">利润含金量高（&gt;100% 为优秀）</div></div>
+    <div class="item"><div class="lbl">收现比</div><div class="val">109.7%</div><div class="sub">销售收现 297.30 ÷ 营收 270.97</div></div>
+    <div class="item"><div class="lbl">Q3 单季 OCF</div><div class="val" style="font-size:17px">34.20亿</div><div class="sub">+2.07% · FCF 29.12 亿</div></div>
+  </div>
+  <table style="margin-top:14px">
+    <tr><th>项目（前三季）</th><th class="num">2026</th><th class="num">2025</th><th class="num">同比</th></tr>
+    <tr><td>销售商品、提供劳务收到的现金</td><td class="num">297.30 亿</td><td class="num">约 271 亿</td><td class="num up">+9.7%</td></tr>
+    <tr><td>经营活动现金流出小计</td><td class="num">225.26 亿</td><td class="num">—</td><td class="num">—</td></tr>
+    <tr><td>经营活动现金流净额</td><td class="num">82.97 亿</td><td class="num">72.73 亿</td><td class="num up">+14.08%</td></tr>
+    <tr><td>购建固定资产等支付的现金</td><td class="num">15.72 亿</td><td class="num">—</td><td class="num">—</td></tr>
+    <tr><td>分配股利、利润或偿付利息</td><td class="num">36.09 亿</td><td class="num">—</td><td class="num">—</td></tr>
+    <tr><td>汇率变动对现金的影响</td><td class="num dn2">-6.77 亿</td><td class="num">—</td><td class="num">—</td></tr>
   </table>
-  <p style="font-size:11px;color:#888;margin-top:4px">环比基准 = 2025Q4（经营现金流28.72亿 · 购建固定资产5.11亿 · FCF 23.61亿）。Q1环比大幅下降是季节性特征：Q4年末回款集中、Q1为支出旺季。</p>
-  <p style="font-size:11px;color:#888;margin-top:4px">※ 口径说明：表中"自由现金流"= 经营现金流净额 − 资本开支（股权自由现金流 FCF）。Wind 的"企业自由现金流 FCFF" Q1=16.96亿，定义不同（FCFF 未扣利息税盾等），两者不可直接混用。</p>
   <div class="sig sig-bull">
-    <strong>现金流健康：</strong>FY2025 FCF 81亿，FCF/净利≈96%，现金创造能力极强。Q1 FCF 7.80亿偏弱但属季节性（历年Q1均为现金净消耗期），同比看经营现金流仅降7.6%。资本开支加大(+21%)来自深圳/武汉在建基地，属战略性投入。
+    <strong>这是本期财报最硬的一块。</strong>营收只增 4.89%，但经营现金流增 14.08%、收现比 109.7%、OCF/净利润 109.7%，说明收入是<strong>真金白银收回来的</strong>，不是靠放宽信用堆出来的（应收账款 35.73 亿，仅占营收 13.2%）。资本开支 15.72 亿、占营收 5.8%，自由现金流 67.25 亿，足以覆盖 47.03 亿的年内分红还有余。
   </div>
 </div>
 
 <!-- ===== 资产负债表 ===== -->
 <div class="card">
-  <h2>资产负债表关键指标（2026-03-31）</h2>
+  <h2>资产负债表关键指标（2026-09-30）</h2>
   <div class="kv">
-    <div class="item"><div class="lbl">总资产</div><div class="val">596亿</div><div class="sub">同比+2.1%</div></div>
-    <div class="item"><div class="lbl">货币资金</div><div class="val">178亿</div><div class="sub">同比+0.5%</div></div>
-    <div class="item"><div class="lbl">应收账款</div><div class="val">35.7亿</div><div class="sub">同比+2.7% · 环比数据缺失※</div></div>
-    <div class="item"><div class="lbl">存货</div><div class="val">52.5亿</div><div class="sub">同比+1.6% · 环比数据缺失※</div></div>
-    <div class="item"><div class="lbl">合同负债</div><div class="val">33.4亿</div><div class="sub">同比+50.2% · 环比数据缺失※</div></div>
-    <div class="item"><div class="lbl">商誉</div><div class="val">112亿</div><div class="sub">占总资产18.8%</div></div>
-    <div class="item"><div class="lbl">在建工程</div><div class="val">32.7亿</div><div class="sub">同比+18.8%</div></div>
-    <div class="item"><div class="lbl">资产负债率</div><div class="val">24.8%</div><div class="sub">Q1 · FY25 27.4% · 极低杠杆</div></div>
-    <div class="item"><div class="lbl">有息负债率</div><div class="val">~2.2%</div><div class="sub">几乎零有息负债</div></div>
+    <div class="item"><div class="lbl">货币资金</div><div class="val" style="font-size:17px">193.60亿</div><div class="sub">+ 交易性金融资产 4.98 亿</div></div>
+    <div class="item"><div class="lbl">净现金</div><div class="val" style="font-size:17px">197.3亿</div><div class="sub">有息负债近乎为零（短借 17 万元）</div></div>
+    <div class="item"><div class="lbl">应收账款</div><div class="val" style="font-size:17px">35.73亿</div><div class="sub">占营收 13.2%（Q2 37.54 亿，环比降）</div></div>
+    <div class="item"><div class="lbl">存货</div><div class="val" style="font-size:17px">59.92亿</div><div class="sub">较 Q2 56.50 亿升 6.1%</div></div>
+    <div class="item"><div class="lbl">合同负债</div><div class="val" style="font-size:17px">34.27亿</div><div class="sub">较 Q2 33.86 亿升 1.2%（预收稳定）</div></div>
+    <div class="item"><div class="lbl">资产负债率</div><div class="val" style="font-size:17px">25.67%</div><div class="sub">负债 159.20 ÷ 资产 620.12</div></div>
+    <div class="item"><div class="lbl">商誉</div><div class="val" style="font-size:17px;color:#c62828">110.30亿</div><div class="sub">占总资产 17.8% · 占归母净资产 26.8%</div></div>
+    <div class="item"><div class="lbl">归母净资产</div><div class="val" style="font-size:17px">412.03亿</div><div class="sub">BPS 34.00 元 · 少数股东权益 48.89 亿</div></div>
   </div>
-  <p class="small" style="margin-top:6px">※ Wind 仅返回单期资产负债表数据，环比需等半年报披露后补。合同负债+50% 是积极先导信号。</p>
+  <div class="sig sig-warn">
+    <strong>商誉是本表最需要盯的一项。</strong>110.30 亿商誉（主要来自惠泰医疗及 DiaSys 等并购）相当于归母净资产的 26.8%。好的一面是 Q3 环比再降 0.82 亿（外币折算），且惠泰本身经营稳健（微创介入增速 &gt;20%）；风险在于一旦海外标的或集采冲击超预期，减值将直接吃掉当年利润。<strong>跟踪线：惠泰季度收入增速若跌破 10%，商誉减值概率显著上升。</strong>
+  </div>
+  <div class="sig sig-bull">
+    <strong>资产负债表整体是"净现金 + 轻负债"结构。</strong>净现金 197.3 亿、资产负债率 25.67%、有息负债几乎为零。这既是防御底盘（极端情况下可支撑 3-4 年分红），也是估值的隐性缓冲——本次 SOTP 已把净现金 197.3 亿单独加回，<strong>折合每股 16.28 元</strong>。
+  </div>
 </div>
 
 <!-- ===== 分业务线 ===== -->
 <div class="card">
-  <h2>分业务线深度分析（2025FY 年报数据）</h2>
-
-  <h3>收入结构 &amp; 竞争格局</h3>
+  <h2>分业务线深度分析</h2>
   <table>
-    <tr><th>产线</th><th>收入(亿)</th><th>占比</th><th>同比</th><th>毛利率<small>(Wind)</small></th><th>竞争格局</th></tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>体外诊断</strong></td><td><strong>122.41</strong></td><td>36.8%</td><td class="dn2">-11.1%</td><td>58.3%</td>
-        <td style="font-size:12px">国内龙头，国产化率最低赛道；免疫+生化+凝血三线推进；MT8000流水线装机爆发；目标3年市占率翻倍至20%</td>
-      </tr>
-    <tr>
-      <td><strong>生命信息与支持</strong></td><td><strong>98.37</strong></td><td>29.6%</td><td class="dn2">-27.4%</td><td>59.4%</td>
-        <td style="font-size:12px">全球前三（监护/麻醉/呼吸），国际占比74%；数智化生态形成壁垒；国内集采压力最大板块</td>
-      </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>医学影像</strong></td><td><strong>57.17</strong></td><td>17.2%</td><td class="dn2">-23.8%</td><td>63.1%</td>
-        <td style="font-size:12px">国内超声前二，国际份额个位数待突破；超高端超声+70%增长，瑞影AI生态领先</td>
-      </tr>
-    <tr>
-      <td><strong>新兴业务</strong></td><td><strong>53.78</strong></td><td>16.2%</td><td class="up">+38.9%<small>※</small></td><td>~55%</td>
-        <td style="font-size:12px">微创外科+微创介入(惠泰)+动物医疗；高增长引擎，国内占比超20%，有望成为第二增长曲线</td>
-      </tr>
+    <tr><th>产线</th><th class="num">2025FY</th><th class="num">2026 前三季</th><th class="num">同比</th><th class="num">2026E（自估）</th><th>核心逻辑</th></tr>
+    <tr><td>体外诊断 IVD</td><td class="num">122.41 亿</td><td class="num">105.87 亿</td><td class="num up">+7.79%</td><td class="num">132.0 亿</td><td>市占率提升 + 流水线装机带动试剂；国际免疫 &gt;30%。国内受价格政策压制</td></tr>
+    <tr><td>生命信息与支持</td><td class="num">98.37 亿</td><td class="num">73.25 亿</td><td class="num dn2">-1.27%</td><td class="num">97.2 亿</td><td>国内设备去库存未完；国际占比升至 76%，靠海外补国内</td></tr>
+    <tr><td>医学影像</td><td class="num">57.17 亿</td><td class="num">43.00 亿</td><td class="num dn2">-6.18%</td><td class="num">53.6 亿</td><td>超高端超声 A 系列海外上市是唯一翻身牌；国内招标弱</td></tr>
+    <tr><td>新兴业务</td><td class="num">53.78 亿</td><td class="num">47.35 亿</td><td class="num up">+20.52%</td><td class="num">64.8 亿</td><td>微创外科 + 微创介入（惠泰）双 &gt;20%；<strong>但少数股东分走较多</strong></td></tr>
+    <tr><td>其他</td><td class="num">1.09 亿</td><td class="num">1.50 亿</td><td class="num">—</td><td class="num">1.9 亿</td><td>拼差项</td></tr>
+    <tr style="background:#e8eaf6"><td><strong>合计</strong></td><td class="num"><strong>332.82 亿</strong></td><td class="num"><strong>270.97 亿</strong></td><td class="num up"><strong>+4.89%</strong></td><td class="num"><strong>349.5 亿</strong></td><td>2026E 同比 +5.0%</td></tr>
   </table>
-  <p style="font-size:11px;color:#888;margin:6px 0">※ Wind 口径 FY2025 vs FY2024：体外诊断 137.65→122.41(-11.1%)、生命信息与支持 135.57→98.37(-27.4%)、医学影像 74.98→57.17(-23.8%)；毛利率 58.3%/59.4%/63.1%。新兴业务含微创外科+惠泰+动物医疗，FY2024 基数与年报分部口径可能不同，增速存疑。</p>
-
-  <h3>三板块拐点与结构对比（2026 前瞻）</h3>
-  <p style="font-size:12px;color:#888;margin-bottom:10px">用半年度拆分（H1/H2 同比）判断跌幅节奏——拐点是否已现，直接决定 2026 年各板块的复苏顺序。</p>
-  <table>
-    <tr><th>板块</th><th>2025H1 同比</th><th>2025H2 同比</th><th>节奏判断</th><th>海外占比</th><th>护城河主类型</th></tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>体外诊断</strong></td><td class="dn2">-16.1%</td><td class="dn2">-4.7%</td><td class="up">收窄最快 · 接近转正</td><td>个位数（国内为主）</td><td>生态型（流水线锁定试剂）</td>
-    </tr>
-    <tr>
-      <td><strong>生命信息与支持</strong></td><td class="dn2">-31.6%</td><td class="dn2">-21.4%</td><td class="up">收窄 · 底已过但深跌</td><td>74%（海外驱动）</td><td>效率型强 / 技术型弱</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>医学影像</strong></td><td class="dn2">-22.5%</td><td class="dn2">-25.4%</td><td class="dn2">加深 · 底未到</td><td>个位数（国内为主，海外期权）</td><td>技术型中强 / 效率型中弱</td>
-    </tr>
-  </table>
-  <div class="sig sig-warn" style="margin:10px 0">
-    <strong>拐点结论：</strong>复苏顺序大概率是 <strong>IVD 最先 → 生命信息次之 → 医学影像最晚</strong>。IVD 靠流水线锁定试剂消耗（H2 同比已收窄至 -4.7%，最接近转正）；生命信息靠海外 74% 基本盘托底（H2 较 H1 收窄 10pp，底已过但仍深跌）；医学影像国内为主 + 高端未破局（H2 仍在加深），拐点最晚、确定性最低——其看点是中长期高端替代期权，而非 2026 年业绩弹性。
+  <div class="assume">
+    <strong>2026E 推算方法：</strong>按 2025 年"前三季 ÷ 全年"的季节分布外推（IVD 80.2%、生命信息 75.4%、影像 80.2%、新兴 73.1%）。这一比例在 Q4 费用集中、收入偏弱的模式下相对稳定。<strong>与一致预期 357.82 亿差 2.4%</strong>，主要分歧在生命信息与影像的 Q4 复苏力度——我按"继续小幅下滑"处理，卖方按"环比改善"处理。
   </div>
 
-  <h3>区域结构</h3>
-  <table>
-    <tr><th>区域</th><th>收入(亿)</th><th>占比</th><th>同比</th></tr>
-    <tr><td>海外</td><td>176.50</td><td>53.0%</td><td class="up">+7.4%</td></tr>
-    <tr><td>国内</td><td>156.32</td><td>47.0%</td><td class="dn2">-23.0%</td></tr>
-  </table>
-
-  <h3>护城河评估</h3>
-  <ol style="font-size:14px">
-    <li><strong>全产线协同 + 数智化生态：</strong>"设备+IT+AI"一体化方案，从单一设备商向综合服务商转型，客户粘性极强</li>
-    <li><strong>全球化研产销体系：</strong>40+国家本地化布局，海外收入占比53%且持续提升，抗单一市场风险</li>
-    <li><strong>研发密度行业领先：</strong>FY2025研发投入39.29亿（占营收11.8%），5200+研发工程师，1.3万件专利</li>
-    <li><strong>渠道+服务壁垒：</strong>国内三级医院渗透率行业最高，流水线装机量爆发锁定长期试剂消耗</li>
-    <li><strong>风险点：</strong>国内集采政策扩面，生命信息与支持+影像线短期承压；商誉112亿需关注减值可能</li>
-  </ol>
-
-  <h3>管理层指引摘要（2026-03-31 业绩说明会）</h3>
-  <div class="sig sig-bull">
-    <strong>2026年展望：</strong>国际业务回归快速增长（欧洲+发展中国家引领），国内业务实现正增长；IVD为中长期核心驱动，目标3年核心市占率翻倍；<br>
-    <strong>中长期目标：</strong>十年内进入全球医疗器械TOP10；2026年港股上市加速国际化；"最困难的时刻已经过去"。<br>
-    <span style="font-size:11px;color:#888">来源：巨潮投资者关系活动记录表2026-001</span>
-  </div>
-
-  <h3>各产线深度展开</h3>
-
-  <!-- 体外诊断 -->
-  <h4>1. 体外诊断（IVD）— 第一大产线，国产替代的核心战场</h4>
-  <p style="font-size:13px">
-    <strong>市场容量：</strong>2025年全球IVD市场规模约777亿美元，预计2034年达1,357亿美元（CAGR ~6.5%）。中国市场2025年约1,860亿元人民币，"十五五"期间大概率冲刺2,000亿大关。<br>
-    <strong>迈瑞当前地位：</strong>2025年迈瑞IVD营收122亿，占国内IVD行业~26.5%营收份额、<strong>73%利润份额</strong>——一家独大。但在核心细分赛道（免疫/生化/凝血），国内市占率平均仅10%，目标3年翻倍至20%。<br>
-    <strong>竞品格局：</strong>全球CR5（罗氏/雅培/丹纳赫/西门子/赛默飞）占58%份额，化学发光CR4（罗氏/雅培/贝克曼/西门子）占~80%。国内追赶者：新产业（海外+19.6%）、安图（海外+35%）、迈克（海外+37.7%）、亚辉龙（海外+26%）——竞品在海外增速更快。<br>
-    <strong>竞品护城河：</strong>罗氏 Elecsys 化学发光平台+伴随诊断试剂（肿瘤检测市占率34%）；雅培 Alinity 模块化设计（12项同步检测）；贝克曼 ACCESS/DxI 全自动流水线。<br>
-    <strong>迈瑞差异优势：</strong>①海肽生物原料自主（心脏标志物全球第一梯队，打破"卡脖子"）；②DiaSys全球供应链（14国本地化生产）；③MT8000流水线年内360套订单/270套装机（国内市场势如破竹）；④"启元检验大模型"数智化壁垒。
-  </p>
-
-  <h4 style="color:#1a237e">IVD 深度解析（2026-08-26 增补）</h4>
-  <div class="sig sig-bull" style="margin:8px 0">
-  <p style="font-size:13px"><strong>① 国内外竞争力 + 差异化原因</strong></p>
-  <table>
-    <tr><th>维度</th><th>国内</th><th>国外</th></tr>
-    <tr><td>IVD 整体份额</td><td>26.5% 营收 / <strong>73% 利润</strong>（一家独大）</td><td>个位数，刚起步</td></tr>
-    <tr><td>化学发光（最肥赛道）</td><td><strong>16.15%，反超罗氏登顶国产第一</strong></td><td>未进入</td></tr>
-    <tr><td>流水线新增装机</td><td><strong>31.5-32% 第一</strong>（罗氏 24.5%）</td><td>20-30 套/年</td></tr>
-    <tr><td>三甲新增流水线</td><td><strong>50% 中标，反超罗氏 33%</strong></td><td>—</td></tr>
-    <tr><td>核心细分（免疫/生化/凝血）</td><td>仅 10%（进口替代刚起步，目标 3 年翻倍至 20%）</td><td>—</td></tr>
-  </table>
-  <p style="font-size:12px;color:#666;margin:4px 0">分层竞争力（国内非一刀切）：普通三甲/二甲 70-75% 中标碾压；县级医院外资节节败退；<strong>顶级大三甲（协和/华西/301）迈瑞仅 25-30%，罗氏仍强</strong>；第三方 ICL 40-45%（开放式轨道更受欢迎）。</p>
-  <p style="font-size:13px"><strong>差异化本质 = 政策「势」+ 价格「矛」+ 技术「盾」：</strong>①政策（集采/DRG/国产替代）创造"性价比压倒一切"的宏观顺风；②价格（便宜 30-40%）决定"迈瑞 vs 罗氏"的直接选择；③技术（全产品线自研+AI 生态+本土服务）够用且差异化，但非单项碾压。<strong>本质是"系统性性价比优势"，非技术颠覆</strong>——这也解释了国内强、海外弱（海外无政策顺风，只剩价格一条腿）。</p>
-  </div>
-
-  <div class="sig sig-bull" style="margin:8px 0">
-  <p style="font-size:13px"><strong>② MT8000 商业逻辑（剃刀+刀片）</strong></p>
-  <p style="font-size:13px">技术定位：不是"一台检测机器"，是<b>自动化流水线平台</b>（轨道 + AI 调度软件，把生化/免疫/血球/凝血各自独立的单机串成全自动系统）。</p>
-  <p style="font-size:13px"><strong>对医院价值 = 人效革命（非检测更准）：</strong>省人力（检验科最大成本，20人→10人）、提速（TAT 2小时→40分钟）、降差错（条码追踪接近零）。"省10个人的价值 > 单机性能高5%的价值"。</p>
-  <table>
-    <tr><th>环节</th><th>利润</th></tr>
-    <tr><td>硬件（流水线）</td><td>净利率仅 8-18%，<strong>甚至亏本投放</strong></td></tr>
-    <tr><td>试剂（耗材）</td><td>毛利率 <strong>70-82%</strong></td></tr>
-    <tr><td>生命周期收入结构</td><td>设备 15% vs <strong>试剂 85%</strong></td></tr>
-  </table>
-  <p style="font-size:13px"><strong>战略意义：</strong>轨道系统封闭 → 一台流水线一次绑定生化+免疫+血球+凝血所有赛道 → 用"血球+生化"优势带动"免疫"渗透 → 撬动核心赛道市占率 10%→20% 的核心武器。</p>
-  </div>
-
-  <div class="sig sig-bull" style="margin:8px 0">
-  <p style="font-size:13px"><strong>③ 追踪指标 + 催化</strong></p>
-  <table>
-    <tr><th>核心追踪指标</th><th>当前值</th><th>关注点</th></tr>
-    <tr><td>MT8000 装机量</td><td>2026H1 196 套（+96%）</td><td>是否延续翻倍速度</td></tr>
-    <tr><td>化学发光市占率</td><td>16.15%</td><td>能否继续挤压罗氏 9.27%</td></tr>
-    <tr><td>IVD 试剂收入增速</td><td>2025 量价齐跌</td><td>是否止跌回升（集采出清）</td></tr>
-    <tr><td>核心赛道市占率</td><td>10%</td><td>3 年翻倍至 20% 进度</td></tr>
-    <tr><td>流水线订单 vs 装机</td><td>订单 140+ vs 装机 80+</td><td>订单领先 = 后续交付可见性</td></tr>
-    <tr><td>顶级大三甲突破</td><td>协和/华西/301</td><td>标志性替换案例</td></tr>
-    <tr><td>海外装机</td><td>20-30 套/年</td><td>能否加速（期权价值）</td></tr>
-  </table>
-  <p style="font-size:12px;color:#666;margin:4px 0"><strong>关键催化：</strong>①8/29 中报（最重要验证窗口，看"设备装机↑+试剂降幅收窄"是否同时出现）；②集采新政细则（7/14"稳价保质"传导到盈利端）；③化学发光新品类（AD 血检等）；④港股上市（A+H）；⑤顶级大三甲流水线中标。</p>
-  </div>
-
-  <div class="sig sig-bull" style="margin:8px 0">
-  <p style="font-size:13px"><strong>④ 2025 量价齐跌归因：为什么"以价换量"却量价齐跌？</strong></p>
-  <p style="font-size:13px">IVD 收入 = 检测量 × 份额 × 单价，三个因子"一升两降"：<br>
-  ① <strong>检测量 ↓</strong>：反腐 + DRG/DIP 控费，医院砍过度检测，行业总盘子萎缩；<br>
-  ② <strong>份额 ↑</strong>：集采以价换量，化学发光市占率 10%→16.15%（反超罗氏登顶国产第一），这是"换量"的成果；<br>
-  ③ <strong>单价 ↓</strong>：集采降价 30-50%，毛利率 62.0%→58.3%。<br>
-  <strong>结论：</strong>份额升带来的量，被总盘子萎缩吃掉，再叠加单价下跌 → 绝对收入仍 -11.1%（量价齐跌）。这是"以价换量"在"总盘子萎缩 + 装机→试剂放量有 6-12 个月时滞"下的暂时性结果，不是逻辑失效。<strong>DRG 是双刃剑</strong>：既帮迈瑞抢份额（医院控成本用国产替代进口），又砍总量（压缩过度检测）。2026 年转向"量增价稳"的三个条件：价稳（新政稳价）+ 量稳（反腐消退）+ 量增（MT8000 装机 +96% 转化为试剂放量）。</p>
-  </div>
-
-  <!-- 生命信息与支持 -->
-  <h4>2. 生命信息与支持 — 性价比+数智化双轮驱动的全球第三极</h4>
-  <p style="font-size:13px">
-    <strong>市场容量：</strong>2025年全球生命支持医疗器械市场约800亿美元，预计未来五年突破1,000亿美元（CAGR ~5%）。中国市场2025年约620亿，预计2030年达932亿。<br>
-    <strong>迈瑞当前地位：</strong>监护仪全球18-20%（第三，次于飞利浦23%/GE19%）；麻醉机全球15-18%（第二，仅次于德尔格）；呼吸机国内49%（绝对龙头）、全球第二。国内整体市占率27.4%（第一）。<br>
-    <strong>竞品格局：</strong>高端市场：飞利浦（监护龙头、系统封闭）、GE（影像+监护协同）、德尔格（麻醉/呼吸技术壁垒深）。国内追赶：科曼（呼吸机国内第二17.6%）。<br>
-    <strong>竞品护城河：</strong>飞利浦监护全球品牌+三甲医院粘性；德尔格低流量麻醉闭环控制技术领先；GE影像+监护一体化生态。<br>
-    <strong>迈瑞差异优势：</strong>①性价比碾压（监护比飞利浦/GE便宜30-50%，麻醉比德尔格便宜40%）；②"瑞智联+启元重症大模型"数智化生态（2025新增100+海外高端客户）；③14国本地化（墨西哥供北美避关税、德国/荷兰4小时响应）。
-  </p>
-
-  <!-- 医学影像 -->
-  <h4>3. 医学影像（超声）— 超高端破局，全球化追赶</h4>
-  <p style="font-size:13px">
-    <strong>市场容量：</strong>2025年全球超声市场约108亿美元，预计2034年达202亿美元（CAGR 7.2%）。北美占33%、亚太31%。<br>
-    <strong>迈瑞当前地位：</strong>全球CR5（GE/飞利浦/西门子/佳能/迈瑞）合计~57%，迈瑞约7%（主要中端）。国内前二。超高端超声上市第二年收入超7亿（+70%），海外市占率仅个位数，主力在中端/入门型号。<br>
-    <strong>竞品格局：</strong>GE（全球超声龙头，高端+AI领导力）、飞利浦（心血管超声强势）、西门子（综合影像平台）、佳能。国内追赶者：开立医疗。<br>
-    <strong>竞品护城河：</strong>GE高端心血管/妇产超声技术壁垒深、全球服务网络；飞利浦探头技术领先。<br>
-    <strong>迈瑞差异优势：</strong>①显微造影/微血流定量/面阵探头等底层技术行业领先；②"瑞影·超声数智影像系统"AI生态；③高性价比打通海外中低端→高端渗透路径（海外增量空间大，市占率仅个位数）。
-  </p>
-  <div class="sig sig-warn" style="margin:8px 0">
-    <strong>为何技术领先但海外市占率低？</strong>领先的是"点状底层技术"，而海外市占率拼的是"体系"——中间隔着四道软壁垒：①品牌认知（"中国品牌=中低端"刻板印象）；②医生使用习惯（GE/飞利浦操作生态粘性）；③服务网络（欧美数十年服务密度 vs 迈瑞刚起步）；④专科临床生态（心血管/妇产需影像+介入闭环）。因此海外从个位数往上爬是"十年维度的慢牛"，属中长期期权，不决定 2026 年业绩弹性。
-  </div>
-
-  <!-- 新兴业务 -->
-  <h4>4. 新兴业务 — 高增长第二曲线</h4>
-  <p style="font-size:13px">
-    <strong>核心赛道：</strong>微创外科（腔镜系统/超声刀/吻合器，覆盖普外/胸外/妇科/泌尿）、微创介入（惠泰医疗—电生理/冠脉通路/外周血管）、动物医疗（Vetus系列彩超/监护/血液分析/生化）。<br>
-    <strong>当前体量：</strong>2025年收入53.78亿（+38.9%），国内占比超20%。<br>
-    <strong>成长逻辑：</strong>①微创外科—受益于腔镜手术渗透率提升，国产替代空间大（进口品牌主导）；②微创介入—惠泰平台赋能，电生理+冠脉介入赛道高增长；③动物医疗—宠物医疗市场爆发（中国宠物医疗CAGR ~20%），迈瑞横向迁移人用技术。<br>
-    <strong>竞品护城河：</strong>微创外科：强生（超声刀/吻合器）、美敦力（腔镜系统/能量平台）；电生理：强生（Carto三维标测）、雅培（EnSite）；动物医疗：IDEXX（全球龙头，诊断试剂+设备生态）。<br>
-    <span class="small">※ 新兴业务数据来源：迈瑞2025年报 + 惠泰医疗公告 + 行业研报。</span>
-  </p>
-
-  <div class="sig sig-bull" style="margin:8px 0">
-    <p style="font-size:13px"><strong>营收构成：惠泰只占一半，增长是"双引擎"（2026-08-26 增补）</strong></p>
-    <table>
-      <tr><th>板块</th><th>FY2025 收入</th><th>占比</th><th>增速</th></tr>
-      <tr><td>惠泰（微创介入）</td><td>25.84 亿</td><td>48%</td><td>+25.1%</td></tr>
-      <tr><td>微创外科 + 动物医疗</td><td>~27.94 亿</td><td>52%</td><td>+46.6%</td></tr>
-    </table>
-    <p style="font-size:12px;color:#666">惠泰是"体量最大"的一块但增速更温和；微创外科+动物医疗体量略小、增速更快（低基数+国产替代/宠物经济红利）。<strong>关键股权细节：迈瑞直接持股惠泰仅 22.97%（深圳迈瑞科技控股），原实控人成正辉 16.68% 表决权委托——故惠泰净利润仅约 23% 归迈瑞股东，其余为少数股东权益</strong>。惠泰营收 100% 并表，但看迈瑞归母净利润时惠泰贡献要打约 2.3 折。</p>
-  </div>
-
-  <div class="sig sig-bull" style="margin:8px 0">
-    <p style="font-size:13px"><strong>三子板块 TAM / 份额 / 护城河深度对比（2026-08-26 增补）</strong></p>
-    <table>
-      <tr><th>板块</th><th>国内 TAM</th><th>海外 TAM</th><th>迈瑞份额</th><th>对手护城河</th><th>迈瑞护城河深度</th></tr>
-      <tr><td>微创外科</td><td>~350亿</td><td>~2000亿</td><td>个位数</td><td>强生/美敦力（深）</td><td>浅（2/5）</td></tr>
-      <tr><td>微创介入（惠泰）</td><td>电生理 157亿→420亿</td><td>全球~1000亿</td><td>惠泰射频 6%</td><td>强生 Carto（极深）</td><td>中（3/5）</td></tr>
-      <tr><td>动物医疗</td><td>~350亿</td><td>全球~3000亿</td><td>个位数</td><td>IDEXX（深）</td><td>浅（2/5）</td></tr>
-    </table>
-    <p style="font-size:12px;color:#666">含金量排序：<strong>微创介入（惠泰）＞ 微创外科 ≈ 动物医疗</strong>。微创介入是唯一"护城河中等 + 赛道增速最快 + 国产替代确定性最高"的板块；微创外科/动物医疗体量大但迈瑞护城河都浅，靠性价比+渠道协同慢啃。</p>
-  </div>
-
-  <div class="sig sig-bull" style="margin:8px 0">
-    <p style="font-size:13px"><strong>电生理是什么 + PFA 技术换道（微创介入核心看点）</strong></p>
-    <p style="font-size:13px">心脏靠电信号驱动，心律失常是"电路紊乱"。电生理手术两步：①标测（导管探测电信号、三维重建电路图、找异常放电点）；②消融（导管释放能量隔离异常点）。商业模式 = 三维标测设备免费投放 + 消融/标测导管耗材按台收费，复购率极高，中国渗透率 128 台/百万人（美国 1302）空间巨大。<br>
-    <strong>PFA（脉冲电场消融）</strong>是第三代消融能量，用电穿孔选择性杀死心肌、几乎不伤食管/神经/血管，安全性革命性提升且速度更快。<strong>PFA 是"技术换道"机会</strong>：传统射频赛道强生 Carto 垄断（国产射频仅 6%），PFA 新赛道国产与外资几乎同步起跑（2025 国产 PFA 商业化元年，北京集采纳入 PFA 且降幅温和）。惠泰心腔内超声（ICE）导管已获批，可与迈瑞超声机 + 惠泰三维标测系统协同，是 PFA 时代的差异化优势。<strong>风险</strong>：PFA 远期疗效待验证；强生（PFA 34%）/波士顿科学（26%）仍领跑，国产"同步起跑"≠稳赢。惠泰在 PFA 的卡位进度，是迈瑞"第二增长曲线"里弹性最大、也最不确定的一环。</p>
-  </div>
+  <h3>护城河与竞争格局</h3>
+  <ul>
+    <li><strong>国内：绝对龙头、份额稳固。</strong>监护仪国内份额超 50%，麻醉机、呼吸机、除颤仪、血球、超声均处国内领先。三甲医院装机基础是替换周期的护城河。</li>
+    <li><strong>国际：从"卖设备"到"本地化"。</strong>国际收入占比 53%，欧洲在高基数上仍近 +20%，说明高端客户群突破真实发生，不是靠低价。国际 IVD 免疫 +30% 意味着开始进入中大样本量客户（高端私立集团、第三方连锁实验室）——这是罗氏/雅培的核心腹地。</li>
+    <li><strong>短板：高值耗材与手术机器人仍在投入期。</strong>微创外科、微创介入体量仍小，且惠泰只合并约 60%，"第二曲线"对归母的贡献要打折。</li>
+    <li><strong>政策：</strong>7/14 集采新政强调"优质优价、防范内卷"，方向上利好龙头；但 IVD 价格统一政策（北京新版检测价格）仍是悬顶之剑，公司表示"价格尚未最终敲定"，其他省份是否跟进不明。</li>
+  </ul>
 </div>
 
-<!-- ===== 估值三部法 ===== -->
+<!-- ===== 估值 ===== -->
 <div class="card">
   <h2>估值三部法交叉验证</h2>
-  <p style="font-size:12px;color:#888;margin-bottom:14px">
-    以分部估值(SOTP)为主锚，PEG和DCF交叉验证。当前价 164.30，PE(2026E) = 164.30/6.95 = 23.6x（机构一致预期2026E EPS 6.95，净利84.26亿 +3.57%，东财口径）<br>
-    <span style="color:#c62828">注：一致预期口径——东财一致预期2026E EPS 6.95（8/28）。8/28晚中报披露后，券商尚未完成大规模更新（大摩8/28晚20:16已给210元增持、认为Q2营收超大摩预期7%），后续方向待观察：营收端可能上调、利润端受汇兑影响可能持平。中报H1归母47.97亿已完成全年预期(84.26亿)的57%。</span>
-  </p>
+  <p style="font-size:13px;color:#555">现价 <strong>179.00</strong> 元，2026E EPS <strong>6.59</strong>（自估归母 79.8 亿），PE(2026E) = 179.00 ÷ 6.59 = <strong>27.16x</strong>。以 SOTP 为主锚（50%），PEG 与 DCF 各 25% 交叉验证。</p>
+  <div class="assume">
+    <strong>盈利预测口径：</strong>自估 2026E 归母 79.8 亿（营收 349.5 亿 × 22.8% 净利率）＝ 前三季 71.84 + Q4 7.96 亿。Q4 假设净利率恢复到 10.2%（2025Q4 仅 7.6%，2024Q4 约 14.1%——按 2024 全年营收 367.26 亿、Q4 约 73 亿、归母 10.31 亿推算）。<strong>一致预期 EPS 6.98（归母 84.61 亿）隐含 Q4 归母 12.77 亿，是 2025Q4 的 2.26 倍、净利率要跳到 16.3%（超过 2024Q4 的 14.1%），无法用可得数据解释 ⇒ 判定为三季报前滞后口径，本次不采信。</strong>旁证：外资券商 10/19 自己给出的指引是"2026 全年净利与 2025 基本持平"（约 81 亿），也低于 84.61 亿。
+  </div>
 
-  <h3>一、分部估值法（SOTP — 主锚）</h3>
-  <p style="font-size:12px;color:#888">基于各产线2026E收入×三档折价PE（悲观7折/中性8折/乐观9折），目标市值加总</p>
-  <div class="assume"><strong>⚠ 假设声明：</strong>2026E各产线收入基于管理层指引推算；对标PE取国际龙头区间，分别打7折(悲观)/8折(中性)/9折(乐观)</div>
+  <h3>一、分部估值 SOTP（主锚 · 权重 50%）</h3>
   <table>
-    <tr><th>产线</th><th>2025FY收入(亿)</th><th>2026E收入(亿)</th><th>同比</th><th>净利率</th><th>净利润(亿)</th><th>对标PE（国际龙头→折价后）</th><th>估值(亿)</th></tr>
-    <tr><td>体外诊断</td><td>122.41</td><td>135</td><td class="up">+10%</td><td>22%</td><td>29.7</td><td>25-35x → 17.5/24/31.5x</td><td>520 / 713 / 936</td></tr>
-    <tr><td>生命信息与支持</td><td>98.37</td><td>105</td><td class="up">+7%</td><td>24%</td><td>25.2</td><td>20-28x → 14/19.2/25.2x</td><td>353 / 484 / 635</td></tr>
-    <tr><td>医学影像</td><td>57.17</td><td>62</td><td class="up">+8%</td><td>23%</td><td>14.3</td><td>22-30x → 15.4/20.8/27x</td><td>220 / 297 / 386</td></tr>
-    <tr><td>新兴业务</td><td>53.78</td><td>72</td><td class="up">+34%</td><td>18%</td><td>13.0</td><td>30-40x → 21/28/36x</td><td>273 / 364 / 468</td></tr>
+    <tr><th>产线</th><th class="num">2026E 收入</th><th class="num">归母净利率</th><th class="num">归母净利</th><th class="num">对标国际 PE</th><th class="num">折价后 0.7/0.8/0.9</th><th class="num">估值（悲观/中性/乐观）</th></tr>
+    <tr><td>体外诊断</td><td class="num">132.0</td><td class="num">25%</td><td class="num">33.0</td><td class="num">25-33x</td><td class="num">17.5/23.2/29.7</td><td class="num">578 / 766 / 980</td></tr>
+    <tr><td>生命信息</td><td class="num">97.2</td><td class="num">24%</td><td class="num">23.3</td><td class="num">17-24x</td><td class="num">12.0/16.4/21.6</td><td class="num">280 / 382 / 503</td></tr>
+    <tr><td>医学影像</td><td class="num">53.6</td><td class="num">22%</td><td class="num">11.8</td><td class="num">20-28x</td><td class="num">14.0/19.2/25.2</td><td class="num">165 / 227 / 297</td></tr>
+    <tr><td>新兴业务</td><td class="num">64.8</td><td class="num">17%</td><td class="num">11.0</td><td class="num">25-35x</td><td class="num">17.5/24.0/31.5</td><td class="num">193 / 264 / 347</td></tr>
+    <tr><td>其他</td><td class="num">1.9</td><td class="num">10%</td><td class="num">0.2</td><td class="num">15x</td><td class="num">15x</td><td class="num">3 / 3 / 3</td></tr>
+    <tr><td>经营业务合计</td><td class="num">349.5</td><td class="num">22.7%</td><td class="num">79.3</td><td colspan="2" class="num">—</td><td class="num">1,218 / 1,641 / 2,130</td></tr>
+    <tr><td>加：净现金</td><td colspan="5" class="num">197.3 亿（货币 193.60 + 金融资产 4.98 - 有息负债 1.25）</td><td class="num">197 / 197 / 197</td></tr>
+    <tr style="background:#e8eaf6"><td><strong>合计市值（亿）</strong></td><td colspan="5" class="num">÷ 12.118 亿股</td><td class="num"><strong>1,415 / 1,839 / 2,328</strong></td></tr>
+    <tr style="background:#e8eaf6"><td><strong>对应股价（元）</strong></td><td colspan="5" class="num">vs 现价 179.00</td><td class="num"><strong>116.8 / 151.7 / 192.1</strong></td></tr>
   </table>
+  <div class="assume">
+    <strong>SOTP 假设声明：</strong>① 2026E 各产线收入为自估（见上文推算方法）；② 归母净利率已扣除少数股东损益影响，新兴业务因惠泰持股约 60% 而给最低的 17%；③ 对标 PE 取国际龙头区间（罗氏诊断/雅培/丹纳赫、美敦力/GE 医疗/飞利浦、直觉外科），0.7/0.8/0.9 折反映中国龙头的品牌与政策折价；④ <strong>净现金 197.3 亿单独加回</strong>（旧版 SOTP 遗漏此项，本次修正，折合 16.28 元/股）。
+  </div>
 
+  <h3>二、PEG 交叉验证（权重 25%）</h3>
+  <table>
+    <tr><th>情景</th><th class="num">2026E EPS</th><th class="num">2027E EPS</th><th class="num">CAGR(26→28)</th><th class="num">PEG</th><th class="num">合理 PE</th><th class="num">合理股价</th></tr>
+    <tr><td>悲观</td><td class="num">6.46</td><td class="num">7.20</td><td class="num">10%</td><td class="num">2.7</td><td class="num">15x</td><td class="num">98.9</td></tr>
+    <tr style="background:#e8eaf6"><td><strong>中性</strong></td><td class="num"><strong>6.59</strong></td><td class="num"><strong>7.50</strong></td><td class="num"><strong>13%</strong></td><td class="num"><strong>2.09</strong></td><td class="num"><strong>19x</strong></td><td class="num"><strong>125.2</strong></td></tr>
+    <tr><td>乐观</td><td class="num">6.75</td><td class="num">7.90</td><td class="num">16%</td><td class="num">1.70</td><td class="num">23x</td><td class="num">151.6</td></tr>
+  </table>
+  <p style="font-size:12px;color:#666">当前 PE(2026E) 27.16x ÷ 增速 13% = <strong>PEG 2.09</strong>，明显高于 1.5 的"贵"阈值。PEG 法给出的中性价 125 元是三法中最悲观的，原因是它假设"增速回归 13% 后就只值 19x"——这正是迈瑞从成长股切换为成熟股时最可能遭遇的杀估值路径。</p>
+
+  <h3>三、DCF 交叉验证（权重 25%）</h3>
+  <table>
+    <tr><th>情景</th><th class="num">FCF 起点</th><th class="num">WACC</th><th class="num">前 5 年增速</th><th class="num">永续增长</th><th class="num">对应股价</th></tr>
+    <tr><td>悲观</td><td class="num">80 亿</td><td class="num">9.0%</td><td class="num">6%</td><td class="num">2.5%</td><td class="num">137.3</td></tr>
+    <tr style="background:#e8eaf6"><td><strong>中性</strong></td><td class="num"><strong>80 亿</strong></td><td class="num"><strong>8.5%</strong></td><td class="num"><strong>10%</strong></td><td class="num"><strong>3.0%</strong></td><td class="num"><strong>183.1</strong></td></tr>
+    <tr><td>乐观</td><td class="num">80 亿</td><td class="num">7.5%</td><td class="num">13%</td><td class="num">3.5%</td><td class="num">274.1</td></tr>
+  </table>
+  <div class="assume">
+    <strong>⚠ DCF 对 WACC 极度敏感，必须双参数对照：</strong>同一组现金流，WACC 从 9.0% 降到 7.5%，估值从 137 元跳到 274 元（<strong>翻倍</strong>）。外资券商用 7.5% 得 215 元，我用 8.5% 得 183 元——<strong>两者的分歧其实不在现金流，而在折现率假设</strong>。迈瑞 Beta 仅 0.18（防御属性强），支持较低的股权成本；但作为 A 股标的，纯粹套用海外低利率环境的 7.5% 偏乐观。本报告取 8.5% 为中值。<strong>结论：DCF 只作交叉验证，不作为定价主锚。</strong>
+  </div>
+
+  <h3>四、综合估值结论</h3>
+  <table>
+    <tr><th>方法</th><th class="num">权重</th><th class="num">悲观</th><th class="num">中性</th><th class="num">乐观</th></tr>
+    <tr><td>SOTP（主锚）</td><td class="num">50%</td><td class="num">116.8</td><td class="num">151.7</td><td class="num">192.1</td></tr>
+    <tr><td>PEG</td><td class="num">25%</td><td class="num">98.9</td><td class="num">125.2</td><td class="num">151.6</td></tr>
+    <tr><td>DCF</td><td class="num">25%</td><td class="num">137.3</td><td class="num">183.1</td><td class="num">274.1</td></tr>
+    <tr style="background:#e8eaf6"><td><strong>加权中枢</strong></td><td class="num"><strong>100%</strong></td><td class="num"><strong>117.4</strong></td><td class="num"><strong>153.0</strong></td><td class="num"><strong>202.5</strong></td></tr>
+    <tr><td>相对现价 179.00</td><td class="num">—</td><td class="num dn2">-34.4%</td><td class="num dn2">-14.5%</td><td class="num up">+13.1%</td></tr>
+  </table>
   <div class="scenario-grid" style="margin-top:14px">
-    <div class="scen scen-bear">
-      <div class="slbl">悲观（国际PE×0.7）</div>
-      <div class="sval">1,366亿</div>
-      <div class="schg dn2">-23%</div>
-      <div style="font-size:11px">对应股价 ~113元</div>
-    </div>
-    <div class="scen scen-base">
-      <div class="slbl">中性（国际PE×0.8）</div>
-      <div class="sval">1,858亿</div>
-      <div class="schg up">+5%</div>
-      <div style="font-size:11px">对应股价 ~153元</div>
-    </div>
-    <div class="scen scen-bull">
-      <div class="slbl">乐观（国际PE×0.9）</div>
-      <div class="sval">2,425亿</div>
-      <div class="schg up">+37%</div>
-      <div style="font-size:11px">对应股价 ~200元</div>
-    </div>
+    <div class="scen scen-bear"><div class="slbl">悲观（30%）</div><div class="sval" style="color:#00c853">117 元</div><div class="schg">Q4 费用超预期 + IVD 价格政策落地</div></div>
+    <div class="scen scen-base"><div class="slbl">中性（50%）</div><div class="sval" style="color:#3949ab">153 元</div><div class="schg">Q4 净利率恢复至 10% 附近</div></div>
+    <div class="scen scen-bull"><div class="slbl">乐观（20%）</div><div class="sval" style="color:#c62828">203 元</div><div class="schg">2027 国内复苏 + H 股上市重估</div></div>
   </div>
-  <div class="assume"><strong>⚠ 折价逻辑：</strong>国际龙头（罗氏IVD~35x、直觉外科~40x）因品牌/全球平台享有估值溢价；中国医疗器械企业按悲观7折/中性8折/乐观9折反映品牌差距及政策风险。中性情境假设中国龙头品牌认可度向国际靠拢至80%水平。</div>
-
-  <h3>二、PEG 交叉验证（更新至最新一致预期）</h3>
-  <table>
-    <tr><th>情景</th><th>2026E EPS</th><th>CAGR(26→28)</th><th>PEG</th><th>合理PE</th><th>合理股价</th></tr>
-    <tr><td>悲观</td><td>6.77</td><td>10%</td><td>2.2</td><td>15x</td><td class="dn2">102</td></tr>
-    <tr><td>中性</td><td>7.26</td><td>14%</td><td>1.5</td><td>20x</td><td>145</td></tr>
-    <tr><td>乐观</td><td>7.84</td><td>16%</td><td>1.3</td><td>24x</td><td class="up">188</td></tr>
-  </table>
-  <p style="font-size:12px;color:#555">PEG法中性合理PE~20x，与当前前向PE 23.6x基本吻合，说明市场定价合理、安全边际有限。<strong>EPS三情景为AI基于中报实际自估（全年归母82/88/95亿→EPS 6.77/7.26/7.84，非券商共识）</strong>。</p>
-
-  <h3>三、DCF 交叉验证</h3>
-  <div class="assume"><strong>⚠ 假设：</strong>FCF起始=81亿(2025FY)，WACC=9%，永续增长率悲观2%/中性3%/乐观4%，前5年FCF增速悲观5%/中性10%/乐观15%</div>
-  <div class="scenario-grid">
-    <div class="scen scen-bear"><div class="slbl">悲观</div><div class="sval">1,510亿</div><div class="schg">股价 125</div></div>
-    <div class="scen scen-base"><div class="slbl">中性</div><div class="sval">1,890亿</div><div class="schg up">股价 156</div><div style="font-size:11px">+6.6% vs 现价</div></div>
-    <div class="scen scen-bull"><div class="slbl">乐观</div><div class="sval">2,560亿</div><div class="schg up">股价 211</div></div>
+  <div class="sig sig-bear" style="margin-top:14px">
+    <strong>结论：现价 179 元高于中性中枢 153 元约 17.0%，已接近乐观中枢 203 元的 88% 位置。</strong><br>
+    概率加权期望值 = 117.4×30% + 153.0×50% + 202.5×20% = <strong>152.2 元</strong>，对应期望收益率 <strong>-15.0%</strong>。<br>
+    赔率 = 上行空间（202.5-179.0=23.5）÷ 下行空间（179.0-117.4=61.6）= <strong>0.38 : 1</strong>，明显不利于买入。<br>
+    <strong>这是一只"好公司、贵价格"的股票：基本面没坏（现金流、国际业务、分红都在改善），但股价已把 2027 年的复苏提前定价。持有者可以继续持有等 Q4 兑现，空仓者不宜在此位置追高。</strong>
   </div>
-
-  <h3>综合估值结论 &amp; 机构共识对比</h3>
-  <table>
-    <tr><th></th><th>悲观</th><th>中性</th><th>乐观</th></tr>
-    <tr><td>SOTP(主)</td><td>107元</td><td><strong>146元</strong></td><td>191元</td></tr>
-    <tr><td>PEG</td><td>102元</td><td>145元</td><td>188元</td></tr>
-    <tr><td>DCF</td><td>125元</td><td>156元</td><td>211元</td></tr>
-    <tr style="background:#fff3e0"><td><strong>加权中枢(50/25/25)</strong></td><td class="dn2"><strong>110元</strong></td><td><strong>148元</strong></td><td class="up"><strong>195元</strong></td></tr>
-    <tr style="background:#e8eaf6"><td><strong>机构共识(东财)</strong></td><td colspan="3" style="text-align:center">2026E EPS 6.95（中报前口径）· 目标价249.50元；AI自估中报后中性 EPS 7.26</td></tr>
-  </table>
-  <div class="sig sig-bull" style="margin-top:12px">
-    <strong>结论（中报后口径重算 · AI自估）：三法加权中枢 148 元，当前 164.30 溢价约 +11%，维持"偏贵、不追高"。</strong>基于中报实际自估全年归母（悲观82/中性88/乐观95亿 → EPS 6.77/7.26/7.84），重算三法：SOTP 146 元（收入假设因生命信息/影像 H1 增速低于原假设而下调）、PEG 145 元、DCF 156 元，加权中枢 110/148/195 元。现价 164.30 仍高于中性中枢 148 元约 11%。<strong>中报是"利润端转正（Q2归母+1.10%、剔除汇兑+8.68%）+ 收入端部分产线疲弱（影像-5.78%、生命信息-0.11%）"的混合</strong>——净效应估值中枢较中报前基本持平，安全边际仍薄。待券商 1-2 周内更新一致预期后，可用真实共识再校验。悲观中枢 110 元对应 -33% 下行，乐观中枢 195 元对应 +19% 空间。
+  <div style="font-size:12px;color:#666;margin-top:10px">
+    <strong>与机构共识的对比：</strong>55 家综合目标价 218 元（+21.8%），富途 37 位分析师平均 242.59 元，外资券商 215 元。差异根源已在前文标出——<strong>他们用的是 EPS 6.98（或更高的 2027 年 EPS）与 7.5% 的 WACC</strong>；我用的是 6.59 与 8.5%。若采信一致预期 EPS 6.98 且 WACC 用 7.5%，三法中枢会升至约 190 元，届时"溢价"变为"折价 6%"——<strong>换言之，这只股票多空分歧几乎全部集中在"Q4 能赚多少"和"折现率给多低"两个假设上。</strong>
   </div>
 </div>
 
 <!-- ===== 技术面 ===== -->
 <div class="card">
-  <h2>技术面辅助（2026-08-28 收盘 · 中报后实测）<span class="badge b-buy">实测</span></h2>
+  <h2>技术面辅助（2026-10-29 收盘 · 自算）<span class="badge b-n">实测</span></h2>
   <div class="tech-grid">
     <div class="tech-item">
       <div class="name">KDJ (9,3,3)</div>
-      <div class="val">K87.18 · D76.62 · J108.3</div>
-      <div class="tag"><span class="tag-overbought">高位·J值超买</span></div>
-      <div style="font-size:11px;margin-top:4px;color:#555">J&gt;100短线超买，中报兑现后仍偏热</div>
+      <div class="val">K68.5 · D75.5 · J54.5</div>
+      <div class="tag"><span class="tag-bear">高位死叉</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">K 已下穿 D，股价新高但指标不走高</div>
     </div>
     <div class="tech-item">
       <div class="name">MACD (12,26,9)</div>
-      <div class="val">DIF+3.19 · DEA+2.28</div>
-      <div class="tag"><span class="tag-bull">零上金叉</span></div>
-      <div style="font-size:11px;margin-top:4px;color:#555">红柱+0.91，中期趋势偏多延续</div>
+      <div class="val">DIF+4.91 · DEA+3.74</div>
+      <div class="tag"><span class="tag-bull">零上红柱扩大</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">红柱 +2.36，中期趋势仍偏多</div>
     </div>
     <div class="tech-item">
       <div class="name">RSI</div>
-      <div class="val">RSI6=74.66 · RSI12=66.56</div>
+      <div class="val">RSI6=67.3 · RSI12=72.2</div>
       <div class="tag"><span class="tag-overbought">偏热</span></div>
-      <div style="font-size:11px;margin-top:4px;color:#555">RSI6从81.6回落但仍偏热</div>
+      <div style="font-size:11px;margin-top:4px;color:#555">RSI12 &gt;70，短线过热但未极端</div>
     </div>
     <div class="tech-item">
       <div class="name">BOLL (20,2)</div>
-      <div class="val">上164.24 / 中155.24 / 下146.23</div>
-      <div class="tag"><span class="tag-overbought">触及上轨</span></div>
-      <div style="font-size:11px;margin-top:4px;color:#555">现价164.3紧贴上轨，短线压力位</div>
+      <div class="val">上183.25 / 中167.64 / 下152.04</div>
+      <div class="tag"><span class="tag-overbought">逼近上轨</span></div>
+      <div style="font-size:11px;margin-top:4px;color:#555">现价 179 距上轨仅 2.4%，压制明显</div>
     </div>
   </div>
   <p style="font-size:12px;color:#888;margin-top:10px">
-    均线：MA5=161.64 / MA10=157.16 / MA20=155.24 / MA30=154.51 / MA60=148.11 / MA120=154.80 / MA250=183.01。现价164.30<strong>站上全部短中期均线</strong>（MA5~MA120，偏离+1.6%~+10.9%），但仍<strong>低于年线MA250（-10.2%）</strong>。5/20/60日涨幅 +6.38% / +3.41% / +15.23%。WR6=-3.83（超买区）。<br>
-    <strong>综合判断（中报后更新）：</strong>中报兑现拐点后股价站稳 164.3，技术面维持<strong>中期偏多</strong>：站上全部短中期均线 + MACD 零上金叉 + 60日涨幅+15.23%。但<strong>短线三项超买信号</strong>——KDJ J=108.3、RSI6=74.66、<strong>现价触及BOLL上轨164.24</strong>，且年线 MA250(183.01)仍是上方压制。<strong>策略：中报利好已部分兑现，不追高</strong>。持仓者继续持有，可在 175-185（前压力区）减仓；空仓者等回踩 MA20(155.24) 或 BOLL 下轨(146.23) 分批介入。若放量突破 165 并站稳，打开 183（年线）空间；若中报后冲高回落跌破 MA20(155)，则确认短线见顶。
+    均线：MA5=178.63 / MA10=173.89 / MA20=167.64 / MA60=161.26 / MA120=154.14 / MA250=171.08。现价 179.00 <strong>站上全部均线（含年线 171.08，偏离 +4.6%）</strong>，这是 2025 年 10 月以来首次收复年线。区间涨幅：20 日 <span class="up">+15.14%</span> / 60 日 <span class="up">+16.57%</span> / 120 日 <span class="up">+8.15%</span> / 年初至今 <span class="dn2">-7.11%</span>。CCI 90.2。5/20 日量比 1.46（温和放量）。<br><br>
+    <strong>综合判断：</strong>技术面是"中期转多、短线过热"的组合。积极信号是站上年线 + MACD 零上红柱扩大 + 温和放量；警讯是 <strong>KDJ 在股价创新高时反手死叉（K68.5 &lt; D75.5，J 从高位跌至 54.5）</strong>，这是典型的顶背离形态，配合 RSI12 72.2 与逼近 BOLL 上轨 183.25，短线回调概率大于突破概率。<br>
+    <strong>策略：</strong>已持仓者可在 <strong>183-192</strong>（BOLL 上轨至 SOTP 乐观值）分批减仓；空仓者不追高，等回踩 <strong>MA20 167.64</strong> 或 <strong>MA60 161.26</strong> 再评估。若放量突破 183.25 并站稳，上看 203（乐观中枢）；若跌破 MA20 167.64，则确认本轮反弹结束，下一支撑看 154（MA120）。
   </p>
 </div>
 
@@ -698,136 +467,76 @@
 <div class="card">
   <h2>资金面 &amp; 筹码（辅助验证）</h2>
   <div class="kv">
-    <div class="item"><div class="lbl">120日主力净流入</div><div class="val dn2">-48.74亿</div></div>
-    <div class="item"><div class="lbl">近20日主力净流入</div><div class="val dn2">-0.68亿</div><div class="sub">Wind · 近60日 +8.37亿 · 今日 +0.60亿</div></div>
-    <div class="item"><div class="lbl">融资余额(8/27)</div><div class="val">45.26亿</div><div class="sub">较7/23的58.99亿明显下降</div></div>
-    <div class="item"><div class="lbl">股东户数(6/30)</div><div class="val">153,200户</div><div class="sub">环比 +0.74% 略分散</div></div>
-    <div class="item"><div class="lbl">户均持股市值</div><div class="val">130万</div><div class="sub">机构属性明显</div></div>
-    <div class="item"><div class="lbl">未来1年解禁</div><div class="val up">0批</div><div class="sub">零压力</div></div>
-    <div class="item"><div class="lbl">分红(2025FY)</div><div class="val">10派3.1</div><div class="sub">股息率 2.60% (Wind TTM)</div></div>
-    <div class="item"><div class="lbl">分红(2026中期·新)</div><div class="val up" style="font-size:16px">10派13.30</div><div class="sub">合计16.12亿 · 年内累计31.27亿<br>分红比例65.19%</div></div>
-    <div class="item"><div class="lbl" style="color:#c62828">⚠️ 机构持仓</div><div class="val dn2" style="font-size:16px">0.16%</div><div class="sub">主动偏股基金持仓比例<br>环比 <span class="dn2">-0.68pct</span>（基金24家，-21家）</div></div>
+    <div class="item"><div class="lbl">股东户数（9/30）</div><div class="val">142,658 户</div><div class="sub">环比 <span class="up">-6.88%</span> · 筹码集中</div></div>
+    <div class="item"><div class="lbl">主动偏股基金</div><div class="val" style="font-size:17px">67 家</div><div class="sub">较上期 +43 家 · 持股比 0.55%（+0.39pct）</div></div>
+    <div class="item"><div class="lbl">全部基金持仓</div><div class="val" style="font-size:17px">149 家</div><div class="sub">5,546 万股 · 占流通股 4.58%</div></div>
+    <div class="item"><div class="lbl">融资余额（10/28）</div><div class="val" style="font-size:17px">30.04 亿</div><div class="sub">较 10/21 的 31.87 亿降 5.7%</div></div>
+    <div class="item"><div class="lbl">融券余额</div><div class="val" style="font-size:17px">0.54 亿</div><div class="sub">几乎可忽略，无沽空压力</div></div>
+    <div class="item"><div class="lbl">机构调研次数</div><div class="val" style="font-size:17px">99 次</div><div class="sub">行业排名 23/509</div></div>
   </div>
-  <div class="warn" style="background:#ffebee;border-left:4px solid #c62828;padding:10px 14px;border-radius:6px;font-size:13px;margin:8px 0">
-  <strong>⚠️ 筹码面警示：机构在持续减仓，与研报看多背离。</strong>截至中报，主动偏股基金持仓比例降至 <strong>0.16%</strong>（环比 -0.68pct），持有基金数 24 家（较上期减少 21 家），<strong>机构调研次数为 0</strong>。而同期四家投行（高盛247/瑞银284/大摩220/野村219.36）全部给"买入/超配"，主流目标价 249.50 元。<strong>"研报全面看多 + 机构实际减仓"的背离，是本次更新最需要警惕的信号</strong>——可能反映机构对国内业务复苏和医学影像拖累的谨慎。
-  </div>
-
-  <h3 style="margin-top:14px">前十大股东（2026-03-31，Wind）</h3>
-  <table>
-    <tr><th>股东</th><th>持股比例</th><th>性质</th></tr>
-    <tr><td>Smartco Development Ltd.</td><td>27.0%</td><td>控股股东（李西廷）</td></tr>
-    <tr><td>Magnifice (H.K.) Ltd.</td><td>24.5%</td><td>控股股东（徐航）</td></tr>
-    <tr><td>香港中央结算有限公司</td><td>7.56%</td><td>北向资金</td></tr>
-    <tr><td>Ever Union (H.K.) Ltd.</td><td>3.84%</td><td>—</td></tr>
-    <tr><td>全国社保基金一一三组合</td><td>0.58%</td><td>国家队</td></tr>
+  <table style="margin-top:14px">
+    <tr><th>时点</th><th class="num">股东户数</th><th class="num">环比</th><th>解读</th></tr>
+    <tr><td>2026-06-30</td><td class="num">153,200 户</td><td class="num">+0.74%</td><td>中报期略分散</td></tr>
+    <tr><td>2026-09-30</td><td class="num up">142,658 户</td><td class="num up">-6.88%</td><td><strong>Q3 明显集中</strong>，与股价 Q3 上涨方向一致</td></tr>
   </table>
+  <div class="sig sig-bull">
+    <strong>与旧版最重要的一处反转：机构不是"持续减仓"，而是在加仓。</strong>主动偏股基金家数从 24 家增至 <strong>67 家</strong>（+43 家），持股比例从 0.16% 升至 <strong>0.55%</strong>（+0.39pct）；前十大股东中出现<strong>基本养老保险基金八零二组合、全国社保基金一一三组合</strong>。配合股东户数 -6.88%，Q3 的筹码结构是"散户出、机构进"。这是本轮上涨的资金基础，也是把资金面从 48 分上调至 62 分的依据。
+  </div>
+  <div class="sig sig-warn">
+    <strong>但要看清两点：</strong>① 主动基金持股比例 0.55% 仍处<strong>历史低位</strong>（2021 年高峰时远高于此），目前的"加仓"是从极低基数回补，不代表机构已重仓看好；② 融资余额从 10/21 的 31.87 亿降至 30.04 亿，<strong>股价上涨的同时杠杆资金在撤</strong>，说明涨势里游资成分不多。9/23 那笔 1.66 亿的机构对机构大宗（156.42 元）也比现价低 12.6%，说明有机构在这个价位之下就已愿意卖。
+  </div>
 </div>
 
-<!-- ===== 建议追踪 ===== -->
+<!-- ===== 追踪指标 ===== -->
 <div class="card">
   <h2>建议追踪的关键指标与事件</h2>
-
-  <h3>一、基本面验证指标</h3>
   <table>
-    <tr><th width="200">指标</th><th>当前值</th><th>追踪阈值</th><th>信号含义</th></tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>综合毛利率</strong></td><td>61.9% (Q1)</td><td>回升至 63%+</td><td>成本端压力缓解，盈利质量修复；若持续低于 61% 需警惕集采影响超预期</td>
-    </tr>
-    <tr>
-      <td><strong>国内营收季度增速</strong></td><td>-11.1% (Q1)</td><td>Q2-Q3 单季转正</td><td>管理层指引 2026全年国内正增长，Q2/Q3 是最关键验证窗口。若 Q3 仍未转正，全年目标存疑</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>合同负债余额</strong></td><td>33.4亿 (+50%)</td><td>维持增长趋势</td><td>收入"蓄水池"，持续增长预示后续试剂消耗/设备装机确认收入强劲</td>
-    </tr>
-    <tr>
-      <td><strong>扣非净利增速</strong></td><td>-9.25% (Q1)</td><td>Q2 降幅收窄至 -5% 以内</td><td>经营实质改善信号；若 H1 累计仍双位数下降，全年 7.25 EPS 预期面临下调风险</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>自由现金流/FCF率</strong></td><td>9.3% (Q1)</td><td>回升至 15%+</td><td>Q1季节性偏低属正常；若 H1 FCF率仍低于15%，反映回款恶化或支出异常</td>
-    </tr>
+    <tr><th width="130">时间</th><th>事件 / 指标</th><th>为什么重要</th><th width="180">观察阈值</th></tr>
+    <tr style="background:#fff8e1"><td><strong>2027-01 下旬</strong></td><td><strong>2026 年度业绩预告 / 快报</strong></td><td>Q4 是本轮多空分歧的唯一裁判</td><td>全年归母 &lt;78 亿 = 悲观兑现；&gt;82 亿 = 一致预期成立</td></tr>
+    <tr><td><strong>2026 Q4</strong></td><td><strong>H 股上市备案</strong></td><td>公司目标 2026 年底前获证监会备案；不排除上市前派特别股利</td><td>拿到备案 = 情绪催化；摊薄率决定 EPS 影响</td></tr>
+    <tr><td><strong>持续</strong></td><td><strong>IVD 价格统一政策</strong></td><td>北京新版检测价格是否落地、其他省份是否跟进</td><td>降价幅度 &gt;15% 或跨省扩散 = 逻辑受损</td></tr>
+    <tr><td><strong>2027-04</strong></td><td><strong>2026 年报 + 商誉减值测试</strong></td><td>商誉 110.30 亿，占归母净资产 26.8%</td><td>减值 &gt;5 亿即显著冲击</td></tr>
+    <tr><td><strong>季度</strong></td><td><strong>惠泰医疗收入增速</strong></td><td>决定新兴业务成色与少数股东损益规模</td><td>低于 10% = 商誉风险上升</td></tr>
+    <tr><td><strong>季度</strong></td><td><strong>国际收入占比</strong></td><td>目前 53%，是抵御国内政策的核心缓冲</td><td>跌破 50% = 增长逻辑弱化</td></tr>
+    <tr><td><strong>季度</strong></td><td><strong>医学影像产线</strong></td><td>连续下滑（-6.18%），超高端超声 A 系列是翻身牌</td><td>转正 = 三产线全面复苏</td></tr>
+    <tr><td><strong>每周</strong></td><td><strong>主动偏股基金持股比例</strong></td><td>目前 0.55%，机构回补是否延续</td><td>连续两季下降 = 资金面转弱</td></tr>
   </table>
-
-  <h3>二、业务里程碑事件</h3>
-  <table>
-    <tr><th width="200">事件</th><th>当前进度</th><th>关注点</th></tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>MT8000 流水线装机</strong></td><td>2025FY 新增 270套<br>Q1 新增约 70套</td><td>维持季度 70+ 套节奏即表明国产替代加速；单季度超 100 套则为强烈超预期信号</td>
-    </tr>
-    <tr>
-      <td><strong>超高端超声 Resona/Nuewa I10</strong></td><td>FY2025 营收超7亿<br>同比 +70%</td><td>若 H1 保持 50%+ 增速，验证"海外高端突破"逻辑；该产线毛利率高，放量对整体毛利率有正向拉动</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>港股 IPO 进展</strong></td><td>2026Q1 进入流程</td><td>成功上市将提升国际品牌认知度 + 拓宽融资渠道，是中长期估值重估的催化剂</td>
-    </tr>
-    <tr>
-      <td><strong>海外本地化生产启动</strong></td><td>14国布局<br>11国已投产</td><td>新国家投产 = 关税规避 + 交付加速 = 海外毛利率改善。关注墨西哥（北美）和德国（欧洲）产能爬坡</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>启元大模型落地医院数</strong></td><td>"瑞检生态" 1,100家<br>"瑞智生态" 新增 60+</td><td>AI 生态锁定的客户粘性极高（替换成本大），装机量增长 = 长期试剂消耗基本盘扩大</td>
-    </tr>
-    <tr>
-      <td><strong>化学发光试剂新品获批</strong></td><td>2025FY 新增 14 项<br>NMPA 累计 94 项</td><td>新试剂 = 装机后可测项目增加 = 单台产出提升。关注甲功/传染病/肿瘤标志物领域突破</td>
-    </tr>
-  </table>
-
-  <h3>三、筹码与政策面</h3>
-  <table>
-    <tr><th width="200">信号</th><th>当前状态</th><th>关注阈值</th></tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>主力资金转向</strong></td><td class="dn2">120日净流出 48.7亿</td><td>单周主力净流入转正并持续 2 周以上 = 底部资金确认信号</td>
-    </tr>
-    <tr>
-      <td><strong>融资余额变化</strong></td><td>59.0亿（趋势下降）</td><td>回升至 65 亿+ 并企稳 = 杠杆资金信心恢复</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>股东户数趋势</strong></td><td>15.2万户（-0.27%）</td><td>持续下降至 14 万户以下 = 筹码加速集中；上升则警惕机构出货</td>
-    </tr>
-    <tr>
-      <td><strong>IVD集采政策扩面</strong></td><td>生化/发光已纳入</td><td>若凝血、微生物等新品类纳入省际联盟集采，短期情绪冲击但长期利于龙头份额提升</td>
-    </tr>
-    <tr style="background:#f8f9fc">
-      <td><strong>高管/大股东增减持</strong></td><td>—</td><td>大股东增持 = 强烈底部信号；减持则需警惕（当前未见明显变动）</td>
-    </tr>
-  </table>
-
-  <h3>关键时间节点</h3>
-  <div class="kv">
-    <div class="item"><div class="lbl"><strong>2026年8月29日</strong></div><div class="val" style="font-size:14px;color:#c62828">2026中报预披露</div><div class="sub">近期最关键催化——验证扣非降幅是否收窄至-6%，若转正则触发重估</div></div>
-    <div class="item"><div class="lbl">2026年10月</div><div class="val" style="font-size:14px">三季报</div><div class="sub">全年指引能否兑现的准终局验证</div></div>
-    <div class="item"><div class="lbl">2026年内</div><div class="val" style="font-size:14px">港股IPO</div><div class="sub">国际品牌溢价催化剂</div></div>
-    <div class="item"><div class="lbl">持续追踪</div><div class="val" style="font-size:14px">中标数据</div><div class="sub">2025.12-2026.02 中标额+12%</div></div>
-  </div>
 </div>
 
 <!-- ===== 风险 ===== -->
 <div class="card">
   <h2>风险提示</h2>
   <ol>
-    <li><strong>集采政策持续扩大：</strong>已从IVD向影像、监护等扩散，可能进一步压缩毛利率（当前61.9%仍处承压区间）</li>
-    <li><strong>海外业务不确定性：</strong>外币折算差额波动大，地缘政治风险上升；2026Q1 汇率变动-2.40亿（同比放大16倍）</li>
-    <li><strong>商誉减值风险：</strong>商誉112亿（占总资产18.8%），若海外标的（主要为DiaSys等并购）不及预期有减值压力</li>
-    <li><strong>盈利恢复不及预期：</strong>一致预期2026E EPS 7.25需+8%增长（基准2025实际6.71），若后续季度不及预期将触发估值下调</li>
-    <li><strong>资金面持续偏弱：</strong>主力+融资双线净流出未见止跌信号</li>
-    <li><strong>估值风险：</strong>SOTP中性153元已低于现价164.30元约7%，安全边际消失；悲观113元下行风险-31%。估值已透支部分修复预期，对业绩确定性要求极高</li>
+    <li><strong>估值风险（最高优先级）：</strong>现价高于中性中枢 17.0%，赔率 0.38:1；PE(TTM) 处 3 年 68% 分位。若 Q4 业绩不及预期，向 117 元（悲观中枢）回归意味着 -34%。</li>
+    <li><strong>Q4 费用季节性：</strong>2025Q4 归母仅 5.66 亿（净利率 7.6%）、毛利率骤降至 54.64%、研发费用率 15.4%。Q4 一向是费用集中计提期，全年利润高度依赖这一个季度，可预测性差。</li>
+    <li><strong>IVD 价格政策：</strong>北京新版检测价格是否落地、其他省份是否跟进不明。国内 IVD 已"量价齐跌"，若降价幅度超预期，将同时打击收入与毛利率。</li>
+    <li><strong>商誉减值：</strong>商誉 110.30 亿，占归母净资产 26.8%。主要来自惠泰医疗及 DiaSys 等并购，若标的经营不及预期将直接减值。</li>
+    <li><strong>汇兑的双向性：</strong>2026 前三季财务费用 +5.41 亿（2025 同期 -2.93 亿）。海外收入占 53%，人民币汇率波动会持续扰动利润，且这部分被公司放在"剔除汇兑"口径之外讲故事。</li>
+    <li><strong>H 股摊薄与分流：</strong>H 股发行将摊薄 EPS，且可能分流 A 股流动性；若发行折价较大，对 A 股估值形成压力。</li>
+    <li><strong>少数股东损益侵蚀：</strong>少数股东损益同比 +55.9%，惠泰等子公司越赚钱，归母占比越低。新兴业务高增长对 EPS 的贡献要打折。</li>
+    <li><strong>国内需求弱复苏：</strong>医院经营承压、采购预算收紧，设备行业仍处弱复苏。若 2027 年国内未能如指引转正，则"复苏定价"落空。</li>
   </ol>
 
-  <h3 style="margin-top:14px">量化风险指标（Wind，过去1年）</h3>
+  <h3 style="margin-top:14px">量化风险指标（自算，过去 1 年）</h3>
   <table>
-    <tr><th>指标</th><th>数值</th><th>解读</th></tr>
-    <tr><td>Beta</td><td>0.18</td><td>极低，几乎不随大盘波动（防御属性）</td></tr>
-    <tr><td>年化波动率</td><td>26.6%</td><td>中等偏低</td></tr>
-    <tr><td>最大回撤</td><td>-45.1%</td><td>过去1年回撤显著，源于业绩下滑+集采杀估值</td></tr>
-    <tr><td>VaR(日,95%)</td><td>6.4%</td><td>单日极端亏损约6.4%</td></tr>
-    <tr><td>夏普比率</td><td>-0.09</td><td>负值，风险调整后回报不佳（近1年）</td></tr>
-    <tr><td>速动比率</td><td>1.94</td><td>短期偿债能力强</td></tr>
-    <tr><td>流动比率</td><td>2.39</td><td>流动性充裕</td></tr>
+    <tr><th>指标</th><th class="num">数值</th><th>解读</th></tr>
+    <tr><td>年化波动率</td><td class="num">约 28%</td><td>中等，医药板块内偏低</td></tr>
+    <tr><td>52 周最大回撤</td><td class="num">-42.1%</td><td>自 223.57 跌至 129.33，业绩下滑 + 集采杀估值</td></tr>
+    <tr><td>当前距 52 周高点</td><td class="num">-19.9%</td><td>反弹了但尚未收复</td></tr>
+    <tr><td>流动比率</td><td class="num">2.38</td><td>流动资产 306.28 ÷ 流动负债 128.66</td></tr>
+    <tr><td>速动比率</td><td class="num">约 1.92</td><td>（306.28-59.92）÷ 128.66，短期偿债能力强</td></tr>
+    <tr><td>净现金 / 市值</td><td class="num">9.1%</td><td>197.3 ÷ 2,169，安全垫厚</td></tr>
+    <tr><td>有息负债</td><td class="num">约 0</td><td>短期借款 17 万元，几乎无杠杆风险</td></tr>
   </table>
 </div>
 
 <div class="footer">
-  <p style="margin-bottom:6px">诊断时间：2026-08-28（v5.1 · 中报更新） · 数据来源：Wind 金融数据 · 迈瑞2025年报 · 2026中报 · 投资者关系记录表 · 巨潮</p>
-  <p style="margin-bottom:6px">v5更新：全部数据切换 Wind 口径 · 行情刷新(163.26, 8/26盘中) · 分业务线同比/毛利率修正（生命信息与支持真实同比-27.4%，非-19.8%）· 资产负债率22%→24.8% · 股息率2.12%→2.60% · 补前十大股东/量化风险指标/FCFF口径注 · 新增三板块拐点对比（IVD最先→生命信息次之→医学影像最晚复苏）· 新增政策周期与传导机制（2020-2026）+ IVD量价齐跌归因 · 新兴业务深度拆解（惠泰占48%/迈瑞仅持股23%/三子板块TAM与护城河/PFA技术换道）。<strong>v5.1（8/28中报后）：</strong>2026H1营收177.47亿(+6.0%)/归母47.97亿(-5.37%主因汇兑)/Q2营收93.95亿(+10.45%拐点确认) · 头部行情刷新164.30(+1.40%) · 新增"2026中报深度解读"模块 · 评分76→75 · <strong>v5.2（8/30中报后估值重算）：</strong>一致预期口径纠错（6.95为中报前口径，非中报后下修）· AI自估中报后全年归母82/88/95亿(EPS 6.77/7.26/7.84) · 三法加权中枢110/148/195元(中性148，现价164.30溢价+11%) · 维持"偏贵不追高"，待券商更新一致预期后再校验</p>
-  <p style="color:#c62828;font-weight:600;margin-top:6px">⚠ 以上分析仅供参考，不构成任何投资建议。分部估值/DCF/PEG中所有假设已在报告内标注。投资决策请结合自身判断，风险自担。</p>
+  <p style="margin-bottom:6px">诊断时间：2026-10-29（v6.0 · 三季报更新） · 数据来源：Wind 金融数据 · 迈瑞 2026 三季报（10-29 披露）· 2025 年报 · 交易所公告 · 自算技术指标与估值分位</p>
+  <p style="margin-bottom:6px">
+    <strong>v6.0 更新要点：</strong>① 全部财务数据切换 2026 三季报口径，单季序列补至 26Q3；② <strong>厘清净利润口径——公告"净利润 75.64 亿(-3.19%)"含少数股东损益，归母实为 71.84 亿(-5.10%)</strong>，并单列少数股东损益 +55.9% 对归母的侵蚀；③ <strong>修正 PE 分位重大错误：旧版"3 年分位 18%"经自算应为 68.1%</strong>，PB 由"分位 6%"修正为 20.8%；④ 评分维度由 7 维补全为 8 维完整（新增风险维度），75 → 67，增持 → 持有；⑤ SOTP 补加净现金 197.3 亿（旧版遗漏）；⑥ 资金面反转——主动偏股基金 24 → 67 家、持股比 0.16% → 0.55%，旧版"机构持续减仓"判断已过时；⑦ 新增分产线 2026E 自估与季度季节性分析（Q4 费用黑洞）；⑧ 一致预期经自检判定滞后（隐含 Q4 归母 12.77 亿 = 2025Q4 的 2.26 倍），不予采信。
+  </p>
+  <p style="margin-bottom:6px"><strong>口径声明：</strong>PE(TTM) 用 10-29 收盘时点可得的 H1 口径 TTM 归母 78.64 亿；纳入 Q3 后为 27.99x。PB 用 H1 归母净资产；用 Q3 末为 5.26x。历史分位为自算（727 个交易日，TTM 与净资产按披露日阶梯切换），与 Wind 分位口径可能存在差异。毛利率、单季数据均由累计值倒推。Q3 扣非归母 24.70 亿为推算值（26.00 亿含少数 - 1.30 亿少数股东损益），非公告直接披露。</p>
+  <p style="color:#c62828;font-weight:600;margin-top:6px">⚠ 以上分析仅供参考，不构成任何投资建议。分部估值 / DCF / PEG 中所有假设已在报告内标注。投资决策请结合自身判断，风险自担。</p>
 </div>
 
 </div>
